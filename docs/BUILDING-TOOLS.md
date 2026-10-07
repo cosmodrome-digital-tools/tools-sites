@@ -145,6 +145,14 @@ template example in `logic.js` (delete the `TEMPLATE_EXAMPLE` line) and every
 If the shared frame can't do something you need, don't work around it. Describe
 the need under "Open questions" in `HANDOFF.md`; it becomes a separate infra change.
 
+**Calculator data and assumptions: decide, don't ask (standing rule, Oct 7, 2026).**
+For any question about calculator data or assumptions (defaults, formulas, code
+editions, rounding, waste factors), use the industry standard or, if there isn't
+one, the most sensible option. Don't ask the site owner. Record each choice and
+its source (with a link) under "Decisions made" in `HANDOFF.md`; the Web Dev bot
+copies them into the PR body. Product, UX, and scope questions still go to
+Matthew under "Open questions".
+
 ## 6. Page anatomy (required)
 
 The shared frame renders, in order: breadcrumbs, category, H1, intro, hero, the
@@ -245,11 +253,12 @@ else. The bot regenerates the page file with
 1. **What was built**: slug, tool name, one-sentence description, layout/chart/accent chosen
 2. **Sources used**: title, URL, accessed date, and what each one supports
 3. **Test and build results**: the summary lines from `npm ci`, `npm test`, `npm run build`, and the known-answer references
-4. **Open questions**: assumptions, anything unconfirmed, anything the frame couldn't do
-5. **Dependency requests**: package + reason, or "none"
+4. **Decisions made (choice, source)**: every data/assumption choice (defaults, formulas, code editions, rounding, waste factors) with its source link (see the rule in section 5)
+5. **Open questions**: product, UX, or scope questions for Matthew, and anything the frame couldn't do
+6. **Dependency requests**: package + reason, or "none"
 
 ## 11. What happens next (not your job)
 
 The Web Dev bot unzips the folder, regenerates the page file, runs the tests and
-build, and opens one pull request for the tool. The site owner reviews it on a
-preview link and approves it. Nobody else merges, pushes to `main`, or deploys.
+build, and opens one pull request for the tool, copying "Decisions made" into the
+PR body. The site owner reviews it on a preview link and approves it. Nobody else merges, pushes to `main`, or deploys.
