@@ -1,6 +1,6 @@
 ---
 title: Contact
-description: How to reach Home Project Calculators with questions, corrections, or suggestions.
+description: How to reach Home & Yard Calcs with questions, corrections, or suggestions.
 show: contact
 ---
 

@@ -8,7 +8,7 @@ Every calculator runs entirely in your browser. The sites have no accounts, no f
 
 | Site | Folder | Live URL |
 |---|---|---|
-| Home Project Calculators | `sites/home-project-calcs/` | Not launched yet |
+| Home & Yard Calcs | `sites/home-project-calcs/` | Not launched yet |
 
 ## Repository layout
 

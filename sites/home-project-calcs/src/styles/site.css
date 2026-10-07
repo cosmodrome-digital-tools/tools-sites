@@ -1,4 +1,4 @@
-/* Site-level theme tokens for Home Project Calculators.
+/* Site-level theme tokens for Home & Yard Calcs.
    Tools don't edit this file; they override --tool-* tokens in their own tool.css. */
 :root {
   --site-accent: #8f3d12;        /* rust; 7.4:1 on white (AA) */

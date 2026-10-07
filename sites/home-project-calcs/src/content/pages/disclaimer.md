@@ -1,6 +1,6 @@
 ---
 title: Disclaimer
-description: Disclaimer for Home Project Calculators (draft placeholder).
+description: Disclaimer for Home & Yard Calcs (draft placeholder).
 draft: true
 ---
 

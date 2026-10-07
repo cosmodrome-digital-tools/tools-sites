@@ -1,6 +1,6 @@
 ---
 title: Privacy Policy
-description: Privacy Policy for Home Project Calculators (draft placeholder).
+description: Privacy Policy for Home & Yard Calcs (draft placeholder).
 draft: true
 ---
 
