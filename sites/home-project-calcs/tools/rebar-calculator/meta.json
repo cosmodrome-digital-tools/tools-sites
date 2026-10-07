@@ -1,0 +1,72 @@
+{
+  "title": "Rebar Calculator",
+  "benefit": "Sticks, Weight, and Ties",
+  "metaDescription": "Estimate rebar sticks, linear feet, weight, tie points, and chairs for a slab or footing grid in US units, with a lap-aware cut list and CRSI bar weights.",
+  "primaryKeyword": "rebar calculator",
+  "secondaryKeywords": [
+    "rebar calculator for slab",
+    "rebar calculator for footings",
+    "rebar calculator weight",
+    "rebar spacing for 4 inch slab",
+    "how many rebar chairs do i need"
+  ],
+  "intent": "Estimate rebar count, linear feet, sticks, weight, and tie points for a slab or footing grid at a chosen spacing.",
+  "registerRow": "Keyword Register: rebar calculator (Volume 2, Competition ease 4, Ad value 2, Fit 5, Priority 16)",
+  "category": "Concrete and Masonry",
+  "intro": "Enter your slab or footing size, bar size, and grid spacing to get the number of rebar sticks to buy, a cut list for each direction, the total weight, and how many ties and chairs to pick up. Long bars are spliced with the lap length you choose, so the stick count matches how the grid actually goes together.",
+  "lastUpdated": "2026-10-06",
+  "layout": "stepper",
+  "chartStyle": "line",
+  "chartTitle": "Sticks to buy at other grid spacings (same slab, bar, and waste)",
+  "heroAlt": "",
+  "uniqueAddition": "Lap-aware stick count with a cut list (bars per direction, cut length, sticks per direction, lap splices), purchase weight from CRSI unit weights, a bar-size weight table, and a line chart of sticks needed at 12, 16, 18, 24, and 36 in spacing.",
+  "relatedTools": ["concrete-calculator", "gravel-calculator", "paver-patio-calculator"],
+  "inputs": [
+    { "name": "length", "label": "Length", "unit": "ft", "default": "20", "help": "1 to 100 ft. The long side of the slab or footing. Use decimals for inches (20 ft 6 in = 20.5).", "group": "Slab or footing size" },
+    { "name": "width", "label": "Width", "unit": "ft", "default": "20", "help": "1 to 100 ft. For a footing, this is the footing's width.", "group": "Slab or footing size" },
+    {
+      "name": "barSize",
+      "label": "Bar size",
+      "type": "select",
+      "default": "4",
+      "options": [
+        { "value": "3", "label": "#3 (3/8 in), 0.376 lb/ft" },
+        { "value": "4", "label": "#4 (1/2 in), 0.668 lb/ft" },
+        { "value": "5", "label": "#5 (5/8 in), 1.043 lb/ft" },
+        { "value": "6", "label": "#6, 1.502 lb/ft" }
+      ],
+      "help": "Use the size on your plan. Weights are ASTM A615 values published by CRSI.",
+      "group": "Bar size and spacing"
+    },
+    { "name": "spacing", "label": "Spacing, each direction", "unit": "in o.c.", "default": "18", "help": "6 to 36 in, center to center. Must match your plan or local requirements. 18 in is only a starting point, not a code approval.", "group": "Bar size and spacing" },
+    { "name": "cover", "label": "Edge cover", "unit": "in", "default": "3", "help": "1 to 6 in. Gap between the bar ends and the edge of the form, on every side. 3 in is our assumption, not a verified code value.", "group": "Advanced: sticks and laps" },
+    { "name": "stickLength", "label": "Stick length", "unit": "ft", "default": "20", "help": "10 to 40 ft. The length your store sells. 20 ft is common but check; many stores also stock 10 ft sticks.", "group": "Advanced: sticks and laps" },
+    { "name": "lap", "label": "Lap length", "unit": "in", "default": "20", "help": "0 to 60 in. How far two bars overlap where a run needs more than one stick. 20 in is about 40 bar diameters for #4, a common rule of thumb we haven't verified against ACI 318. Use your plan's number.", "group": "Advanced: sticks and laps" },
+    { "name": "chairSpacing", "label": "Chair spacing", "unit": "in", "default": "48", "help": "12 to 72 in, each direction. Rough estimate only; follow the chair maker's guidance.", "group": "Advanced: chairs and waste" },
+    { "name": "waste", "label": "Waste allowance", "unit": "%", "default": "5", "help": "0 to 20%. Extra sticks for bad cuts and bent bars. 5% is our starting estimate, not a published figure.", "group": "Advanced: chairs and waste" }
+  ],
+  "outputs": [
+    { "name": "sticksToBuy", "label": "Sticks to buy (incl. waste)", "unit": "sticks", "decimals": 0, "primary": true },
+    { "name": "stickLength", "label": "Stick length", "unit": "ft", "decimals": 1 },
+    { "name": "weightToBuy", "label": "Weight of sticks to buy", "unit": "lb", "decimals": 0 },
+    { "name": "barsAlongLength", "label": "Lengthwise bars", "unit": "bars", "decimals": 0 },
+    { "name": "cutLengthAlongLength", "label": "Lengthwise bar run, each", "unit": "ft", "decimals": 2 },
+    { "name": "sticksAlongLength", "label": "Sticks for lengthwise bars", "unit": "sticks", "decimals": 0 },
+    { "name": "barsAlongWidth", "label": "Widthwise bars", "unit": "bars", "decimals": 0 },
+    { "name": "cutLengthAlongWidth", "label": "Widthwise bar run, each", "unit": "ft", "decimals": 2 },
+    { "name": "sticksAlongWidth", "label": "Sticks for widthwise bars", "unit": "sticks", "decimals": 0 },
+    { "name": "lapSplices", "label": "Lap splices", "unit": "laps", "decimals": 0 },
+    { "name": "sticksBeforeWaste", "label": "Sticks before waste", "unit": "sticks", "decimals": 0 },
+    { "name": "linearFeet", "label": "Rebar in place (incl. laps)", "unit": "linear ft", "decimals": 1 },
+    { "name": "tiePoints", "label": "Tie points (crossings)", "unit": "ties", "decimals": 0 },
+    { "name": "chairs", "label": "Chairs (estimate)", "unit": "chairs", "decimals": 0 },
+    { "name": "unitWeight", "label": "Bar weight", "unit": "lb/ft", "decimals": 3 }
+  ],
+  "sources": [
+    {
+      "title": "CRSI Product Catalog, Winter 2025 (Concrete Reinforcing Steel Institute): ASTM A615 bar sizes, nominal diameters, and unit weights",
+      "url": "https://members.crsi.org/Common/Uploaded%20files/Promotional_and_Marketing/CRSI_Product_Catalog_2025-Winter.pdf",
+      "accessed": "2026-10-06"
+    }
+  ]
+}
