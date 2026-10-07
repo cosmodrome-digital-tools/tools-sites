@@ -1,0 +1,50 @@
+/* Deck board calculator. Ocean-blue plan-sheet surface, split frame, donut chart.
+   Accent changed at intake from indigo #2c2a72 (clashed with the fence tool) to
+   ocean blue #0369a1.
+   Contrast (WCAG AA): #ffffff on #0369a1 = 5.93:1; #0369a1 on #ffffff = 5.93:1;
+   #0369a1 on #eff6fb = 5.44:1; #0b2536 on #eff6fb = 14.45:1;
+   #4a6b80 on #eff6fb = 5.19:1.
+   System fonts only. */
+[data-tool="deck-board-calculator"] {
+  --tool-accent: #0369a1;
+  --tool-accent-ink: #ffffff;
+  --tool-surface: #eff6fb;
+  --tool-ink: #0b2536;
+  --tool-border: #4a6b80;
+  --tool-radius: 18px;
+  --tool-font-display: Candara, "Trebuchet MS", "Segoe UI", sans-serif;
+  --chart-palette-1: #0369a1;
+  --chart-palette-2: #d97706;
+  --chart-palette-3: #64748b;
+  --chart-palette-4: #7dd3fc;
+}
+
+[data-tool="deck-board-calculator"] .tool-form legend {
+  font-family: var(--tool-font-display);
+  color: var(--tool-accent);
+  letter-spacing: 0.02em;
+}
+
+[data-tool="deck-board-calculator"] .calc-field {
+  margin-bottom: 0.55rem;
+}
+
+[data-tool="deck-board-calculator"] .tool-form fieldset:last-of-type {
+  margin-top: 0.35rem;
+  padding: 0.65rem 0.75rem 0.15rem;
+  border: 1px solid var(--tool-border);
+  border-radius: 12px;
+  background: #f7fbfe;
+}
+
+[data-tool="deck-board-calculator"] .calc-results__title {
+  font-family: var(--tool-font-display);
+  color: var(--tool-accent);
+}
+
+[data-tool="deck-board-calculator"] .calc-result--primary {
+  background: #f7fbfe;
+  border: 1px solid var(--tool-border);
+  border-radius: 12px;
+  padding: 0.45rem 0.7rem;
+}
