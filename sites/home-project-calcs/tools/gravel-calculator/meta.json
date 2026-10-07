@@ -1,0 +1,162 @@
+{
+  "title": "Gravel Calculator",
+  "benefit": "Tons and Cubic Yards",
+  "metaDescription": "Convert a driveway, path, or drain into cubic yards and tons of gravel or stone. Edit the density, then split a base layer from the surface stone.",
+  "primaryKeyword": "gravel calculator",
+  "secondaryKeywords": [
+    "gravel calculator for driveway",
+    "gravel calculator tons",
+    "how many tons of gravel in a yard",
+    "how much does a yard of gravel weigh",
+    "gravel calculator 57 stone"
+  ],
+  "intent": "Convert an area and depth into cubic yards and tons of gravel or crushed stone for a driveway, path, or drain.",
+  "registerRow": "Keyword register (estimates): gravel calculator — volume 4, competition ease 2, ad value 2, fit 5, priority 16",
+  "category": "Driveways and paths",
+  "intro": "Estimate cubic yards and tons of gravel for a driveway, path, or drain. Replace the density with your supplier's figure, or add a separate surface layer.",
+  "lastUpdated": "2026-10-06",
+  "layout": "split",
+  "chartStyle": "bar",
+  "chartTitle": "Tons in this order",
+  "heroAlt": "Cross-section of a driveway: a thicker base layer of gravel under a thinner surface layer, held between two edges.",
+  "uniqueAddition": "Layered driveway mode with its own depth and density for the base and the surface, a density-source field, and a table of common driveway sizes.",
+  "relatedTools": [
+    "paver-patio-calculator",
+    "retaining-wall-block-calculator",
+    "concrete-calculator",
+    "mulch-calculator"
+  ],
+  "inputs": [
+    {
+      "name": "mode",
+      "label": "Mode",
+      "type": "select",
+      "default": "single",
+      "group": "Job",
+      "help": "Single layer uses one depth and one density. Layered driveway adds a surface course on the same area.",
+      "options": [
+        { "value": "single", "label": "Single layer" },
+        { "value": "layered", "label": "Layered driveway (base + surface)" }
+      ]
+    },
+    {
+      "name": "shape",
+      "label": "Shape",
+      "type": "select",
+      "default": "rectangle",
+      "group": "Job",
+      "help": "Rectangle uses length and width. Circle uses width as the diameter. Enter sq ft uses the Area box.",
+      "options": [
+        { "value": "rectangle", "label": "Rectangle" },
+        { "value": "circle", "label": "Circle" },
+        { "value": "sqft", "label": "Enter sq ft" }
+      ]
+    },
+    {
+      "name": "length",
+      "label": "Length",
+      "type": "number",
+      "unit": "ft",
+      "default": "50",
+      "group": "Area",
+      "help": "Longest side of a rectangle, from 1 to 500 ft. Left unused for a circle or when you enter square feet."
+    },
+    {
+      "name": "width",
+      "label": "Width",
+      "type": "number",
+      "unit": "ft",
+      "default": "12",
+      "group": "Area",
+      "help": "Shorter side of a rectangle, or the diameter of a circle, from 1 to 100 ft. Left unused when you enter square feet."
+    },
+    {
+      "name": "area",
+      "label": "Area",
+      "type": "number",
+      "unit": "sq ft",
+      "default": "600",
+      "group": "Area",
+      "help": "Used only when Shape is Enter sq ft. From 1 to 50,000 sq ft."
+    },
+    {
+      "name": "depth",
+      "label": "Depth",
+      "type": "number",
+      "unit": "in",
+      "default": "4",
+      "group": "Depth",
+      "help": "Gravel thickness. On a layered driveway this is the base course. The 4 inch start is a placeholder, from 1 to 24 inches. Ask your supplier or a local guide before you order."
+    },
+    {
+      "name": "surfaceDepth",
+      "label": "Surface depth",
+      "type": "number",
+      "unit": "in",
+      "default": "2",
+      "group": "Depth",
+      "help": "Top course, used only for a layered driveway, from 1 to 12 inches. The 2 inch start is a placeholder, not a measured spec."
+    },
+    {
+      "name": "density",
+      "label": "Density",
+      "type": "number",
+      "unit": "tons/yd³",
+      "default": "1.40",
+      "group": "Stone",
+      "help": "Short tons in one cubic yard. 1.40 is an unverified estimate. Replace it with your supplier's tons-per-yard for this stone. Allowed range is 1.00 to 2.00."
+    },
+    {
+      "name": "surfaceDensity",
+      "label": "Surface density",
+      "type": "number",
+      "unit": "tons/yd³",
+      "default": "1.40",
+      "group": "Stone",
+      "help": "Tons per cubic yard for the surface stone. Used only in layered mode, from 1.00 to 2.00. It starts at the same 1.40 estimate."
+    },
+    {
+      "name": "densitySource",
+      "label": "Density source",
+      "type": "select",
+      "default": "estimate",
+      "group": "Advanced",
+      "help": "Estimate means 1.40 is a stand-in. Choose Supplier figure after you type the number your yard gave you. This choice does not change the math.",
+      "options": [
+        { "value": "estimate", "label": "Estimate — replace with supplier figure" },
+        { "value": "supplier", "label": "Supplier figure (density you entered)" }
+      ]
+    },
+    {
+      "name": "waste",
+      "label": "Compaction / waste",
+      "type": "number",
+      "unit": "%",
+      "default": "10",
+      "group": "Advanced",
+      "help": "Extra material for compaction and an uneven base, from 0 to 30 percent. 10 percent is an assumption, not a measured compaction rate."
+    }
+  ],
+  "outputs": [
+    { "name": "tonsToOrder", "label": "Tons to order", "unit": "tons", "decimals": 1, "primary": true },
+    { "name": "yardsToOrder", "label": "Cubic yards to order", "unit": "cu yd", "decimals": 1, "primary": true },
+    { "name": "tons", "label": "Calculated tons", "unit": "tons", "decimals": 2 },
+    { "name": "cubicYards", "label": "Cubic yards", "unit": "cu yd", "decimals": 2 },
+    { "name": "cubicFeet", "label": "Cubic feet", "unit": "cu ft", "decimals": 1 },
+    { "name": "areaSqFt", "label": "Area", "unit": "sq ft", "decimals": 1 },
+    { "name": "baseTons", "label": "Base layer tons", "unit": "tons", "decimals": 2 },
+    { "name": "baseYards", "label": "Base layer yards", "unit": "cu yd", "decimals": 2 },
+    { "name": "baseCubicFeet", "label": "Base layer cubic feet", "unit": "cu ft", "decimals": 1 },
+    { "name": "surfaceTons", "label": "Surface layer tons", "unit": "tons", "decimals": 2 },
+    { "name": "surfaceYards", "label": "Surface layer yards", "unit": "cu yd", "decimals": 2 },
+    { "name": "surfaceCubicFeet", "label": "Surface layer cubic feet", "unit": "cu ft", "decimals": 1 },
+    { "name": "densityUsed", "label": "Density used", "unit": "tons/yd³", "decimals": 2 }
+  ],
+  "sources": [
+    {
+      "title": "NIST Handbook 44 (2026), Appendix C: General Tables of Units of Measurement",
+      "url": "https://www.nist.gov/document/2026-nist-handbook-44-appendix-c",
+      "accessed": "2026-10-06"
+    }
+  ]
+}
