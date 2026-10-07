@@ -1,0 +1,44 @@
+/* Retaining-wall theme: dry-stack brick on limestone. Distinct from the gravel
+   tool's slate and the mulch tool's olive paper. */
+[data-tool="retaining-wall-block-calculator"] {
+  --tool-accent: #6e3328;
+  --tool-accent-ink: #fff7f2;
+  --tool-surface: #f6f1e8;
+  --tool-ink: #1e1914;
+  --tool-border: #7a6558;
+  --tool-radius: 8px;
+  --tool-font-display: "Trebuchet MS", "Segoe UI", sans-serif;
+  --chart-palette-1: #6e3328;
+  --chart-palette-2: #2f5d50;
+  --chart-palette-3: #c4a36a;
+  --chart-palette-4: #24343c;
+}
+
+[data-tool="retaining-wall-block-calculator"] .tool-form legend {
+  font-family: var(--tool-font-display);
+  color: var(--tool-accent);
+  letter-spacing: 0.02em;
+}
+
+[data-tool="retaining-wall-block-calculator"] .tool-form fieldset:last-of-type {
+  margin-top: 0.35rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed var(--tool-border);
+}
+
+[data-tool="retaining-wall-block-calculator"] .calc-results__title {
+  font-family: var(--tool-font-display);
+  color: var(--tool-accent);
+}
+
+[data-tool="retaining-wall-block-calculator"] .calc-result--primary {
+  background: #fff7f2;
+  border: 1px solid var(--tool-border);
+  border-left: 4px solid var(--tool-accent);
+  padding: 0.45rem 0.6rem;
+}
+
+[data-tool="retaining-wall-block-calculator"] .tool-hero__img {
+  background: #efe4d4;
+  border-radius: 8px;
+}

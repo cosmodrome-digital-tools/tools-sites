@@ -1,0 +1,166 @@
+{
+  "title": "Retaining Wall Block Calculator",
+  "benefit": "Blocks and Gravel",
+  "metaDescription": "Estimate blocks, caps, a 6 inch leveling pad, and drainage stone, in US units, for a straight garden wall or a fire-pit circle, plus a height check.",
+  "primaryKeyword": "retaining wall block calculator",
+  "secondaryKeywords": [
+    "how many blocks for a retaining wall",
+    "how much gravel behind retaining wall",
+    "retaining wall block calculator for fire pit",
+    "garden wall block calculator"
+  ],
+  "intent": "Estimate wall blocks, caps, leveling-pad base, and drainage aggregate for a segmental garden or retaining wall.",
+  "registerRow": "Keyword register (estimates): retaining wall block calculator — volume 1, competition ease 4, ad value 3, fit 4, priority 12",
+  "category": "Garden walls",
+  "intro": "Estimate blocks, caps, a leveling pad, and drainage stone for a straight garden wall or a round fire pit. If Above cited limit shows 1, the stacked wall is over the 2015 height figure on this page, and that figure still has to be checked against the code your town uses.",
+  "lastUpdated": "2026-10-06",
+  "layout": "stepper",
+  "chartStyle": "donut",
+  "chartTitle": "Blocks and caps to buy",
+  "heroAlt": "Cross-section of a segmental retaining wall: stacked blocks on a wider leveling pad, the bottom course partly below grade, and a band of drainage stone behind the wall.",
+  "uniqueAddition": "A straight-wall or fire-pit circle count, plus a height flag tied to the 2015 IRC R404.4 excerpt (48 inches of unbalanced fill, or 24 inches when a surcharge is on). The flag is labeled as needing a check against the current code. A comparison table repeats both modes.",
+  "relatedTools": [
+    "paver-patio-calculator",
+    "gravel-calculator",
+    "mulch-calculator"
+  ],
+  "inputs": [
+    {
+      "name": "wallShape",
+      "label": "Wall shape",
+      "type": "select",
+      "default": "straight",
+      "group": "Wall",
+      "help": "Straight uses Length or diameter as the run of the wall. Circle uses it as the open inside diameter of a fire pit or a round wall.",
+      "options": [
+        { "value": "straight", "label": "Straight wall" },
+        { "value": "circle", "label": "Circle (fire pit)" }
+      ]
+    },
+    {
+      "name": "length",
+      "label": "Length or diameter",
+      "type": "number",
+      "unit": "ft",
+      "default": "20",
+      "group": "Wall",
+      "help": "From 2 to 200 feet. For a straight wall, measure the run. For a circle, measure the open inside, from one inner face across to the other. The 20 foot start is a straight-wall length. For a fire pit, type the inside diameter you want."
+    },
+    {
+      "name": "exposedHeight",
+      "label": "Exposed height",
+      "type": "number",
+      "unit": "in",
+      "default": "24",
+      "group": "Wall",
+      "help": "Wall height you want to see above the ground in front, from 6 to 96 inches. The height check uses the courses this height needs. That stack can be taller than this number when the block height does not divide evenly. The box starts at 24 inches."
+    },
+    {
+      "name": "surcharge",
+      "label": "Surcharge above the wall",
+      "type": "select",
+      "default": "off",
+      "group": "Wall",
+      "help": "Choose On if something besides soil pushes on the wall, such as a driveway, parked vehicles, or a fence on top. The 2015 code note cited here uses 24 inches for that case and 48 inches when the wall only holds soil. The 2021 and 2024 books were not checked.",
+      "options": [
+        { "value": "off", "label": "Off — soil only" },
+        { "value": "on", "label": "On — extra load above the wall" }
+      ]
+    },
+    {
+      "name": "blockFaceLength",
+      "label": "Block face length",
+      "type": "number",
+      "unit": "in",
+      "default": "16",
+      "group": "Block",
+      "help": "Length of the face of one block, from 6 to 24 inches. The 16 inch start is a placeholder. Measure the block you are buying."
+    },
+    {
+      "name": "blockFaceHeight",
+      "label": "Block face height",
+      "type": "number",
+      "unit": "in",
+      "default": "6",
+      "group": "Block",
+      "help": "Height of one block, from 3 to 12 inches. The 6 inch start is a placeholder. Measure the block."
+    },
+    {
+      "name": "buriedDepth",
+      "label": "Buried depth",
+      "type": "number",
+      "unit": "in",
+      "default": "6",
+      "group": "Advanced",
+      "help": "How much of the wall sits below the ground in front, from 4 to 12 inches. The Belgard 2023 guide says bury at least 6 inches of the first course. This box starts at 6. A number under 6 is below that guide. It is allowed so you can match a different product sheet."
+    },
+    {
+      "name": "blockDepth",
+      "label": "Block depth",
+      "type": "number",
+      "unit": "in",
+      "default": "10",
+      "group": "Advanced",
+      "help": "Front-to-back size of one block, from 6 to 18 inches. The trench is this size plus 12 inches: 6 inches in front of the block and 6 inches behind it, from the Belgard guide. The 10 inch start is a placeholder."
+    },
+    {
+      "name": "capLength",
+      "label": "Cap length",
+      "type": "number",
+      "unit": "in",
+      "default": "16",
+      "group": "Advanced",
+      "help": "Length of one cap, from 6 to 24 inches. Caps are one row along the top. The 16 inch start is a placeholder. Block waste is not added to caps. The count still rounds up to a whole cap."
+    },
+    {
+      "name": "blockWaste",
+      "label": "Block waste",
+      "type": "number",
+      "unit": "%",
+      "default": "5",
+      "group": "Advanced",
+      "help": "Extra blocks for cuts and breakage, from 0 to 15 percent. 5 percent is an assumption. No block maker's sheet was used for that number. It applies to wall blocks only."
+    },
+    {
+      "name": "density",
+      "label": "Pad density",
+      "type": "number",
+      "unit": "tons/yd³",
+      "default": "1.40",
+      "group": "Advanced",
+      "help": "US short tons in one cubic yard of the leveling-pad stone. 1.40 is an unverified estimate for 3/4 inch minus. Replace it with your supplier's figure, from 1.00 to 2.00. Drainage stone stays in cubic yards, because clean stone can weigh a different amount."
+    }
+  ],
+  "outputs": [
+    { "name": "blocksToBuy", "label": "Blocks to buy", "unit": "blocks", "decimals": 0, "primary": true },
+    { "name": "capsToBuy", "label": "Caps to buy", "unit": "caps", "decimals": 0, "primary": true },
+    { "name": "engineerCheck", "label": "Above cited limit (1 = yes)", "decimals": 0, "primary": true },
+    { "name": "courses", "label": "Courses", "unit": "courses", "decimals": 0 },
+    { "name": "blocksPerCourse", "label": "Blocks in one course", "unit": "blocks", "decimals": 0 },
+    { "name": "stackHeight", "label": "Stack height", "unit": "in", "decimals": 2 },
+    { "name": "builtExposed", "label": "Exposed height of the stack", "unit": "in", "decimals": 2 },
+    { "name": "padYards", "label": "Leveling pad", "unit": "cu yd", "decimals": 2 },
+    { "name": "padTons", "label": "Leveling pad", "unit": "tons", "decimals": 2 },
+    { "name": "drainageYards", "label": "Drainage stone", "unit": "cu yd", "decimals": 2 },
+    { "name": "drainpipeFt", "label": "Drainpipe", "unit": "ft", "decimals": 0 },
+    { "name": "citedLimitIn", "label": "Cited height limit", "unit": "in", "decimals": 0 },
+    { "name": "inchesOver", "label": "Inches over that limit", "unit": "in", "decimals": 2 }
+  ],
+  "sources": [
+    {
+      "title": "Belgard, SRW Quick Reference Install Guide (2023)",
+      "url": "https://www.belgard.com/wp-content/uploads/sites/2/Belgard-SRW-Quick-Reference-Install-Guide-2023-1.pdf",
+      "accessed": "2026-10-06"
+    },
+    {
+      "title": "ICC, Significant Changes to the International Residential Code, 2015 Edition, R404.4 Retaining Walls",
+      "url": "http://media.iccsafe.org/news/icc-enews/2017v14n3/2015_irc_sigchanges_404.4.pdf",
+      "accessed": "2026-10-06"
+    },
+    {
+      "title": "NIST Handbook 44 (2026), Appendix C: General Tables of Units of Measurement",
+      "url": "https://www.nist.gov/document/2026-nist-handbook-44-appendix-c",
+      "accessed": "2026-10-06"
+    }
+  ]
+}
