@@ -1,7 +1,8 @@
 // logic.js: PURE calculation code only. No DOM, no fetch, no window/document.
 // Wood fence materials for one straight fence line: posts, rails, pickets, and
 // the concrete and gravel to set each post with Quikrete's post-setting method
-// (hole 3x the post width; post buried 1/3 of its length on a 6 in gravel base).
+// (hole 3x the post width; post buried 1/3 of its length on a 6 in gravel base;
+// concrete stops a few inches below grade and the top is backfilled with soil).
 import { ceilTo, round, validateAll } from '@tools/calculator-core';
 
 const CU_IN_PER_CU_FT = 1728;
@@ -22,6 +23,10 @@ export const BAGS = {
 export const HOLE_DIAMETER_FACTOR = 3; // hole diameter = 3 x post width
 export const BURY_FRACTION = 1 / 3; // post buried 1/3 of its overall length
 export const GRAVEL_BASE_IN = 6; // gravel under the post, inches
+// Soil cap: Quikrete fills concrete to 3-4 in below the top of the hole and
+// backfills the rest with soil or sod (Fast-Setting 1004 data sheet and
+// quikrete.com/settingposts, accessed 2026-10-07). Default 4 in, Advanced input.
+export const SOIL_CAP_DEFAULT_IN = 4;
 
 export const RAIL_OPTIONS = [2, 3];
 
@@ -36,19 +41,36 @@ export const RULES = {
   picketGap: { label: 'Picket gap', min: -2, max: 2 },
   frostDepth: { label: 'Frost depth', min: 0, max: 72 },
   picketWaste: { label: 'Picket waste', min: 0, max: 15 },
+  soilCap: { label: 'Soil cap', min: 0, max: 6 },
 };
 
 /**
- * Concrete, gravel, and buried-post volume for ONE post hole, in cubic feet.
- * postWidthIn: actual post face width (in); buryIn: depth of post in concrete (in).
+ * The soil cap must leave some concrete around the post: cap < depth in ground.
+ * Returns an error message, or null when the cap fits. Both values in inches.
  */
-export function holeVolumes(postWidthIn, buryIn) {
+export function soilCapError(buryIn, capIn) {
+  if (capIn >= buryIn) {
+    return `The ${round(capIn, 2)} in soil cap must be less than the post's ${round(buryIn, 2)} in depth in the ground, or there is no concrete. Use a smaller soil cap or a longer post.`;
+  }
+  return null;
+}
+
+/**
+ * Concrete, gravel, soil cap, and buried-post volume for ONE post hole, in cubic feet.
+ * postWidthIn: actual post face width (in); buryIn: depth of post in the ground (in);
+ * capIn: soil backfilled on top of the concrete (in). Concrete height = buryIn - capIn.
+ */
+export function holeVolumes(postWidthIn, buryIn, capIn = 0) {
   const diameterIn = HOLE_DIAMETER_FACTOR * postWidthIn;
   const circleSqIn = Math.PI * (diameterIn / 2) ** 2;
   const postSqIn = postWidthIn ** 2;
+  const ringSqIn = circleSqIn - postSqIn; // hole area around the post
+  const concreteHeightIn = buryIn - capIn;
   return {
     diameterIn,
-    concrete: ((circleSqIn - postSqIn) * buryIn) / CU_IN_PER_CU_FT,
+    concreteHeightIn,
+    concrete: (ringSqIn * concreteHeightIn) / CU_IN_PER_CU_FT,
+    soil: (ringSqIn * capIn) / CU_IN_PER_CU_FT,
     gravel: (circleSqIn * GRAVEL_BASE_IN) / CU_IN_PER_CU_FT,
     post: (postSqIn * buryIn) / CU_IN_PER_CU_FT,
   };
@@ -84,6 +106,13 @@ export function calculate(raw = {}) {
       errors.picketGap = 'Overlap (negative gap) must be less than half the picket width.';
     }
   }
+  // Post holes: bury 1/3 of the post, or deeper to reach the frost depth.
+  // The soil cap sits on top of the concrete, inside that buried depth.
+  const buryIn = checked.ok ? Math.max(v.postLength * 12 * BURY_FRACTION, v.frostDepth) : 0;
+  if (checked.ok) {
+    const capError = soilCapError(buryIn, v.soilCap);
+    if (capError) errors.soilCap = capError;
+  }
   if (Object.keys(errors).length) return { ok: false, errors };
 
   // Fence line
@@ -97,9 +126,7 @@ export function calculate(raw = {}) {
   const picketsBeforeWaste = ceilTo(picketsExact, 1);
   const pickets = ceilTo(picketsExact * (1 + v.picketWaste / 100), 1);
 
-  // Post holes: bury 1/3 of the post, or deeper to reach the frost depth.
-  const buryIn = Math.max(v.postLength * 12 * BURY_FRACTION, v.frostDepth);
-  const hole = holeVolumes(postWidth, buryIn);
+  const hole = holeVolumes(postWidth, buryIn, v.soilCap);
   const concreteTotal = hole.concrete * posts;
   const gravelTotal = hole.gravel * posts;
 
@@ -120,6 +147,8 @@ export function calculate(raw = {}) {
       picketsBeforeWaste,
       holeDiameter: round(hole.diameterIn, 2),
       holeDepth: round(buryIn + GRAVEL_BASE_IN, 2),
+      buriedDepth: round(buryIn, 2),
+      concreteHeight: round(hole.concreteHeightIn, 2),
       concretePerPost: round(hole.concrete, 3),
       bagsPerPost: round(hole.concrete / bag.yield, 2),
       concreteTotal: round(concreteTotal, 2),
@@ -132,6 +161,7 @@ export function calculate(raw = {}) {
       { label: `Concrete ${round(hole.concrete, 2).toFixed(2)}`, value: round(hole.concrete, 3) },
       { label: `Gravel ${round(hole.gravel, 2).toFixed(2)}`, value: round(hole.gravel, 3) },
       { label: `Post ${round(hole.post, 2).toFixed(2)}`, value: round(hole.post, 3) },
+      { label: `Soil cap ${round(hole.soil, 2).toFixed(2)}`, value: round(hole.soil, 3) },
     ],
   };
 }

@@ -16,7 +16,7 @@
   --chart-palette-1: #3730a3;
   --chart-palette-2: #a16207;
   --chart-palette-3: #7c5a3a;
-  --chart-palette-4: #64748b;
+  --chart-palette-4: #4d7c0f; /* soil cap / sod */
 }
 
 /* Step badges shaped like a dog-ear picket top, joined by a fence-line rule. */
@@ -71,16 +71,16 @@
   color: #e0e7ff;
 }
 
-/* Group labels above the detail rows (outputs 5-8, 9-12, 13-16 in meta.json). */
+/* Group labels above the detail rows (outputs 5-8, 9-14, 15-18 in meta.json). */
 [data-tool="fence-calculator"] .calc-result:nth-child(5),
 [data-tool="fence-calculator"] .calc-result:nth-child(9),
-[data-tool="fence-calculator"] .calc-result:nth-child(13) {
+[data-tool="fence-calculator"] .calc-result:nth-child(15) {
   flex-wrap: wrap;
   margin-top: 0.6rem;
 }
 [data-tool="fence-calculator"] .calc-result:nth-child(5)::before,
 [data-tool="fence-calculator"] .calc-result:nth-child(9)::before,
-[data-tool="fence-calculator"] .calc-result:nth-child(13)::before {
+[data-tool="fence-calculator"] .calc-result:nth-child(15)::before {
   flex-basis: 100%;
   font-size: 0.8rem;
   font-weight: 700;
@@ -93,7 +93,7 @@
 }
 [data-tool="fence-calculator"] .calc-result:nth-child(5)::before { content: 'Fence layout'; }
 [data-tool="fence-calculator"] .calc-result:nth-child(9)::before { content: 'Each post hole'; }
-[data-tool="fence-calculator"] .calc-result:nth-child(13)::before { content: 'Totals and post check'; }
+[data-tool="fence-calculator"] .calc-result:nth-child(15)::before { content: 'Totals and post check'; }
 
 /* Keep the donut a readable size instead of filling the results column. */
 [data-tool="fence-calculator"] .calc-chart .tool-chart {
