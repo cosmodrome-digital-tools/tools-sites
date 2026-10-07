@@ -1,0 +1,127 @@
+/* tool.css: Fence Calculator look. Deep indigo "painted fence" accent on a
+   cool lavender-grey surface, square corners, picket-pointed step badges,
+   and a 2x2 shopping-list tile grid above grouped detail rows.
+   Contrast (WCAG AA): accent-ink #ffffff on accent #3730a3 = about 10:1;
+   ink #1e1b3a on surface #f3f3f9 = about 15:1; tile units #e0e7ff on
+   #3730a3 = about 8:1; group labels #3730a3 on #ffffff = about 10:1.
+   System fonts only. */
+[data-tool="fence-calculator"] {
+  --tool-accent: #3730a3;
+  --tool-accent-ink: #ffffff;
+  --tool-surface: #f3f3f9;
+  --tool-ink: #1e1b3a;
+  --tool-border: #c9c7e2;
+  --tool-radius: 0;
+  --tool-font-display: 'Franklin Gothic Medium', 'Arial Narrow', 'Segoe UI', system-ui, -apple-system, Arial, sans-serif;
+  --chart-palette-1: #3730a3;
+  --chart-palette-2: #a16207;
+  --chart-palette-3: #7c5a3a;
+  --chart-palette-4: #64748b;
+}
+
+/* Step badges shaped like a dog-ear picket top, joined by a fence-line rule. */
+/* .tool-page[data-layout] matches the shared stepper rule's specificity. */
+[data-tool="fence-calculator"].tool-page[data-layout="stepper"] .tool-form fieldset {
+  border-left: 2px solid var(--tool-border);
+  margin-left: 0.85rem;
+  padding-left: 1.75rem;
+}
+[data-tool="fence-calculator"].tool-page[data-layout="stepper"] .tool-form fieldset::before {
+  left: -0.95rem;
+  border-radius: 0;
+  clip-path: polygon(50% 0, 100% 28%, 100% 100%, 0 100%, 0 28%);
+  top: -1.9rem;
+  height: 2rem;
+  align-content: end;
+  padding-bottom: 0.15rem;
+}
+[data-tool="fence-calculator"] .tool-form legend {
+  font-family: var(--tool-font-display);
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+  color: var(--tool-accent);
+}
+
+/* Results: the four shopping-list numbers as tiles, details below. */
+[data-tool="fence-calculator"] .calc-results__list {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+[data-tool="fence-calculator"] .calc-result {
+  grid-column: 1 / -1;
+}
+[data-tool="fence-calculator"] .calc-result--primary {
+  grid-column: auto;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 0.15rem;
+  background: var(--tool-accent);
+  color: var(--tool-accent-ink);
+  padding: 0.6rem 0.75rem;
+  border-bottom: 0;
+}
+[data-tool="fence-calculator"] .calc-result--primary dt {
+  font-size: 0.9rem;
+}
+[data-tool="fence-calculator"] .calc-result--primary dd {
+  font-size: 1.7rem;
+  color: var(--tool-accent-ink);
+}
+[data-tool="fence-calculator"] .calc-result--primary .calc-unit {
+  font-size: 0.95rem;
+  color: #e0e7ff;
+}
+
+/* Group labels above the detail rows (outputs 5-8, 9-12, 13-16 in meta.json). */
+[data-tool="fence-calculator"] .calc-result:nth-child(5),
+[data-tool="fence-calculator"] .calc-result:nth-child(9),
+[data-tool="fence-calculator"] .calc-result:nth-child(13) {
+  flex-wrap: wrap;
+  margin-top: 0.6rem;
+}
+[data-tool="fence-calculator"] .calc-result:nth-child(5)::before,
+[data-tool="fence-calculator"] .calc-result:nth-child(9)::before,
+[data-tool="fence-calculator"] .calc-result:nth-child(13)::before {
+  flex-basis: 100%;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--tool-accent);
+  border-bottom: 2px solid var(--tool-accent);
+  padding-bottom: 0.2rem;
+  margin-bottom: 0.2rem;
+}
+[data-tool="fence-calculator"] .calc-result:nth-child(5)::before { content: 'Fence layout'; }
+[data-tool="fence-calculator"] .calc-result:nth-child(9)::before { content: 'Each post hole'; }
+[data-tool="fence-calculator"] .calc-result:nth-child(13)::before { content: 'Totals and post check'; }
+
+/* Keep the donut a readable size instead of filling the results column. */
+[data-tool="fence-calculator"] .calc-chart .tool-chart {
+  display: block;
+  width: 100%;
+  max-width: 24rem;
+  height: auto;
+}
+
+/* Tables in the page copy (bags per post, posts by fence length).
+   display:block lets a wide table scroll inside itself on phones. */
+[data-tool="fence-calculator"] .tool-content table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+[data-tool="fence-calculator"] .tool-content th,
+[data-tool="fence-calculator"] .tool-content td {
+  border: 1px solid var(--tool-border);
+  padding: 0.4rem 0.6rem;
+  text-align: left;
+}
+[data-tool="fence-calculator"] .tool-content thead th {
+  background: var(--tool-accent);
+  color: var(--tool-accent-ink);
+}
+[data-tool="fence-calculator"] .tool-content tbody tr:nth-child(even) {
+  background: var(--tool-surface);
+}
