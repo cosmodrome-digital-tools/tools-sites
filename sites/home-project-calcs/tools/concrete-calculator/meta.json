@@ -1,0 +1,109 @@
+{
+  "title": "Concrete Calculator",
+  "benefit": "Bags and Cubic Yards",
+  "metaDescription": "Estimate cubic yards and 40, 50, 60, 80, or 90 lb concrete bags for a slab, footing, or Sonotube, using Quikrete and Sakrete data-sheet bag yields.",
+  "primaryKeyword": "concrete calculator",
+  "secondaryKeywords": [
+    "concrete calculator in yards",
+    "concrete calculator bags",
+    "how many bags of concrete make a yard",
+    "how many 80 lb bags of concrete in a yard",
+    "concrete calculator for slab"
+  ],
+  "intent": "Estimate cubic yards and the number of 40/50/60/80/90 lb premix bags needed for a slab, footing, or round column.",
+  "registerRow": "Keyword Register: concrete calculator (Volume 5, Competition ease 2, Ad value 3, Fit 5, Priority 30)",
+  "category": "Concrete and Masonry",
+  "intro": "Enter your slab, footing, or round column size to get the cubic yards of concrete and the number of premix bags to buy. Bag counts use the yield printed on each manufacturer's data sheet, not a generic rule of thumb.",
+  "lastUpdated": "2026-10-06",
+  "layout": "split",
+  "chartStyle": "bar",
+  "chartTitle": "Bags needed at other thicknesses (slab) or diameters (column), same bag size",
+  "heroAlt": "",
+  "uniqueAddition": "Brand-yield comparison table (Quikrete 1101 vs Sakrete High-Strength vs Quikrete Fast-Setting, bags per cubic yard for every size, linked to each data sheet) plus a sizes table for common slab dimensions; the chart shows bag counts at other thicknesses or diameters.",
+  "relatedTools": ["rebar-calculator", "fence-calculator", "paver-patio-calculator", "gravel-calculator"],
+  "inputs": [
+    {
+      "name": "shape",
+      "label": "What are you pouring?",
+      "type": "select",
+      "default": "slab",
+      "options": [
+        { "value": "slab", "label": "Rectangular slab or footing" },
+        { "value": "column", "label": "Round column (Sonotube)" }
+      ],
+      "help": "Setting fence posts? Use the Fence Calculator instead.",
+      "group": "What you're pouring"
+    },
+    { "name": "quantity", "label": "How many identical pours", "unit": "count", "default": "1", "help": "Whole number, 1 to 50. For example, 4 for four matching deck-footing columns.", "group": "What you're pouring" },
+    { "name": "length", "label": "Length", "unit": "ft", "default": "10", "help": "0.1 to 200 ft. Use decimals for inches (10 ft 6 in = 10.5).", "group": "Slab or footing size" },
+    { "name": "width", "label": "Width", "unit": "ft", "default": "10", "help": "0.1 to 200 ft.", "group": "Slab or footing size" },
+    { "name": "thickness", "label": "Thickness", "unit": "in", "default": "4", "help": "2 to 24 in. 4 in is a common patio or walkway thickness; Sakrete's data sheet calls for at least 4 in on flatwork.", "group": "Slab or footing size" },
+    { "name": "diameter", "label": "Diameter", "unit": "in", "default": "12", "help": "4 to 48 in. Use the inside diameter of the form tube.", "group": "Round column size" },
+    { "name": "height", "label": "Height", "unit": "in", "default": "36", "help": "6 to 120 in. The depth of concrete in the tube or hole.", "group": "Round column size" },
+    {
+      "name": "brand",
+      "label": "Concrete mix",
+      "type": "select",
+      "default": "quikrete1101",
+      "options": [
+        { "value": "quikrete1101", "label": "Quikrete Concrete Mix (No. 1101)" },
+        { "value": "sakreteHighStrength", "label": "Sakrete High-Strength Concrete Mix" },
+        { "value": "quikrete1004", "label": "Quikrete Fast-Setting (No. 1004)" }
+      ],
+      "help": "Each brand prints its own yield per bag on its data sheet (linked under Sources).",
+      "group": "Bags"
+    },
+    {
+      "name": "bagSize",
+      "label": "Bag size",
+      "unit": "lb",
+      "type": "select",
+      "default": "80",
+      "options": [
+        { "value": "40", "label": "40 lb" },
+        { "value": "50", "label": "50 lb" },
+        { "value": "60", "label": "60 lb" },
+        { "value": "80", "label": "80 lb" },
+        { "value": "90", "label": "90 lb" }
+      ],
+      "help": "Sizes a mix isn't sold in are greyed out. 90 lb Quikrete is regional.",
+      "group": "Bags"
+    },
+    {
+      "name": "waste",
+      "label": "Waste allowance",
+      "unit": "%",
+      "default": "5",
+      "help": "0 to 25%. Extra for spills, uneven ground, and form bulge. 5% is our starting estimate, not a manufacturer figure.",
+      "group": "Advanced: waste allowance"
+    }
+  ],
+  "outputs": [
+    { "name": "bags", "label": "Bags to buy", "unit": "bags", "decimals": 0, "primary": true },
+    { "name": "bagSize", "label": "Bag size", "unit": "lb", "decimals": 0 },
+    { "name": "totalWeight", "label": "Total weight to haul", "unit": "lb", "decimals": 0 },
+    { "name": "cubicYardsWithWaste", "label": "Concrete incl. waste", "unit": "cu yd", "decimals": 2 },
+    { "name": "cubicFeetWithWaste", "label": "Concrete incl. waste", "unit": "cu ft", "decimals": 2 },
+    { "name": "cubicYards", "label": "Concrete before waste", "unit": "cu yd", "decimals": 2 },
+    { "name": "cubicFeet", "label": "Concrete before waste", "unit": "cu ft", "decimals": 2 },
+    { "name": "bagYield", "label": "Yield per bag", "unit": "cu ft", "decimals": 3 },
+    { "name": "bagsPerCubicYard", "label": "Bags per cubic yard", "unit": "bags", "decimals": 1 }
+  ],
+  "sources": [
+    {
+      "title": "QUIKRETE Concrete Mix, Product No. 1101 data sheet (The Quikrete Companies): yields for 40, 50, 60, 80, and 90 lb bags",
+      "url": "https://www.quikrete.com/pdfs/data_sheet-concrete%20mix%201101.pdf",
+      "accessed": "2026-10-06"
+    },
+    {
+      "title": "Sakrete High-Strength Concrete Mix technical data sheet (Sakrete of North America): yields for 40, 60, 80, and 90 lb bags",
+      "url": "https://www.sakrete.com/wp-content/uploads/2024/01/Sakrete-High-Strength-Concrete-Mix-TDS.pdf",
+      "accessed": "2026-10-06"
+    },
+    {
+      "title": "QUIKRETE Fast-Setting Concrete Mix, Product No. 1004 data sheet (The Quikrete Companies): yields for 50 and 60 lb bags",
+      "url": "https://www.quikrete.com/pdfs/data_sheet-fast%20setting%20concrete%20mix%201004-50.pdf",
+      "accessed": "2026-10-06"
+    }
+  ]
+}
