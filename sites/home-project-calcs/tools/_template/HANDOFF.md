@@ -19,8 +19,14 @@ Paste the final lines of each command, run from the repo root:
 - `npm run build`:
 - Known-answer cases and their references (trusted calculator or hand math):
 
+## Decisions made (choice, source)
+Data and assumption choices you made yourself from the industry standard or the most
+sensible option (defaults, formulas, code editions, rounding, waste factors), each with
+its source link. Don't ask the owner about these; see docs/BUILDING-TOOLS.md section 5.
+- Choice: ... | Source: [title](https://...)
+
 ## Open questions
-Anything you assumed or couldn't confirm (formulas, product sizes, rates, wording).
+Product, UX, or scope questions for Matthew only, plus anything the shared frame couldn't do.
 -
 
 ## Dependency requests

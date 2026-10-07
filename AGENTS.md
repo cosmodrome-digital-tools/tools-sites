@@ -10,3 +10,5 @@ Top 5 rules:
 3. Don't install packages; list any needed dependency in the tool's `HANDOFF.md`. No external scripts, fonts, analytics, network calls, or storage.
 4. `logic.js` is pure and tested: at least 3 known-answer cases plus edge cases (zero, negative, very large, empty, non-numeric, boundaries). `npm ci`, `npm test`, and `npm run build` must pass.
 5. No deploys, no pushes, no pull requests. Hand back a zip of only the tool folder with a filled-in `HANDOFF.md`.
+
+Calculator data and assumptions (defaults, formulas, code editions, rounding, waste factors): decide them yourself from the industry standard or the most sensible option, and record each choice with its source link under "Decisions made" in `HANDOFF.md`. Only product, UX, and scope questions go to Matthew. See [docs/BUILDING-TOOLS.md](docs/BUILDING-TOOLS.md) section 5.
