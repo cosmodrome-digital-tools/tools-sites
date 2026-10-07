@@ -6,6 +6,15 @@ describe('titles', () => {
     expect(toolTitle('Concrete Slab Calculator', 'Cubic Yards and Bags', 'Home & Yard Calcs'))
       .toBe('Concrete Slab Calculator - Cubic Yards and Bags | Home & Yard Calcs');
   });
+  it('uses an seoTitle override and appends the site name exactly once', () => {
+    expect(toolTitle('Rebar Calculator', 'Sticks', 'Home & Yard Calcs', 'Rebar Calculator for Slabs and Footings'))
+      .toBe('Rebar Calculator for Slabs and Footings | Home & Yard Calcs');
+    expect(toolTitle('Rebar Calculator', 'Sticks', 'Home & Yard Calcs', 'Rebar Calculator for Slabs | Home & Yard Calcs'))
+      .toBe('Rebar Calculator for Slabs | Home & Yard Calcs');
+  });
+  it('falls back to the pattern when seoTitle is empty', () => {
+    expect(toolTitle('X', 'Y', 'Site', '')).toBe('X - Y | Site');
+  });
   it('requires every part', () => {
     expect(() => toolTitle('X', '', 'Site')).toThrow();
   });

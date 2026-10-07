@@ -12,7 +12,7 @@ for (const t of tools) {
 }
 const slugify = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 ---
-<SiteLayout title={`${site.name} - ${site.tagline}`} description={site.description}>
+<SiteLayout title={site.homeTitle ?? `${site.name} - ${site.tagline}`} description={site.description}>
   <h1>{site.name}</h1>
   <p class="hub-intro">
     Free calculators for planning US home projects. Each one estimates materials in feet, inches,

@@ -25,7 +25,7 @@ import { toolTitle, webApplication, canonicalUrl } from '@tools/seo';
 const { site, meta, toolSlug, hero, related = [] } = Astro.props;
 const layout = meta.layout ?? 'stacked';
 const chartStyle = meta.chartStyle ?? 'none';
-const title = toolTitle(meta.title, meta.benefit, site.name);
+const title = toolTitle(meta.title, meta.benefit, site.name, meta.seoTitle); // seoTitle only changes <title>/og:title, not the H1
 const base = Astro.site ?? new URL(site.siteUrl);
 const breadcrumbs = [
   { name: 'Home', href: '/' },
