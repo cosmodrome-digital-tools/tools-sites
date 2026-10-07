@@ -1,0 +1,74 @@
+/* tool.css: Paver Patio Calculator look. Warm sand surface, moss-green accent,
+   clay-brown second color, rounded "paver" corners, and a running-bond paver
+   strip along the top of the frame.
+   Contrast (WCAG AA): accent-ink #ffffff on accent #3f5a1e = 7.8:1;
+   ink #1f2a14 on surface #f5f2e8 = 13.4:1; legend #3f5a1e on #f5f2e8 = 7.0:1;
+   chart bars #3f5a1e / #8a5a2b / #6b7f3a / #57534e on #f5f2e8 are all above 3:1.
+   System fonts only. */
+[data-tool="paver-patio-calculator"] {
+  --tool-accent: #3f5a1e;
+  --tool-accent-ink: #ffffff;
+  --tool-surface: #f5f2e8;
+  --tool-ink: #1f2a14;
+  --tool-border: #d6cfbd;
+  --tool-radius: 10px;
+  --tool-font-display: 'Gill Sans', 'Gill Sans MT', Calibri, 'Segoe UI', system-ui, sans-serif;
+  --chart-palette-1: #3f5a1e;
+  --chart-palette-2: #8a5a2b;
+  --chart-palette-3: #6b7f3a;
+  --chart-palette-4: #57534e;
+}
+
+/* A thin running-bond paver strip across the top of the calculator frame. */
+[data-tool="paver-patio-calculator"] .tool-frame {
+  background-image:
+    linear-gradient(90deg, var(--tool-border) 0 44px, transparent 44px 48px),
+    linear-gradient(90deg, var(--tool-border) 0 44px, transparent 44px 48px);
+  background-size: 48px 9px, 48px 9px;
+  background-position: 2px 3px, 26px 15px;
+  background-repeat: repeat-x;
+  padding-top: calc(24px + 0.75rem);
+}
+
+[data-tool="paver-patio-calculator"] .tool-form legend {
+  font-family: var(--tool-font-display);
+  font-weight: 700;
+  color: var(--tool-accent);
+}
+
+/* Pavers-to-buy reads like a single paver block. */
+[data-tool="paver-patio-calculator"] .calc-result--primary {
+  background: var(--tool-accent);
+  color: var(--tool-accent-ink);
+  padding: 0.6rem 0.85rem;
+  border-radius: var(--tool-radius);
+  border-bottom: 0;
+  box-shadow: inset 0 -4px 0 rgba(0, 0, 0, 0.18);
+  align-items: center;
+}
+[data-tool="paver-patio-calculator"] .calc-result--primary dd,
+[data-tool="paver-patio-calculator"] .calc-result--primary .calc-unit {
+  color: var(--tool-accent-ink);
+}
+[data-tool="paver-patio-calculator"] .calc-result--primary dd {
+  font-size: 1.75rem;
+}
+
+/* Tables in the page copy (pavers per sq ft, base depth recipe).
+   display:block lets a wide table scroll inside itself on phones. */
+[data-tool="paver-patio-calculator"] .tool-content table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+[data-tool="paver-patio-calculator"] .tool-content th,
+[data-tool="paver-patio-calculator"] .tool-content td {
+  border: 1px solid var(--tool-border);
+  padding: 0.4rem 0.6rem;
+  text-align: left;
+}
+[data-tool="paver-patio-calculator"] .tool-content thead th {
+  background: var(--tool-surface);
+}
