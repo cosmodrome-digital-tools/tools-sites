@@ -14,5 +14,6 @@
   //   { "pattern": "<domain>", "custom_domain": true }
   // ],
   "workers_dev": false,
-  "preview_urls": true
+  "preview_urls": true,
+  "previews": {}
 }
