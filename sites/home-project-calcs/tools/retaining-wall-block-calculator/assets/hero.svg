@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 96" width="120" height="96" role="img" aria-label="Retaining wall cross-section">
+  <rect width="120" height="96" fill="#f6f1e8"/>
+  <rect x="8" y="58" width="104" height="28" fill="#e4d3bc"/>
+  <rect x="22" y="70" width="52" height="10" fill="#c4a36a"/>
+  <rect x="30" y="58" width="36" height="12" fill="#8a4a3c"/>
+  <rect x="30" y="46" width="36" height="12" fill="#6e3328"/>
+  <rect x="30" y="34" width="36" height="12" fill="#8a4a3c"/>
+  <rect x="30" y="22" width="36" height="12" fill="#6e3328"/>
+  <path d="M31 34h34M31 46h34M31 58h34" stroke="#f6f1e8" stroke-width="1"/>
+  <rect x="66" y="28" width="16" height="42" fill="#2f5d50"/>
+  <circle cx="70" cy="36" r="1.6" fill="#c9d5cf"/>
+  <circle cx="76" cy="42" r="1.8" fill="#e4efe9"/>
+  <circle cx="71" cy="50" r="1.5" fill="#d5e2db"/>
+  <circle cx="77" cy="56" r="1.7" fill="#edf4f0"/>
+  <circle cx="72" cy="64" r="2.2" fill="#24343c"/>
+  <path d="M8 58h104" stroke="#7a6558" stroke-width="1.5"/>
+</svg>
