@@ -6,6 +6,7 @@ import '../styles/site.css';
 
 const { title, description, breadcrumbs = [], jsonLd = [], noindex = false } = Astro.props;
 ---
+<!-- chore: CF Workers Builds preview smoke (safe to remove) -->
 <BaseLayout site={site} title={title} description={description} breadcrumbs={breadcrumbs} jsonLd={jsonLd} noindex={noindex}>
   <slot />
 </BaseLayout>
