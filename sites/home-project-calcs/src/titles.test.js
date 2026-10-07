@@ -20,6 +20,7 @@ const EXPECTED = {
   'mulch-calculator': 'Mulch Calculator - Cubic Yards and Bags | Home & Yard Calcs',
   'paver-patio-calculator': 'Paver Calculator - Pavers, Base and Sand | Home & Yard Calcs',
   'retaining-wall-block-calculator': 'Retaining Wall Block Calculator | Home & Yard Calcs',
+  'roof-pitch-calculator': 'Roof Pitch Calculator - Pitch to Degrees | Home & Yard Calcs',
   'fence-calculator': 'Fence Calculator - Posts, Pickets, Bags | Home & Yard Calcs',
   'deck-board-calculator': 'Deck Board Calculator with Spacing | Home & Yard Calcs',
 };

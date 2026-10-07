@@ -1,0 +1,99 @@
+{
+  "title": "Roof Pitch Calculator",
+  "benefit": "Pitch to Degrees",
+  "seoTitle": "Roof Pitch Calculator - Pitch to Degrees",
+  "metaDescription": "Turn a rise and run, an angle, or rise per 12 inches into roof pitch (x/12), degrees, percent slope, and the area multiplier, with a 2024 IRC shingle check.",
+  "primaryKeyword": "roof pitch calculator",
+  "secondaryKeywords": [
+    "roof pitch to degrees",
+    "roof pitch multiplier",
+    "how to calculate roof pitch",
+    "what is a 4/12 roof pitch"
+  ],
+  "intent": "Convert a measured rise and run (or an angle) into roof pitch (x/12), degrees, percent slope, and the area multiplier.",
+  "registerRow": "Keyword register (estimates): roof pitch calculator, volume 2, competition ease 4, ad value 3, fit 5, priority 24. Trends ratio vs concrete calculator = 0.035.",
+  "category": "Roofing",
+  "intro": "Enter a rise and run, an angle, or the rise over a 12 inch run. You get the pitch as x/12, the angle in degrees, the percent slope, and the multiplier that turns a flat footprint into true roof area. Measure from the attic or a gable end, not from the roof.",
+  "lastUpdated": "2026-10-07",
+  "layout": "split",
+  "chartStyle": "line",
+  "chartTitle": "Roof angle in degrees at each pitch, 1/12 to 12/12",
+  "heroAlt": "",
+  "uniqueAddition": "An always-visible pitch reference table from 1/12 to 12/12 (degrees, percent slope, area multiplier) plus a line chart of angle by pitch, and a low-slope check against 2024 IRC R905.2.2 and Table R905.1.1(2) shown under the results.",
+  "relatedTools": ["deck-board-calculator"],
+  "inputs": [
+    {
+      "name": "mode",
+      "label": "What do you know?",
+      "type": "select",
+      "default": "riseRun",
+      "options": [
+        { "value": "riseRun", "label": "Rise and run (measured)" },
+        { "value": "angle", "label": "Angle in degrees" },
+        { "value": "pitch", "label": "Rise over a 12 in run (x/12)" }
+      ],
+      "help": "Pick the measurement you have. Only the matching fields are shown.",
+      "group": "Roof slope"
+    },
+    {
+      "name": "rise",
+      "label": "Rise",
+      "unit": "in",
+      "default": "6",
+      "help": "Vertical distance the roof climbs over your run, 0 to 36 in. In the attic, hold a level against the underside of a rafter and measure straight up to the rafter.",
+      "group": "Roof slope"
+    },
+    {
+      "name": "run",
+      "label": "Run",
+      "unit": "in",
+      "default": "12",
+      "help": "Level horizontal distance you measured along, 1 to 24 in. A 12 in run gives the pitch directly.",
+      "group": "Roof slope"
+    },
+    {
+      "name": "angle",
+      "label": "Angle",
+      "unit": "degrees",
+      "default": "26.57",
+      "help": "Roof angle from level, 0 to 75 degrees, e.g. from an angle finder or a phone level app.",
+      "group": "Roof slope"
+    },
+    {
+      "name": "pitchX",
+      "label": "Rise per 12 in of run",
+      "unit": "in (x/12)",
+      "default": "6",
+      "help": "The x in x/12, 0 to 24. For a 4/12 roof, enter 4.",
+      "group": "Roof slope"
+    },
+    {
+      "name": "footprint",
+      "label": "Roof footprint area (optional)",
+      "unit": "sq ft",
+      "default": "0",
+      "help": "Flat, bird's-eye area under the roof including overhangs, 0 to 20,000 sq ft. Leave at 0 to skip roof area.",
+      "group": "Roof area (optional)"
+    }
+  ],
+  "outputs": [
+    { "name": "pitch", "label": "Roof pitch", "unit": "/ 12", "decimals": 2, "primary": true },
+    { "name": "angle", "label": "Angle", "unit": "degrees", "decimals": 2 },
+    { "name": "percent", "label": "Slope", "unit": "%", "decimals": 1 },
+    { "name": "multiplier", "label": "Area multiplier", "unit": "x footprint", "decimals": 3 },
+    { "name": "rafterPerFoot", "label": "Rafter length per foot of run", "unit": "in", "decimals": 2 },
+    { "name": "roofArea", "label": "Roof area (sloped)", "unit": "sq ft", "decimals": 1 }
+  ],
+  "sources": [
+    {
+      "title": "2024 International Residential Code, Chapter 9 Roof Assemblies: R905.2.2 Slope and Table R905.1.1(2) (GSA Residential Code 2024, adopts the IRC 2024 without amendments), UpCodes",
+      "url": "https://up.codes/viewer/general-services-administration/irc-2024/chapter/9/roof-assemblies",
+      "accessed": "2026-10-07"
+    },
+    {
+      "title": "OSHA Fall Prevention Campaign (Occupational Safety and Health Administration)",
+      "url": "https://www.osha.gov/stop-falls",
+      "accessed": "2026-10-07"
+    }
+  ]
+}
