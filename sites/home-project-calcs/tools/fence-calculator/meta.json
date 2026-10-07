@@ -1,0 +1,116 @@
+{
+  "title": "Fence Calculator",
+  "benefit": "Posts, Pickets, and Post Concrete",
+  "metaDescription": "Estimate wood fence posts, rails, pickets, and bags of post-setting concrete in US units, using Quikrete's 3x-wide hole rule with a frost-depth check.",
+  "primaryKeyword": "fence calculator",
+  "secondaryKeywords": [
+    "how many fence posts do i need",
+    "how much concrete per fence post",
+    "how deep fence post",
+    "how many pickets per 8 foot section",
+    "fence calculator wood"
+  ],
+  "intent": "Estimate posts, rails, pickets, and post-setting concrete for a wood fence line of a given length and height.",
+  "registerRow": "Keyword Register: fence calculator (Volume 3, Competition ease 3, Ad value 3, Fit 5, Priority 27)",
+  "category": "Fences and Outdoor",
+  "intro": "Enter your fence line, post, and picket sizes to get the posts, rails, and pickets to buy, plus the hole size and bags of concrete for every post. Post holes follow Quikrete's post-setting method, with the concrete stopped 4 in below ground under a soil cap, and you can push them deeper to clear your frost line.",
+  "lastUpdated": "2026-10-07",
+  "layout": "stepper",
+  "chartStyle": "donut",
+  "chartTitle": "What fills one post hole (cu ft): concrete, gravel base, buried post, and soil cap",
+  "heroAlt": "",
+  "uniqueAddition": "Per-post concrete calculator using Quikrete's 3x-diameter, 1/3-depth hole rule with the buried post volume subtracted and Quikrete's soil cap on top, a frost-depth field that deepens the hole, and a minimum post length check; the donut chart splits one hole into concrete, gravel, post, and soil cap. page.md adds a bags-per-post table by post size, post length, and bag, and a posts-and-pickets table for 50 to 200 ft.",
+  "relatedTools": ["concrete-calculator", "gravel-calculator", "deck-board-calculator"],
+  "inputs": [
+    { "name": "fenceLength", "label": "Fence length", "unit": "ft", "default": "100", "help": "10 to 1,000 ft. Total length of the fence line, gates included.", "group": "Fence line" },
+    { "name": "fenceHeight", "label": "Fence height", "unit": "ft", "default": "6", "help": "3 to 8 ft. Used to check that your posts are long enough. 6 ft is a common privacy fence.", "group": "Fence line" },
+    { "name": "gates", "label": "Number of gates", "unit": "count", "default": "1", "help": "Whole number, 0 to 10. Each gate opening adds one post.", "group": "Fence line" },
+    { "name": "postSpacing", "label": "Post spacing (on center)", "unit": "ft", "default": "8", "help": "4 to 10 ft. 6 to 8 ft is a common rule of thumb, not a manufacturer figure. Match your rail length.", "group": "Posts" },
+    {
+      "name": "postSize",
+      "label": "Post size",
+      "type": "select",
+      "default": "4x4",
+      "options": [
+        { "value": "4x4", "label": "4x4 (3.5 in actual)" },
+        { "value": "6x6", "label": "6x6 (5.5 in actual)" }
+      ],
+      "help": "Sets the hole width: Quikrete's guide digs the hole 3 times the post width.",
+      "group": "Posts"
+    },
+    { "name": "postLength", "label": "Post length", "unit": "ft", "default": "10", "help": "5 to 12 ft, the full length of the post you buy. Quikrete's method buries 1/3 of it, so a 10 ft post stands about 6 ft 8 in tall. 9 ft isn't a standard lumber length: if you want a 9 ft post, buy a 10 ft one and cut it down.", "group": "Posts" },
+    { "name": "picketWidth", "label": "Picket width", "unit": "in", "default": "5.5", "help": "3 to 8 in. Use the actual face width: a 1x6 picket is about 5.5 in.", "group": "Pickets" },
+    { "name": "picketGap", "label": "Picket gap", "unit": "in", "default": "0.5", "help": "-2 to 2 in. 0 for side-by-side privacy. For board-on-board, enter the overlap on each edge as a negative number (1 in overlap = -1).", "group": "Pickets" },
+    {
+      "name": "bagType",
+      "label": "Concrete bag",
+      "type": "select",
+      "default": "fast50",
+      "options": [
+        { "value": "fast50", "label": "50 lb Quikrete Fast-Setting (0.375 cu ft)" },
+        { "value": "fast60", "label": "60 lb Quikrete Fast-Setting (0.45 cu ft)" },
+        { "value": "mix80", "label": "80 lb Quikrete Concrete Mix (0.60 cu ft)" }
+      ],
+      "help": "Yields come from each product's data sheet (see Sources).",
+      "group": "Post concrete"
+    },
+    { "name": "gateWidth", "label": "Gate width (each)", "unit": "ft", "default": "4", "help": "2 to 12 ft. Gate openings are taken out of the fence length before pickets and rails are counted.", "group": "Advanced: gates, rails, frost, waste" },
+    {
+      "name": "railsPerSection",
+      "label": "Rails per section",
+      "type": "select",
+      "default": "3",
+      "options": [
+        { "value": "2", "label": "2 rails" },
+        { "value": "3", "label": "3 rails (common for 6 ft and taller)" }
+      ],
+      "help": "Horizontal rails between each pair of posts.",
+      "group": "Advanced: gates, rails, frost, waste"
+    },
+    { "name": "frostDepth", "label": "Frost depth", "unit": "in", "default": "0", "help": "0 to 72 in. Ask your local building department. If it is deeper than 1/3 of the post, the post is buried to this depth instead.", "group": "Advanced: gates, rails, frost, waste" },
+    { "name": "soilCap", "label": "Soil cap over the concrete", "unit": "in", "default": "4", "help": "0 to 6 in. Quikrete's directions stop the concrete 3 to 4 in below ground and fill the top of the hole with soil or sod. Must be less than the post's depth in the ground.", "group": "Advanced: gates, rails, frost, waste" },
+    { "name": "picketWaste", "label": "Picket waste", "unit": "%", "default": "5", "help": "0 to 15%. Extra pickets for splits, bad boards, and cuts. 5% is our starting estimate, not a manufacturer figure.", "group": "Advanced: gates, rails, frost, waste" }
+  ],
+  "outputs": [
+    { "name": "posts", "label": "Posts", "unit": "posts", "decimals": 0, "primary": true },
+    { "name": "rails", "label": "Rails", "unit": "rails", "decimals": 0, "primary": true },
+    { "name": "pickets", "label": "Pickets (with waste)", "unit": "pickets", "decimals": 0, "primary": true },
+    { "name": "concreteBags", "label": "Concrete bags, all posts", "unit": "bags", "decimals": 0, "primary": true },
+    { "name": "sections", "label": "Fence sections", "unit": "sections", "decimals": 0 },
+    { "name": "actualSpacing", "label": "Actual post spacing", "unit": "ft", "decimals": 2 },
+    { "name": "fencedRun", "label": "Fence run without gates", "unit": "ft", "decimals": 1 },
+    { "name": "picketsBeforeWaste", "label": "Pickets before waste", "unit": "pickets", "decimals": 0 },
+    { "name": "holeDiameter", "label": "Hole diameter, each post", "unit": "in", "decimals": 1 },
+    { "name": "holeDepth", "label": "Hole depth incl. 6 in gravel", "unit": "in", "decimals": 1 },
+    { "name": "buriedDepth", "label": "Post depth in the ground", "unit": "in", "decimals": 1 },
+    { "name": "concreteHeight", "label": "Concrete height (below the soil cap)", "unit": "in", "decimals": 1 },
+    { "name": "concretePerPost", "label": "Concrete per post", "unit": "cu ft", "decimals": 2 },
+    { "name": "bagsPerPost", "label": "Bags per post", "unit": "bags", "decimals": 2 },
+    { "name": "concreteTotal", "label": "Concrete, all posts", "unit": "cu ft", "decimals": 2 },
+    { "name": "gravelTotal", "label": "Gravel for post bases", "unit": "cu ft", "decimals": 2 },
+    { "name": "postAboveGround", "label": "Post height above ground", "unit": "ft", "decimals": 2 },
+    { "name": "minPostLength", "label": "Shortest post for your fence height", "unit": "ft", "decimals": 1 }
+  ],
+  "sources": [
+    {
+      "title": "QUIKRETE Setting Posts project guide (The Quikrete Companies): hole 3 times the post width, 1/3 of the post buried, 6 in gravel base",
+      "url": "https://www.quikrete.com/pdfs/projects/settingposts.pdf",
+      "accessed": "2026-10-06"
+    },
+    {
+      "title": "QUIKRETE Fast-Setting Concrete Mix, Product No. 1004 data sheet (The Quikrete Companies): yields of 0.375 cu ft (50 lb) and 0.45 cu ft (60 lb); hole depth 1/3 of the overall post height; fill concrete to 3 to 4 in from the top and fill the rest with sod or soil",
+      "url": "https://www.quikrete.com/pdfs/data_sheet-fast%20setting%20concrete%20mix%201004-50.pdf",
+      "accessed": "2026-10-07"
+    },
+    {
+      "title": "QUIKRETE Setting Posts in Concrete web guide (The Quikrete Companies): fill the hole with Fast-Setting Concrete up to 3 to 4 in below ground level, then backfill with soil and/or sod",
+      "url": "https://www.quikrete.com/settingposts/",
+      "accessed": "2026-10-07"
+    },
+    {
+      "title": "QUIKRETE Concrete Mix, Product No. 1101 data sheet (The Quikrete Companies): yield of 0.60 cu ft per 80 lb bag",
+      "url": "https://www.quikrete.com/pdfs/data_sheet-concrete%20mix%201101.pdf",
+      "accessed": "2026-10-06"
+    }
+  ]
+}
