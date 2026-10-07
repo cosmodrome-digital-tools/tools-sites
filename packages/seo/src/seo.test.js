@@ -3,8 +3,8 @@ import { breadcrumbList, canonicalUrl, faqPage, pageTitle, serializeJsonLd, tool
 
 describe('titles', () => {
   it('follows the tool title pattern', () => {
-    expect(toolTitle('Concrete Slab Calculator', 'Cubic Yards and Bags', 'Home Project Calculators'))
-      .toBe('Concrete Slab Calculator - Cubic Yards and Bags | Home Project Calculators');
+    expect(toolTitle('Concrete Slab Calculator', 'Cubic Yards and Bags', 'Home & Yard Calcs'))
+      .toBe('Concrete Slab Calculator - Cubic Yards and Bags | Home & Yard Calcs');
   });
   it('requires every part', () => {
     expect(() => toolTitle('X', '', 'Site')).toThrow();
@@ -35,6 +35,12 @@ describe('JSON-LD', () => {
   });
   it('builds an FAQPage', () => {
     expect(faqPage([{ question: 'Q', answer: 'A' }]).mainEntity[0].acceptedAnswer.text).toBe('A');
+  });
+  it('keeps a raw ampersand in JSON-LD (no HTML entity encoding)', () => {
+    const out = serializeJsonLd({ name: 'Home & Yard Calcs' });
+    expect(out).toContain('"Home & Yard Calcs"');
+    expect(out).not.toContain('&amp;');
+    expect(JSON.parse(out).name).toBe('Home & Yard Calcs');
   });
   it('escapes < when serializing', () => {
     expect(serializeJsonLd({ a: '</script>' })).not.toContain('</script>');

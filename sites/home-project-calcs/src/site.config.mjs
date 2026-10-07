@@ -1,4 +1,4 @@
-// Site-wide settings for Home Project Calculators. This is the ONLY place the
+// Site-wide settings for Home & Yard Calcs (display name; the slug stays home-project-calcs). This is the ONLY place the
 // domain lives: astro.config.mjs, robots.txt, canonical URLs, the sitemap, and
 // the contact email all read it from here.
 
@@ -7,7 +7,7 @@
 const domain = 'todo-domain.example';
 
 export default {
-  name: 'Home Project Calculators',
+  name: 'Home & Yard Calcs',
   slug: 'home-project-calcs',
   tagline: 'Free materials calculators for US home projects',
   description:

@@ -1,10 +1,10 @@
 ---
 title: About
-description: What Home Project Calculators is, who runs it, and how each calculator is checked before it goes live.
+description: What Home & Yard Calcs is, who runs it, and how each calculator is checked before it goes live.
 show: author
 ---
 
-Home Project Calculators is a free collection of materials estimators for common US home projects. Every calculator works in US units (feet, inches, square feet, cubic yards, and standard US bag sizes) and runs entirely in your browser. Nothing you type is sent anywhere.
+Home & Yard Calcs is a free collection of materials estimators for common US home projects. Every calculator works in US units (feet, inches, square feet, cubic yards, and standard US bag sizes) and runs entirely in your browser. Nothing you type is sent anywhere.
 
 ## How the calculators are built
 

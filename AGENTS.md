@@ -2,6 +2,8 @@
 
 Building or editing a calculator tool? Read **[docs/BUILDING-TOOLS.md](docs/BUILDING-TOOLS.md)** first and follow it exactly.
 
+Site names: the only site today is **Home & Yard Calcs** (display name). Its slug, folder, and Worker stay `home-project-calcs` / `sites/home-project-calcs/` / `tools-home-project-calcs`. Use the display name in visible copy; never rename the slug or paths.
+
 Top 5 rules:
 1. Change files **only** inside `sites/<site-slug>/tools/<tool-slug>/`. Start it with `npm run new-tool -- --site <site-slug> --tool <tool-slug>`.
 2. Never touch `packages/`, the site's `src/` (layouts, pages, config), `tools/_template/`, root or site `package.json`/`package-lock.json`, `.github/`, `scripts/`, `wrangler.jsonc`, `astro.config.mjs`, `robots.txt`, `ads.txt`, or any ad/consent code. Never add secrets.

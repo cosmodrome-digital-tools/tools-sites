@@ -1,4 +1,4 @@
-# ads.txt for Home Project Calculators
+# ads.txt for Home & Yard Calcs
 # TODO(adsense): no AdSense publisher ID yet. When the site owner provides it, replace
 # the placeholder below with the real pub- ID and remove the leading "# ".
 # google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0

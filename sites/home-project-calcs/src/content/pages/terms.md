@@ -1,6 +1,6 @@
 ---
 title: Terms of Use
-description: Terms of Use for Home Project Calculators (draft placeholder).
+description: Terms of Use for Home & Yard Calcs (draft placeholder).
 draft: true
 ---
 

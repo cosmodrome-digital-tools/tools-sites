@@ -26,7 +26,7 @@ tools-sites/
     scaffold/tool.mjs   creates a tool folder (npm run new-tool)
     checks/run.mjs      repo checks run in CI (npm run check)
   sites/
-    home-project-calcs/             the "Home Project Calculators" site
+    home-project-calcs/             the "Home & Yard Calcs" site (slug stays home-project-calcs)
       astro.config.mjs, wrangler.jsonc, vitest.config.mjs, package.json   DO NOT TOUCH
       public/ads.txt, public/favicon.svg                                  DO NOT TOUCH
       src/                          site config, layouts, pages, styles   DO NOT TOUCH
@@ -154,7 +154,7 @@ calculator (inputs + results + chart), "Last updated", ad space, **your
 are automatic.
 
 **Title pattern** (built automatically from `meta.json`):
-`[Tool name] - [main benefit] | Home Project Calculators`
+`[Tool name] - [main benefit] | Home & Yard Calcs`
 - `title` = tool name, also the H1, e.g. `Concrete Slab Calculator`
 - `benefit` = main benefit, e.g. `Cubic Yards and Bags for Any Slab`
 - Aim for title + benefit under about 45 characters so the full title stays near 70.
