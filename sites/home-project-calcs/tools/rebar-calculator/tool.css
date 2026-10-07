@@ -1,0 +1,76 @@
+/* tool.css: Rebar Calculator look. Warm "mill-scale" off-white surface with a
+   faint grid, rust-orange accent, tight 2px corners, slate secondary.
+   Contrast (WCAG AA): accent-ink #ffffff on accent #9a3412 = about 7.3:1;
+   ink #1c1917 on surface #faf6f2 = about 16:1; legend #9a3412 on #faf6f2 = about 6.8:1.
+   System fonts only. */
+[data-tool="rebar-calculator"] {
+  --tool-accent: #9a3412;
+  --tool-accent-ink: #ffffff;
+  --tool-surface: #faf6f2;
+  --tool-ink: #1c1917;
+  --tool-border: #d6c7b8;
+  --tool-radius: 2px;
+  --tool-font-display: 'Trebuchet MS', 'Segoe UI', system-ui, -apple-system, Arial, sans-serif;
+  --chart-palette-1: #9a3412;
+  --chart-palette-2: #334155;
+  --chart-palette-3: #b45309;
+  --chart-palette-4: #57534e;
+}
+
+/* A very faint rebar-grid pattern behind the calculator (decorative only). */
+[data-tool="rebar-calculator"] .tool-frame {
+  background-color: var(--tool-surface);
+  background-image:
+    linear-gradient(rgba(154, 52, 18, 0.05) 2px, transparent 2px),
+    linear-gradient(90deg, rgba(154, 52, 18, 0.05) 2px, transparent 2px);
+  background-size: 36px 36px;
+}
+
+/* Step badges become squares, like a tie point on the grid. */
+[data-tool="rebar-calculator"] .tool-form fieldset::before {
+  border-radius: 3px;
+}
+[data-tool="rebar-calculator"] .tool-form legend {
+  font-weight: 700;
+  color: var(--tool-accent);
+}
+
+/* Primary result: rust bar with a slate underline, like a tagged bundle. */
+[data-tool="rebar-calculator"] .calc-result--primary {
+  background: var(--tool-accent);
+  color: var(--tool-accent-ink);
+  padding: 0.6rem 0.75rem;
+  border-radius: var(--tool-radius);
+  border-bottom: 4px solid #334155;
+  align-items: center;
+}
+[data-tool="rebar-calculator"] .calc-result--primary dd,
+[data-tool="rebar-calculator"] .calc-result--primary .calc-unit {
+  color: var(--tool-accent-ink);
+}
+[data-tool="rebar-calculator"] .calc-result--primary dd {
+  font-size: 1.75rem;
+}
+[data-tool="rebar-calculator"] .calc-results dd {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Bar-size table in the page copy. display:block lets it scroll inside itself
+   on phones instead of widening the page. */
+[data-tool="rebar-calculator"] .tool-content table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+[data-tool="rebar-calculator"] .tool-content th,
+[data-tool="rebar-calculator"] .tool-content td {
+  border: 1px solid var(--tool-border);
+  padding: 0.4rem 0.6rem;
+  text-align: left;
+}
+[data-tool="rebar-calculator"] .tool-content thead th {
+  background: var(--tool-accent);
+  color: var(--tool-accent-ink);
+}
