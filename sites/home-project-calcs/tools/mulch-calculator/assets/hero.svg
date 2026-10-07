@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-label="Tree ring with mulch kept off the trunk">
+  <circle cx="48" cy="48" r="44" fill="#c4a574"/>
+  <circle cx="48" cy="48" r="36" fill="#6b4423"/>
+  <circle cx="48" cy="50" r="30" fill="none" stroke="#8d5a32" stroke-width="3" stroke-dasharray="2 4"/>
+  <circle cx="48" cy="48" r="16" fill="#e6d3b0"/>
+  <circle cx="48" cy="48" r="8" fill="#3e2a1c"/>
+  <path d="M46 42.5v11M50.5 44v9" stroke="#2a1c12" stroke-width="1.2" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,37 @@
+/* Mulch calculator theme. Warm bark and leaf colors, softer than the gravel tool's slate. */
+[data-tool="mulch-calculator"] {
+  --tool-accent: #3c4f2f;
+  --tool-accent-ink: #fbf6ec;
+  --tool-surface: #f3eee3;
+  --tool-ink: #241c14;
+  --tool-border: #6f5a42;
+  --tool-radius: 14px;
+  --tool-font-display: "Palatino Linotype", Palatino, "Book Antiqua", serif;
+  --chart-palette-1: #3c4f2f;
+  --chart-palette-2: #8d5a32;
+  --chart-palette-3: #c4a15a;
+  --chart-palette-4: #5d6e48;
+}
+
+[data-tool="mulch-calculator"] .tool-form legend {
+  font-family: var(--tool-font-display);
+  color: var(--tool-accent);
+  letter-spacing: 0.01em;
+}
+
+[data-tool="mulch-calculator"] .tool-form fieldset:last-of-type {
+  margin-top: 0.35rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed var(--tool-border);
+}
+
+[data-tool="mulch-calculator"] .calc-results__title {
+  color: var(--tool-accent);
+}
+
+[data-tool="mulch-calculator"] .calc-result--primary {
+  background: #fbf6ec;
+  border: 1px solid var(--tool-border);
+  border-left: 4px solid var(--tool-accent);
+  padding: 0.45rem 0.6rem;
+}
