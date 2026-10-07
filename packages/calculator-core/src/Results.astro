@@ -1,0 +1,18 @@
+---
+/** Results area. Values are filled in by bind.js; outputs come from meta.json "outputs". */
+const { outputs = [], chartStyle = 'none', chartTitle = 'Chart' } = Astro.props;
+---
+<section class="calc-results" data-calc-results data-state="empty" aria-live="polite" aria-label="Results">
+  <h2 class="calc-results__title">Your results</h2>
+  <dl class="calc-results__list">
+    {outputs.map((o) => (
+      <div class:list={['calc-result', { 'calc-result--primary': o.primary }]}>
+        <dt>{o.label}</dt>
+        <dd><span data-output={o.name} data-decimals={o.decimals ?? 2}>–</span>{o.unit && <span class="calc-unit"> {o.unit}</span>}</dd>
+      </div>
+    ))}
+  </dl>
+  <p class="calc-results__invalid">Fix the highlighted fields to see results.</p>
+  {chartStyle !== 'none' && <div class="calc-chart" data-calc-chart data-title={chartTitle}></div>}
+  <noscript><p>This calculator needs JavaScript turned on to show results.</p></noscript>
+</section>

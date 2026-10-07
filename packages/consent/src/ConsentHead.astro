@@ -1,0 +1,25 @@
+---
+/**
+ * Consent + AdSense head placement. Rendered once per page in <head> by BaseLayout.
+ *
+ * Current state: STUB. Renders nothing and loads no third-party script.
+ *
+ * TODO(consent): Google Privacy & messaging (Google-certified CMP, IAB TCF v2.3)
+ * is configured by the owner inside AdSense (EEA/UK/Switzerland message + US state
+ * opt-out message). Those messages are expected to be delivered through the
+ * AdSense tag itself, so no separate CMP script should be needed (unverified;
+ * confirm when AdSense is set up).
+ *
+ * TODO(adsense): the AdSense <script> snippet goes here in its own compliance PR,
+ * rendered only when `ads.enabled` is true AND `publisherId` is a real
+ * pub-################ ID. GA4 (if ever chosen) must respect consent.
+ */
+const { ads = { enabled: false }, publisherId = '' } = Astro.props;
+const realId = /^pub-\d{16}$/.test(publisherId);
+if (ads.enabled && !realId) {
+  throw new Error('ads.enabled is true but publisherId is still a placeholder (src/site.config.mjs).');
+}
+if (ads.enabled) {
+  throw new Error('ads.enabled is true, but the AdSense snippet is not implemented yet (see TODO in packages/consent/src/ConsentHead.astro).');
+}
+---

@@ -1,0 +1,31 @@
+name: ci
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test-and-build:            # keep this job name unique; it is the required status check
+    name: test-and-build
+    runs-on: ubuntu-latest
+    env:
+      ASTRO_TELEMETRY_DISABLED: 1   # no build telemetry from CI
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22   # latest 22.x; Astro and Vitest need >= 22.12.0
+          cache: npm
+      - run: npm ci
+      - run: npm test        # every workspace's Vitest tests + the scaffold test
+      - run: npm run build   # astro build for every site
+      - run: npm run check   # scripts/checks/run.mjs (needs the built dist/)

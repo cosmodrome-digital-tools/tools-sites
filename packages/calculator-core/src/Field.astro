@@ -1,0 +1,34 @@
+---
+/**
+ * One labeled input with unit, help text, and a live validation message.
+ * Props come straight from an entry in the tool's meta.json "inputs" array.
+ */
+const { input } = Astro.props;
+const id = `in-${input.name}`;
+const helpId = input.help ? `${id}-help` : undefined;
+const errId = `${id}-err`;
+const describedBy = [helpId, errId].filter(Boolean).join(' ');
+---
+<div class="calc-field" data-field={input.name}>
+  <label for={id}>{input.label}{input.unit && <span class="calc-unit"> ({input.unit})</span>}</label>
+  {input.type === 'select' ? (
+    <select id={id} name={input.name} aria-describedby={describedBy}>
+      {input.options.map((o) => (
+        <option value={String(o.value)} selected={String(o.value) === String(input.default)}>{o.label}</option>
+      ))}
+    </select>
+  ) : (
+    <input
+      id={id}
+      name={input.name}
+      type="text"
+      inputmode="decimal"
+      autocomplete="off"
+      value={input.default !== undefined ? String(input.default) : ''}
+      placeholder={input.placeholder}
+      aria-describedby={describedBy}
+    />
+  )}
+  {input.help && <p id={helpId} class="calc-help">{input.help}</p>}
+  <p id={errId} class="calc-error" data-error aria-live="polite"></p>
+</div>

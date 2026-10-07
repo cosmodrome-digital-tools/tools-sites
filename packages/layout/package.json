@@ -1,0 +1,14 @@
+{
+  "name": "@tools/layout",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./*": "./src/*"
+  },
+  "dependencies": {
+    "@tools/ad-slot": "*",
+    "@tools/calculator-core": "*",
+    "@tools/consent": "*",
+    "@tools/seo": "*"
+  }
+}

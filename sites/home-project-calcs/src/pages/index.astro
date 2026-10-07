@@ -1,0 +1,40 @@
+---
+import { getCollection } from 'astro:content';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import site from '../site.config.mjs';
+
+const tools = (await getCollection('toolMeta')).sort((a, b) => a.data.title.localeCompare(b.data.title));
+const byCategory = new Map();
+for (const t of tools) {
+  const list = byCategory.get(t.data.category) ?? [];
+  list.push(t);
+  byCategory.set(t.data.category, list);
+}
+const slugify = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+---
+<SiteLayout title={`${site.name} - ${site.tagline}`} description={site.description}>
+  <h1>{site.name}</h1>
+  <p class="hub-intro">
+    Free calculators for planning US home projects. Each one estimates materials in feet, inches,
+    cubic yards, and standard bag sizes, and shows its formula, waste allowance, and sources so you
+    can check the math.
+  </p>
+
+  {tools.length === 0 ? (
+    <div class="hub-empty">
+      <h2>Calculators are on the way</h2>
+      <p>The first calculators are being built and checked now. Please check back soon.</p>
+    </div>
+  ) : (
+    [...byCategory.entries()].map(([category, list]) => (
+      <section class="hub-category" id={slugify(category)}>
+        <h2>{category}</h2>
+        <ul class="hub-list">
+          {list.map((t) => (
+            <li><a href={`/${t.id}/`}><strong>{t.data.title}</strong>{t.data.metaDescription}</a></li>
+          ))}
+        </ul>
+      </section>
+    ))
+  )}
+</SiteLayout>

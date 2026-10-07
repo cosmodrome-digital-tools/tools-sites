@@ -1,0 +1,18 @@
+{
+  "$schema": "../../node_modules/wrangler/config-schema.json",
+  "name": "tools-home-project-calcs",
+  // Set to the scaffold date; keep it fixed afterwards
+  "compatibility_date": "2026-10-06",
+  // No "main": assets-only Worker (no Worker script)
+  "assets": {
+    "directory": "./dist",          // Astro's build output (outDir)
+    "not_found_handling": "404-page",
+    "html_handling": "auto-trailing-slash"
+  },
+  // TODO(domain): add the Custom Domain once the domain is picked and its zone is active:
+  // "routes": [
+  //   { "pattern": "<domain>", "custom_domain": true }
+  // ],
+  "workers_dev": false,
+  "preview_urls": true
+}

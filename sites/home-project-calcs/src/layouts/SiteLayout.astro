@@ -1,0 +1,11 @@
+---
+/** Site wrapper for non-tool pages: site config + site.css around the shared BaseLayout. */
+import BaseLayout from '@tools/layout/BaseLayout.astro';
+import site from '../site.config.mjs';
+import '../styles/site.css';
+
+const { title, description, breadcrumbs = [], jsonLd = [], noindex = false } = Astro.props;
+---
+<BaseLayout site={site} title={title} description={description} breadcrumbs={breadcrumbs} jsonLd={jsonLd} noindex={noindex}>
+  <slot />
+</BaseLayout>

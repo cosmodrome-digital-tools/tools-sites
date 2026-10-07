@@ -1,0 +1,11 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import site from '../site.config.mjs';
+---
+<SiteLayout title={`Page not found | ${site.name}`} description="The page you were looking for doesn't exist." noindex>
+  <article class="prose">
+    <h1>Page not found</h1>
+    <p>We couldn't find that page. It may have moved, or the link may have a typo.</p>
+    <p><a href="/">See all calculators</a></p>
+  </article>
+</SiteLayout>

@@ -1,0 +1,12 @@
+---
+const { siteName } = Astro.props;
+---
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="/">{siteName}</a>
+    <nav class="site-header__nav" aria-label="Main">
+      <a href="/">All calculators</a>
+      <a href="/about/">About</a>
+    </nav>
+  </div>
+</header>

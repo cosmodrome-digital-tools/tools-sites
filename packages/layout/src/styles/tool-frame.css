@@ -1,0 +1,87 @@
+/* Shared calculator frame + theme tokens.
+   Defaults use :where() (zero specificity) so a tool's tool.css, scoped to
+   [data-tool="<tool-slug>"], always wins without !important.
+   Tool-overridable tokens: --tool-accent, --tool-accent-ink, --tool-surface,
+   --tool-ink, --tool-border, --tool-radius, --tool-font-display,
+   --chart-palette-1..4. */
+:where(.tool-page) {
+  --tool-accent: var(--site-accent);
+  --tool-accent-ink: var(--site-accent-ink);
+  --tool-surface: var(--site-muted-surface);
+  --tool-ink: var(--site-ink);
+  --tool-border: var(--site-border);
+  --tool-radius: var(--site-radius);
+  --tool-font-display: var(--site-font-display);
+  --chart-palette-1: #1d5fa8;
+  --chart-palette-2: #b8530a;
+  --chart-palette-3: #2f7d32;
+  --chart-palette-4: #6b4fa0;
+}
+
+.tool-page h1, .tool-page h2 { font-family: var(--tool-font-display); }
+.tool-hero { display: flex; gap: 1rem; align-items: center; justify-content: space-between; }
+.tool-hero__img { flex: 0 0 auto; width: 96px; height: auto; }
+.tool-category { margin: 0; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; color: var(--site-muted-ink); }
+.tool-intro { margin: 0 0 1rem; max-width: 46rem; }
+
+.tool-frame {
+  display: grid;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--tool-surface);
+  color: var(--tool-ink);
+  border: 1px solid var(--tool-border);
+  border-top: 4px solid var(--tool-accent);
+  border-radius: var(--tool-radius);
+}
+.tool-form fieldset { border: 0; padding: 0; margin: 0 0 0.75rem; }
+.tool-form legend { font-weight: 700; margin-bottom: 0.25rem; }
+.calc-field { margin-bottom: 0.75rem; }
+.calc-field label { display: block; font-weight: 600; margin-bottom: 0.2rem; }
+.calc-field input, .calc-field select {
+  width: 100%; max-width: 20rem; font: inherit; padding: 0.5rem 0.6rem;
+  border: 1px solid #767676; border-radius: calc(var(--tool-radius) / 2); background: #fff; color: #1f2328;
+}
+.calc-field input[aria-invalid='true'] { border-color: #b3261e; border-width: 2px; }
+.calc-unit { font-weight: 400; color: var(--site-muted-ink); }
+.calc-help { margin: 0.2rem 0 0; font-size: 0.9rem; color: var(--site-muted-ink); }
+.calc-error { margin: 0.2rem 0 0; font-size: 0.9rem; color: #b3261e; font-weight: 600; min-height: 0; }
+.calc-error:empty { display: none; }
+.tool-submit {
+  font: inherit; font-weight: 700; padding: 0.6rem 1.25rem; cursor: pointer;
+  background: var(--tool-accent); color: var(--tool-accent-ink);
+  border: 0; border-radius: var(--tool-radius);
+}
+
+.calc-results { background: #fff; border-radius: var(--tool-radius); padding: 1rem; border: 1px solid var(--tool-border); }
+.calc-results__title { margin: 0 0 0.5rem; font-size: 1.15rem; }
+.calc-results__list { margin: 0; display: grid; gap: 0.5rem; }
+.calc-result { display: flex; justify-content: space-between; gap: 1rem; border-bottom: 1px solid var(--tool-border); padding-bottom: 0.4rem; }
+.calc-result dd { margin: 0; font-weight: 700; font-variant-numeric: tabular-nums; }
+.calc-result--primary dd { font-size: 1.4rem; color: var(--tool-ink); }
+.calc-results__invalid { display: none; color: #b3261e; font-weight: 600; }
+.calc-results[data-state='invalid'] .calc-results__invalid { display: block; }
+.calc-results[data-state='invalid'] .calc-results__list { opacity: 0.4; }
+.calc-chart { margin-top: 1rem; color: var(--tool-ink); }
+.calc-updated { font-size: 0.9rem; color: var(--site-muted-ink); margin: 0.75rem 0 0; }
+
+.tool-content { margin-top: 1.5rem; }
+.calc-sources ol { padding-left: 1.25rem; }
+.calc-sources__date { color: var(--site-muted-ink); font-size: 0.9rem; }
+.tool-related ul { padding-left: 1.25rem; }
+
+/* Layout: split (inputs | results side by side on wider screens) */
+@media (min-width: 48rem) {
+  .tool-page[data-layout='split'] .tool-frame { grid-template-columns: 1fr 1fr; align-items: start; }
+}
+
+/* Layout: stepper (each fieldset becomes a numbered step) */
+.tool-page[data-layout='stepper'] .tool-form { counter-reset: step; }
+.tool-page[data-layout='stepper'] .tool-form fieldset {
+  counter-increment: step; padding-left: 2.5rem; position: relative;
+}
+.tool-page[data-layout='stepper'] .tool-form fieldset::before {
+  content: counter(step); position: absolute; left: 0; top: 0;
+  width: 1.8rem; height: 1.8rem; border-radius: 50%; display: grid; place-items: center;
+  background: var(--tool-accent); color: var(--tool-accent-ink); font-weight: 700;
+}

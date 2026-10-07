@@ -1,0 +1,48 @@
+---
+/** Renders the site pages in src/content/pages/*.md at /<page>/ (about, contact, legal). */
+import { getCollection, render } from 'astro:content';
+import { pageTitle } from '@tools/seo';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import site, { isPlaceholderDomain } from '../site.config.mjs';
+
+export async function getStaticPaths() {
+  const pages = await getCollection('sitePages');
+  return pages.map((entry) => ({ params: { page: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const { title, description, draft, show } = entry.data;
+const breadcrumbs = [
+  { name: 'Home', href: '/' },
+  { name: title, href: `/${entry.id}/` },
+];
+---
+<SiteLayout title={pageTitle(title, site.name)} description={description} breadcrumbs={breadcrumbs}>
+  <article class="prose">
+    <h1>{title}</h1>
+    {draft && (
+      <p class="draft-banner" role="note">
+        DRAFT placeholder: this page's final text is being prepared and reviewed. It is not yet in effect.
+      </p>
+    )}
+    <Content />
+
+    {show === 'author' && (
+      <section class="author-card" aria-labelledby="author-heading">
+        <h2 id="author-heading">About the author: {site.author.name}</h2>
+        <p>{site.author.bio}</p>
+      </section>
+    )}
+
+    {show === 'contact' && (
+      <section class="contact-card" aria-labelledby="contact-heading">
+        <h2 id="contact-heading">Email</h2>
+        <p><a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a></p>
+        {isPlaceholderDomain && (
+          <p class="draft-banner" role="note">PLACEHOLDER address: the site's domain hasn't been chosen yet, so this email doesn't work yet.</p>
+        )}
+      </section>
+    )}
+  </article>
+</SiteLayout>

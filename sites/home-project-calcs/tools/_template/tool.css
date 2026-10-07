@@ -1,0 +1,18 @@
+/* tool.css: this tool's look. Everything MUST stay inside the selector below.
+   Allowed: the theme tokens and small layout touches inside the tool frame.
+   Not allowed: ad slots (.ad-slot, [data-ad-slot]), consent, the site header
+   or footer, body/html, or anything outside [data-tool="_template"].
+   Keep text and accent colors at WCAG AA contrast (4.5:1 for normal text). */
+[data-tool="_template"] {
+  /* --tool-accent: #1d5fa8;         buttons, frame top border, step badges */
+  /* --tool-accent-ink: #ffffff;     text on the accent color */
+  /* --tool-surface: #f3f7fb;        calculator frame background */
+  /* --tool-ink: #1f2328;            text inside the frame */
+  /* --tool-border: #cfd8e3; */
+  /* --tool-radius: 12px; */
+  /* --tool-font-display: Georgia, 'Times New Roman', serif;   system fonts only */
+  /* --chart-palette-1: #1d5fa8; */
+  /* --chart-palette-2: #b8530a; */
+  /* --chart-palette-3: #2f7d32; */
+  /* --chart-palette-4: #6b4fa0; */
+}

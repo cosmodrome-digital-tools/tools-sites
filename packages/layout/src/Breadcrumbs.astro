@@ -1,0 +1,13 @@
+---
+/** items: [{ name, href }] from home to the current page. Must match the BreadcrumbList JSON-LD. */
+const { items = [] } = Astro.props;
+---
+{items.length > 1 && (
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <ol>
+      {items.map((item, i) => (
+        <li>{i === items.length - 1 ? <span aria-current="page">{item.name}</span> : <a href={item.href}>{item.name}</a>}</li>
+      ))}
+    </ol>
+  </nav>
+)}

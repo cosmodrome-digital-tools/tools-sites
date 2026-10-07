@@ -1,0 +1,19 @@
+{
+  "name": "tools-sites",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "sites/*"
+  ],
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "test": "npm run test --workspaces --if-present && node --test --test-reporter=spec \"scripts/**/*.test.mjs\"",
+    "build": "npm run build --workspaces --if-present",
+    "check": "node scripts/checks/run.mjs",
+    "dev:home-project-calcs": "npm run dev -w sites/home-project-calcs",
+    "new-tool": "node scripts/scaffold/tool.mjs"
+  }
+}

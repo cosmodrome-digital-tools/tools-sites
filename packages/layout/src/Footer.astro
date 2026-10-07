@@ -1,0 +1,21 @@
+---
+const { siteName } = Astro.props;
+const year = new Date().getFullYear();
+const links = [
+  { href: '/about/', label: 'About' },
+  { href: '/contact/', label: 'Contact' },
+  { href: '/privacy/', label: 'Privacy Policy' },
+  { href: '/terms/', label: 'Terms of Use' },
+  { href: '/disclaimer/', label: 'Disclaimer' },
+];
+---
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <nav aria-label="Site and legal">
+      <ul class="site-footer__links">
+        {links.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+      </ul>
+    </nav>
+    <p class="site-footer__note">© {year} {siteName}. Calculators run in your browser; nothing you enter is sent anywhere.</p>
+  </div>
+</footer>
