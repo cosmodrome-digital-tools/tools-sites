@@ -1,0 +1,99 @@
+{
+  "title": "Paver Patio Calculator",
+  "benefit": "Pavers, Base Gravel, and Sand",
+  "metaDescription": "Estimate pavers, compacted base in cubic yards and tons, bedding sand, and edge restraint for a patio, walkway, or driveway, with ICPI base depths.",
+  "primaryKeyword": "paver calculator",
+  "secondaryKeywords": [
+    "paver calculator for patio",
+    "how many pavers per square foot",
+    "how much paver base do i need",
+    "how much sand for pavers",
+    "how deep should paver base be"
+  ],
+  "intent": "Estimate pavers, compacted base, bedding sand, and edge restraint for a patio or walkway.",
+  "registerRow": "Keyword Register: paver calculator (Volume 2, Competition ease 3, Ad value 3, Fit 5, Priority 18)",
+  "category": "Patios and Hardscaping",
+  "intro": "Enter your patio size and paver size to get the number of pavers to buy, plus the compacted gravel base and bedding sand underneath. Pick patio or driveway and your soil type, and the base depth is set from ICPI's published construction guide.",
+  "lastUpdated": "2026-10-06",
+  "layout": "stacked",
+  "chartStyle": "bar",
+  "chartTitle": "Base gravel needed at each ICPI depth option (tons)",
+  "heroAlt": "",
+  "uniqueAddition": "Use and soil selector that sets the ICPI Tech Spec 2 base depth (4 in patio or 6 in driveway, plus 2 to 4 in for poor soil) and returns base tons and bedding sand together; the chart compares base tons at every ICPI depth option, and page.md adds a pavers-per-square-foot table for common sizes and a base depth recipe table.",
+  "relatedTools": ["gravel-calculator", "retaining-wall-block-calculator", "concrete-calculator", "mulch-calculator"],
+  "inputs": [
+    {
+      "name": "shape",
+      "label": "Patio shape",
+      "type": "select",
+      "default": "rectangle",
+      "options": [
+        { "value": "rectangle", "label": "Rectangle or square" },
+        { "value": "circle", "label": "Circle" },
+        { "value": "area", "label": "I know the square feet" }
+      ],
+      "help": "For an L-shape, split it into two rectangles and add the results.",
+      "group": "Patio size"
+    },
+    { "name": "length", "label": "Length", "unit": "ft", "default": "12", "help": "1 to 100 ft. Use decimals for inches (12 ft 6 in = 12.5).", "group": "Patio size" },
+    { "name": "width", "label": "Width", "unit": "ft", "default": "12", "help": "1 to 100 ft.", "group": "Patio size" },
+    { "name": "diameter", "label": "Diameter", "unit": "ft", "default": "10", "help": "1 to 100 ft, measured straight across the circle.", "group": "Patio size" },
+    { "name": "area", "label": "Area", "unit": "sq ft", "default": "", "placeholder": "e.g. 200", "help": "1 to 10,000 sq ft.", "group": "Patio size" },
+    { "name": "perimeter", "label": "Edge length (optional)", "unit": "ft", "default": "", "placeholder": "e.g. 60", "help": "Total length of open edges that need edge restraint. Leave blank to skip.", "group": "Patio size" },
+    { "name": "paverLength", "label": "Paver length", "unit": "in", "default": "8", "help": "4 to 24 in. The face size from the label (a common brick paver is 4 x 8 in).", "group": "Paver size" },
+    { "name": "paverWidth", "label": "Paver width", "unit": "in", "default": "4", "help": "2 to 24 in.", "group": "Paver size" },
+    {
+      "name": "use",
+      "label": "What will it carry?",
+      "type": "select",
+      "default": "patio",
+      "options": [
+        { "value": "patio", "label": "Patio or walkway (4 in base)" },
+        { "value": "driveway", "label": "Residential driveway (6 in base)" }
+      ],
+      "help": "Sets the minimum compacted base depth from ICPI Tech Spec 2.",
+      "group": "Base depth (ICPI)"
+    },
+    {
+      "name": "soil",
+      "label": "Soil condition",
+      "type": "select",
+      "default": "drained",
+      "options": [
+        { "value": "drained", "label": "Well-drained" },
+        { "value": "poor", "label": "Cold climate, wet, or weak soil" }
+      ],
+      "help": "ICPI calls for a base 2 to 4 in thicker in cold climates or on continually wet or weak soil.",
+      "group": "Base depth (ICPI)"
+    },
+    { "name": "extraBase", "label": "Extra base for poor soil", "unit": "in", "default": "2", "help": "2 to 4 in, the range ICPI gives. Use more for colder or softer ground.", "group": "Base depth (ICPI)" },
+    { "name": "jointWidth", "label": "Joint width", "unit": "in", "default": "0.125", "help": "0 to 0.5 in. ICPI calls for joints of 1/16 to 3/16 in; 0.125 = 1/8 in. Use 0 if your size already includes spacer bars.", "group": "Advanced: joints, sand, density, waste" },
+    { "name": "sandDepth", "label": "Bedding sand depth", "unit": "in", "default": "1", "help": "0.5 to 2 in. ICPI specifies 1 in nominal, screeded and not compacted.", "group": "Advanced: joints, sand, density, waste" },
+    { "name": "density", "label": "Base density", "unit": "tons per cu yd", "default": "1.40", "help": "1.0 to 2.0. Estimate only (not verified): ask your supplier for the weight of their base material and enter it here.", "group": "Advanced: joints, sand, density, waste" },
+    { "name": "waste", "label": "Paver waste", "unit": "%", "default": "5", "help": "0 to 20%. Extra for cuts and breakage. 5% is our starting estimate, not a published figure; patterns with lots of cuts (herringbone, curves) need more.", "group": "Advanced: joints, sand, density, waste" }
+  ],
+  "outputs": [
+    { "name": "pavers", "label": "Pavers to buy (with waste)", "unit": "pavers", "decimals": 0, "primary": true },
+    { "name": "baseTons", "label": "Compacted base", "unit": "tons", "decimals": 2 },
+    { "name": "baseCuYd", "label": "Compacted base", "unit": "cu yd", "decimals": 2 },
+    { "name": "baseDepth", "label": "Base depth used", "unit": "in", "decimals": 0 },
+    { "name": "sandCuFt", "label": "Bedding sand", "unit": "cu ft", "decimals": 1 },
+    { "name": "sandCuYd", "label": "Bedding sand", "unit": "cu yd", "decimals": 2 },
+    { "name": "edgeRestraint", "label": "Edge restraint", "unit": "linear ft", "decimals": 1 },
+    { "name": "area", "label": "Paved area", "unit": "sq ft", "decimals": 1 },
+    { "name": "paversNoWaste", "label": "Pavers before waste", "unit": "pavers", "decimals": 1 },
+    { "name": "paversPerSqFt", "label": "Pavers per sq ft (with joints)", "unit": "per sq ft", "decimals": 2 }
+  ],
+  "sources": [
+    {
+      "title": "ICPI Tech Spec 2: Construction of Interlocking Concrete Pavements, revised February 2020 (Interlocking Concrete Pavement Institute): minimum compacted base 4 in for patios and walks and 6 in for residential driveways over well-drained soil, 2 to 4 in thicker in cold, wet, or weak soil; bedding sand 1 in nominal uncompacted; joint width 1/16 to 3/16 in",
+      "url": "https://www.orco.com/wp-content/uploads/2020/05/ICPI_Tech_Spec_2_Feb_20.pdf",
+      "accessed": "2026-10-06"
+    },
+    {
+      "title": "CMHA resource page PAV-TEC-010 (Concrete Masonry & Hardscapes Association, the successor organization to ICPI)",
+      "url": "https://www.cmha.org/resource/pav-tec-010/",
+      "accessed": "2026-10-06"
+    }
+  ]
+}
