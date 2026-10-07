@@ -37,7 +37,7 @@
     { "name": "quantity", "label": "How many identical pours", "unit": "count", "default": "1", "help": "Whole number, 1 to 50. For example, 4 for four matching deck-footing columns.", "group": "What you're pouring" },
     { "name": "length", "label": "Length", "unit": "ft", "default": "10", "help": "0.1 to 200 ft. Use decimals for inches (10 ft 6 in = 10.5).", "group": "Slab or footing size" },
     { "name": "width", "label": "Width", "unit": "ft", "default": "10", "help": "0.1 to 200 ft.", "group": "Slab or footing size" },
-    { "name": "thickness", "label": "Thickness", "unit": "in", "default": "4", "help": "1 to 24 in. 4 in is a common patio or walkway thickness; Sakrete's data sheet calls for at least 4 in on flatwork.", "group": "Slab or footing size" },
+    { "name": "thickness", "label": "Thickness", "unit": "in", "default": "4", "help": "2 to 24 in. 4 in is a common patio or walkway thickness; Sakrete's data sheet calls for at least 4 in on flatwork.", "group": "Slab or footing size" },
     { "name": "diameter", "label": "Diameter", "unit": "in", "default": "12", "help": "4 to 48 in. Use the inside diameter of the form tube.", "group": "Round column size" },
     { "name": "height", "label": "Height", "unit": "in", "default": "36", "help": "6 to 120 in. The depth of concrete in the tube or hole.", "group": "Round column size" },
     {

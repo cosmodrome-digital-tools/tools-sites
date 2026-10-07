@@ -140,12 +140,12 @@ describe('edge cases', () => {
     expect(errorsFor({ ...SLAB, brand: 'quikrete1004', bagSize: '80' }).bagSize).toMatch(/50 lb, 60 lb/);
   });
 
-  // Boundaries from the brief: length/width 0.1-200 ft, thickness 1-24 in,
+  // Boundaries from the brief: length/width 0.1-200 ft, thickness 2-24 in,
   // diameter 4-48 in, height 6-120 in, quantity 1-50, waste 0-25 %.
   const bounds = [
     ['length', SLAB, '0.1', '200', '0.09', '200.1'],
     ['width', SLAB, '0.1', '200', '0.09', '200.1'],
-    ['thickness', SLAB, '1', '24', '0.9', '24.1'],
+    ['thickness', SLAB, '2', '24', '1', '24.1'],
     ['diameter', COLUMN, '4', '48', '3.9', '48.1'],
     ['height', COLUMN, '6', '120', '5.9', '120.1'],
     ['quantity', SLAB, '1', '50', '0', '51'],
@@ -167,7 +167,7 @@ describe('edge cases', () => {
   });
 
   it('tiniest allowed slab still needs at least 1 bag', () => {
-    expect(ok({ ...SLAB, length: '0.1', width: '0.1', thickness: '1', waste: '0' }).bags).toBe(1);
+    expect(ok({ ...SLAB, length: '0.1', width: '0.1', thickness: '2', waste: '0' }).bags).toBe(1);
   });
 
   it('every brand/bag-size pair from the data sheets is wired up', () => {

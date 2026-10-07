@@ -33,7 +33,7 @@ export const SHAPES = ['slab', 'column'];
 const SLAB_RULES = {
   length: { label: 'Length', min: 0.1, max: 200 },
   width: { label: 'Width', min: 0.1, max: 200 },
-  thickness: { label: 'Thickness', min: 1, max: 24 },
+  thickness: { label: 'Thickness', min: 2, max: 24 },
 };
 const COLUMN_RULES = {
   diameter: { label: 'Diameter', min: 4, max: 48 },

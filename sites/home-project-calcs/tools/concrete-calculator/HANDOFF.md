@@ -6,7 +6,7 @@
 - What it calculates, in one sentence: Cubic feet and cubic yards of concrete (before and after a waste allowance) and the number of 40/50/60/80/90 lb premix bags to buy, for a rectangular slab/footing or a round column (Sonotube), using each manufacturer's data-sheet bag yield.
 - Layout / chart style / accent chosen: `split` layout; `bar` chart (bags at 4/5/6/8 in thickness for the user's slab footprint, or at 8/12/16/24 in diameter for the user's column height; each bar label shows the bag count); "poured concrete" look: slate accent #334155 with white text, cool grey surface #eceef1, 4px corners, primary result shown as a dark slate bar. New hero.svg (bag + slab), decorative (`heroAlt: ""`).
 - Unique addition: brand-yield comparison table (all three mixes, every size, bags per cubic yard) plus a common-slab-sizes table (4×4 to 24×24 at 4 in) so "how much concrete for a 12×12 slab" style queries are answered on one page.
-- Inputs (brief section 7): shape (slab/column), quantity 1–50 (whole number), length 0.1–200 ft, width 0.1–200 ft, thickness 1–24 in, diameter 4–48 in, height 6–120 in, mix (Quikrete 1101 / Sakrete High-Strength / Quikrete Fast-Setting 1004), bag size 40/50/60/80/90 lb, waste 0–25 % (default 5).
+- Inputs (brief section 7): shape (slab/column), quantity 1–50 (whole number), length 0.1–200 ft, width 0.1–200 ft, thickness 2–24 in, diameter 4–48 in, height 6–120 in, mix (Quikrete 1101 / Sakrete High-Strength / Quikrete Fast-Setting 1004), bag size 40/50/60/80/90 lb, waste 0–25 % (default 5).
 - ui.js: beyond `bindCalculator`, it hides the size fieldset that doesn't apply to the chosen shape and disables bag sizes the chosen mix isn't sold in (switching to the closest sold size). The size list is imported from logic.js; no math in ui.js. logic.js also rejects a size/brand mismatch with a message on the Bag size field, so results stay correct without JavaScript-side filtering.
 
 ## Sources used
@@ -42,7 +42,7 @@ Run from the repo root on Windows, Node 22.14.0:
 - **`npm run check` on Windows**: `scripts/checks/run.mjs` line 42 does `await import(cfgPath)` with a plain `C:\...` path, which Node rejects on Windows. `await import(pathToFileURL(cfgPath).href)` fixes it. CI on Linux is unaffected. Not changed (scripts/ is off-limits).
 - **Internal links**: `relatedTools` lists rebar-calculator, fence-calculator, paver-patio-calculator, and gravel-calculator. They appear automatically once those tools exist. The page copy names the Fence Calculator for fence posts but doesn't hyperlink it yet, to avoid a 404. Add the link when that tool ships. The copy says the Fence Calculator "handles post-hole concrete", per the brief's overlap rule.
 - **Left off as unverified (per brief section 14)**: bags per pallet and ready-mix truck capacity. The page says these aren't covered.
-- **Thickness minimum**: the brief allows 1 in, but all three data sheets describe their mixes for pours of about 2 in or more. The tool accepts 1 in for volume math and says so under Assumptions and limits. The owner may prefer a 2 in minimum.
+- **Thickness minimum**: resolved — raised to 2 in (data-sheet minimum). 1 in is rejected.
 - **People Also Ask**: per the brief, FAQ questions come from the autocomplete list. PAA was not spot-checked in a browser.
 - "Sonotube" is a trademark used generically, as in the brief.
 

@@ -64,7 +64,7 @@ The calculator assumes:
 - **5% waste is our starting estimate, not a manufacturer figure.** We did not find a published waste percentage for bagged concrete, so 5% is labeled as an assumption. You can set anything from 0% to 25%.
 - **Rounding happens once, on the total.** With several identical pours, the bag count is for all of them together.
 - **Nothing is subtracted for rebar or mesh**, which takes up a very small share of the volume.
-- **Thin pours:** the Quikrete and Sakrete data sheets for these mixes describe them for pours about 2 in thick or more. The calculator accepts thicknesses down to 1 in for volume math, but a regular concrete mix may not be the right product that thin.
+- **Thin pours:** the Quikrete and Sakrete data sheets for these mixes describe them for pours about 2 in thick or more. The calculator requires a minimum thickness of 2 in to match those product limits.
 
 What it doesn't cover:
 
