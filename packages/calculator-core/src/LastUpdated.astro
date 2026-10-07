@@ -1,0 +1,7 @@
+---
+const { date } = Astro.props;
+const d = date instanceof Date ? date : new Date(date);
+const iso = d.toISOString().slice(0, 10);
+const label = d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
+---
+<p class="calc-updated">Last updated: <time datetime={iso}>{label}</time></p>

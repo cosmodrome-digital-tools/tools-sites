@@ -1,0 +1,15 @@
+---
+/** Sources block: every source is linked and dated (accessed date). */
+const { sources = [] } = Astro.props;
+const fmt = (d) => (d instanceof Date ? d : new Date(d)).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC' });
+---
+{sources.length > 0 && (
+  <section class="calc-sources" aria-labelledby="sources-heading">
+    <h2 id="sources-heading">Sources</h2>
+    <ol>
+      {sources.map((s) => (
+        <li><a href={s.url} rel="noopener">{s.title}</a> <span class="calc-sources__date">(accessed {fmt(s.accessed)})</span></li>
+      ))}
+    </ol>
+  </section>
+)}

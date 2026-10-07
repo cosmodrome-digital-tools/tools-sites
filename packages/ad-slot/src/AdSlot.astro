@@ -1,0 +1,34 @@
+---
+/**
+ * Reserved ad space. Today it renders an empty placeholder box with a fixed
+ * height so a future ad can't shift the layout (CLS).
+ *
+ * Rules (AdSense policy + our conventions):
+ * - Never place next to inputs or buttons; never on a tool-only screen.
+ * - Height is fixed per position and must not be changed by tool CSS.
+ * - Ads are controlled by ONE flag: `ads.enabled` in the site's src/site.config.mjs
+ *   (false by default). There is no ad code here yet.
+ *
+ * TODO(adsense): when the owner provides the publisher ID, a separate compliance PR
+ * adds the AdSense unit markup here (rendered only when ads.enabled is true).
+ */
+const { position = 'in-content', ads = { enabled: false } } = Astro.props;
+const HEIGHTS = { 'below-tool': 280, 'in-content': 280, 'end-of-content': 280 };
+const height = HEIGHTS[position] ?? 280;
+if (ads.enabled) {
+  throw new Error('ads.enabled is true, but AdSense ad units are not implemented yet (see TODO in packages/ad-slot/src/AdSlot.astro).');
+}
+---
+<div class="ad-slot" data-ad-slot={position} style={`--ad-slot-height:${height}px`} aria-hidden="true"></div>
+
+<style>
+  .ad-slot {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: var(--ad-slot-height);
+    margin: 2.5rem 0;
+    border: 1px dashed var(--site-border, #c9c9c9);
+    border-radius: 6px;
+    background: var(--site-muted-surface, #f6f6f6);
+  }
+</style>

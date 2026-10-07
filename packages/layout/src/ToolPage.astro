@@ -1,0 +1,88 @@
+---
+/**
+ * The shared calculator frame every tool page uses. Tools never edit this file.
+ * A tool customizes its look only through its own tool.css (theme tokens scoped
+ * to [data-tool="<tool-slug>"]), meta.json "layout" and "chartStyle", and an
+ * optional hero image in its assets/ folder.
+ *
+ * Props:
+ *  site:     site config
+ *  meta:     the tool's validated meta.json data
+ *  toolSlug: folder name, e.g. "concrete-slab"
+ *  hero:     optional imported image (ImageMetadata)
+ *  related:  [{ slug, title }] for the related-tools list
+ * Default slot: the rendered page.md content.
+ */
+import BaseLayout from './BaseLayout.astro';
+import './styles/tool-frame.css';
+import Field from '@tools/calculator-core/Field.astro';
+import Results from '@tools/calculator-core/Results.astro';
+import LastUpdated from '@tools/calculator-core/LastUpdated.astro';
+import Sources from '@tools/calculator-core/Sources.astro';
+import AdSlot from '@tools/ad-slot/AdSlot.astro';
+import { toolTitle, webApplication, canonicalUrl } from '@tools/seo';
+
+const { site, meta, toolSlug, hero, related = [] } = Astro.props;
+const layout = meta.layout ?? 'stacked';
+const chartStyle = meta.chartStyle ?? 'none';
+const title = toolTitle(meta.title, meta.benefit, site.name);
+const base = Astro.site ?? new URL(site.siteUrl);
+const breadcrumbs = [
+  { name: 'Home', href: '/' },
+  { name: meta.title, href: `/${toolSlug}/` },
+];
+const appLd = webApplication({ name: meta.title, description: meta.metaDescription, url: canonicalUrl(`/${toolSlug}/`, base) });
+
+// Group inputs into fieldsets by their optional "group" name (keeps order).
+const groups = [];
+for (const input of meta.inputs ?? []) {
+  const name = input.group ?? 'Inputs';
+  let g = groups.find((x) => x.name === name);
+  if (!g) groups.push((g = { name, inputs: [] }));
+  g.inputs.push(input);
+}
+---
+<BaseLayout site={site} title={title} description={meta.metaDescription} breadcrumbs={breadcrumbs} jsonLd={[appLd]}>
+  <article class="tool-page" data-tool={toolSlug} data-layout={layout} data-chart-style={chartStyle}>
+    <header class="tool-hero">
+      <div>
+        <p class="tool-category">{meta.category}</p>
+        <h1>{meta.h1 ?? meta.title}</h1>
+        {meta.intro && <p class="tool-intro">{meta.intro}</p>}
+      </div>
+      {hero && <img class="tool-hero__img" src={hero.src} width={hero.width} height={hero.height} alt={meta.heroAlt ?? ''} />}
+    </header>
+
+    <div class="tool-frame">
+      <form class="tool-form" data-calc-form novalidate>
+        {groups.map((g) => (
+          <fieldset>
+            <legend>{g.name}</legend>
+            {g.inputs.map((input) => <Field input={input} />)}
+          </fieldset>
+        ))}
+        <button class="tool-submit" type="submit">Calculate</button>
+      </form>
+      <Results outputs={meta.outputs ?? []} chartStyle={chartStyle} chartTitle={meta.chartTitle ?? `${meta.title} chart`} />
+    </div>
+    <LastUpdated date={meta.lastUpdated} />
+
+    <AdSlot position="below-tool" ads={site.ads} />
+
+    <div class="tool-content prose">
+      <slot />
+    </div>
+
+    <div class="prose">
+      <Sources sources={meta.sources} />
+      {related.length > 0 && (
+        <nav class="tool-related" aria-labelledby="related-heading">
+          <h2 id="related-heading">Related calculators</h2>
+          <ul>{related.map((r) => <li><a href={`/${r.slug}/`}>{r.title}</a></li>)}</ul>
+        </nav>
+      )}
+    </div>
+
+    <AdSlot position="end-of-content" ads={site.ads} />
+  </article>
+</BaseLayout>

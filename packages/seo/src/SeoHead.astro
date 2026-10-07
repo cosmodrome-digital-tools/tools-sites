@@ -1,0 +1,16 @@
+---
+/**
+ * <head> tags for every page: title, meta description, canonical, basic Open Graph.
+ * Pass `title` already built with toolTitle()/pageTitle().
+ */
+const { title, description, canonical, noindex = false, siteName } = Astro.props;
+---
+<title>{title}</title>
+{description && <meta name="description" content={description} />}
+<link rel="canonical" href={canonical} />
+{noindex && <meta name="robots" content="noindex" />}
+<meta property="og:type" content="website" />
+<meta property="og:title" content={title} />
+{description && <meta property="og:description" content={description} />}
+<meta property="og:url" content={canonical} />
+{siteName && <meta property="og:site_name" content={siteName} />}

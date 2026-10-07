@@ -1,0 +1,8 @@
+{
+  "name": "@tools/consent",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./*": "./src/*"
+  }
+}

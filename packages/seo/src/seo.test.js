@@ -1,0 +1,42 @@
+import { describe, expect, it } from 'vitest';
+import { breadcrumbList, canonicalUrl, faqPage, pageTitle, serializeJsonLd, toolTitle, webApplication } from './index.js';
+
+describe('titles', () => {
+  it('follows the tool title pattern', () => {
+    expect(toolTitle('Concrete Slab Calculator', 'Cubic Yards and Bags', 'Home Project Calculators'))
+      .toBe('Concrete Slab Calculator - Cubic Yards and Bags | Home Project Calculators');
+  });
+  it('requires every part', () => {
+    expect(() => toolTitle('X', '', 'Site')).toThrow();
+  });
+  it('builds page titles', () => {
+    expect(pageTitle('About', 'Site')).toBe('About | Site');
+    expect(pageTitle('', 'Site')).toBe('Site');
+  });
+});
+
+describe('canonicalUrl', () => {
+  it('adds trailing slashes to page paths only', () => {
+    expect(canonicalUrl('/about', 'https://a.example')).toBe('https://a.example/about/');
+    expect(canonicalUrl('/about/?x=1#y', 'https://a.example')).toBe('https://a.example/about/');
+    expect(canonicalUrl('/robots.txt', 'https://a.example')).toBe('https://a.example/robots.txt');
+  });
+});
+
+describe('JSON-LD', () => {
+  it('builds a free WebApplication', () => {
+    const d = webApplication({ name: 'T', description: 'D', url: 'https://a.example/t/' });
+    expect(d['@type']).toBe('WebApplication');
+    expect(d.offers.price).toBe('0');
+  });
+  it('builds a BreadcrumbList with positions', () => {
+    const d = breadcrumbList([{ name: 'Home', url: 'https://a.example/' }, { name: 'T', url: 'https://a.example/t/' }]);
+    expect(d.itemListElement.map((i) => i.position)).toEqual([1, 2]);
+  });
+  it('builds an FAQPage', () => {
+    expect(faqPage([{ question: 'Q', answer: 'A' }]).mainEntity[0].acceptedAnswer.text).toBe('A');
+  });
+  it('escapes < when serializing', () => {
+    expect(serializeJsonLd({ a: '</script>' })).not.toContain('</script>');
+  });
+});

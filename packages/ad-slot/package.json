@@ -1,0 +1,8 @@
+{
+  "name": "@tools/ad-slot",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./*": "./src/*"
+  }
+}
