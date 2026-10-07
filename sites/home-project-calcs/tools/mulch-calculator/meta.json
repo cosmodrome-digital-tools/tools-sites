@@ -1,0 +1,137 @@
+{
+  "title": "Mulch Calculator",
+  "benefit": "Bags and Cubic Yards",
+  "metaDescription": "Estimate cubic yards and bags of mulch for a bed, a circle, or a tree ring. Top-up mode subtracts the depth you already have and keeps mulch off the trunk.",
+  "primaryKeyword": "mulch calculator",
+  "secondaryKeywords": [
+    "mulch calculator yards",
+    "mulch calculator bags",
+    "how many bags of mulch in a yard",
+    "how deep should mulch be",
+    "mulch calculator circle"
+  ],
+  "intent": "Estimate cubic yards or bags of mulch to cover beds at the right depth.",
+  "registerRow": "Keyword register (estimates): mulch calculator — volume 3, competition ease 3, ad value 2, fit 5, priority 18",
+  "category": "Garden beds",
+  "intro": "Estimate cubic yards and bags of mulch for a rectangular bed, a circle, or a tree ring. For a top-up, enter the depth that is already in the bed.",
+  "lastUpdated": "2026-10-06",
+  "layout": "stepper",
+  "chartStyle": "line",
+  "chartTitle": "Bags for this area at 2, 3, and 4 inches",
+  "heroAlt": "Overhead view of a tree ring: brown mulch around a trunk, with a bare gap between the mulch and the bark.",
+  "uniqueAddition": "Top-up mode subtracts mulch already in the bed, a tree ring removes a trunk-clearance circle, and a table lists bags for 100, 200, and 300 sq ft at 2, 3, and 4 inches. The line chart repeats those three depths for the area you entered.",
+  "relatedTools": [
+    "gravel-calculator",
+    "paver-patio-calculator",
+    "retaining-wall-block-calculator"
+  ],
+  "inputs": [
+    {
+      "name": "shape",
+      "label": "Shape",
+      "type": "select",
+      "default": "rectangle",
+      "group": "Bed",
+      "help": "Rectangle uses length and width. Circle uses Length / diameter as the diameter. Tree ring uses Outer diameter and the trunk clearance in Advanced. Enter sq ft uses Area. Boxes the shape does not use stay on the form and are skipped.",
+      "options": [
+        { "value": "rectangle", "label": "Rectangle" },
+        { "value": "circle", "label": "Circle" },
+        { "value": "treeRing", "label": "Tree ring" },
+        { "value": "sqft", "label": "Enter sq ft" }
+      ]
+    },
+    {
+      "name": "length",
+      "label": "Length / diameter",
+      "type": "number",
+      "unit": "ft",
+      "default": "20",
+      "group": "Size",
+      "help": "Longest side of a rectangle, or the diameter of a circle. From 1 to 200 ft. Skipped for a tree ring and for Enter sq ft."
+    },
+    {
+      "name": "width",
+      "label": "Width",
+      "type": "number",
+      "unit": "ft",
+      "default": "10",
+      "group": "Size",
+      "help": "Shorter side of a rectangle, from 1 to 100 ft. Skipped for a circle, a tree ring, and Enter sq ft."
+    },
+    {
+      "name": "outerDiameter",
+      "label": "Outer diameter",
+      "type": "number",
+      "unit": "ft",
+      "default": "6",
+      "group": "Size",
+      "help": "How far it is across the ring, from 2 to 30 ft. Used only for a tree ring. Illinois Extension says a 3-foot radius, which is 6 ft across, is the maximum ring for most trees. The box starts there."
+    },
+    {
+      "name": "area",
+      "label": "Area",
+      "type": "number",
+      "unit": "sq ft",
+      "default": "200",
+      "group": "Size",
+      "help": "Used only for Enter sq ft. From 1 to 20,000 sq ft, the same cap as a 200 ft by 100 ft rectangle."
+    },
+    {
+      "name": "depth",
+      "label": "Depth",
+      "type": "number",
+      "unit": "in",
+      "default": "3",
+      "group": "Depth",
+      "help": "Depth you want when you are done, from 1 to 6 inches. Illinois Extension recommends 2 to 4 inches: composted material 2 to 3, coarse mulch 3 to 4. The box starts at 3, in the middle of that range."
+    },
+    {
+      "name": "existingDepth",
+      "label": "Existing depth",
+      "type": "number",
+      "unit": "in",
+      "default": "0",
+      "group": "Depth",
+      "help": "Mulch already in the bed, from 0 to 6 inches. This is subtracted from Depth. Use 0 on bare soil. If this number is higher than Depth, fix it before the results will show."
+    },
+    {
+      "name": "bagSize",
+      "label": "Bag size",
+      "type": "number",
+      "unit": "cu ft",
+      "default": "2",
+      "group": "Bags",
+      "help": "Cubic feet printed on the bag, from 0.5 to 3. The box starts at 2 because that size shows up in common questions. It is not taken from a brand label. Read your bag and change this number."
+    },
+    {
+      "name": "clearanceRadius",
+      "label": "Trunk clearance",
+      "type": "number",
+      "unit": "ft",
+      "default": "0.33",
+      "group": "Advanced",
+      "help": "Bare radius around the trunk, from 0.25 to 1 ft. Used only for a tree ring. 0.33 ft is 3.96 inches. Illinois Extension says keep mulch at least 4 inches off the trunk. Type 0.34 or more for a full 4 inches. The low end, 0.25 ft, is 3 inches."
+    }
+  ],
+  "outputs": [
+    { "name": "bags", "label": "Bags to buy", "unit": "bags", "decimals": 0, "primary": true },
+    { "name": "cubicYards", "label": "Cubic yards", "unit": "cu yd", "decimals": 2, "primary": true },
+    { "name": "cubicFeet", "label": "Cubic feet", "unit": "cu ft", "decimals": 2 },
+    { "name": "bagsPerYard", "label": "Bags in one yard", "unit": "bags", "decimals": 2 },
+    { "name": "areaSqFt", "label": "Mulched area", "unit": "sq ft", "decimals": 1 },
+    { "name": "netDepth", "label": "Depth to add", "unit": "in", "decimals": 2 },
+    { "name": "openSqFt", "label": "Left clear at trunk", "unit": "sq ft", "decimals": 1 }
+  ],
+  "sources": [
+    {
+      "title": "University of Illinois Extension, Proper Mulching Techniques (Sarah Vogel and Jenny Lee, modified March 2024)",
+      "url": "https://extension.illinois.edu/sites/default/files/proper_mulching_techniques_infosheet.pdf",
+      "accessed": "2026-10-06"
+    },
+    {
+      "title": "NIST Handbook 44 (2026), Appendix C: General Tables of Units of Measurement",
+      "url": "https://www.nist.gov/document/2026-nist-handbook-44-appendix-c",
+      "accessed": "2026-10-06"
+    }
+  ]
+}
