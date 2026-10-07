@@ -5,9 +5,12 @@
 // TODO(domain): no domain has been picked yet. Replace this placeholder (and
 // add the matching "routes" entry in wrangler.jsonc) when the owner picks one.
 const domain = 'todo-domain.example';
+const name = 'Home & Yard Calcs';
 
 export default {
-  name: 'Home & Yard Calcs',
+  name,
+  // Homepage <title> (approved by Content & SEO; 60 characters or fewer).
+  homeTitle: `${name} - Home Project Materials Calculators`,
   slug: 'home-project-calcs',
   tagline: 'Free materials calculators for US home projects',
   description:

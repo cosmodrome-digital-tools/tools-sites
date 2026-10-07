@@ -1,6 +1,7 @@
 {
   "title": "Rebar Calculator",
   "benefit": "Sticks, Weight, and Ties",
+  "seoTitle": "Rebar Calculator for Slabs and Footings",
   "metaDescription": "Estimate rebar sticks, linear feet, weight, tie points, and chairs for a slab or footing grid in US units, with a lap-aware cut list and CRSI bar weights.",
   "primaryKeyword": "rebar calculator",
   "secondaryKeywords": [

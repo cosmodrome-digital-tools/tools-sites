@@ -36,6 +36,7 @@ const toolMeta = defineCollection({
   schema: z.looseObject({   // Zod 4: keeps extra meta.json fields
     title: z.string(),
     benefit: z.string(),
+    seoTitle: z.string().optional(),       // approved <title> before " | [Site]"; overrides "[title] - [benefit]"
     metaDescription: z.string(),
     primaryKeyword: z.string(),
     category: z.string(),

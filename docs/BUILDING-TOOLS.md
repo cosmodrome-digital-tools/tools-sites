@@ -158,6 +158,7 @@ are automatic.
 - `title` = tool name, also the H1, e.g. `Concrete Slab Calculator`
 - `benefit` = main benefit, e.g. `Cubic Yards and Bags for Any Slab`
 - Aim for title + benefit under about 45 characters so the full title stays near 70.
+- Optional `seoTitle` = Content & SEO's approved title text before ` | Home & Yard Calcs`; it replaces `[title] - [benefit]` in `<title>`/`og:title` only (the H1 still uses `title`). Keep the full title at 60 characters or fewer.
 - `metaDescription`: what it calculates, in US units, plus one differentiator (140-160 characters).
 
 **`page.md` H2 sections, in this order:**
