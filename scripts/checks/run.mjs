@@ -3,7 +3,7 @@
 // FAIL = exit 1. WARN = printed, doesn't fail.
 import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import { dirname, join, relative } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const fails = [];
@@ -39,7 +39,7 @@ for (const site of sites) {
   // Site config
   const cfgPath = join(s, 'src', 'site.config.mjs');
   if (!existsSync(cfgPath)) { fail(`${site}: missing src/site.config.mjs`); continue; }
-  const { default: cfg, isPlaceholderDomain } = await import(cfgPath);
+  const { default: cfg, isPlaceholderDomain } = await import(pathToFileURL(cfgPath).href);
   if (cfg.ads?.enabled && !/^pub-\d{16}$/.test(cfg.publisherId ?? '')) fail(`${site}: ads.enabled is true but publisherId is a placeholder`);
   if (isPlaceholderDomain || /<site-domain>|\.example$/.test(cfg.domain ?? '')) warn(`${site}: domain/contact email is still a placeholder (${cfg.contactEmail})`);
 
