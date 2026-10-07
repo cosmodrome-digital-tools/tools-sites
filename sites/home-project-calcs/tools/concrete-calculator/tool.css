@@ -1,0 +1,67 @@
+/* tool.css: Concrete Calculator look. Cool "poured concrete" grey surface,
+   charcoal slate accent, squared-off corners, safety-yellow chart highlight.
+   Contrast (WCAG AA): accent-ink #ffffff on accent #334155 = 10.4:1;
+   ink #111827 on surface #eceef1 = about 15:1; legend #334155 on #eceef1 = about 9:1.
+   System fonts only. */
+[data-tool="concrete-calculator"] {
+  --tool-accent: #334155;
+  --tool-accent-ink: #ffffff;
+  --tool-surface: #eceef1;
+  --tool-ink: #111827;
+  --tool-border: #c3c8cf;
+  --tool-radius: 4px;
+  --tool-font-display: 'Segoe UI', system-ui, -apple-system, Roboto, Arial, sans-serif;
+  --chart-palette-1: #334155;
+  --chart-palette-2: #b45309;
+  --chart-palette-3: #64748b;
+  --chart-palette-4: #0f766e;
+}
+
+/* Fieldsets read as poured "blocks" with a slate rule on the left. */
+[data-tool="concrete-calculator"] .tool-form fieldset {
+  padding: 0.5rem 0 0.25rem 0.75rem;
+  border-left: 3px solid var(--tool-border);
+}
+[data-tool="concrete-calculator"] .tool-form legend {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.85rem;
+  color: var(--tool-accent);
+}
+
+/* Make the bag count stand out like a shopping-list total. */
+[data-tool="concrete-calculator"] .calc-result--primary {
+  background: var(--tool-accent);
+  color: var(--tool-accent-ink);
+  padding: 0.6rem 0.75rem;
+  border-radius: var(--tool-radius);
+  border-bottom: 0;
+  align-items: center;
+}
+[data-tool="concrete-calculator"] .calc-result--primary dd,
+[data-tool="concrete-calculator"] .calc-result--primary .calc-unit {
+  color: var(--tool-accent-ink);
+}
+[data-tool="concrete-calculator"] .calc-result--primary dd {
+  font-size: 1.75rem;
+}
+
+/* Tables in the page copy (bag yields, common slab sizes). */
+/* display:block lets a wide table scroll inside itself on phones instead of
+   widening the whole page. */
+[data-tool="concrete-calculator"] .tool-content table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+[data-tool="concrete-calculator"] .tool-content th,
+[data-tool="concrete-calculator"] .tool-content td {
+  border: 1px solid var(--tool-border);
+  padding: 0.4rem 0.6rem;
+  text-align: left;
+}
+[data-tool="concrete-calculator"] .tool-content thead th {
+  background: var(--tool-surface);
+}
