@@ -1,0 +1,93 @@
+/* Roof pitch calculator. Plum accent on a pale plum surface, split frame,
+   line chart, slab-serif headings, and a small gable shape on the main result.
+   Accent changed on intake from #7e1f86 (violet) to plum #7e1f86 so it doesn't
+   sit next to the fence calculator's indigo #3730a3 (CIEDE2000 8.9 -> 15.2).
+   Contrast (WCAG AA), checked with the WCAG relative-luminance formula:
+   #ffffff on #7e1f86 = 8.65:1; #7e1f86 on #ffffff = 8.65:1;
+   #7e1f86 on #fbf5fb = 8.06:1; #2a1029 on #fbf5fb = 16.23:1;
+   #8b5a8e border on #fbf5fb = 4.95:1; note borders #b45309 on #fff7ed = 4.73:1,
+   #b91c1c on #fef2f2 = 5.91:1; #2a1029 note text on either tint >= 15.9:1.
+   System fonts only. */
+[data-tool="roof-pitch-calculator"] {
+  --tool-accent: #7e1f86;
+  --tool-accent-ink: #ffffff;
+  --tool-surface: #fbf5fb;
+  --tool-ink: #2a1029;
+  --tool-border: #8b5a8e;
+  --tool-radius: 6px;
+  --tool-font-display: Rockwell, "Rockwell Nova", "Roboto Slab", "Bookman Old Style", Georgia, serif;
+  --chart-palette-1: #7e1f86;
+  --chart-palette-2: #b45309;
+  --chart-palette-3: #475569;
+  --chart-palette-4: #d8a6dc;
+}
+
+[data-tool="roof-pitch-calculator"] .tool-form legend {
+  font-family: var(--tool-font-display);
+  color: var(--tool-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.9rem;
+}
+
+[data-tool="roof-pitch-calculator"] .tool-form fieldset + fieldset {
+  padding-top: 0.75rem;
+  border-top: 2px solid var(--tool-border);
+}
+
+[data-tool="roof-pitch-calculator"] .calc-results__title {
+  font-family: var(--tool-font-display);
+  color: var(--tool-accent);
+}
+
+/* Main result sits under a small gable, like a roof over the number. */
+[data-tool="roof-pitch-calculator"] .calc-result--primary {
+  position: relative;
+  margin-top: 0.9rem;
+  padding: 0.5rem 0.7rem;
+  background: var(--tool-surface);
+  border: 2px solid var(--tool-accent);
+  border-radius: 0 0 var(--tool-radius) var(--tool-radius);
+}
+
+[data-tool="roof-pitch-calculator"] .calc-result--primary::before {
+  content: "";
+  position: absolute;
+  left: -2px;
+  right: -2px;
+  bottom: 100%;
+  height: 0.8rem;
+  background: var(--tool-accent);
+  clip-path: polygon(0 100%, 50% 0, 100% 100%);
+}
+
+[data-tool="roof-pitch-calculator"] .roof-slope-note {
+  margin: 0.75rem 0 0;
+  padding: 0.5rem 0.7rem;
+  font-size: 0.95rem;
+  color: var(--tool-ink);
+  background: var(--tool-surface);
+  border-left: 4px solid var(--tool-accent);
+}
+
+[data-tool="roof-pitch-calculator"] .roof-slope-note:empty {
+  display: none;
+}
+
+[data-tool="roof-pitch-calculator"] .roof-slope-note[data-band="doubleUnderlayment"] {
+  background: #fff7ed;
+  border-left-color: #b45309;
+}
+
+[data-tool="roof-pitch-calculator"] .roof-slope-note[data-band="belowMin"] {
+  background: #fef2f2;
+  border-left-color: #b91c1c;
+}
+
+[data-tool="roof-pitch-calculator"] .calc-results[data-state="invalid"] .roof-slope-note {
+  display: none;
+}
+
+[data-tool="roof-pitch-calculator"] .tool-content table {
+  font-variant-numeric: tabular-nums;
+}
