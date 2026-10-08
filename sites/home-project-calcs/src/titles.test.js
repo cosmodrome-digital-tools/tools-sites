@@ -21,6 +21,7 @@ const EXPECTED = {
   'paver-patio-calculator': 'Paver Calculator - Pavers, Base and Sand | Home & Yard Calcs',
   'retaining-wall-block-calculator': 'Retaining Wall Block Calculator | Home & Yard Calcs',
   'roof-pitch-calculator': 'Roof Pitch Calculator - Pitch to Degrees | Home & Yard Calcs',
+  'shingle-calculator': 'Shingle Calculator - Bundles and Squares | Home & Yard Calcs',
   'fence-calculator': 'Fence Calculator - Posts, Pickets, Bags | Home & Yard Calcs',
   'deck-board-calculator': 'Deck Board Calculator with Spacing | Home & Yard Calcs',
   'paint-calculator': 'Paint Calculator - Gallons for Walls | Home & Yard Calcs',

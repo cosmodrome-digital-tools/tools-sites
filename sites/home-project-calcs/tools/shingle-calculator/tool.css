@@ -1,0 +1,143 @@
+/* tool.css: Shingle Calculator look. Warm asphalt-charcoal accent with an
+   amber "granule" highlight, a faint staggered shingle-course pattern behind
+   the form, notched step badges, and a grouped shopping list.
+   Warm brown-black, unlike the blue-gray slate (#334155) used by concrete.
+   Contrast (WCAG AA): accent-ink #ffffff on accent #4a3f36 = about 10.2:1;
+   ink #1c1917 on surface #f8f5f0 = about 16.1:1; amber #92400e text on
+   #f8f5f0 = about 6.5:1; chart bars #4a3f36 (9.4:1), #b45309 (4.6:1), #78716c (4.4:1) on the
+   surface, all over 3:1. System fonts only. */
+[data-tool="shingle-calculator"] {
+  --tool-accent: #4a3f36;
+  --tool-accent-ink: #ffffff;
+  --tool-surface: #f8f5f0;
+  --tool-ink: #1c1917;
+  --tool-border: #d6cfc4;
+  --tool-radius: 6px;
+  --tool-font-display: 'Franklin Gothic Medium', 'Arial Narrow', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --chart-palette-1: #78716c;
+  --chart-palette-2: #4a3f36;
+  --chart-palette-3: #b45309;
+  --chart-palette-4: #92400e;
+}
+
+/* Staggered shingle courses, very faint (decorative only). */
+[data-tool="shingle-calculator"] .tool-frame {
+  background-color: var(--tool-surface);
+  background-image:
+    repeating-linear-gradient(180deg, transparent 0 27px, rgba(74, 63, 54, 0.07) 27px 29px),
+    repeating-linear-gradient(90deg, transparent 0 46px, rgba(74, 63, 54, 0.05) 46px 48px);
+  border-top: 6px solid var(--tool-accent);
+  box-shadow: inset 0 3px 0 #b45309;
+}
+
+/* Step badges: a notched shingle tab instead of a circle. */
+[data-tool="shingle-calculator"] .tool-form fieldset::before {
+  border-radius: 2px 2px 8px 8px;
+}
+[data-tool="shingle-calculator"] .tool-form legend {
+  font-family: var(--tool-font-display);
+  letter-spacing: 0.01em;
+  color: var(--tool-accent);
+}
+[data-tool="shingle-calculator"] .tool-form legend::after {
+  content: '';
+  display: block;
+  width: 2.25rem;
+  height: 3px;
+  margin-top: 0.2rem;
+  background: #b45309;
+}
+
+/* Primary result: charcoal panel with an amber drip-edge underline. */
+[data-tool="shingle-calculator"] .calc-result--primary {
+  background: var(--tool-accent);
+  color: var(--tool-accent-ink);
+  padding: 0.65rem 0.8rem;
+  border-radius: var(--tool-radius);
+  border-bottom: 4px solid #b45309;
+  align-items: center;
+}
+[data-tool="shingle-calculator"] .calc-result--primary dd,
+[data-tool="shingle-calculator"] .calc-result--primary .calc-unit {
+  color: var(--tool-accent-ink);
+}
+[data-tool="shingle-calculator"] .calc-result--primary dd {
+  font-size: 1.8rem;
+}
+[data-tool="shingle-calculator"] .calc-results dd {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Grouped shopping list (rendered by ui.js under the results). */
+[data-tool="shingle-calculator"] .shingle-list {
+  margin-top: 1rem;
+  border: 1px solid var(--tool-border);
+  border-radius: var(--tool-radius);
+  background: #ffffff;
+  padding: 0.75rem 0.9rem;
+}
+[data-tool="shingle-calculator"] .shingle-list:empty {
+  display: none;
+}
+[data-tool="shingle-calculator"] .shingle-list__title {
+  margin: 0 0 0.5rem;
+  font-family: var(--tool-font-display);
+  font-size: 1.05rem;
+}
+[data-tool="shingle-calculator"] .shingle-list__group h4 {
+  margin: 0.6rem 0 0.25rem;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #92400e;
+}
+[data-tool="shingle-calculator"] .shingle-list__group ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+[data-tool="shingle-calculator"] .shingle-list__group li {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.3rem 0;
+  border-bottom: 1px dashed var(--tool-border);
+  font-variant-numeric: tabular-nums;
+}
+[data-tool="shingle-calculator"] .shingle-list__group li:last-child {
+  border-bottom: 0;
+}
+[data-tool="shingle-calculator"] .shingle-list__group strong {
+  white-space: nowrap;
+}
+
+/* Low-slope note (filled by ui.js only when it applies). */
+[data-tool="shingle-calculator"] .shingle-note:empty {
+  display: none;
+}
+[data-tool="shingle-calculator"] .shingle-note {
+  margin: 0.75rem 0 0;
+  padding: 0.5rem 0.75rem;
+  border-left: 4px solid #b45309;
+  background: #fdf6ec;
+  color: var(--tool-ink);
+}
+
+/* Coverage table in the page copy; scrolls inside itself on phones. */
+[data-tool="shingle-calculator"] .tool-content table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+}
+[data-tool="shingle-calculator"] .tool-content th,
+[data-tool="shingle-calculator"] .tool-content td {
+  border: 1px solid var(--tool-border);
+  padding: 0.45rem 0.6rem;
+  text-align: left;
+  vertical-align: top;
+}
+[data-tool="shingle-calculator"] .tool-content thead th {
+  background: var(--tool-accent);
+  color: var(--tool-accent-ink);
+}

@@ -34,6 +34,16 @@ export const SLOPE_NOTES = {
   standard: '4/12 or steeper: standard (single-layer) underlayment rules apply for asphalt shingles under the 2024 IRC.',
 };
 
+// Link to the Shingle Calculator with this pitch filled in (it reads ?pitch=).
+export const SHINGLE_CALCULATOR_PATH = '/shingle-calculator/';
+
+/** "/shingle-calculator/?pitch=6" for a pitch shingles are allowed on, else null (below 2/12). */
+export function shingleLink(pitch) {
+  const p = round(pitch, 2);
+  if (!Number.isFinite(p) || slopeBand(p) === 'belowMin') return null;
+  return `${SHINGLE_CALCULATOR_PATH}?pitch=${p}`;
+}
+
 /** Pitch (rise in inches per 12 in of run) -> angle, percent, multiplier, rafter inches per foot. */
 export function pitchFacts(pitch) {
   const ratio = pitch / 12;
@@ -99,6 +109,8 @@ export function calculate(raw = {}) {
     // Not a form output: ui.js shows this text under the results.
     slopeBand: band,
     slopeNote: SLOPE_NOTES[band],
+    // Not a form output: ui.js points the "Estimate shingles" link here (null below 2/12).
+    shingleHref: shingleLink(pitch),
     chart: referenceTable().map((r) => ({ label: String(r.pitch), value: r.angle })),
   };
 }

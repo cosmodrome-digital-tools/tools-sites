@@ -91,3 +91,17 @@
 [data-tool="roof-pitch-calculator"] .tool-content table {
   font-variant-numeric: tabular-nums;
 }
+
+/* Link to the Shingle Calculator with the current pitch (added by ui.js). */
+[data-tool="roof-pitch-calculator"] .roof-shingle-link {
+  margin: 0.6rem 0 0;
+  font-weight: 600;
+}
+
+[data-tool="roof-pitch-calculator"] .roof-shingle-link a {
+  color: var(--tool-accent);
+}
+
+[data-tool="roof-pitch-calculator"] .roof-shingle-link a::after {
+  content: " \2192";
+}

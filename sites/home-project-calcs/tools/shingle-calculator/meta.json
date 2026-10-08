@@ -1,0 +1,89 @@
+{
+  "title": "Shingle Calculator",
+  "benefit": "Bundles, Starter, Ridge Cap, and Nails",
+  "seoTitle": "Shingle Calculator - Bundles and Squares",
+  "metaDescription": "Estimate roof squares, shingle bundles with waste, starter strip, ridge cap, underlayment rolls, and nails from your roof size and pitch, in US units.",
+  "primaryKeyword": "shingle calculator",
+  "secondaryKeywords": [
+    "how many bundles of shingles do i need",
+    "how many bundles of shingles in a square",
+    "shingle calculator for hip roof",
+    "how much underlayment do i need roof"
+  ],
+  "intent": "Estimate roofing squares, shingle bundles, and accessory quantities (starter, ridge cap, underlayment, nails) for a roof.",
+  "registerRow": "Keyword Register: shingle calculator (Volume 1, Competition ease 4, Ad value 4, Fit 5, Priority 16)",
+  "category": "Roofing",
+  "intro": "Enter your roof's footprint, pitch, and edge lengths to get roof squares, field shingle bundles before and after waste, and a shopping list of starter strip, ridge cap, underlayment, and nails. Accessory coverage loads from GAF or Owens Corning data sheets, or you can type your own.",
+  "lastUpdated": "2026-10-07",
+  "layout": "stepper",
+  "chartStyle": "bar",
+  "chartTitle": "Bundles to buy, by type",
+  "heroAlt": "",
+  "uniqueAddition": "Itemized shopping list grouped into field shingles, accessories, and fasteners, with starter, ridge cap, and underlayment worked out from eave, rake, and ridge lengths and a product selector that loads coverage from cited GAF and Owens Corning data sheets. Includes a bar chart of bundles by type and an accessory coverage comparison table.",
+  "relatedTools": ["roof-pitch-calculator", "insulation-calculator"],
+  "inputs": [
+    { "name": "length", "label": "Footprint length", "unit": "ft", "default": "40", "help": "10 to 200 ft. Measure the house's long side and add both roof overhangs.", "group": "Roof footprint" },
+    { "name": "width", "label": "Footprint width", "unit": "ft", "default": "30", "help": "10 to 100 ft. The short side, also including both overhangs.", "group": "Roof footprint" },
+    {
+      "name": "pitchMode",
+      "label": "Enter slope as",
+      "type": "select",
+      "default": "pitch",
+      "options": [
+        { "value": "pitch", "label": "Pitch (inches of rise per 12 in)" },
+        { "value": "multiplier", "label": "Pitch multiplier (area factor)" }
+      ],
+      "help": "Use the multiplier if you already have one, for example from the Roof Pitch Calculator.",
+      "group": "Roof pitch"
+    },
+    { "name": "pitch", "label": "Roof pitch", "unit": "x/12", "default": "6", "help": "2 to 24. A 6/12 roof rises 6 in for every 12 in across. The 2024 IRC allows asphalt shingles only at 2/12 or steeper.", "group": "Roof pitch" },
+    { "name": "multiplier", "label": "Pitch multiplier", "unit": "x", "default": "1.118", "help": "1.014 to 2.5. Roof area divided by footprint area, e.g. 1.118 for a 6/12 roof.", "group": "Roof pitch" },
+    { "name": "eave", "label": "Eave length", "unit": "ft", "default": "80", "help": "0 to 500 ft. Total of the bottom (gutter) edges. Starter strip runs here.", "group": "Roof edges" },
+    { "name": "rake", "label": "Rake length", "unit": "ft", "default": "60", "help": "0 to 500 ft. Total of the sloped gable edges. Enter 0 if you won't use starter on the rakes.", "group": "Roof edges" },
+    { "name": "ridgeHip", "label": "Ridge + hip length", "unit": "ft", "default": "40", "help": "0 to 500 ft. All ridges plus all hips. These get ridge cap shingles.", "group": "Roof edges" },
+    { "name": "bundlesPerSquare", "label": "Bundles per square", "unit": "bundles", "default": "3", "help": "3 to 5. GAF Timberline HDZ is 3 bundles per square (100 sq ft). Check your shingle's wrapper.", "group": "Shingles and waste" },
+    { "name": "waste", "label": "Waste allowance", "unit": "%", "default": "10", "help": "5 to 25%. 10% suits a simple gable roof. Use 15% or more for hips, valleys, and dormers, which need more cuts.", "group": "Shingles and waste" },
+    {
+      "name": "product",
+      "label": "Accessory product line",
+      "type": "select",
+      "default": "gaf",
+      "options": [
+        { "value": "gaf", "label": "GAF: Pro-Start, Seal-A-Ridge, FeltBuster" },
+        { "value": "oc", "label": "Owens Corning: Starter Strip Plus, ProEdge, ProArmor" },
+        { "value": "custom", "label": "Custom (my own coverage values)" }
+      ],
+      "help": "Loads the coverage values below from the maker's data sheet. Change any value to match the product you buy.",
+      "group": "Advanced: accessory coverage"
+    },
+    { "name": "starterCoverage", "label": "Starter coverage", "unit": "lin ft/bundle", "default": "120.33", "help": "50 to 200. GAF Pro-Start: about 120.33 lin ft per bundle.", "group": "Advanced: accessory coverage" },
+    { "name": "ridgeCoverage", "label": "Ridge-cap coverage", "unit": "lin ft/bundle", "default": "25", "help": "15 to 45. GAF Seal-A-Ridge: about 25 lin ft per bundle.", "group": "Advanced: accessory coverage" },
+    { "name": "underlaymentCoverage", "label": "Underlayment roll coverage", "unit": "sq ft/roll", "default": "937.5", "help": "200 to 1,000. Net of laps. GAF FeltBuster is 1,000 sq ft before laps (937.5 after 3 in side laps).", "group": "Advanced: accessory coverage" },
+    { "name": "nailsPerSquare", "label": "Nails per square", "unit": "nails", "default": "256", "help": "100 to 400. GAF Timberline HDZ: 256 (4 per shingle). Some codes and high-wind installs need 6 per shingle (384).", "group": "Advanced: accessory coverage" }
+  ],
+  "outputs": [
+    { "name": "fieldBundles", "label": "Field shingle bundles (with waste)", "unit": "bundles", "decimals": 0, "primary": true },
+    { "name": "fieldBundlesBeforeWaste", "label": "Field bundles before waste", "unit": "bundles", "decimals": 0 },
+    { "name": "roofArea", "label": "Roof area", "unit": "sq ft", "decimals": 1 },
+    { "name": "squares", "label": "Roof squares (1 square = 100 sq ft)", "unit": "squares", "decimals": 2 },
+    { "name": "squaresWithWaste", "label": "Squares with waste", "unit": "squares", "decimals": 2 },
+    { "name": "multiplier", "label": "Pitch multiplier used", "unit": "x", "decimals": 3 },
+    { "name": "starterLength", "label": "Starter run (eaves + rakes)", "unit": "lin ft", "decimals": 1 },
+    { "name": "starterBundles", "label": "Starter strip", "unit": "bundles", "decimals": 0 },
+    { "name": "ridgeCapBundles", "label": "Hip and ridge cap", "unit": "bundles", "decimals": 0 },
+    { "name": "underlaymentRolls", "label": "Underlayment", "unit": "rolls", "decimals": 0 },
+    { "name": "nails", "label": "Roofing nails (field shingles)", "unit": "nails", "decimals": 0 }
+  ],
+  "sources": [
+    { "title": "Timberline HDZ shingles: product specifications (GAF)", "url": "https://www.gaf.com/en-us/roofing-materials/residential-roofing-materials/shingles/timberline-hdz", "accessed": "2026-10-07" },
+    { "title": "Pro-Start Starter Strip Shingles data sheet, RESGN546 (GAF)", "url": "https://www.gaf.com/en-us/document-library/documents/data-sheets/pro-start-starter-strip-shingles-sell-sheet-resgn546.pdf", "accessed": "2026-10-07" },
+    { "title": "Seal-A-Ridge Ridge Cap Shingles data sheet, RESHR112 (GAF)", "url": "https://www.gaf.com/en-us/document-library/documents/data-sheets/seal-a-ridge-ridge-cap-shingles-sell-sheet-reshr112.pdf", "accessed": "2026-10-07" },
+    { "title": "FeltBuster High-Traction Synthetic Roofing Felt data sheet, RESUL183 (GAF)", "url": "https://www.gaf.com/en-us/document-library/documents/data-sheets/feltbuster-sell-sheet-resul183_data-sheet.pdf", "accessed": "2026-10-07" },
+    { "title": "Starter Strip Plus: technical information (Owens Corning)", "url": "https://www.owenscorning.com/en-us/roofing/components/products/starter-strip-plus", "accessed": "2026-10-07" },
+    { "title": "ProEdge Hip & Ridge Shingles data sheet, Pub. No. 500378-F (Owens Corning)", "url": "https://dcpd6wotaa0mb.cloudfront.net/mdms/dms/Roofing/500378CA/500378CA-ProEdge-Data-Sheet.pdf?v=1564487336000", "accessed": "2026-10-07" },
+    { "title": "ProArmor Synthetic Roof Underlayment: technical information (Owens Corning)", "url": "https://www.owenscorning.com/en-us/roofing/components/products/proarmor", "accessed": "2026-10-07" },
+    { "title": "2024 International Residential Code, Chapter 9 Roof Assemblies: R905.2.2 Slope, Table R905.1.1(2), and R905.2.8.5 Drip Edge (GSA Residential Code 2024, adopts the IRC 2024 without amendments), UpCodes", "url": "https://up.codes/viewer/general-services-administration/irc-2024/chapter/9/roof-assemblies", "accessed": "2026-10-07" },
+    { "title": "Blueprint for Roofing, Part 2: How to Measure the Roofing Materials Needed (IKO)", "url": "https://www.iko.com/na/blog/blueprint-for-roofing/", "accessed": "2026-10-07" },
+    { "title": "Calculating Roofing Shingles (Extreme How-To)", "url": "https://extremehowto.com/calculating-roofing-shingles/", "accessed": "2026-10-07" }
+  ]
+}

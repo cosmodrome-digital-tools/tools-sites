@@ -45,7 +45,7 @@ A 5/12 pitch falls in the 4/12-or-steeper band, so the standard underlayment rul
 - **Pitch** is what roofers and shingle bundle charts use. A result like 5.98/12 almost always means a 6/12 roof that was measured slightly off; round to the nearest whole or half number if your house was built to plans.
 - **Angle** is what an angle finder or phone app reads, and what some product sheets list.
 - **Percent slope** is the same thing as rise over run times 100. The IRC writes 2/12 as "17-percent slope" and 4/12 as "33-percent slope".
-- **Area multiplier** turns flat footprint area into real roof surface. Use it for shingles, underlayment, and roof sheathing. For a roof whose planes all share one pitch (a simple gable or a hip roof), footprint × multiplier gives the full sloped area.
+- **Area multiplier** turns flat footprint area into real roof surface. Use it for shingles, underlayment, and roof sheathing. To count bundles, use the link under the results: it opens the [Shingle Calculator](/shingle-calculator/) with your pitch already filled in. For a roof whose planes all share one pitch (a simple gable or a hip roof), footprint × multiplier gives the full sloped area.
 - **Roof area** is before waste. Add waste for cuts, starter, ridge, and valleys when you order shingles, and round up to whole bundles.
 - **Rafter length per foot of run** helps you rough out a rafter: multiply it by the run in feet (half the building width for a simple gable) for the length in inches along the slope, then add overhang.
 

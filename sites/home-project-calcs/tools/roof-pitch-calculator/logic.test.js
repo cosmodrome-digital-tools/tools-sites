@@ -6,7 +6,7 @@ import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import * as logic from './logic.js';
 
-const { calculate, referenceTable, slopeBand } = logic;
+const { calculate, referenceTable, shingleLink, slopeBand } = logic;
 const ok = (raw) => {
   const r = calculate(raw);
   expect(r.ok).toBe(true);
@@ -107,6 +107,24 @@ describe('IRC 2024 asphalt shingle slope note', () => {
 
   it('an angle that rounds to exactly 4/12 (18.43 deg) counts as 4/12', () => {
     expect(calculate({ mode: 'angle', angle: '18.43' }).slopeBand).toBe('standard');
+  });
+});
+
+describe('Shingle Calculator link (?pitch=)', () => {
+  it('carries the pitch rounded to 2 decimals', () => {
+    expect(calculate(rr(6, 12)).shingleHref).toBe('/shingle-calculator/?pitch=6');
+    expect(calculate(rr(7.5, 18)).shingleHref).toBe('/shingle-calculator/?pitch=5');
+    expect(calculate({ mode: 'angle', angle: '30' }).shingleHref).toBe('/shingle-calculator/?pitch=6.93');
+    expect(calculate({ mode: 'pitch', pitchX: '2' }).shingleHref).toBe('/shingle-calculator/?pitch=2');
+  });
+  it('is null below 2/12, where asphalt shingles are not allowed', () => {
+    expect(calculate({ mode: 'pitch', pitchX: '1.99' }).shingleHref).toBeNull();
+    expect(calculate({ mode: 'angle', angle: '8' }).shingleHref).toBeNull();
+    expect(shingleLink(0)).toBeNull();
+    expect(shingleLink(Number.NaN)).toBeNull();
+  });
+  it('18.43 degrees (3.9993/12) hands over 4, the same band both tools use', () => {
+    expect(calculate({ mode: 'angle', angle: '18.43' }).shingleHref).toBe('/shingle-calculator/?pitch=4');
   });
 });
 
