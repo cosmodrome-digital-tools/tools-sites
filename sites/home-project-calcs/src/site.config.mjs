@@ -27,6 +27,8 @@ export default {
     name: 'Drew Kessler',
     bio:
       "Drew runs the site's tools and reviews each page before launch. Each estimator shows its formula, waste allowances, and dated sources. He's interested in the trades and small business.",
+    // Shown under the bio on the About page. Matches the Disclaimer (Section 3.3).
+    penNameNote: `Drew Kessler is a pen name used by the ${name} team.`,
   },
 };
 
