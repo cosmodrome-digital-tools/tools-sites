@@ -1,0 +1,256 @@
+{
+  "title": "Paint Calculator",
+  "benefit": "Gallons for Walls",
+  "seoTitle": "Paint Calculator - Gallons for Walls",
+  "metaDescription": "Estimate interior wall and ceiling paint in gallons from room size, doors, windows, and coats, then split the wall paint into 5-gallon, gallon, and quart cans.",
+  "primaryKeyword": "paint calculator",
+  "secondaryKeywords": [
+    "how much paint do i need",
+    "how many gallons of paint do i need",
+    "how much does a gallon of paint cover",
+    "paint calculator for walls",
+    "paint calculator for ceiling"
+  ],
+  "intent": "Estimate gallons of paint for a room's walls and ceiling, given dimensions, openings, coats, and the product's coverage rate.",
+  "registerRow": "Keyword Register (estimates): paint calculator — volume 4, competition ease 2, ad value 3, fit 5, priority 24",
+  "category": "Painting and Interiors",
+  "intro": "Estimate how many gallons of interior paint a room needs, with the walls and the ceiling as separate buys, then turn the wall paint into 5-gallon buckets, gallon cans, and quarts. Coverage starts at 350 square feet per gallon from the Sherwin-Williams SuperPaint data sheet.",
+  "lastUpdated": "2026-10-07",
+  "layout": "stacked",
+  "chartStyle": "donut",
+  "chartTitle": "Paint to buy, by product (gal)",
+  "heroAlt": "",
+  "uniqueAddition": "A SuperPaint coverage selector (350 or 400 sq ft per gallon from the cited data sheet, or a custom rate) plus a shopping list that keeps wall paint, ceiling paint, and primer separate. Wall paint is split into 5-gallon buckets, 1-gallon cans, and quarts (rounded up to the next quart; three leftover quarts become one more gallon). The donut shows the gallons to buy of each product. page.md adds a wall-and-ceiling shopping table for six common room sizes at 2 coats and 350 sq ft per gallon.",
+  "relatedTools": [],
+  "inputs": [
+    {
+      "name": "length",
+      "label": "Room length",
+      "unit": "ft",
+      "default": "12",
+      "help": "4 to 50 ft. Measure the floor along one wall.",
+      "group": "Room"
+    },
+    {
+      "name": "width",
+      "label": "Room width",
+      "unit": "ft",
+      "default": "12",
+      "help": "4 to 50 ft. Measure the floor along the next wall.",
+      "group": "Room"
+    },
+    {
+      "name": "height",
+      "label": "Wall height",
+      "unit": "ft",
+      "default": "8",
+      "help": "7 to 12 ft. Floor to ceiling, not just to the top of the window trim.",
+      "group": "Room"
+    },
+    {
+      "name": "includeCeiling",
+      "label": "Include ceiling",
+      "type": "select",
+      "default": "yes",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ],
+      "help": "Yes figures the ceiling (length times width) as its own buy, because ceilings usually get a separate ceiling paint. It never changes the wall paint or wall cans.",
+      "group": "Room"
+    },
+    {
+      "name": "doors",
+      "label": "Doors",
+      "unit": "count",
+      "default": "1",
+      "help": "Whole number, 0 to 10. Count openings you will not paint with the wall color.",
+      "group": "Openings"
+    },
+    {
+      "name": "windows",
+      "label": "Windows",
+      "unit": "count",
+      "default": "2",
+      "help": "Whole number, 0 to 20. Count openings you will not paint with the wall color.",
+      "group": "Openings"
+    },
+    {
+      "name": "coats",
+      "label": "Coats",
+      "unit": "count",
+      "default": "2",
+      "help": "Whole number, 1 to 3. SuperPaint's data sheet calls for 2 coats on drywall.",
+      "group": "Coats and coverage"
+    },
+    {
+      "name": "product",
+      "label": "Product",
+      "type": "select",
+      "default": "sw-350",
+      "options": [
+        {
+          "value": "sw-350",
+          "label": "SuperPaint Flat, 350 sq ft/gal"
+        },
+        {
+          "value": "sw-400",
+          "label": "SuperPaint Flat, 400 sq ft/gal"
+        },
+        {
+          "value": "custom",
+          "label": "Custom rate"
+        }
+      ],
+      "help": "Sherwin-Williams SuperPaint Interior Latex Flat lists 350–400 sq ft per gallon at 4 mils wet. 350 is the low end and the default; 400 is the high end. Those two choices lock that rate. Custom uses the coverage box.",
+      "group": "Coats and coverage"
+    },
+    {
+      "name": "coverage",
+      "label": "Coverage rate",
+      "unit": "sq ft/gal",
+      "default": "350",
+      "help": "200 to 450. Used only when Product is Custom. Read the number off your can's data sheet.",
+      "group": "Coats and coverage"
+    },
+    {
+      "name": "doorSize",
+      "label": "Door size",
+      "unit": "sq ft each",
+      "default": "20",
+      "help": "10 to 40 sq ft each. Starts at 20, a 36 in by 80 in door (3 ft by 6 ft 8 in). JELD-WEN lists 6 ft 8 in as a standard interior height. Measure yours if it differs.",
+      "group": "Opening sizes and primer"
+    },
+    {
+      "name": "windowSize",
+      "label": "Window size",
+      "unit": "sq ft each",
+      "default": "15",
+      "help": "4 to 40 sq ft each. Starts at 15, the nominal 36 in by 60 in call size. A JELD-WEN Builders vinyl double-hung in that call size has a 35.5 in by 59.5 in frame (about 14.7 sq ft). Measure the opening.",
+      "group": "Opening sizes and primer"
+    },
+    {
+      "name": "includePrimer",
+      "label": "Include primer",
+      "type": "select",
+      "default": "no",
+      "options": [
+        {
+          "value": "no",
+          "label": "No"
+        },
+        {
+          "value": "yes",
+          "label": "Yes"
+        }
+      ],
+      "help": "Yes adds one primer coat over the walls and, if included, the ceiling, at the same coverage rate as the paint. Primer is a separate buy. The data sheet suggests primer for a big color change or new drywall.",
+      "group": "Opening sizes and primer"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "totalGallons",
+      "label": "Wall paint, all coats",
+      "unit": "gal",
+      "decimals": 2,
+      "primary": true
+    },
+    {
+      "name": "gallonsPerCoat",
+      "label": "Wall paint per coat",
+      "unit": "gal",
+      "decimals": 2
+    },
+    {
+      "name": "fiveGallon",
+      "label": "Wall 5-gal buckets",
+      "unit": "count",
+      "decimals": 0
+    },
+    {
+      "name": "oneGallon",
+      "label": "Wall 1-gal cans",
+      "unit": "count",
+      "decimals": 0
+    },
+    {
+      "name": "quarts",
+      "label": "Wall quarts",
+      "unit": "count",
+      "decimals": 0
+    },
+    {
+      "name": "wallArea",
+      "label": "Paintable walls",
+      "unit": "sq ft",
+      "decimals": 1
+    },
+    {
+      "name": "ceilingArea",
+      "label": "Ceiling area",
+      "unit": "sq ft",
+      "decimals": 1
+    },
+    {
+      "name": "ceilingBuy",
+      "label": "Ceiling paint to buy",
+      "unit": "gal",
+      "decimals": 2
+    },
+    {
+      "name": "primerBuy",
+      "label": "Primer to buy",
+      "unit": "gal",
+      "decimals": 2
+    }
+  ],
+  "sources": [
+    {
+      "title": "Sherwin-Williams SuperPaint Interior Latex Flat product data sheet, A86 series (08/2026)",
+      "url": "https://www.sherwin-williams.com/document/PDS/en/035777040461/",
+      "accessed": "2026-10-07"
+    },
+    {
+      "title": "Sherwin-Williams Premium Wall & Wood Interior Latex Primer B28W08111 product data sheet (8/2023): 400 sq ft per gallon at 4 mils wet",
+      "url": "https://paintdocs.com/docs/webPDF.jsp?SITEID=ECOMEDES&doctype=PDS&lang=2&prodno=B28W08111",
+      "accessed": "2026-10-07"
+    },
+    {
+      "title": "Sherwin-Williams Paint Calculator and FAQs (ceilings figured in the Custom Calculation; a gallon typically covers 350-400 sq ft)",
+      "url": "https://www.sherwin-williams.com/en-us/color/color-tools/paint-calculator",
+      "accessed": "2026-10-07"
+    },
+    {
+      "title": "Consumer Reports, 5 Ways to Save Money on a Paint Job at Home (larger containers cost less per gallon)",
+      "url": "https://www.consumerreports.org/paints/save-money-on-a-paint-job-at-home/",
+      "accessed": "2026-10-07"
+    },
+    {
+      "title": "JELD-WEN press release: Birkdale molded interior door heights of 6 ft 8 in, 7 ft, or 8 ft (July 9, 2018)",
+      "url": "https://www.corporate.jeld-wen.com/newsroom/press-releases/2018/07-09-2018-145812945",
+      "accessed": "2026-10-07"
+    },
+    {
+      "title": "JELD-WEN Builders Vinyl double-hung architectural design manual (February 2025), book code BLVDH3660",
+      "url": "https://cmd-jeld-wen.s3.us-east-2.amazonaws.com/assets/documents/1703687380.pdf",
+      "accessed": "2026-10-07"
+    },
+    {
+      "title": "NIST Handbook 130 (2020), Uniform Packaging and Labeling Regulation: US gallon of 231 cubic inches and the liquid quart",
+      "url": "https://www.nist.gov/system/files/documents/2019/12/17/2020-NIST-HB130-Final.pdf",
+      "accessed": "2026-10-07"
+    },
+    {
+      "title": "US EPA Lead page (lead-based paint hazards, including pre-1978 homes)",
+      "url": "https://www.epa.gov/lead",
+      "accessed": "2026-10-07"
+    }
+  ]
+}

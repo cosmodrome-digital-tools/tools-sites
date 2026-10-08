@@ -1,0 +1,75 @@
+/* Paint calculator. Blush surface, rose accent, stacked form, donut of cans.
+   Contrast (WCAG AA): #ffffff on #be185d = 6.04:1;
+   #3b0618 on #fff1f2 = 15.60:1; #9f1239 on #fff1f2 = 7.30:1;
+   #be185d on #fff1f2 = 5.50:1; #a85a72 on #fff1f2 = 4.37:1;
+   #535a61 help text on #fff1f2 = 6.37:1;
+   chart #be185d / #854d0e / #4c0519 / #9f1239 on #ffffff are all above 3:1
+   (#854d0e on #ffffff = 6.85:1).
+   System fonts only. */
+[data-tool="paint-calculator"] {
+  --tool-accent: #be185d;
+  --tool-accent-ink: #ffffff;
+  --tool-surface: #fff1f2;
+  --tool-ink: #3b0618;
+  --tool-border: #a85a72;
+  --tool-radius: 14px;
+  --tool-font-display: Verdana, Geneva, sans-serif;
+  --chart-palette-1: #be185d;
+  --chart-palette-2: #854d0e;
+  --chart-palette-3: #4c0519;
+  --chart-palette-4: #9f1239;
+}
+
+[data-tool="paint-calculator"] .tool-form legend {
+  font-family: var(--tool-font-display);
+  color: #9f1239;
+  letter-spacing: 0.01em;
+}
+
+/* Opening sizes and primer stay visible. The frame has no accordion,
+   so this group is drawn as a dashed secondary panel instead of a step. */
+[data-tool="paint-calculator"] .tool-form fieldset:last-of-type {
+  margin-top: 0.35rem;
+  padding: 0.65rem 0.75rem 0.1rem;
+  border: 1px dashed var(--tool-border);
+  border-radius: 12px;
+  background: #fff7f9;
+}
+
+[data-tool="paint-calculator"] .calc-results__title {
+  font-family: var(--tool-font-display);
+  color: #9f1239;
+}
+
+[data-tool="paint-calculator"] .calc-result--primary {
+  background: #fff1f2;
+  border-bottom: 0;
+  border-left: 6px solid var(--tool-accent);
+  border-radius: 0 12px 12px 0;
+  padding: 0.55rem 0.75rem;
+}
+
+[data-tool="paint-calculator"] .calc-result--primary dd {
+  color: #9f1239;
+  font-size: 1.8rem;
+}
+
+[data-tool="paint-calculator"] .tool-content table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+
+[data-tool="paint-calculator"] .tool-content th,
+[data-tool="paint-calculator"] .tool-content td {
+  border: 1px solid var(--tool-border);
+  padding: 0.4rem 0.6rem;
+  text-align: left;
+}
+
+[data-tool="paint-calculator"] .tool-content thead th {
+  background: var(--tool-surface);
+  color: var(--tool-ink);
+}
