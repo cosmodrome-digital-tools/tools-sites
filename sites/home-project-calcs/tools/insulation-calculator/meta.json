@@ -1,0 +1,233 @@
+{
+  "title": "Insulation Calculator",
+  "benefit": "Attic R-Value",
+  "seoTitle": "Insulation Calculator - Attic R-Value",
+  "metaDescription": "Find the ENERGY STAR attic R-value for your US climate zone and estimate AttiCat blown bags or EcoTouch batt packages, plus the thickness to install.",
+  "primaryKeyword": "insulation calculator",
+  "secondaryKeywords": [
+    "insulation calculator for attic",
+    "what r value insulation for attic",
+    "how many bags of blown insulation do i need",
+    "insulation calculator blow in"
+  ],
+  "intent": "Find the recommended attic R-value for a US climate zone and estimate the batts or blown-in bags needed to reach it.",
+  "registerRow": "Keyword Register (estimates): insulation calculator - volume 3, competition ease 2, ad value 4, fit 4, priority 24",
+  "category": "Insulation and Energy",
+  "intro": "Find the R-value ENERGY STAR recommends adding to your attic for your US climate zone, then estimate Owens Corning AttiCat blown-in bags or EcoTouch batt packages for that attic floor. Blown results include the data sheet's minimum thickness.",
+  "lastUpdated": "2026-10-07",
+  "layout": "stacked",
+  "chartStyle": "line",
+  "chartTitle": "AttiCat bags to buy at each chart R-value",
+  "heroAlt": "Cross-section of an attic: roof rafters, floor joists, and a layer of insulation above the joists with a depth mark.",
+  "uniqueAddition": "An on-page ENERGY STAR attic R-value table for every climate-zone group, paired with the AttiCat bag line for this attic at R-30, R-38, R-49, and R-60. Blown results name the AttiCat data-sheet row used and its minimum thickness so the depth can be checked in the attic.",
+  "relatedTools": [
+    "shingle-calculator",
+    "roof-pitch-calculator"
+  ],
+  "inputs": [
+    {
+      "name": "area",
+      "label": "Attic floor area",
+      "unit": "sq ft",
+      "default": "1000",
+      "group": "Attic",
+      "help": "100 to 5,000 sq ft. Measure the flat attic floor, not the sloped roof."
+    },
+    {
+      "name": "climateZone",
+      "label": "US climate zone",
+      "type": "select",
+      "default": "4ab",
+      "group": "Attic",
+      "help": "IECC zone from the Department of Energy map linked in How to use. Zones 4 through 8 share attic targets in pairs on the ENERGY STAR table. This page does not look up your county.",
+      "options": [
+        {
+          "value": "1",
+          "label": "Zone 1"
+        },
+        {
+          "value": "2",
+          "label": "Zone 2"
+        },
+        {
+          "value": "3",
+          "label": "Zone 3"
+        },
+        {
+          "value": "4ab",
+          "label": "Zones 4A and 4B"
+        },
+        {
+          "value": "4c56",
+          "label": "Zones 4C, 5, and 6"
+        },
+        {
+          "value": "78",
+          "label": "Zones 7 and 8"
+        }
+      ]
+    },
+    {
+      "name": "existing",
+      "label": "Existing insulation",
+      "type": "select",
+      "default": "none",
+      "group": "Attic",
+      "help": "ENERGY STAR prints two attic columns: none, or about 3-4 inches already there. Both give the R-value to add on top. Other depths are not converted into an R-value here.",
+      "options": [
+        {
+          "value": "none",
+          "label": "None (uninsulated)"
+        },
+        {
+          "value": "some",
+          "label": "About 3-4 inches"
+        }
+      ]
+    },
+    {
+      "name": "product",
+      "label": "Product type",
+      "type": "select",
+      "default": "blown",
+      "group": "Product",
+      "help": "Blown fiberglass uses the AttiCat 27.5 lb bag chart. Batts use EcoTouch thickness and the package coverage you enter.",
+      "options": [
+        {
+          "value": "blown",
+          "label": "Blown fiberglass (AttiCat chart)"
+        },
+        {
+          "value": "batts",
+          "label": "Batts (EcoTouch)"
+        }
+      ]
+    },
+    {
+      "name": "battR",
+      "label": "Batt R-value",
+      "type": "select",
+      "default": "38",
+      "group": "Product",
+      "help": "Used for batts. Thickness is the standard EcoTouch batt: R-13 is 3.5 in, R-19 is 6.25 in, R-30 is 9.5 in, R-38 is 12 in. One layer only. Compressed cathedral batts are not included.",
+      "options": [
+        {
+          "value": "13",
+          "label": "R-13 (3.5 in)"
+        },
+        {
+          "value": "19",
+          "label": "R-19 (6.25 in)"
+        },
+        {
+          "value": "30",
+          "label": "R-30 (9.5 in)"
+        },
+        {
+          "value": "38",
+          "label": "R-38 (12 in)"
+        }
+      ]
+    },
+    {
+      "name": "battCoverage",
+      "label": "Batt package coverage",
+      "unit": "sq ft",
+      "default": "64",
+      "group": "Product",
+      "help": "Used for batts. Square feet printed on the package. The 64 starting value is one EcoTouch fact-sheet row: R-38, 12 in thick, 24 in wide, 48 in long, 8 pieces, 64.0 sq ft. Other widths cover a different amount, and that fact sheet is from 2012, so match your label. Allowed range is 10 to 400."
+    },
+    {
+      "name": "targetR",
+      "label": "Target R-value override",
+      "unit": "R",
+      "default": "",
+      "placeholder": "Blank uses the zone",
+      "group": "Advanced",
+      "help": "Optional, 13 to 60. Leave blank to use the ENERGY STAR R-value to add. For blown fiberglass, a target between AttiCat data-sheet rows uses the next higher row (for example R-25 uses R-26)."
+    },
+    {
+      "name": "extraWaste",
+      "label": "Extra waste",
+      "unit": "%",
+      "default": "0",
+      "group": "Advanced",
+      "help": "0 to 15. The AttiCat chart and the package coverage already describe full coverage. Add a percent only if you want an extra pad. Purchase counts still round up."
+    }
+  ],
+  "outputs": [
+    {
+      "name": "energyStarR",
+      "label": "ENERGY STAR R-value to add",
+      "unit": "R",
+      "decimals": 0,
+      "primary": true
+    },
+    {
+      "name": "packages",
+      "label": "Bags or batt packages",
+      "decimals": 0
+    },
+    {
+      "name": "rShortfall",
+      "label": "R-value short of your goal",
+      "unit": "R",
+      "decimals": 1
+    },
+    {
+      "name": "blownThickness",
+      "label": "Blown minimum thickness",
+      "unit": "in",
+      "decimals": 2
+    },
+    {
+      "name": "battThickness",
+      "label": "Batt thickness",
+      "unit": "in",
+      "decimals": 2
+    },
+    {
+      "name": "chartR",
+      "label": "AttiCat row used",
+      "unit": "R",
+      "decimals": 0
+    },
+    {
+      "name": "beforeRounding",
+      "label": "Amount before rounding up",
+      "decimals": 2
+    }
+  ],
+  "sources": [
+    {
+      "title": "Recommended Home Insulation R-Values (ENERGY STAR, based on 2021 IECC Table R402.1.3)",
+      "url": "https://www.energystar.gov/saveathome/seal_insulate/identify-problems-you-want-fix/diy-checks-inspections/insulation-r-values",
+      "accessed": "2026-10-07"
+    },
+    {
+      "title": "Significant Changes to the 2024 IECC, Table R402.1.3 ceiling R-values (National Association of Home Builders)",
+      "url": "https://www.nahb.org/-/media/NAHB/advocacy/docs/top-priorities/codes/code-adoption/significant-changes-2024-iecc.pdf",
+      "accessed": "2026-10-07"
+    },
+    {
+      "title": "AttiCat PINK Blown-In Insulation product data sheet, publication 10011273-L (Owens Corning, May 2026)",
+      "url": "https://www.owenscorning.com/dms/10011273",
+      "accessed": "2026-10-07"
+    },
+    {
+      "title": "EcoTouch PINK FIBERGLAS Insulation manufacturers fact sheet, publication 10017881 (Owens Corning, December 2012)",
+      "url": "https://images.thdstatic.com/catalog/pdfImages/3e/3ed37fbb-73d8-4fee-bee3-2d20e75c4643.pdf",
+      "accessed": "2026-10-07"
+    },
+    {
+      "title": "Energy-Efficient Home Improvement Credit: Insulation and Air-Sealing Essentials (U.S. Department of Energy; includes the 2021 IECC climate zone map)",
+      "url": "https://www.energy.gov/cmei/buildings/articles/energy-efficient-home-improvement-credit-insulation-and-air-sealing",
+      "accessed": "2026-10-07"
+    },
+    {
+      "title": "Guide to Determining Climate Zone by County: Building America and IECC 2021 Updates, Figure 4 (PNNL-33270, U.S. Department of Energy)",
+      "url": "https://www.osti.gov/servlets/purl/1893981",
+      "accessed": "2026-10-07"
+    }
+  ]
+}
