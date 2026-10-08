@@ -20,7 +20,7 @@
   "chartTitle": "Roof angle in degrees at each pitch, 1/12 to 12/12",
   "heroAlt": "",
   "uniqueAddition": "An always-visible pitch reference table from 1/12 to 12/12 (degrees, percent slope, area multiplier) plus a line chart of angle by pitch, and a low-slope check against 2024 IRC R905.2.2 and Table R905.1.1(2) shown under the results.",
-  "relatedTools": ["deck-board-calculator"],
+  "relatedTools": ["shingle-calculator", "deck-board-calculator"],
   "inputs": [
     {
       "name": "mode",

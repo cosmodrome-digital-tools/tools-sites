@@ -60,8 +60,8 @@ Run from the repo root on Windows, Node v22.14.0, on `main` at `df2b8e5` after `
 - Choice: Chart = angle in degrees for 1/12 through 12/12 (static reference), because the brief asks for an always-visible 1/12 to 12/12 pitch chart and the shared line chart shows one series. The full table with percent and multiplier is in page.md. | Source: brief section 9.
 
 ## Open questions (decisions for Matthew)
-1. **"Send multiplier to Shingle Calculator" link: left out** because the Shingle Calculator isn't built. Planned feature: once `shingle-calculator` exists, add a link that opens it with the pitch/multiplier pre-filled. That needs the Shingle tool to read a URL parameter (and maybe a frame change so a tool can add a link in the results). Want it scheduled with the Shingle build?
-2. **Related links:** only `deck-board-calculator` is linked (the only brief link that exists on main). Planned: add `shingle-calculator` and `stair-stringer-calculator` when they're built.
+1. ~~**"Send multiplier to Shingle Calculator" link: left out**~~ (done in the shingle-calculator PR, see "Shingle wiring" below) because the Shingle Calculator isn't built. Planned feature: once `shingle-calculator` exists, add a link that opens it with the pitch/multiplier pre-filled. That needs the Shingle tool to read a URL parameter (and maybe a frame change so a tool can add a link in the results). Want it scheduled with the Shingle build?
+2. **Related links:** ~~only `deck-board-calculator` is linked~~ `shingle-calculator` added in the shingle PR; originally only `deck-board-calculator` was linked (the only brief link that exists on main). Planned: add `shingle-calculator` and `stair-stringer-calculator` when they're built.
 3. **Footprint isn't in a collapsed "Advanced" section.** The brief says collapsed, but the shared frame has no accordion. It's in its own group, "Roof area (optional)". A real collapsible group would be a `packages/layout` change.
 4. **Reference table placement:** the 1/12 to 12/12 table is in page.md (always visible, just below the calculator and ad space). Putting it inside the calculator frame would need a frame change. OK where it is?
 5. **Chart is static** (the same 12-point angle curve for every input). It could highlight the visitor's own pitch if the shared line chart supported a highlighted point (frame change). Keep as is?
@@ -85,3 +85,11 @@ Run from the repo root on Windows, Node v22.14.0, on `main` at `df2b8e5` after `
 
 ## Dependency requests
 - none
+
+## Shingle wiring (shingle-calculator intake, 2026-10-07)
+- `relatedTools` is now `shingle-calculator`, `deck-board-calculator`.
+- New pure helper `shingleLink(pitch)` in `logic.js`, returned by `calculate()` as `shingleHref` (not a form output): `/shingle-calculator/?pitch=<pitch rounded to 2 decimals>`, or `null` below 2/12 where asphalt shingles aren't allowed.
+- `ui.js` adds a link under the slope note, "Estimate shingles for a 6/12 roof in the Shingle Calculator", that updates with every result and hides when `shingleHref` is null. Styled in `tool.css` (`.roof-shingle-link`, accent colour, 8.06:1 on the surface).
+- page.md "How to read your results" links the Shingle Calculator (works without JavaScript).
+- The Shingle Calculator reads `?pitch=` and prefills its pitch field; both tools round pitch to 2 decimals before choosing the 2024 IRC band, so the handoff can't change bands.
+- Tests: 3 new cases in `logic.test.js` (link value, null below 2/12, 18.43 degrees hands over 4). This tool: 35 passed.
