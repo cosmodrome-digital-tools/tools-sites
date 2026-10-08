@@ -17,6 +17,7 @@ const EXPECTED = {
   'concrete-calculator': 'Concrete Calculator - Bags and Yards | Home & Yard Calcs',
   'rebar-calculator': 'Rebar Calculator for Slabs and Footings | Home & Yard Calcs',
   'gravel-calculator': 'Gravel Calculator - Cubic Yards and Tons | Home & Yard Calcs',
+  'insulation-calculator': 'Insulation Calculator - Attic R-Value | Home & Yard Calcs',
   'mulch-calculator': 'Mulch Calculator - Cubic Yards and Bags | Home & Yard Calcs',
   'paver-patio-calculator': 'Paver Calculator - Pavers, Base and Sand | Home & Yard Calcs',
   'retaining-wall-block-calculator': 'Retaining Wall Block Calculator | Home & Yard Calcs',
