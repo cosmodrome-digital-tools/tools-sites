@@ -92,7 +92,11 @@ export function calculate(raw = {}) {
   const chart = (shape === 'slab' ? CHART_THICKNESSES : CHART_DIAMETERS).map((inches) => {
     const alt = shape === 'slab' ? { ...v, thickness: inches } : { ...v, diameter: inches };
     const altBags = bagsFor(withWaste(pourCuFt(shape, alt) * v.quantity, v.waste), bagYield);
-    return { label: `${inches}" · ${altBags}`, value: altBags };
+    const point = { label: `${inches}" · ${altBags}`, value: altBags };
+    // Highlight the bar that matches the visitor's own thickness or diameter.
+    const own = shape === 'slab' ? v.thickness : v.diameter;
+    if (own === inches) Object.assign(point, { highlight: true, highlightLabel: 'Yours' });
+    return point;
   });
 
   return {

@@ -3,3 +3,4 @@ export * from './numbers.js';
 export * from './validate.js';
 export * from './units.js';
 export * from './chart.js';
+export * from './visibility.js';

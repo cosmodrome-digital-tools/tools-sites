@@ -106,6 +106,7 @@
     },
     {
       "name": "clearanceRadius",
+      "advanced": true,
       "label": "Trunk clearance",
       "type": "number",
       "unit": "ft",

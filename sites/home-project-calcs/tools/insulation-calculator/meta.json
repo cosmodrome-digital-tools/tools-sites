@@ -105,6 +105,7 @@
     },
     {
       "name": "battR",
+      "showIf": { "field": "product", "equals": "batts" },
       "label": "Batt R-value",
       "type": "select",
       "default": "38",
@@ -131,6 +132,7 @@
     },
     {
       "name": "battCoverage",
+      "showIf": { "field": "product", "equals": "batts" },
       "label": "Batt package coverage",
       "unit": "sq ft",
       "default": "64",
@@ -139,6 +141,7 @@
     },
     {
       "name": "targetR",
+      "advanced": true,
       "label": "Target R-value override",
       "unit": "R",
       "default": "",
@@ -148,6 +151,7 @@
     },
     {
       "name": "extraWaste",
+      "advanced": true,
       "label": "Extra waste",
       "unit": "%",
       "default": "0",

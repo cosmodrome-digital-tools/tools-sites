@@ -1,0 +1,4491 @@
+{
+  "concrete-calculator": [
+    {
+      "id": "defaults",
+      "raw": {
+        "shape": "slab",
+        "quantity": "1",
+        "length": "10",
+        "width": "10",
+        "thickness": "4",
+        "diameter": "12",
+        "height": "36",
+        "brand": "quikrete1101",
+        "bagSize": "80",
+        "waste": "5"
+      },
+      "ok": true,
+      "results": {
+        "bags": 59,
+        "bagSize": 80,
+        "totalWeight": 4720,
+        "cubicYardsWithWaste": 1.3,
+        "cubicFeetWithWaste": 35,
+        "cubicYards": 1.23,
+        "cubicFeet": 33.33,
+        "bagYield": 0.6,
+        "bagsPerCubicYard": 45
+      },
+      "chart": [
+        {
+          "label": "4\" · 59",
+          "value": 59
+        },
+        {
+          "label": "5\" · 73",
+          "value": 73
+        },
+        {
+          "label": "6\" · 88",
+          "value": 88
+        },
+        {
+          "label": "8\" · 117",
+          "value": 117
+        }
+      ]
+    },
+    {
+      "id": "shape=slab",
+      "raw": {
+        "shape": "slab",
+        "quantity": "1",
+        "length": "10",
+        "width": "10",
+        "thickness": "4",
+        "diameter": "12",
+        "height": "36",
+        "brand": "quikrete1101",
+        "bagSize": "80",
+        "waste": "5"
+      },
+      "ok": true,
+      "results": {
+        "bags": 59,
+        "bagSize": 80,
+        "totalWeight": 4720,
+        "cubicYardsWithWaste": 1.3,
+        "cubicFeetWithWaste": 35,
+        "cubicYards": 1.23,
+        "cubicFeet": 33.33,
+        "bagYield": 0.6,
+        "bagsPerCubicYard": 45
+      },
+      "chart": [
+        {
+          "label": "4\" · 59",
+          "value": 59
+        },
+        {
+          "label": "5\" · 73",
+          "value": 73
+        },
+        {
+          "label": "6\" · 88",
+          "value": 88
+        },
+        {
+          "label": "8\" · 117",
+          "value": 117
+        }
+      ]
+    },
+    {
+      "id": "shape=column",
+      "raw": {
+        "shape": "column",
+        "quantity": "1",
+        "length": "10",
+        "width": "10",
+        "thickness": "4",
+        "diameter": "12",
+        "height": "36",
+        "brand": "quikrete1101",
+        "bagSize": "80",
+        "waste": "5"
+      },
+      "ok": true,
+      "results": {
+        "bags": 5,
+        "bagSize": 80,
+        "totalWeight": 400,
+        "cubicYardsWithWaste": 0.09,
+        "cubicFeetWithWaste": 2.47,
+        "cubicYards": 0.09,
+        "cubicFeet": 2.36,
+        "bagYield": 0.6,
+        "bagsPerCubicYard": 45
+      },
+      "chart": [
+        {
+          "label": "8\" · 2",
+          "value": 2
+        },
+        {
+          "label": "12\" · 5",
+          "value": 5
+        },
+        {
+          "label": "16\" · 8",
+          "value": 8
+        },
+        {
+          "label": "24\" · 17",
+          "value": 17
+        }
+      ]
+    },
+    {
+      "id": "brand=quikrete1101",
+      "raw": {
+        "shape": "slab",
+        "quantity": "1",
+        "length": "10",
+        "width": "10",
+        "thickness": "4",
+        "diameter": "12",
+        "height": "36",
+        "brand": "quikrete1101",
+        "bagSize": "80",
+        "waste": "5"
+      },
+      "ok": true,
+      "results": {
+        "bags": 59,
+        "bagSize": 80,
+        "totalWeight": 4720,
+        "cubicYardsWithWaste": 1.3,
+        "cubicFeetWithWaste": 35,
+        "cubicYards": 1.23,
+        "cubicFeet": 33.33,
+        "bagYield": 0.6,
+        "bagsPerCubicYard": 45
+      },
+      "chart": [
+        {
+          "label": "4\" · 59",
+          "value": 59
+        },
+        {
+          "label": "5\" · 73",
+          "value": 73
+        },
+        {
+          "label": "6\" · 88",
+          "value": 88
+        },
+        {
+          "label": "8\" · 117",
+          "value": 117
+        }
+      ]
+    },
+    {
+      "id": "brand=sakreteHighStrength",
+      "raw": {
+        "shape": "slab",
+        "quantity": "1",
+        "length": "10",
+        "width": "10",
+        "thickness": "4",
+        "diameter": "12",
+        "height": "36",
+        "brand": "sakreteHighStrength",
+        "bagSize": "80",
+        "waste": "5"
+      },
+      "ok": true,
+      "results": {
+        "bags": 59,
+        "bagSize": 80,
+        "totalWeight": 4720,
+        "cubicYardsWithWaste": 1.3,
+        "cubicFeetWithWaste": 35,
+        "cubicYards": 1.23,
+        "cubicFeet": 33.33,
+        "bagYield": 0.6,
+        "bagsPerCubicYard": 45
+      },
+      "chart": [
+        {
+          "label": "4\" · 59",
+          "value": 59
+        },
+        {
+          "label": "5\" · 73",
+          "value": 73
+        },
+        {
+          "label": "6\" · 88",
+          "value": 88
+        },
+        {
+          "label": "8\" · 117",
+          "value": 117
+        }
+      ]
+    },
+    {
+      "id": "brand=quikrete1004",
+      "raw": {
+        "shape": "slab",
+        "quantity": "1",
+        "length": "10",
+        "width": "10",
+        "thickness": "4",
+        "diameter": "12",
+        "height": "36",
+        "brand": "quikrete1004",
+        "bagSize": "80",
+        "waste": "5"
+      },
+      "ok": false,
+      "results": null,
+      "chart": []
+    },
+    {
+      "id": "bagSize=40",
+      "raw": {
+        "shape": "slab",
+        "quantity": "1",
+        "length": "10",
+        "width": "10",
+        "thickness": "4",
+        "diameter": "12",
+        "height": "36",
+        "brand": "quikrete1101",
+        "bagSize": "40",
+        "waste": "5"
+      },
+      "ok": true,
+      "results": {
+        "bags": 117,
+        "bagSize": 40,
+        "totalWeight": 4680,
+        "cubicYardsWithWaste": 1.3,
+        "cubicFeetWithWaste": 35,
+        "cubicYards": 1.23,
+        "cubicFeet": 33.33,
+        "bagYield": 0.3,
+        "bagsPerCubicYard": 90
+      },
+      "chart": [
+        {
+          "label": "4\" · 117",
+          "value": 117
+        },
+        {
+          "label": "5\" · 146",
+          "value": 146
+        },
+        {
+          "label": "6\" · 175",
+          "value": 175
+        },
+        {
+          "label": "8\" · 234",
+          "value": 234
+        }
+      ]
+    },
+    {
+      "id": "bagSize=50",
+      "raw": {
+        "shape": "slab",
+        "quantity": "1",
+        "length": "10",
+        "width": "10",
+        "thickness": "4",
+        "diameter": "12",
+        "height": "36",
+        "brand": "quikrete1101",
+        "bagSize": "50",
+        "waste": "5"
+      },
+      "ok": true,
+      "results": {
+        "bags": 94,
+        "bagSize": 50,
+        "totalWeight": 4700,
+        "cubicYardsWithWaste": 1.3,
+        "cubicFeetWithWaste": 35,
+        "cubicYards": 1.23,
+        "cubicFeet": 33.33,
+        "bagYield": 0.375,
+        "bagsPerCubicYard": 72
+      },
+      "chart": [
+        {
+          "label": "4\" · 94",
+          "value": 94
+        },
+        {
+          "label": "5\" · 117",
+          "value": 117
+        },
+        {
+          "label": "6\" · 140",
+          "value": 140
+        },
+        {
+          "label": "8\" · 187",
+          "value": 187
+        }
+      ]
+    },
+    {
+      "id": "bagSize=60",
+      "raw": {
+        "shape": "slab",
+        "quantity": "1",
+        "length": "10",
+        "width": "10",
+        "thickness": "4",
+        "diameter": "12",
+        "height": "36",
+        "brand": "quikrete1101",
+        "bagSize": "60",
+        "waste": "5"
+      },
+      "ok": true,
+      "results": {
+        "bags": 78,
+        "bagSize": 60,
+        "totalWeight": 4680,
+        "cubicYardsWithWaste": 1.3,
+        "cubicFeetWithWaste": 35,
+        "cubicYards": 1.23,
+        "cubicFeet": 33.33,
+        "bagYield": 0.45,
+        "bagsPerCubicYard": 60
+      },
+      "chart": [
+        {
+          "label": "4\" · 78",
+          "value": 78
+        },
+        {
+          "label": "5\" · 98",
+          "value": 98
+        },
+        {
+          "label": "6\" · 117",
+          "value": 117
+        },
+        {
+          "label": "8\" · 156",
+          "value": 156
+        }
+      ]
+    },
+    {
+      "id": "bagSize=80",
+      "raw": {
+        "shape": "slab",
+        "quantity": "1",
+        "length": "10",
+        "width": "10",
+        "thickness": "4",
+        "diameter": "12",
+        "height": "36",
+        "brand": "quikrete1101",
+        "bagSize": "80",
+        "waste": "5"
+      },
+      "ok": true,
+      "results": {
+        "bags": 59,
+        "bagSize": 80,
+        "totalWeight": 4720,
+        "cubicYardsWithWaste": 1.3,
+        "cubicFeetWithWaste": 35,
+        "cubicYards": 1.23,
+        "cubicFeet": 33.33,
+        "bagYield": 0.6,
+        "bagsPerCubicYard": 45
+      },
+      "chart": [
+        {
+          "label": "4\" · 59",
+          "value": 59
+        },
+        {
+          "label": "5\" · 73",
+          "value": 73
+        },
+        {
+          "label": "6\" · 88",
+          "value": 88
+        },
+        {
+          "label": "8\" · 117",
+          "value": 117
+        }
+      ]
+    },
+    {
+      "id": "bagSize=90",
+      "raw": {
+        "shape": "slab",
+        "quantity": "1",
+        "length": "10",
+        "width": "10",
+        "thickness": "4",
+        "diameter": "12",
+        "height": "36",
+        "brand": "quikrete1101",
+        "bagSize": "90",
+        "waste": "5"
+      },
+      "ok": true,
+      "results": {
+        "bags": 52,
+        "bagSize": 90,
+        "totalWeight": 4680,
+        "cubicYardsWithWaste": 1.3,
+        "cubicFeetWithWaste": 35,
+        "cubicYards": 1.23,
+        "cubicFeet": 33.33,
+        "bagYield": 0.675,
+        "bagsPerCubicYard": 40
+      },
+      "chart": [
+        {
+          "label": "4\" · 52",
+          "value": 52
+        },
+        {
+          "label": "5\" · 65",
+          "value": 65
+        },
+        {
+          "label": "6\" · 78",
+          "value": 78
+        },
+        {
+          "label": "8\" · 104",
+          "value": 104
+        }
+      ]
+    }
+  ],
+  "deck-board-calculator": [
+    {
+      "id": "defaults",
+      "raw": {
+        "length": "12",
+        "width": "12",
+        "material": "composite",
+        "boardWidth": "5.5",
+        "boardLength": "16",
+        "sideGap": "0.1875",
+        "direction": "perpendicular",
+        "joistSpacing": "16",
+        "chartSpan": "16",
+        "spanType": "multiple",
+        "screwsPer": "2",
+        "waste": "10"
+      },
+      "ok": true,
+      "results": {
+        "boardsToBuy": 29,
+        "joists": 10,
+        "screws": 520,
+        "spacingWarning": 0,
+        "boardRows": 26,
+        "linearFeet": 464,
+        "spacingLimit": 16,
+        "inchesOver": 0,
+        "threeJoistShort": 0,
+        "gapShort": 0,
+        "screwsPerSqFt": 3.61
+      },
+      "chart": [
+        {
+          "label": "Layout",
+          "value": 26
+        },
+        {
+          "label": "Extra",
+          "value": 3
+        }
+      ]
+    },
+    {
+      "id": "material=composite",
+      "raw": {
+        "length": "12",
+        "width": "12",
+        "material": "composite",
+        "boardWidth": "5.5",
+        "boardLength": "16",
+        "sideGap": "0.1875",
+        "direction": "perpendicular",
+        "joistSpacing": "16",
+        "chartSpan": "16",
+        "spanType": "multiple",
+        "screwsPer": "2",
+        "waste": "10"
+      },
+      "ok": true,
+      "results": {
+        "boardsToBuy": 29,
+        "joists": 10,
+        "screws": 520,
+        "spacingWarning": 0,
+        "boardRows": 26,
+        "linearFeet": 464,
+        "spacingLimit": 16,
+        "inchesOver": 0,
+        "threeJoistShort": 0,
+        "gapShort": 0,
+        "screwsPerSqFt": 3.61
+      },
+      "chart": [
+        {
+          "label": "Layout",
+          "value": 26
+        },
+        {
+          "label": "Extra",
+          "value": 3
+        }
+      ]
+    },
+    {
+      "id": "material=fiveQuarter",
+      "raw": {
+        "length": "12",
+        "width": "12",
+        "material": "fiveQuarter",
+        "boardWidth": "5.5",
+        "boardLength": "16",
+        "sideGap": "0.1875",
+        "direction": "perpendicular",
+        "joistSpacing": "16",
+        "chartSpan": "16",
+        "spanType": "multiple",
+        "screwsPer": "2",
+        "waste": "10"
+      },
+      "ok": true,
+      "results": {
+        "boardsToBuy": 29,
+        "joists": 10,
+        "screws": 520,
+        "spacingWarning": 0,
+        "boardRows": 26,
+        "linearFeet": 464,
+        "spacingLimit": 16,
+        "inchesOver": 0,
+        "threeJoistShort": 0,
+        "gapShort": 0,
+        "screwsPerSqFt": 3.61
+      },
+      "chart": [
+        {
+          "label": "Layout",
+          "value": 26
+        },
+        {
+          "label": "Extra",
+          "value": 3
+        }
+      ]
+    },
+    {
+      "id": "material=twoBy",
+      "raw": {
+        "length": "12",
+        "width": "12",
+        "material": "twoBy",
+        "boardWidth": "5.5",
+        "boardLength": "16",
+        "sideGap": "0.1875",
+        "direction": "perpendicular",
+        "joistSpacing": "16",
+        "chartSpan": "16",
+        "spanType": "multiple",
+        "screwsPer": "2",
+        "waste": "10"
+      },
+      "ok": true,
+      "results": {
+        "boardsToBuy": 29,
+        "joists": 10,
+        "screws": 520,
+        "spacingWarning": 0,
+        "boardRows": 26,
+        "linearFeet": 464,
+        "spacingLimit": 24,
+        "inchesOver": 0,
+        "threeJoistShort": 0,
+        "gapShort": 0,
+        "screwsPerSqFt": 3.61
+      },
+      "chart": [
+        {
+          "label": "Layout",
+          "value": 26
+        },
+        {
+          "label": "Extra",
+          "value": 3
+        }
+      ]
+    },
+    {
+      "id": "boardLength=12",
+      "raw": {
+        "length": "12",
+        "width": "12",
+        "material": "composite",
+        "boardWidth": "5.5",
+        "boardLength": "12",
+        "sideGap": "0.1875",
+        "direction": "perpendicular",
+        "joistSpacing": "16",
+        "chartSpan": "16",
+        "spanType": "multiple",
+        "screwsPer": "2",
+        "waste": "10"
+      },
+      "ok": true,
+      "results": {
+        "boardsToBuy": 29,
+        "joists": 10,
+        "screws": 520,
+        "spacingWarning": 0,
+        "boardRows": 26,
+        "linearFeet": 348,
+        "spacingLimit": 16,
+        "inchesOver": 0,
+        "threeJoistShort": 0,
+        "gapShort": 0,
+        "screwsPerSqFt": 3.61
+      },
+      "chart": [
+        {
+          "label": "Layout",
+          "value": 26
+        },
+        {
+          "label": "Extra",
+          "value": 3
+        }
+      ]
+    },
+    {
+      "id": "boardLength=16",
+      "raw": {
+        "length": "12",
+        "width": "12",
+        "material": "composite",
+        "boardWidth": "5.5",
+        "boardLength": "16",
+        "sideGap": "0.1875",
+        "direction": "perpendicular",
+        "joistSpacing": "16",
+        "chartSpan": "16",
+        "spanType": "multiple",
+        "screwsPer": "2",
+        "waste": "10"
+      },
+      "ok": true,
+      "results": {
+        "boardsToBuy": 29,
+        "joists": 10,
+        "screws": 520,
+        "spacingWarning": 0,
+        "boardRows": 26,
+        "linearFeet": 464,
+        "spacingLimit": 16,
+        "inchesOver": 0,
+        "threeJoistShort": 0,
+        "gapShort": 0,
+        "screwsPerSqFt": 3.61
+      },
+      "chart": [
+        {
+          "label": "Layout",
+          "value": 26
+        },
+        {
+          "label": "Extra",
+          "value": 3
+        }
+      ]
+    },
+    {
+      "id": "boardLength=20",
+      "raw": {
+        "length": "12",
+        "width": "12",
+        "material": "composite",
+        "boardWidth": "5.5",
+        "boardLength": "20",
+        "sideGap": "0.1875",
+        "direction": "perpendicular",
+        "joistSpacing": "16",
+        "chartSpan": "16",
+        "spanType": "multiple",
+        "screwsPer": "2",
+        "waste": "10"
+      },
+      "ok": true,
+      "results": {
+        "boardsToBuy": 29,
+        "joists": 10,
+        "screws": 520,
+        "spacingWarning": 0,
+        "boardRows": 26,
+        "linearFeet": 580,
+        "spacingLimit": 16,
+        "inchesOver": 0,
+        "threeJoistShort": 0,
+        "gapShort": 0,
+        "screwsPerSqFt": 3.61
+      },
+      "chart": [
+        {
+          "label": "Layout",
+          "value": 26
+        },
+        {
+          "label": "Extra",
+          "value": 3
+        }
+      ]
+    },
+    {
+      "id": "direction=perpendicular",
+      "raw": {
+        "length": "12",
+        "width": "12",
+        "material": "composite",
+        "boardWidth": "5.5",
+        "boardLength": "16",
+        "sideGap": "0.1875",
+        "direction": "perpendicular",
+        "joistSpacing": "16",
+        "chartSpan": "16",
+        "spanType": "multiple",
+        "screwsPer": "2",
+        "waste": "10"
+      },
+      "ok": true,
+      "results": {
+        "boardsToBuy": 29,
+        "joists": 10,
+        "screws": 520,
+        "spacingWarning": 0,
+        "boardRows": 26,
+        "linearFeet": 464,
+        "spacingLimit": 16,
+        "inchesOver": 0,
+        "threeJoistShort": 0,
+        "gapShort": 0,
+        "screwsPerSqFt": 3.61
+      },
+      "chart": [
+        {
+          "label": "Layout",
+          "value": 26
+        },
+        {
+          "label": "Extra",
+          "value": 3
+        }
+      ]
+    },
+    {
+      "id": "direction=diagonal",
+      "raw": {
+        "length": "12",
+        "width": "12",
+        "material": "composite",
+        "boardWidth": "5.5",
+        "boardLength": "16",
+        "sideGap": "0.1875",
+        "direction": "diagonal",
+        "joistSpacing": "16",
+        "chartSpan": "16",
+        "spanType": "multiple",
+        "screwsPer": "2",
+        "waste": "10"
+      },
+      "ok": true,
+      "results": {
+        "boardsToBuy": 21,
+        "joists": 10,
+        "screws": 324,
+        "spacingWarning": 1,
+        "boardRows": 36,
+        "linearFeet": 336,
+        "spacingLimit": 12,
+        "inchesOver": 4,
+        "threeJoistShort": 0,
+        "gapShort": 0,
+        "screwsPerSqFt": 2.25
+      },
+      "chart": [
+        {
+          "label": "Layout",
+          "value": 19
+        },
+        {
+          "label": "Extra",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "id": "joistSpacing=12",
+      "raw": {
+        "length": "12",
+        "width": "12",
+        "material": "composite",
+        "boardWidth": "5.5",
+        "boardLength": "16",
+        "sideGap": "0.1875",
+        "direction": "perpendicular",
+        "joistSpacing": "12",
+        "chartSpan": "16",
+        "spanType": "multiple",
+        "screwsPer": "2",
+        "waste": "10"
+      },
+      "ok": true,
+      "results": {
+        "boardsToBuy": 29,
+        "joists": 13,
+        "screws": 676,
+        "spacingWarning": 0,
+        "boardRows": 26,
+        "linearFeet": 464,
+        "spacingLimit": 16,
+        "inchesOver": 0,
+        "threeJoistShort": 0,
+        "gapShort": 0,
+        "screwsPerSqFt": 4.69
+      },
+      "chart": [
+        {
+          "label": "Layout",
+          "value": 26
+        },
+        {
+          "label": "Extra",
+          "value": 3
+        }
+      ]
+    },
+    {
+      "id": "joistSpacing=16",
+      "raw": {
+        "length": "12",
+        "width": "12",
+        "material": "composite",
+        "boardWidth": "5.5",
+        "boardLength": "16",
+        "sideGap": "0.1875",
+        "direction": "perpendicular",
+        "joistSpacing": "16",
+        "chartSpan": "16",
+        "spanType": "multiple",
+        "screwsPer": "2",
+        "waste": "10"
+      },
+      "ok": true,
+      "results": {
+        "boardsToBuy": 29,
+        "joists": 10,
+        "screws": 520,
+        "spacingWarning": 0,
+        "boardRows": 26,
+        "linearFeet": 464,
+        "spacingLimit": 16,
+        "inchesOver": 0,
+        "threeJoistShort": 0,
+        "gapShort": 0,
+        "screwsPerSqFt": 3.61
+      },
+      "chart": [
+        {
+          "label": "Layout",
+          "value": 26
+        },
+        {
+          "label": "Extra",
+          "value": 3
+        }
+      ]
+    },
+    {
+      "id": "joistSpacing=24",
+      "raw": {
+        "length": "12",
+        "width": "12",
+        "material": "composite",
+        "boardWidth": "5.5",
+        "boardLength": "16",
+        "sideGap": "0.1875",
+        "direction": "perpendicular",
+        "joistSpacing": "24",
+        "chartSpan": "16",
+        "spanType": "multiple",
+        "screwsPer": "2",
+        "waste": "10"
+      },
+      "ok": true,
+      "results": {
+        "boardsToBuy": 29,
+        "joists": 7,
+        "screws": 364,
+        "spacingWarning": 1,
+        "boardRows": 26,
+        "linearFeet": 464,
+        "spacingLimit": 16,
+        "inchesOver": 8,
+        "threeJoistShort": 0,
+        "gapShort": 0,
+        "screwsPerSqFt": 2.53
+      },
+      "chart": [
+        {
+          "label": "Layout",
+          "value": 26
+        },
+        {
+          "label": "Extra",
+          "value": 3
+        }
+      ]
+    },
+    {
+      "id": "chartSpan=16",
+      "raw": {
+        "length": "12",
+        "width": "12",
+        "material": "composite",
+        "boardWidth": "5.5",
+        "boardLength": "16",
+        "sideGap": "0.1875",
+        "direction": "perpendicular",
+        "joistSpacing": "16",
+        "chartSpan": "16",
+        "spanType": "multiple",
+        "screwsPer": "2",
+        "waste": "10"
+      },
+      "ok": true,
+      "results": {
+        "boardsToBuy": 29,
+        "joists": 10,
+        "screws": 520,
+        "spacingWarning": 0,
+        "boardRows": 26,
+        "linearFeet": 464,
+        "spacingLimit": 16,
+        "inchesOver": 0,
+        "threeJoistShort": 0,
+        "gapShort": 0,
+        "screwsPerSqFt": 3.61
+      },
+      "chart": [
+        {
+          "label": "Layout",
+          "value": 26
+        },
+        {
+          "label": "Extra",
+          "value": 3
+        }
+      ]
+    },
+    {
+      "id": "chartSpan=24",
+      "raw": {
+        "length": "12",
+        "width": "12",
+        "material": "composite",
+        "boardWidth": "5.5",
+        "boardLength": "16",
+        "sideGap": "0.1875",
+        "direction": "perpendicular",
+        "joistSpacing": "16",
+        "chartSpan": "24",
+        "spanType": "multiple",
+        "screwsPer": "2",
+        "waste": "10"
+      },
+      "ok": true,
+      "results": {
+        "boardsToBuy": 29,
+        "joists": 10,
+        "screws": 520,
+        "spacingWarning": 0,
+        "boardRows": 26,
+        "linearFeet": 464,
+        "spacingLimit": 24,
+        "inchesOver": 0,
+        "threeJoistShort": 0,
+        "gapShort": 0,
+        "screwsPerSqFt": 3.61
+      },
+      "chart": [
+        {
+          "label": "Layout",
+          "value": 26
+        },
+        {
+          "label": "Extra",
+          "value": 3
+        }
+      ]
+    },
+    {
+      "id": "spanType=multiple",
+      "raw": {
+        "length": "12",
+        "width": "12",
+        "material": "composite",
+        "boardWidth": "5.5",
+        "boardLength": "16",
+        "sideGap": "0.1875",
+        "direction": "perpendicular",
+        "joistSpacing": "16",
+        "chartSpan": "16",
+        "spanType": "multiple",
+        "screwsPer": "2",
+        "waste": "10"
+      },
+      "ok": true,
+      "results": {
+        "boardsToBuy": 29,
+        "joists": 10,
+        "screws": 520,
+        "spacingWarning": 0,
+        "boardRows": 26,
+        "linearFeet": 464,
+        "spacingLimit": 16,
+        "inchesOver": 0,
+        "threeJoistShort": 0,
+        "gapShort": 0,
+        "screwsPerSqFt": 3.61
+      },
+      "chart": [
+        {
+          "label": "Layout",
+          "value": 26
+        },
+        {
+          "label": "Extra",
+          "value": 3
+        }
+      ]
+    },
+    {
+      "id": "spanType=single",
+      "raw": {
+        "length": "12",
+        "width": "12",
+        "material": "composite",
+        "boardWidth": "5.5",
+        "boardLength": "16",
+        "sideGap": "0.1875",
+        "direction": "perpendicular",
+        "joistSpacing": "16",
+        "chartSpan": "16",
+        "spanType": "single",
+        "screwsPer": "2",
+        "waste": "10"
+      },
+      "ok": true,
+      "results": {
+        "boardsToBuy": 29,
+        "joists": 10,
+        "screws": 520,
+        "spacingWarning": 1,
+        "boardRows": 26,
+        "linearFeet": 464,
+        "spacingLimit": 16,
+        "inchesOver": 0,
+        "threeJoistShort": 1,
+        "gapShort": 0,
+        "screwsPerSqFt": 3.61
+      },
+      "chart": [
+        {
+          "label": "Layout",
+          "value": 26
+        },
+        {
+          "label": "Extra",
+          "value": 3
+        }
+      ]
+    }
+  ],
+  "fence-calculator": [
+    {
+      "id": "defaults",
+      "raw": {
+        "fenceLength": "100",
+        "fenceHeight": "6",
+        "gates": "1",
+        "postSpacing": "8",
+        "postSize": "4x4",
+        "postLength": "10",
+        "picketWidth": "5.5",
+        "picketGap": "0.5",
+        "bagType": "fast50",
+        "gateWidth": "4",
+        "railsPerSection": "3",
+        "frostDepth": "0",
+        "soilCap": "4",
+        "picketWaste": "5"
+      },
+      "ok": true,
+      "results": {
+        "posts": 14,
+        "rails": 36,
+        "pickets": 202,
+        "concreteBags": 58,
+        "sections": 12,
+        "actualSpacing": 8,
+        "fencedRun": 96,
+        "picketsBeforeWaste": 192,
+        "holeDiameter": 10.5,
+        "holeDepth": 46,
+        "buriedDepth": 40,
+        "concreteHeight": 36,
+        "concretePerPost": 1.549,
+        "bagsPerPost": 4.13,
+        "concreteTotal": 21.68,
+        "gravelTotal": 4.21,
+        "postAboveGround": 6.67,
+        "minPostLength": 9
+      },
+      "chart": [
+        {
+          "label": "Concrete 1.55",
+          "value": 1.549
+        },
+        {
+          "label": "Gravel 0.30",
+          "value": 0.301
+        },
+        {
+          "label": "Post 0.28",
+          "value": 0.284
+        },
+        {
+          "label": "Soil cap 0.17",
+          "value": 0.172
+        }
+      ]
+    },
+    {
+      "id": "postSize=4x4",
+      "raw": {
+        "fenceLength": "100",
+        "fenceHeight": "6",
+        "gates": "1",
+        "postSpacing": "8",
+        "postSize": "4x4",
+        "postLength": "10",
+        "picketWidth": "5.5",
+        "picketGap": "0.5",
+        "bagType": "fast50",
+        "gateWidth": "4",
+        "railsPerSection": "3",
+        "frostDepth": "0",
+        "soilCap": "4",
+        "picketWaste": "5"
+      },
+      "ok": true,
+      "results": {
+        "posts": 14,
+        "rails": 36,
+        "pickets": 202,
+        "concreteBags": 58,
+        "sections": 12,
+        "actualSpacing": 8,
+        "fencedRun": 96,
+        "picketsBeforeWaste": 192,
+        "holeDiameter": 10.5,
+        "holeDepth": 46,
+        "buriedDepth": 40,
+        "concreteHeight": 36,
+        "concretePerPost": 1.549,
+        "bagsPerPost": 4.13,
+        "concreteTotal": 21.68,
+        "gravelTotal": 4.21,
+        "postAboveGround": 6.67,
+        "minPostLength": 9
+      },
+      "chart": [
+        {
+          "label": "Concrete 1.55",
+          "value": 1.549
+        },
+        {
+          "label": "Gravel 0.30",
+          "value": 0.301
+        },
+        {
+          "label": "Post 0.28",
+          "value": 0.284
+        },
+        {
+          "label": "Soil cap 0.17",
+          "value": 0.172
+        }
+      ]
+    },
+    {
+      "id": "postSize=6x6",
+      "raw": {
+        "fenceLength": "100",
+        "fenceHeight": "6",
+        "gates": "1",
+        "postSpacing": "8",
+        "postSize": "6x6",
+        "postLength": "10",
+        "picketWidth": "5.5",
+        "picketGap": "0.5",
+        "bagType": "fast50",
+        "gateWidth": "4",
+        "railsPerSection": "3",
+        "frostDepth": "0",
+        "soilCap": "4",
+        "picketWaste": "5"
+      },
+      "ok": true,
+      "results": {
+        "posts": 14,
+        "rails": 36,
+        "pickets": 202,
+        "concreteBags": 143,
+        "sections": 12,
+        "actualSpacing": 8,
+        "fencedRun": 96,
+        "picketsBeforeWaste": 192,
+        "holeDiameter": 16.5,
+        "holeDepth": 46,
+        "buriedDepth": 40,
+        "concreteHeight": 36,
+        "concretePerPost": 3.824,
+        "bagsPerPost": 10.2,
+        "concreteTotal": 53.54,
+        "gravelTotal": 10.39,
+        "postAboveGround": 6.67,
+        "minPostLength": 9
+      },
+      "chart": [
+        {
+          "label": "Concrete 3.82",
+          "value": 3.824
+        },
+        {
+          "label": "Gravel 0.74",
+          "value": 0.742
+        },
+        {
+          "label": "Post 0.70",
+          "value": 0.7
+        },
+        {
+          "label": "Soil cap 0.42",
+          "value": 0.425
+        }
+      ]
+    },
+    {
+      "id": "bagType=fast50",
+      "raw": {
+        "fenceLength": "100",
+        "fenceHeight": "6",
+        "gates": "1",
+        "postSpacing": "8",
+        "postSize": "4x4",
+        "postLength": "10",
+        "picketWidth": "5.5",
+        "picketGap": "0.5",
+        "bagType": "fast50",
+        "gateWidth": "4",
+        "railsPerSection": "3",
+        "frostDepth": "0",
+        "soilCap": "4",
+        "picketWaste": "5"
+      },
+      "ok": true,
+      "results": {
+        "posts": 14,
+        "rails": 36,
+        "pickets": 202,
+        "concreteBags": 58,
+        "sections": 12,
+        "actualSpacing": 8,
+        "fencedRun": 96,
+        "picketsBeforeWaste": 192,
+        "holeDiameter": 10.5,
+        "holeDepth": 46,
+        "buriedDepth": 40,
+        "concreteHeight": 36,
+        "concretePerPost": 1.549,
+        "bagsPerPost": 4.13,
+        "concreteTotal": 21.68,
+        "gravelTotal": 4.21,
+        "postAboveGround": 6.67,
+        "minPostLength": 9
+      },
+      "chart": [
+        {
+          "label": "Concrete 1.55",
+          "value": 1.549
+        },
+        {
+          "label": "Gravel 0.30",
+          "value": 0.301
+        },
+        {
+          "label": "Post 0.28",
+          "value": 0.284
+        },
+        {
+          "label": "Soil cap 0.17",
+          "value": 0.172
+        }
+      ]
+    },
+    {
+      "id": "bagType=fast60",
+      "raw": {
+        "fenceLength": "100",
+        "fenceHeight": "6",
+        "gates": "1",
+        "postSpacing": "8",
+        "postSize": "4x4",
+        "postLength": "10",
+        "picketWidth": "5.5",
+        "picketGap": "0.5",
+        "bagType": "fast60",
+        "gateWidth": "4",
+        "railsPerSection": "3",
+        "frostDepth": "0",
+        "soilCap": "4",
+        "picketWaste": "5"
+      },
+      "ok": true,
+      "results": {
+        "posts": 14,
+        "rails": 36,
+        "pickets": 202,
+        "concreteBags": 49,
+        "sections": 12,
+        "actualSpacing": 8,
+        "fencedRun": 96,
+        "picketsBeforeWaste": 192,
+        "holeDiameter": 10.5,
+        "holeDepth": 46,
+        "buriedDepth": 40,
+        "concreteHeight": 36,
+        "concretePerPost": 1.549,
+        "bagsPerPost": 3.44,
+        "concreteTotal": 21.68,
+        "gravelTotal": 4.21,
+        "postAboveGround": 6.67,
+        "minPostLength": 9
+      },
+      "chart": [
+        {
+          "label": "Concrete 1.55",
+          "value": 1.549
+        },
+        {
+          "label": "Gravel 0.30",
+          "value": 0.301
+        },
+        {
+          "label": "Post 0.28",
+          "value": 0.284
+        },
+        {
+          "label": "Soil cap 0.17",
+          "value": 0.172
+        }
+      ]
+    },
+    {
+      "id": "bagType=mix80",
+      "raw": {
+        "fenceLength": "100",
+        "fenceHeight": "6",
+        "gates": "1",
+        "postSpacing": "8",
+        "postSize": "4x4",
+        "postLength": "10",
+        "picketWidth": "5.5",
+        "picketGap": "0.5",
+        "bagType": "mix80",
+        "gateWidth": "4",
+        "railsPerSection": "3",
+        "frostDepth": "0",
+        "soilCap": "4",
+        "picketWaste": "5"
+      },
+      "ok": true,
+      "results": {
+        "posts": 14,
+        "rails": 36,
+        "pickets": 202,
+        "concreteBags": 37,
+        "sections": 12,
+        "actualSpacing": 8,
+        "fencedRun": 96,
+        "picketsBeforeWaste": 192,
+        "holeDiameter": 10.5,
+        "holeDepth": 46,
+        "buriedDepth": 40,
+        "concreteHeight": 36,
+        "concretePerPost": 1.549,
+        "bagsPerPost": 2.58,
+        "concreteTotal": 21.68,
+        "gravelTotal": 4.21,
+        "postAboveGround": 6.67,
+        "minPostLength": 9
+      },
+      "chart": [
+        {
+          "label": "Concrete 1.55",
+          "value": 1.549
+        },
+        {
+          "label": "Gravel 0.30",
+          "value": 0.301
+        },
+        {
+          "label": "Post 0.28",
+          "value": 0.284
+        },
+        {
+          "label": "Soil cap 0.17",
+          "value": 0.172
+        }
+      ]
+    },
+    {
+      "id": "railsPerSection=2",
+      "raw": {
+        "fenceLength": "100",
+        "fenceHeight": "6",
+        "gates": "1",
+        "postSpacing": "8",
+        "postSize": "4x4",
+        "postLength": "10",
+        "picketWidth": "5.5",
+        "picketGap": "0.5",
+        "bagType": "fast50",
+        "gateWidth": "4",
+        "railsPerSection": "2",
+        "frostDepth": "0",
+        "soilCap": "4",
+        "picketWaste": "5"
+      },
+      "ok": true,
+      "results": {
+        "posts": 14,
+        "rails": 24,
+        "pickets": 202,
+        "concreteBags": 58,
+        "sections": 12,
+        "actualSpacing": 8,
+        "fencedRun": 96,
+        "picketsBeforeWaste": 192,
+        "holeDiameter": 10.5,
+        "holeDepth": 46,
+        "buriedDepth": 40,
+        "concreteHeight": 36,
+        "concretePerPost": 1.549,
+        "bagsPerPost": 4.13,
+        "concreteTotal": 21.68,
+        "gravelTotal": 4.21,
+        "postAboveGround": 6.67,
+        "minPostLength": 9
+      },
+      "chart": [
+        {
+          "label": "Concrete 1.55",
+          "value": 1.549
+        },
+        {
+          "label": "Gravel 0.30",
+          "value": 0.301
+        },
+        {
+          "label": "Post 0.28",
+          "value": 0.284
+        },
+        {
+          "label": "Soil cap 0.17",
+          "value": 0.172
+        }
+      ]
+    },
+    {
+      "id": "railsPerSection=3",
+      "raw": {
+        "fenceLength": "100",
+        "fenceHeight": "6",
+        "gates": "1",
+        "postSpacing": "8",
+        "postSize": "4x4",
+        "postLength": "10",
+        "picketWidth": "5.5",
+        "picketGap": "0.5",
+        "bagType": "fast50",
+        "gateWidth": "4",
+        "railsPerSection": "3",
+        "frostDepth": "0",
+        "soilCap": "4",
+        "picketWaste": "5"
+      },
+      "ok": true,
+      "results": {
+        "posts": 14,
+        "rails": 36,
+        "pickets": 202,
+        "concreteBags": 58,
+        "sections": 12,
+        "actualSpacing": 8,
+        "fencedRun": 96,
+        "picketsBeforeWaste": 192,
+        "holeDiameter": 10.5,
+        "holeDepth": 46,
+        "buriedDepth": 40,
+        "concreteHeight": 36,
+        "concretePerPost": 1.549,
+        "bagsPerPost": 4.13,
+        "concreteTotal": 21.68,
+        "gravelTotal": 4.21,
+        "postAboveGround": 6.67,
+        "minPostLength": 9
+      },
+      "chart": [
+        {
+          "label": "Concrete 1.55",
+          "value": 1.549
+        },
+        {
+          "label": "Gravel 0.30",
+          "value": 0.301
+        },
+        {
+          "label": "Post 0.28",
+          "value": 0.284
+        },
+        {
+          "label": "Soil cap 0.17",
+          "value": 0.172
+        }
+      ]
+    }
+  ],
+  "gravel-calculator": [
+    {
+      "id": "defaults",
+      "raw": {
+        "mode": "single",
+        "shape": "rectangle",
+        "length": "50",
+        "width": "12",
+        "area": "600",
+        "depth": "4",
+        "surfaceDepth": "2",
+        "density": "1.40",
+        "surfaceDensity": "1.40",
+        "densitySource": "estimate",
+        "waste": "10"
+      },
+      "ok": true,
+      "results": {
+        "areaSqFt": 600,
+        "cubicFeet": 220,
+        "cubicYards": 8.15,
+        "tons": 11.41,
+        "yardsToOrder": 8.2,
+        "tonsToOrder": 11.5,
+        "baseCubicFeet": 220,
+        "baseYards": 8.15,
+        "baseTons": 11.41,
+        "surfaceCubicFeet": 0,
+        "surfaceYards": 0,
+        "surfaceTons": 0,
+        "densityUsed": 1.4
+      },
+      "chart": [
+        {
+          "label": "Stone",
+          "value": 10.37
+        },
+        {
+          "label": "Allowance",
+          "value": 1.04
+        }
+      ]
+    },
+    {
+      "id": "mode=single",
+      "raw": {
+        "mode": "single",
+        "shape": "rectangle",
+        "length": "50",
+        "width": "12",
+        "area": "600",
+        "depth": "4",
+        "surfaceDepth": "2",
+        "density": "1.40",
+        "surfaceDensity": "1.40",
+        "densitySource": "estimate",
+        "waste": "10"
+      },
+      "ok": true,
+      "results": {
+        "areaSqFt": 600,
+        "cubicFeet": 220,
+        "cubicYards": 8.15,
+        "tons": 11.41,
+        "yardsToOrder": 8.2,
+        "tonsToOrder": 11.5,
+        "baseCubicFeet": 220,
+        "baseYards": 8.15,
+        "baseTons": 11.41,
+        "surfaceCubicFeet": 0,
+        "surfaceYards": 0,
+        "surfaceTons": 0,
+        "densityUsed": 1.4
+      },
+      "chart": [
+        {
+          "label": "Stone",
+          "value": 10.37
+        },
+        {
+          "label": "Allowance",
+          "value": 1.04
+        }
+      ]
+    },
+    {
+      "id": "mode=layered",
+      "raw": {
+        "mode": "layered",
+        "shape": "rectangle",
+        "length": "50",
+        "width": "12",
+        "area": "600",
+        "depth": "4",
+        "surfaceDepth": "2",
+        "density": "1.40",
+        "surfaceDensity": "1.40",
+        "densitySource": "estimate",
+        "waste": "10"
+      },
+      "ok": true,
+      "results": {
+        "areaSqFt": 600,
+        "cubicFeet": 330,
+        "cubicYards": 12.22,
+        "tons": 17.11,
+        "yardsToOrder": 12.3,
+        "tonsToOrder": 17.2,
+        "baseCubicFeet": 220,
+        "baseYards": 8.15,
+        "baseTons": 11.41,
+        "surfaceCubicFeet": 110,
+        "surfaceYards": 4.07,
+        "surfaceTons": 5.7,
+        "densityUsed": 1.4
+      },
+      "chart": [
+        {
+          "label": "Base",
+          "value": 11.41
+        },
+        {
+          "label": "Surface",
+          "value": 5.7
+        }
+      ]
+    },
+    {
+      "id": "shape=rectangle",
+      "raw": {
+        "mode": "single",
+        "shape": "rectangle",
+        "length": "50",
+        "width": "12",
+        "area": "600",
+        "depth": "4",
+        "surfaceDepth": "2",
+        "density": "1.40",
+        "surfaceDensity": "1.40",
+        "densitySource": "estimate",
+        "waste": "10"
+      },
+      "ok": true,
+      "results": {
+        "areaSqFt": 600,
+        "cubicFeet": 220,
+        "cubicYards": 8.15,
+        "tons": 11.41,
+        "yardsToOrder": 8.2,
+        "tonsToOrder": 11.5,
+        "baseCubicFeet": 220,
+        "baseYards": 8.15,
+        "baseTons": 11.41,
+        "surfaceCubicFeet": 0,
+        "surfaceYards": 0,
+        "surfaceTons": 0,
+        "densityUsed": 1.4
+      },
+      "chart": [
+        {
+          "label": "Stone",
+          "value": 10.37
+        },
+        {
+          "label": "Allowance",
+          "value": 1.04
+        }
+      ]
+    },
+    {
+      "id": "shape=circle",
+      "raw": {
+        "mode": "single",
+        "shape": "circle",
+        "length": "50",
+        "width": "12",
+        "area": "600",
+        "depth": "4",
+        "surfaceDepth": "2",
+        "density": "1.40",
+        "surfaceDensity": "1.40",
+        "densitySource": "estimate",
+        "waste": "10"
+      },
+      "ok": true,
+      "results": {
+        "areaSqFt": 113.1,
+        "cubicFeet": 41.5,
+        "cubicYards": 1.54,
+        "tons": 2.15,
+        "yardsToOrder": 1.6,
+        "tonsToOrder": 2.2,
+        "baseCubicFeet": 41.5,
+        "baseYards": 1.54,
+        "baseTons": 2.15,
+        "surfaceCubicFeet": 0,
+        "surfaceYards": 0,
+        "surfaceTons": 0,
+        "densityUsed": 1.4
+      },
+      "chart": [
+        {
+          "label": "Stone",
+          "value": 1.95
+        },
+        {
+          "label": "Allowance",
+          "value": 0.2
+        }
+      ]
+    },
+    {
+      "id": "shape=sqft",
+      "raw": {
+        "mode": "single",
+        "shape": "sqft",
+        "length": "50",
+        "width": "12",
+        "area": "600",
+        "depth": "4",
+        "surfaceDepth": "2",
+        "density": "1.40",
+        "surfaceDensity": "1.40",
+        "densitySource": "estimate",
+        "waste": "10"
+      },
+      "ok": true,
+      "results": {
+        "areaSqFt": 600,
+        "cubicFeet": 220,
+        "cubicYards": 8.15,
+        "tons": 11.41,
+        "yardsToOrder": 8.2,
+        "tonsToOrder": 11.5,
+        "baseCubicFeet": 220,
+        "baseYards": 8.15,
+        "baseTons": 11.41,
+        "surfaceCubicFeet": 0,
+        "surfaceYards": 0,
+        "surfaceTons": 0,
+        "densityUsed": 1.4
+      },
+      "chart": [
+        {
+          "label": "Stone",
+          "value": 10.37
+        },
+        {
+          "label": "Allowance",
+          "value": 1.04
+        }
+      ]
+    },
+    {
+      "id": "densitySource=estimate",
+      "raw": {
+        "mode": "single",
+        "shape": "rectangle",
+        "length": "50",
+        "width": "12",
+        "area": "600",
+        "depth": "4",
+        "surfaceDepth": "2",
+        "density": "1.40",
+        "surfaceDensity": "1.40",
+        "densitySource": "estimate",
+        "waste": "10"
+      },
+      "ok": true,
+      "results": {
+        "areaSqFt": 600,
+        "cubicFeet": 220,
+        "cubicYards": 8.15,
+        "tons": 11.41,
+        "yardsToOrder": 8.2,
+        "tonsToOrder": 11.5,
+        "baseCubicFeet": 220,
+        "baseYards": 8.15,
+        "baseTons": 11.41,
+        "surfaceCubicFeet": 0,
+        "surfaceYards": 0,
+        "surfaceTons": 0,
+        "densityUsed": 1.4
+      },
+      "chart": [
+        {
+          "label": "Stone",
+          "value": 10.37
+        },
+        {
+          "label": "Allowance",
+          "value": 1.04
+        }
+      ]
+    },
+    {
+      "id": "densitySource=supplier",
+      "raw": {
+        "mode": "single",
+        "shape": "rectangle",
+        "length": "50",
+        "width": "12",
+        "area": "600",
+        "depth": "4",
+        "surfaceDepth": "2",
+        "density": "1.40",
+        "surfaceDensity": "1.40",
+        "densitySource": "supplier",
+        "waste": "10"
+      },
+      "ok": true,
+      "results": {
+        "areaSqFt": 600,
+        "cubicFeet": 220,
+        "cubicYards": 8.15,
+        "tons": 11.41,
+        "yardsToOrder": 8.2,
+        "tonsToOrder": 11.5,
+        "baseCubicFeet": 220,
+        "baseYards": 8.15,
+        "baseTons": 11.41,
+        "surfaceCubicFeet": 0,
+        "surfaceYards": 0,
+        "surfaceTons": 0,
+        "densityUsed": 1.4
+      },
+      "chart": [
+        {
+          "label": "Stone",
+          "value": 10.37
+        },
+        {
+          "label": "Allowance",
+          "value": 1.04
+        }
+      ]
+    }
+  ],
+  "insulation-calculator": [
+    {
+      "id": "defaults",
+      "raw": {
+        "area": "1000",
+        "climateZone": "4ab",
+        "existing": "none",
+        "product": "blown",
+        "battR": "38",
+        "battCoverage": "64",
+        "targetR": "",
+        "extraWaste": "0"
+      },
+      "ok": true,
+      "results": {
+        "energyStarR": 60,
+        "packages": 32,
+        "beforeRounding": 31.5,
+        "blownThickness": 20.5,
+        "battThickness": null,
+        "chartR": 60,
+        "rShortfall": 0
+      },
+      "chart": [
+        {
+          "label": "R30",
+          "value": 15
+        },
+        {
+          "label": "R38",
+          "value": 19
+        },
+        {
+          "label": "R49",
+          "value": 25
+        },
+        {
+          "label": "R60",
+          "value": 32
+        }
+      ]
+    },
+    {
+      "id": "climateZone=1",
+      "raw": {
+        "area": "1000",
+        "climateZone": "1",
+        "existing": "none",
+        "product": "blown",
+        "battR": "38",
+        "battCoverage": "64",
+        "targetR": "",
+        "extraWaste": "0"
+      },
+      "ok": true,
+      "results": {
+        "energyStarR": 30,
+        "packages": 15,
+        "beforeRounding": 14.6,
+        "blownThickness": 10.75,
+        "battThickness": null,
+        "chartR": 30,
+        "rShortfall": 0
+      },
+      "chart": [
+        {
+          "label": "R30",
+          "value": 15
+        },
+        {
+          "label": "R38",
+          "value": 19
+        },
+        {
+          "label": "R49",
+          "value": 25
+        },
+        {
+          "label": "R60",
+          "value": 32
+        }
+      ]
+    },
+    {
+      "id": "climateZone=2",
+      "raw": {
+        "area": "1000",
+        "climateZone": "2",
+        "existing": "none",
+        "product": "blown",
+        "battR": "38",
+        "battCoverage": "64",
+        "targetR": "",
+        "extraWaste": "0"
+      },
+      "ok": true,
+      "results": {
+        "energyStarR": 49,
+        "packages": 25,
+        "beforeRounding": 25,
+        "blownThickness": 17,
+        "battThickness": null,
+        "chartR": 49,
+        "rShortfall": 0
+      },
+      "chart": [
+        {
+          "label": "R30",
+          "value": 15
+        },
+        {
+          "label": "R38",
+          "value": 19
+        },
+        {
+          "label": "R49",
+          "value": 25
+        },
+        {
+          "label": "R60",
+          "value": 32
+        }
+      ]
+    },
+    {
+      "id": "climateZone=3",
+      "raw": {
+        "area": "1000",
+        "climateZone": "3",
+        "existing": "none",
+        "product": "blown",
+        "battR": "38",
+        "battCoverage": "64",
+        "targetR": "",
+        "extraWaste": "0"
+      },
+      "ok": true,
+      "results": {
+        "energyStarR": 49,
+        "packages": 25,
+        "beforeRounding": 25,
+        "blownThickness": 17,
+        "battThickness": null,
+        "chartR": 49,
+        "rShortfall": 0
+      },
+      "chart": [
+        {
+          "label": "R30",
+          "value": 15
+        },
+        {
+          "label": "R38",
+          "value": 19
+        },
+        {
+          "label": "R49",
+          "value": 25
+        },
+        {
+          "label": "R60",
+          "value": 32
+        }
+      ]
+    },
+    {
+      "id": "climateZone=4ab",
+      "raw": {
+        "area": "1000",
+        "climateZone": "4ab",
+        "existing": "none",
+        "product": "blown",
+        "battR": "38",
+        "battCoverage": "64",
+        "targetR": "",
+        "extraWaste": "0"
+      },
+      "ok": true,
+      "results": {
+        "energyStarR": 60,
+        "packages": 32,
+        "beforeRounding": 31.5,
+        "blownThickness": 20.5,
+        "battThickness": null,
+        "chartR": 60,
+        "rShortfall": 0
+      },
+      "chart": [
+        {
+          "label": "R30",
+          "value": 15
+        },
+        {
+          "label": "R38",
+          "value": 19
+        },
+        {
+          "label": "R49",
+          "value": 25
+        },
+        {
+          "label": "R60",
+          "value": 32
+        }
+      ]
+    },
+    {
+      "id": "climateZone=4c56",
+      "raw": {
+        "area": "1000",
+        "climateZone": "4c56",
+        "existing": "none",
+        "product": "blown",
+        "battR": "38",
+        "battCoverage": "64",
+        "targetR": "",
+        "extraWaste": "0"
+      },
+      "ok": true,
+      "results": {
+        "energyStarR": 60,
+        "packages": 32,
+        "beforeRounding": 31.5,
+        "blownThickness": 20.5,
+        "battThickness": null,
+        "chartR": 60,
+        "rShortfall": 0
+      },
+      "chart": [
+        {
+          "label": "R30",
+          "value": 15
+        },
+        {
+          "label": "R38",
+          "value": 19
+        },
+        {
+          "label": "R49",
+          "value": 25
+        },
+        {
+          "label": "R60",
+          "value": 32
+        }
+      ]
+    },
+    {
+      "id": "climateZone=78",
+      "raw": {
+        "area": "1000",
+        "climateZone": "78",
+        "existing": "none",
+        "product": "blown",
+        "battR": "38",
+        "battCoverage": "64",
+        "targetR": "",
+        "extraWaste": "0"
+      },
+      "ok": true,
+      "results": {
+        "energyStarR": 60,
+        "packages": 32,
+        "beforeRounding": 31.5,
+        "blownThickness": 20.5,
+        "battThickness": null,
+        "chartR": 60,
+        "rShortfall": 0
+      },
+      "chart": [
+        {
+          "label": "R30",
+          "value": 15
+        },
+        {
+          "label": "R38",
+          "value": 19
+        },
+        {
+          "label": "R49",
+          "value": 25
+        },
+        {
+          "label": "R60",
+          "value": 32
+        }
+      ]
+    },
+    {
+      "id": "existing=none",
+      "raw": {
+        "area": "1000",
+        "climateZone": "4ab",
+        "existing": "none",
+        "product": "blown",
+        "battR": "38",
+        "battCoverage": "64",
+        "targetR": "",
+        "extraWaste": "0"
+      },
+      "ok": true,
+      "results": {
+        "energyStarR": 60,
+        "packages": 32,
+        "beforeRounding": 31.5,
+        "blownThickness": 20.5,
+        "battThickness": null,
+        "chartR": 60,
+        "rShortfall": 0
+      },
+      "chart": [
+        {
+          "label": "R30",
+          "value": 15
+        },
+        {
+          "label": "R38",
+          "value": 19
+        },
+        {
+          "label": "R49",
+          "value": 25
+        },
+        {
+          "label": "R60",
+          "value": 32
+        }
+      ]
+    },
+    {
+      "id": "existing=some",
+      "raw": {
+        "area": "1000",
+        "climateZone": "4ab",
+        "existing": "some",
+        "product": "blown",
+        "battR": "38",
+        "battCoverage": "64",
+        "targetR": "",
+        "extraWaste": "0"
+      },
+      "ok": true,
+      "results": {
+        "energyStarR": 49,
+        "packages": 25,
+        "beforeRounding": 25,
+        "blownThickness": 17,
+        "battThickness": null,
+        "chartR": 49,
+        "rShortfall": 0
+      },
+      "chart": [
+        {
+          "label": "R30",
+          "value": 15
+        },
+        {
+          "label": "R38",
+          "value": 19
+        },
+        {
+          "label": "R49",
+          "value": 25
+        },
+        {
+          "label": "R60",
+          "value": 32
+        }
+      ]
+    },
+    {
+      "id": "product=blown",
+      "raw": {
+        "area": "1000",
+        "climateZone": "4ab",
+        "existing": "none",
+        "product": "blown",
+        "battR": "38",
+        "battCoverage": "64",
+        "targetR": "",
+        "extraWaste": "0"
+      },
+      "ok": true,
+      "results": {
+        "energyStarR": 60,
+        "packages": 32,
+        "beforeRounding": 31.5,
+        "blownThickness": 20.5,
+        "battThickness": null,
+        "chartR": 60,
+        "rShortfall": 0
+      },
+      "chart": [
+        {
+          "label": "R30",
+          "value": 15
+        },
+        {
+          "label": "R38",
+          "value": 19
+        },
+        {
+          "label": "R49",
+          "value": 25
+        },
+        {
+          "label": "R60",
+          "value": 32
+        }
+      ]
+    },
+    {
+      "id": "product=batts",
+      "raw": {
+        "area": "1000",
+        "climateZone": "4ab",
+        "existing": "none",
+        "product": "batts",
+        "battR": "38",
+        "battCoverage": "64",
+        "targetR": "",
+        "extraWaste": "0"
+      },
+      "ok": true,
+      "results": {
+        "energyStarR": 60,
+        "packages": 16,
+        "beforeRounding": 15.63,
+        "blownThickness": null,
+        "battThickness": 12,
+        "chartR": null,
+        "rShortfall": 22
+      },
+      "chart": [
+        {
+          "label": "R30",
+          "value": 15
+        },
+        {
+          "label": "R38",
+          "value": 19
+        },
+        {
+          "label": "R49",
+          "value": 25
+        },
+        {
+          "label": "R60",
+          "value": 32
+        }
+      ]
+    },
+    {
+      "id": "battR=13",
+      "raw": {
+        "area": "1000",
+        "climateZone": "4ab",
+        "existing": "none",
+        "product": "blown",
+        "battR": "13",
+        "battCoverage": "64",
+        "targetR": "",
+        "extraWaste": "0"
+      },
+      "ok": true,
+      "results": {
+        "energyStarR": 60,
+        "packages": 32,
+        "beforeRounding": 31.5,
+        "blownThickness": 20.5,
+        "battThickness": null,
+        "chartR": 60,
+        "rShortfall": 0
+      },
+      "chart": [
+        {
+          "label": "R30",
+          "value": 15
+        },
+        {
+          "label": "R38",
+          "value": 19
+        },
+        {
+          "label": "R49",
+          "value": 25
+        },
+        {
+          "label": "R60",
+          "value": 32
+        }
+      ]
+    },
+    {
+      "id": "battR=19",
+      "raw": {
+        "area": "1000",
+        "climateZone": "4ab",
+        "existing": "none",
+        "product": "blown",
+        "battR": "19",
+        "battCoverage": "64",
+        "targetR": "",
+        "extraWaste": "0"
+      },
+      "ok": true,
+      "results": {
+        "energyStarR": 60,
+        "packages": 32,
+        "beforeRounding": 31.5,
+        "blownThickness": 20.5,
+        "battThickness": null,
+        "chartR": 60,
+        "rShortfall": 0
+      },
+      "chart": [
+        {
+          "label": "R30",
+          "value": 15
+        },
+        {
+          "label": "R38",
+          "value": 19
+        },
+        {
+          "label": "R49",
+          "value": 25
+        },
+        {
+          "label": "R60",
+          "value": 32
+        }
+      ]
+    },
+    {
+      "id": "battR=30",
+      "raw": {
+        "area": "1000",
+        "climateZone": "4ab",
+        "existing": "none",
+        "product": "blown",
+        "battR": "30",
+        "battCoverage": "64",
+        "targetR": "",
+        "extraWaste": "0"
+      },
+      "ok": true,
+      "results": {
+        "energyStarR": 60,
+        "packages": 32,
+        "beforeRounding": 31.5,
+        "blownThickness": 20.5,
+        "battThickness": null,
+        "chartR": 60,
+        "rShortfall": 0
+      },
+      "chart": [
+        {
+          "label": "R30",
+          "value": 15
+        },
+        {
+          "label": "R38",
+          "value": 19
+        },
+        {
+          "label": "R49",
+          "value": 25
+        },
+        {
+          "label": "R60",
+          "value": 32
+        }
+      ]
+    },
+    {
+      "id": "battR=38",
+      "raw": {
+        "area": "1000",
+        "climateZone": "4ab",
+        "existing": "none",
+        "product": "blown",
+        "battR": "38",
+        "battCoverage": "64",
+        "targetR": "",
+        "extraWaste": "0"
+      },
+      "ok": true,
+      "results": {
+        "energyStarR": 60,
+        "packages": 32,
+        "beforeRounding": 31.5,
+        "blownThickness": 20.5,
+        "battThickness": null,
+        "chartR": 60,
+        "rShortfall": 0
+      },
+      "chart": [
+        {
+          "label": "R30",
+          "value": 15
+        },
+        {
+          "label": "R38",
+          "value": 19
+        },
+        {
+          "label": "R49",
+          "value": 25
+        },
+        {
+          "label": "R60",
+          "value": 32
+        }
+      ]
+    }
+  ],
+  "mulch-calculator": [
+    {
+      "id": "defaults",
+      "raw": {
+        "shape": "rectangle",
+        "length": "20",
+        "width": "10",
+        "outerDiameter": "6",
+        "area": "200",
+        "depth": "3",
+        "existingDepth": "0",
+        "bagSize": "2",
+        "clearanceRadius": "0.33"
+      },
+      "ok": true,
+      "results": {
+        "bags": 25,
+        "cubicYards": 1.85,
+        "cubicFeet": 50,
+        "bagsPerYard": 13.5,
+        "areaSqFt": 200,
+        "netDepth": 3,
+        "openSqFt": 0
+      },
+      "chart": [
+        {
+          "label": "2 in",
+          "value": 17
+        },
+        {
+          "label": "3 in",
+          "value": 25
+        },
+        {
+          "label": "4 in",
+          "value": 34
+        }
+      ]
+    },
+    {
+      "id": "shape=rectangle",
+      "raw": {
+        "shape": "rectangle",
+        "length": "20",
+        "width": "10",
+        "outerDiameter": "6",
+        "area": "200",
+        "depth": "3",
+        "existingDepth": "0",
+        "bagSize": "2",
+        "clearanceRadius": "0.33"
+      },
+      "ok": true,
+      "results": {
+        "bags": 25,
+        "cubicYards": 1.85,
+        "cubicFeet": 50,
+        "bagsPerYard": 13.5,
+        "areaSqFt": 200,
+        "netDepth": 3,
+        "openSqFt": 0
+      },
+      "chart": [
+        {
+          "label": "2 in",
+          "value": 17
+        },
+        {
+          "label": "3 in",
+          "value": 25
+        },
+        {
+          "label": "4 in",
+          "value": 34
+        }
+      ]
+    },
+    {
+      "id": "shape=circle",
+      "raw": {
+        "shape": "circle",
+        "length": "20",
+        "width": "10",
+        "outerDiameter": "6",
+        "area": "200",
+        "depth": "3",
+        "existingDepth": "0",
+        "bagSize": "2",
+        "clearanceRadius": "0.33"
+      },
+      "ok": true,
+      "results": {
+        "bags": 40,
+        "cubicYards": 2.91,
+        "cubicFeet": 78.54,
+        "bagsPerYard": 13.5,
+        "areaSqFt": 314.2,
+        "netDepth": 3,
+        "openSqFt": 0
+      },
+      "chart": [
+        {
+          "label": "2 in",
+          "value": 27
+        },
+        {
+          "label": "3 in",
+          "value": 40
+        },
+        {
+          "label": "4 in",
+          "value": 53
+        }
+      ]
+    },
+    {
+      "id": "shape=treeRing",
+      "raw": {
+        "shape": "treeRing",
+        "length": "20",
+        "width": "10",
+        "outerDiameter": "6",
+        "area": "200",
+        "depth": "3",
+        "existingDepth": "0",
+        "bagSize": "2",
+        "clearanceRadius": "0.33"
+      },
+      "ok": true,
+      "results": {
+        "bags": 4,
+        "cubicYards": 0.26,
+        "cubicFeet": 6.98,
+        "bagsPerYard": 13.5,
+        "areaSqFt": 27.9,
+        "netDepth": 3,
+        "openSqFt": 0.3
+      },
+      "chart": [
+        {
+          "label": "2 in",
+          "value": 3
+        },
+        {
+          "label": "3 in",
+          "value": 4
+        },
+        {
+          "label": "4 in",
+          "value": 5
+        }
+      ]
+    },
+    {
+      "id": "shape=sqft",
+      "raw": {
+        "shape": "sqft",
+        "length": "20",
+        "width": "10",
+        "outerDiameter": "6",
+        "area": "200",
+        "depth": "3",
+        "existingDepth": "0",
+        "bagSize": "2",
+        "clearanceRadius": "0.33"
+      },
+      "ok": true,
+      "results": {
+        "bags": 25,
+        "cubicYards": 1.85,
+        "cubicFeet": 50,
+        "bagsPerYard": 13.5,
+        "areaSqFt": 200,
+        "netDepth": 3,
+        "openSqFt": 0
+      },
+      "chart": [
+        {
+          "label": "2 in",
+          "value": 17
+        },
+        {
+          "label": "3 in",
+          "value": 25
+        },
+        {
+          "label": "4 in",
+          "value": 34
+        }
+      ]
+    }
+  ],
+  "paint-calculator": [
+    {
+      "id": "defaults",
+      "raw": {
+        "length": "12",
+        "width": "12",
+        "height": "8",
+        "includeCeiling": "yes",
+        "doors": "1",
+        "windows": "2",
+        "coats": "2",
+        "product": "sw-350",
+        "coverage": "350",
+        "doorSize": "20",
+        "windowSize": "15",
+        "includePrimer": "no"
+      },
+      "ok": true,
+      "results": {
+        "wallArea": 334,
+        "ceilingArea": 144,
+        "gallonsPerCoat": 0.95,
+        "totalGallons": 1.91,
+        "fiveGallon": 0,
+        "oneGallon": 2,
+        "quarts": 0,
+        "ceilingBuy": 1,
+        "primerBuy": 0
+      },
+      "chart": [
+        {
+          "label": "Walls 2 gal",
+          "value": 2
+        },
+        {
+          "label": "Ceiling 1 gal",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "includeCeiling=yes",
+      "raw": {
+        "length": "12",
+        "width": "12",
+        "height": "8",
+        "includeCeiling": "yes",
+        "doors": "1",
+        "windows": "2",
+        "coats": "2",
+        "product": "sw-350",
+        "coverage": "350",
+        "doorSize": "20",
+        "windowSize": "15",
+        "includePrimer": "no"
+      },
+      "ok": true,
+      "results": {
+        "wallArea": 334,
+        "ceilingArea": 144,
+        "gallonsPerCoat": 0.95,
+        "totalGallons": 1.91,
+        "fiveGallon": 0,
+        "oneGallon": 2,
+        "quarts": 0,
+        "ceilingBuy": 1,
+        "primerBuy": 0
+      },
+      "chart": [
+        {
+          "label": "Walls 2 gal",
+          "value": 2
+        },
+        {
+          "label": "Ceiling 1 gal",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "includeCeiling=no",
+      "raw": {
+        "length": "12",
+        "width": "12",
+        "height": "8",
+        "includeCeiling": "no",
+        "doors": "1",
+        "windows": "2",
+        "coats": "2",
+        "product": "sw-350",
+        "coverage": "350",
+        "doorSize": "20",
+        "windowSize": "15",
+        "includePrimer": "no"
+      },
+      "ok": true,
+      "results": {
+        "wallArea": 334,
+        "ceilingArea": 0,
+        "gallonsPerCoat": 0.95,
+        "totalGallons": 1.91,
+        "fiveGallon": 0,
+        "oneGallon": 2,
+        "quarts": 0,
+        "ceilingBuy": 0,
+        "primerBuy": 0
+      },
+      "chart": [
+        {
+          "label": "Walls 2 gal",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "id": "product=sw-350",
+      "raw": {
+        "length": "12",
+        "width": "12",
+        "height": "8",
+        "includeCeiling": "yes",
+        "doors": "1",
+        "windows": "2",
+        "coats": "2",
+        "product": "sw-350",
+        "coverage": "350",
+        "doorSize": "20",
+        "windowSize": "15",
+        "includePrimer": "no"
+      },
+      "ok": true,
+      "results": {
+        "wallArea": 334,
+        "ceilingArea": 144,
+        "gallonsPerCoat": 0.95,
+        "totalGallons": 1.91,
+        "fiveGallon": 0,
+        "oneGallon": 2,
+        "quarts": 0,
+        "ceilingBuy": 1,
+        "primerBuy": 0
+      },
+      "chart": [
+        {
+          "label": "Walls 2 gal",
+          "value": 2
+        },
+        {
+          "label": "Ceiling 1 gal",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "product=sw-400",
+      "raw": {
+        "length": "12",
+        "width": "12",
+        "height": "8",
+        "includeCeiling": "yes",
+        "doors": "1",
+        "windows": "2",
+        "coats": "2",
+        "product": "sw-400",
+        "coverage": "350",
+        "doorSize": "20",
+        "windowSize": "15",
+        "includePrimer": "no"
+      },
+      "ok": true,
+      "results": {
+        "wallArea": 334,
+        "ceilingArea": 144,
+        "gallonsPerCoat": 0.84,
+        "totalGallons": 1.67,
+        "fiveGallon": 0,
+        "oneGallon": 2,
+        "quarts": 0,
+        "ceilingBuy": 1,
+        "primerBuy": 0
+      },
+      "chart": [
+        {
+          "label": "Walls 2 gal",
+          "value": 2
+        },
+        {
+          "label": "Ceiling 1 gal",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "product=custom",
+      "raw": {
+        "length": "12",
+        "width": "12",
+        "height": "8",
+        "includeCeiling": "yes",
+        "doors": "1",
+        "windows": "2",
+        "coats": "2",
+        "product": "custom",
+        "coverage": "350",
+        "doorSize": "20",
+        "windowSize": "15",
+        "includePrimer": "no"
+      },
+      "ok": true,
+      "results": {
+        "wallArea": 334,
+        "ceilingArea": 144,
+        "gallonsPerCoat": 0.95,
+        "totalGallons": 1.91,
+        "fiveGallon": 0,
+        "oneGallon": 2,
+        "quarts": 0,
+        "ceilingBuy": 1,
+        "primerBuy": 0
+      },
+      "chart": [
+        {
+          "label": "Walls 2 gal",
+          "value": 2
+        },
+        {
+          "label": "Ceiling 1 gal",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "includePrimer=no",
+      "raw": {
+        "length": "12",
+        "width": "12",
+        "height": "8",
+        "includeCeiling": "yes",
+        "doors": "1",
+        "windows": "2",
+        "coats": "2",
+        "product": "sw-350",
+        "coverage": "350",
+        "doorSize": "20",
+        "windowSize": "15",
+        "includePrimer": "no"
+      },
+      "ok": true,
+      "results": {
+        "wallArea": 334,
+        "ceilingArea": 144,
+        "gallonsPerCoat": 0.95,
+        "totalGallons": 1.91,
+        "fiveGallon": 0,
+        "oneGallon": 2,
+        "quarts": 0,
+        "ceilingBuy": 1,
+        "primerBuy": 0
+      },
+      "chart": [
+        {
+          "label": "Walls 2 gal",
+          "value": 2
+        },
+        {
+          "label": "Ceiling 1 gal",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "includePrimer=yes",
+      "raw": {
+        "length": "12",
+        "width": "12",
+        "height": "8",
+        "includeCeiling": "yes",
+        "doors": "1",
+        "windows": "2",
+        "coats": "2",
+        "product": "sw-350",
+        "coverage": "350",
+        "doorSize": "20",
+        "windowSize": "15",
+        "includePrimer": "yes"
+      },
+      "ok": true,
+      "results": {
+        "wallArea": 334,
+        "ceilingArea": 144,
+        "gallonsPerCoat": 0.95,
+        "totalGallons": 1.91,
+        "fiveGallon": 0,
+        "oneGallon": 2,
+        "quarts": 0,
+        "ceilingBuy": 1,
+        "primerBuy": 1.5
+      },
+      "chart": [
+        {
+          "label": "Walls 2 gal",
+          "value": 2
+        },
+        {
+          "label": "Ceiling 1 gal",
+          "value": 1
+        },
+        {
+          "label": "Primer 1.5 gal",
+          "value": 1.5
+        }
+      ]
+    }
+  ],
+  "paver-patio-calculator": [
+    {
+      "id": "defaults",
+      "raw": {
+        "shape": "rectangle",
+        "length": "12",
+        "width": "12",
+        "diameter": "10",
+        "area": "",
+        "perimeter": "",
+        "paverLength": "8",
+        "paverWidth": "4",
+        "use": "patio",
+        "soil": "drained",
+        "extraBase": "2",
+        "jointWidth": "0.125",
+        "sandDepth": "1",
+        "density": "1.40",
+        "waste": "5"
+      },
+      "ok": true,
+      "results": {
+        "pavers": 650,
+        "paversNoWaste": 618.7,
+        "paversPerSqFt": 4.3,
+        "area": 144,
+        "baseDepth": 4,
+        "baseTons": 2.49,
+        "baseCuYd": 1.78,
+        "sandCuFt": 12,
+        "sandCuYd": 0.44,
+        "edgeRestraint": 48
+      },
+      "chart": [
+        {
+          "label": "4\" · 2.5 t",
+          "value": 2.5
+        },
+        {
+          "label": "6\" · 3.7 t",
+          "value": 3.7
+        },
+        {
+          "label": "8\" · 5 t",
+          "value": 5
+        }
+      ]
+    },
+    {
+      "id": "shape=rectangle",
+      "raw": {
+        "shape": "rectangle",
+        "length": "12",
+        "width": "12",
+        "diameter": "10",
+        "area": "",
+        "perimeter": "",
+        "paverLength": "8",
+        "paverWidth": "4",
+        "use": "patio",
+        "soil": "drained",
+        "extraBase": "2",
+        "jointWidth": "0.125",
+        "sandDepth": "1",
+        "density": "1.40",
+        "waste": "5"
+      },
+      "ok": true,
+      "results": {
+        "pavers": 650,
+        "paversNoWaste": 618.7,
+        "paversPerSqFt": 4.3,
+        "area": 144,
+        "baseDepth": 4,
+        "baseTons": 2.49,
+        "baseCuYd": 1.78,
+        "sandCuFt": 12,
+        "sandCuYd": 0.44,
+        "edgeRestraint": 48
+      },
+      "chart": [
+        {
+          "label": "4\" · 2.5 t",
+          "value": 2.5
+        },
+        {
+          "label": "6\" · 3.7 t",
+          "value": 3.7
+        },
+        {
+          "label": "8\" · 5 t",
+          "value": 5
+        }
+      ]
+    },
+    {
+      "id": "shape=circle",
+      "raw": {
+        "shape": "circle",
+        "length": "12",
+        "width": "12",
+        "diameter": "10",
+        "area": "",
+        "perimeter": "",
+        "paverLength": "8",
+        "paverWidth": "4",
+        "use": "patio",
+        "soil": "drained",
+        "extraBase": "2",
+        "jointWidth": "0.125",
+        "sandDepth": "1",
+        "density": "1.40",
+        "waste": "5"
+      },
+      "ok": true,
+      "results": {
+        "pavers": 355,
+        "paversNoWaste": 337.4,
+        "paversPerSqFt": 4.3,
+        "area": 78.5,
+        "baseDepth": 4,
+        "baseTons": 1.36,
+        "baseCuYd": 0.97,
+        "sandCuFt": 6.5,
+        "sandCuYd": 0.24,
+        "edgeRestraint": 31.4
+      },
+      "chart": [
+        {
+          "label": "4\" · 1.4 t",
+          "value": 1.4
+        },
+        {
+          "label": "6\" · 2 t",
+          "value": 2
+        },
+        {
+          "label": "8\" · 2.7 t",
+          "value": 2.7
+        }
+      ]
+    },
+    {
+      "id": "shape=area",
+      "raw": {
+        "shape": "area",
+        "length": "12",
+        "width": "12",
+        "diameter": "10",
+        "area": "",
+        "perimeter": "",
+        "paverLength": "8",
+        "paverWidth": "4",
+        "use": "patio",
+        "soil": "drained",
+        "extraBase": "2",
+        "jointWidth": "0.125",
+        "sandDepth": "1",
+        "density": "1.40",
+        "waste": "5"
+      },
+      "ok": false,
+      "results": null,
+      "chart": []
+    },
+    {
+      "id": "use=patio",
+      "raw": {
+        "shape": "rectangle",
+        "length": "12",
+        "width": "12",
+        "diameter": "10",
+        "area": "",
+        "perimeter": "",
+        "paverLength": "8",
+        "paverWidth": "4",
+        "use": "patio",
+        "soil": "drained",
+        "extraBase": "2",
+        "jointWidth": "0.125",
+        "sandDepth": "1",
+        "density": "1.40",
+        "waste": "5"
+      },
+      "ok": true,
+      "results": {
+        "pavers": 650,
+        "paversNoWaste": 618.7,
+        "paversPerSqFt": 4.3,
+        "area": 144,
+        "baseDepth": 4,
+        "baseTons": 2.49,
+        "baseCuYd": 1.78,
+        "sandCuFt": 12,
+        "sandCuYd": 0.44,
+        "edgeRestraint": 48
+      },
+      "chart": [
+        {
+          "label": "4\" · 2.5 t",
+          "value": 2.5
+        },
+        {
+          "label": "6\" · 3.7 t",
+          "value": 3.7
+        },
+        {
+          "label": "8\" · 5 t",
+          "value": 5
+        }
+      ]
+    },
+    {
+      "id": "use=driveway",
+      "raw": {
+        "shape": "rectangle",
+        "length": "12",
+        "width": "12",
+        "diameter": "10",
+        "area": "",
+        "perimeter": "",
+        "paverLength": "8",
+        "paverWidth": "4",
+        "use": "driveway",
+        "soil": "drained",
+        "extraBase": "2",
+        "jointWidth": "0.125",
+        "sandDepth": "1",
+        "density": "1.40",
+        "waste": "5"
+      },
+      "ok": true,
+      "results": {
+        "pavers": 650,
+        "paversNoWaste": 618.7,
+        "paversPerSqFt": 4.3,
+        "area": 144,
+        "baseDepth": 6,
+        "baseTons": 3.73,
+        "baseCuYd": 2.67,
+        "sandCuFt": 12,
+        "sandCuYd": 0.44,
+        "edgeRestraint": 48
+      },
+      "chart": [
+        {
+          "label": "4\" · 2.5 t",
+          "value": 2.5
+        },
+        {
+          "label": "6\" · 3.7 t",
+          "value": 3.7
+        },
+        {
+          "label": "8\" · 5 t",
+          "value": 5
+        }
+      ]
+    },
+    {
+      "id": "soil=drained",
+      "raw": {
+        "shape": "rectangle",
+        "length": "12",
+        "width": "12",
+        "diameter": "10",
+        "area": "",
+        "perimeter": "",
+        "paverLength": "8",
+        "paverWidth": "4",
+        "use": "patio",
+        "soil": "drained",
+        "extraBase": "2",
+        "jointWidth": "0.125",
+        "sandDepth": "1",
+        "density": "1.40",
+        "waste": "5"
+      },
+      "ok": true,
+      "results": {
+        "pavers": 650,
+        "paversNoWaste": 618.7,
+        "paversPerSqFt": 4.3,
+        "area": 144,
+        "baseDepth": 4,
+        "baseTons": 2.49,
+        "baseCuYd": 1.78,
+        "sandCuFt": 12,
+        "sandCuYd": 0.44,
+        "edgeRestraint": 48
+      },
+      "chart": [
+        {
+          "label": "4\" · 2.5 t",
+          "value": 2.5
+        },
+        {
+          "label": "6\" · 3.7 t",
+          "value": 3.7
+        },
+        {
+          "label": "8\" · 5 t",
+          "value": 5
+        }
+      ]
+    },
+    {
+      "id": "soil=poor",
+      "raw": {
+        "shape": "rectangle",
+        "length": "12",
+        "width": "12",
+        "diameter": "10",
+        "area": "",
+        "perimeter": "",
+        "paverLength": "8",
+        "paverWidth": "4",
+        "use": "patio",
+        "soil": "poor",
+        "extraBase": "2",
+        "jointWidth": "0.125",
+        "sandDepth": "1",
+        "density": "1.40",
+        "waste": "5"
+      },
+      "ok": true,
+      "results": {
+        "pavers": 650,
+        "paversNoWaste": 618.7,
+        "paversPerSqFt": 4.3,
+        "area": 144,
+        "baseDepth": 6,
+        "baseTons": 3.73,
+        "baseCuYd": 2.67,
+        "sandCuFt": 12,
+        "sandCuYd": 0.44,
+        "edgeRestraint": 48
+      },
+      "chart": [
+        {
+          "label": "4\" · 2.5 t",
+          "value": 2.5
+        },
+        {
+          "label": "6\" · 3.7 t",
+          "value": 3.7
+        },
+        {
+          "label": "8\" · 5 t",
+          "value": 5
+        }
+      ]
+    }
+  ],
+  "rebar-calculator": [
+    {
+      "id": "defaults",
+      "raw": {
+        "length": "20",
+        "width": "20",
+        "barSize": "4",
+        "spacing": "18",
+        "cover": "3",
+        "stickLength": "20",
+        "lap": "20",
+        "chairSpacing": "48",
+        "waste": "5"
+      },
+      "ok": true,
+      "results": {
+        "sticksToBuy": 30,
+        "stickLength": 20,
+        "weightToBuy": 400.8,
+        "barsAlongLength": 14,
+        "cutLengthAlongLength": 19.5,
+        "sticksAlongLength": 14,
+        "barsAlongWidth": 14,
+        "cutLengthAlongWidth": 19.5,
+        "sticksAlongWidth": 14,
+        "lapSplices": 0,
+        "linearFeet": 546,
+        "sticksBeforeWaste": 28,
+        "tiePoints": 196,
+        "chairs": 36,
+        "unitWeight": 0.668
+      },
+      "chart": [
+        {
+          "label": "12 in",
+          "value": 45
+        },
+        {
+          "label": "16 in",
+          "value": 34
+        },
+        {
+          "label": "18 in",
+          "value": 30
+        },
+        {
+          "label": "24 in",
+          "value": 24
+        },
+        {
+          "label": "36 in",
+          "value": 17
+        }
+      ]
+    },
+    {
+      "id": "barSize=3",
+      "raw": {
+        "length": "20",
+        "width": "20",
+        "barSize": "3",
+        "spacing": "18",
+        "cover": "3",
+        "stickLength": "20",
+        "lap": "20",
+        "chairSpacing": "48",
+        "waste": "5"
+      },
+      "ok": true,
+      "results": {
+        "sticksToBuy": 30,
+        "stickLength": 20,
+        "weightToBuy": 225.6,
+        "barsAlongLength": 14,
+        "cutLengthAlongLength": 19.5,
+        "sticksAlongLength": 14,
+        "barsAlongWidth": 14,
+        "cutLengthAlongWidth": 19.5,
+        "sticksAlongWidth": 14,
+        "lapSplices": 0,
+        "linearFeet": 546,
+        "sticksBeforeWaste": 28,
+        "tiePoints": 196,
+        "chairs": 36,
+        "unitWeight": 0.376
+      },
+      "chart": [
+        {
+          "label": "12 in",
+          "value": 45
+        },
+        {
+          "label": "16 in",
+          "value": 34
+        },
+        {
+          "label": "18 in",
+          "value": 30
+        },
+        {
+          "label": "24 in",
+          "value": 24
+        },
+        {
+          "label": "36 in",
+          "value": 17
+        }
+      ]
+    },
+    {
+      "id": "barSize=4",
+      "raw": {
+        "length": "20",
+        "width": "20",
+        "barSize": "4",
+        "spacing": "18",
+        "cover": "3",
+        "stickLength": "20",
+        "lap": "20",
+        "chairSpacing": "48",
+        "waste": "5"
+      },
+      "ok": true,
+      "results": {
+        "sticksToBuy": 30,
+        "stickLength": 20,
+        "weightToBuy": 400.8,
+        "barsAlongLength": 14,
+        "cutLengthAlongLength": 19.5,
+        "sticksAlongLength": 14,
+        "barsAlongWidth": 14,
+        "cutLengthAlongWidth": 19.5,
+        "sticksAlongWidth": 14,
+        "lapSplices": 0,
+        "linearFeet": 546,
+        "sticksBeforeWaste": 28,
+        "tiePoints": 196,
+        "chairs": 36,
+        "unitWeight": 0.668
+      },
+      "chart": [
+        {
+          "label": "12 in",
+          "value": 45
+        },
+        {
+          "label": "16 in",
+          "value": 34
+        },
+        {
+          "label": "18 in",
+          "value": 30
+        },
+        {
+          "label": "24 in",
+          "value": 24
+        },
+        {
+          "label": "36 in",
+          "value": 17
+        }
+      ]
+    },
+    {
+      "id": "barSize=5",
+      "raw": {
+        "length": "20",
+        "width": "20",
+        "barSize": "5",
+        "spacing": "18",
+        "cover": "3",
+        "stickLength": "20",
+        "lap": "20",
+        "chairSpacing": "48",
+        "waste": "5"
+      },
+      "ok": true,
+      "results": {
+        "sticksToBuy": 30,
+        "stickLength": 20,
+        "weightToBuy": 625.8,
+        "barsAlongLength": 14,
+        "cutLengthAlongLength": 19.5,
+        "sticksAlongLength": 14,
+        "barsAlongWidth": 14,
+        "cutLengthAlongWidth": 19.5,
+        "sticksAlongWidth": 14,
+        "lapSplices": 0,
+        "linearFeet": 546,
+        "sticksBeforeWaste": 28,
+        "tiePoints": 196,
+        "chairs": 36,
+        "unitWeight": 1.043
+      },
+      "chart": [
+        {
+          "label": "12 in",
+          "value": 45
+        },
+        {
+          "label": "16 in",
+          "value": 34
+        },
+        {
+          "label": "18 in",
+          "value": 30
+        },
+        {
+          "label": "24 in",
+          "value": 24
+        },
+        {
+          "label": "36 in",
+          "value": 17
+        }
+      ]
+    },
+    {
+      "id": "barSize=6",
+      "raw": {
+        "length": "20",
+        "width": "20",
+        "barSize": "6",
+        "spacing": "18",
+        "cover": "3",
+        "stickLength": "20",
+        "lap": "20",
+        "chairSpacing": "48",
+        "waste": "5"
+      },
+      "ok": true,
+      "results": {
+        "sticksToBuy": 30,
+        "stickLength": 20,
+        "weightToBuy": 901.2,
+        "barsAlongLength": 14,
+        "cutLengthAlongLength": 19.5,
+        "sticksAlongLength": 14,
+        "barsAlongWidth": 14,
+        "cutLengthAlongWidth": 19.5,
+        "sticksAlongWidth": 14,
+        "lapSplices": 0,
+        "linearFeet": 546,
+        "sticksBeforeWaste": 28,
+        "tiePoints": 196,
+        "chairs": 36,
+        "unitWeight": 1.502
+      },
+      "chart": [
+        {
+          "label": "12 in",
+          "value": 45
+        },
+        {
+          "label": "16 in",
+          "value": 34
+        },
+        {
+          "label": "18 in",
+          "value": 30
+        },
+        {
+          "label": "24 in",
+          "value": 24
+        },
+        {
+          "label": "36 in",
+          "value": 17
+        }
+      ]
+    }
+  ],
+  "retaining-wall-block-calculator": [
+    {
+      "id": "defaults",
+      "raw": {
+        "wallShape": "straight",
+        "length": "20",
+        "exposedHeight": "24",
+        "surcharge": "off",
+        "blockFaceLength": "16",
+        "blockFaceHeight": "6",
+        "buriedDepth": "6",
+        "blockDepth": "10",
+        "capLength": "16",
+        "blockWaste": "5",
+        "density": "1.40"
+      },
+      "ok": true,
+      "results": {
+        "blocksToBuy": 79,
+        "capsToBuy": 15,
+        "engineerCheck": 0,
+        "courses": 5,
+        "blocksPerCourse": 15,
+        "stackHeight": 30,
+        "builtExposed": 24,
+        "padYards": 0.68,
+        "padTons": 0.96,
+        "drainageYards": 1.86,
+        "drainpipeFt": 20,
+        "citedLimitIn": 48,
+        "inchesOver": 0
+      },
+      "chart": [
+        {
+          "label": "Blocks",
+          "value": 79
+        },
+        {
+          "label": "Caps",
+          "value": 15
+        }
+      ]
+    },
+    {
+      "id": "wallShape=straight",
+      "raw": {
+        "wallShape": "straight",
+        "length": "20",
+        "exposedHeight": "24",
+        "surcharge": "off",
+        "blockFaceLength": "16",
+        "blockFaceHeight": "6",
+        "buriedDepth": "6",
+        "blockDepth": "10",
+        "capLength": "16",
+        "blockWaste": "5",
+        "density": "1.40"
+      },
+      "ok": true,
+      "results": {
+        "blocksToBuy": 79,
+        "capsToBuy": 15,
+        "engineerCheck": 0,
+        "courses": 5,
+        "blocksPerCourse": 15,
+        "stackHeight": 30,
+        "builtExposed": 24,
+        "padYards": 0.68,
+        "padTons": 0.96,
+        "drainageYards": 1.86,
+        "drainpipeFt": 20,
+        "citedLimitIn": 48,
+        "inchesOver": 0
+      },
+      "chart": [
+        {
+          "label": "Blocks",
+          "value": 79
+        },
+        {
+          "label": "Caps",
+          "value": 15
+        }
+      ]
+    },
+    {
+      "id": "wallShape=circle",
+      "raw": {
+        "wallShape": "circle",
+        "length": "20",
+        "exposedHeight": "24",
+        "surcharge": "off",
+        "blockFaceLength": "16",
+        "blockFaceHeight": "6",
+        "buriedDepth": "6",
+        "blockDepth": "10",
+        "capLength": "16",
+        "blockWaste": "5",
+        "density": "1.40"
+      },
+      "ok": true,
+      "results": {
+        "blocksToBuy": 252,
+        "capsToBuy": 48,
+        "engineerCheck": 0,
+        "courses": 5,
+        "blocksPerCourse": 48,
+        "stackHeight": 30,
+        "builtExposed": 24,
+        "padYards": 2.23,
+        "padTons": 3.12,
+        "drainageYards": 6.6,
+        "drainpipeFt": 69,
+        "citedLimitIn": 48,
+        "inchesOver": 0
+      },
+      "chart": [
+        {
+          "label": "Blocks",
+          "value": 252
+        },
+        {
+          "label": "Caps",
+          "value": 48
+        }
+      ]
+    },
+    {
+      "id": "surcharge=off",
+      "raw": {
+        "wallShape": "straight",
+        "length": "20",
+        "exposedHeight": "24",
+        "surcharge": "off",
+        "blockFaceLength": "16",
+        "blockFaceHeight": "6",
+        "buriedDepth": "6",
+        "blockDepth": "10",
+        "capLength": "16",
+        "blockWaste": "5",
+        "density": "1.40"
+      },
+      "ok": true,
+      "results": {
+        "blocksToBuy": 79,
+        "capsToBuy": 15,
+        "engineerCheck": 0,
+        "courses": 5,
+        "blocksPerCourse": 15,
+        "stackHeight": 30,
+        "builtExposed": 24,
+        "padYards": 0.68,
+        "padTons": 0.96,
+        "drainageYards": 1.86,
+        "drainpipeFt": 20,
+        "citedLimitIn": 48,
+        "inchesOver": 0
+      },
+      "chart": [
+        {
+          "label": "Blocks",
+          "value": 79
+        },
+        {
+          "label": "Caps",
+          "value": 15
+        }
+      ]
+    },
+    {
+      "id": "surcharge=on",
+      "raw": {
+        "wallShape": "straight",
+        "length": "20",
+        "exposedHeight": "24",
+        "surcharge": "on",
+        "blockFaceLength": "16",
+        "blockFaceHeight": "6",
+        "buriedDepth": "6",
+        "blockDepth": "10",
+        "capLength": "16",
+        "blockWaste": "5",
+        "density": "1.40"
+      },
+      "ok": true,
+      "results": {
+        "blocksToBuy": 79,
+        "capsToBuy": 15,
+        "engineerCheck": 0,
+        "courses": 5,
+        "blocksPerCourse": 15,
+        "stackHeight": 30,
+        "builtExposed": 24,
+        "padYards": 0.68,
+        "padTons": 0.96,
+        "drainageYards": 1.86,
+        "drainpipeFt": 20,
+        "citedLimitIn": 24,
+        "inchesOver": 0
+      },
+      "chart": [
+        {
+          "label": "Blocks",
+          "value": 79
+        },
+        {
+          "label": "Caps",
+          "value": 15
+        }
+      ]
+    }
+  ],
+  "roof-pitch-calculator": [
+    {
+      "id": "defaults",
+      "raw": {
+        "mode": "riseRun",
+        "rise": "6",
+        "run": "12",
+        "angle": "26.57",
+        "pitchX": "6",
+        "footprint": "0"
+      },
+      "ok": true,
+      "results": {
+        "pitch": 6,
+        "angle": 26.57,
+        "percent": 50,
+        "multiplier": 1.118,
+        "rafterPerFoot": 13.42,
+        "roofArea": null
+      },
+      "chart": [
+        {
+          "label": "1",
+          "value": 4.76
+        },
+        {
+          "label": "2",
+          "value": 9.46
+        },
+        {
+          "label": "3",
+          "value": 14.04
+        },
+        {
+          "label": "4",
+          "value": 18.43
+        },
+        {
+          "label": "5",
+          "value": 22.62
+        },
+        {
+          "label": "6",
+          "value": 26.57
+        },
+        {
+          "label": "7",
+          "value": 30.26
+        },
+        {
+          "label": "8",
+          "value": 33.69
+        },
+        {
+          "label": "9",
+          "value": 36.87
+        },
+        {
+          "label": "10",
+          "value": 39.81
+        },
+        {
+          "label": "11",
+          "value": 42.51
+        },
+        {
+          "label": "12",
+          "value": 45
+        }
+      ]
+    },
+    {
+      "id": "mode=riseRun",
+      "raw": {
+        "mode": "riseRun",
+        "rise": "6",
+        "run": "12",
+        "angle": "26.57",
+        "pitchX": "6",
+        "footprint": "0"
+      },
+      "ok": true,
+      "results": {
+        "pitch": 6,
+        "angle": 26.57,
+        "percent": 50,
+        "multiplier": 1.118,
+        "rafterPerFoot": 13.42,
+        "roofArea": null
+      },
+      "chart": [
+        {
+          "label": "1",
+          "value": 4.76
+        },
+        {
+          "label": "2",
+          "value": 9.46
+        },
+        {
+          "label": "3",
+          "value": 14.04
+        },
+        {
+          "label": "4",
+          "value": 18.43
+        },
+        {
+          "label": "5",
+          "value": 22.62
+        },
+        {
+          "label": "6",
+          "value": 26.57
+        },
+        {
+          "label": "7",
+          "value": 30.26
+        },
+        {
+          "label": "8",
+          "value": 33.69
+        },
+        {
+          "label": "9",
+          "value": 36.87
+        },
+        {
+          "label": "10",
+          "value": 39.81
+        },
+        {
+          "label": "11",
+          "value": 42.51
+        },
+        {
+          "label": "12",
+          "value": 45
+        }
+      ]
+    },
+    {
+      "id": "mode=angle",
+      "raw": {
+        "mode": "angle",
+        "rise": "6",
+        "run": "12",
+        "angle": "26.57",
+        "pitchX": "6",
+        "footprint": "0"
+      },
+      "ok": true,
+      "results": {
+        "pitch": 6,
+        "angle": 26.57,
+        "percent": 50,
+        "multiplier": 1.118,
+        "rafterPerFoot": 13.42,
+        "roofArea": null
+      },
+      "chart": [
+        {
+          "label": "1",
+          "value": 4.76
+        },
+        {
+          "label": "2",
+          "value": 9.46
+        },
+        {
+          "label": "3",
+          "value": 14.04
+        },
+        {
+          "label": "4",
+          "value": 18.43
+        },
+        {
+          "label": "5",
+          "value": 22.62
+        },
+        {
+          "label": "6",
+          "value": 26.57
+        },
+        {
+          "label": "7",
+          "value": 30.26
+        },
+        {
+          "label": "8",
+          "value": 33.69
+        },
+        {
+          "label": "9",
+          "value": 36.87
+        },
+        {
+          "label": "10",
+          "value": 39.81
+        },
+        {
+          "label": "11",
+          "value": 42.51
+        },
+        {
+          "label": "12",
+          "value": 45
+        }
+      ]
+    },
+    {
+      "id": "mode=pitch",
+      "raw": {
+        "mode": "pitch",
+        "rise": "6",
+        "run": "12",
+        "angle": "26.57",
+        "pitchX": "6",
+        "footprint": "0"
+      },
+      "ok": true,
+      "results": {
+        "pitch": 6,
+        "angle": 26.57,
+        "percent": 50,
+        "multiplier": 1.118,
+        "rafterPerFoot": 13.42,
+        "roofArea": null
+      },
+      "chart": [
+        {
+          "label": "1",
+          "value": 4.76
+        },
+        {
+          "label": "2",
+          "value": 9.46
+        },
+        {
+          "label": "3",
+          "value": 14.04
+        },
+        {
+          "label": "4",
+          "value": 18.43
+        },
+        {
+          "label": "5",
+          "value": 22.62
+        },
+        {
+          "label": "6",
+          "value": 26.57
+        },
+        {
+          "label": "7",
+          "value": 30.26
+        },
+        {
+          "label": "8",
+          "value": 33.69
+        },
+        {
+          "label": "9",
+          "value": 36.87
+        },
+        {
+          "label": "10",
+          "value": 39.81
+        },
+        {
+          "label": "11",
+          "value": 42.51
+        },
+        {
+          "label": "12",
+          "value": 45
+        }
+      ]
+    }
+  ],
+  "shingle-calculator": [
+    {
+      "id": "defaults",
+      "raw": {
+        "length": "40",
+        "width": "30",
+        "pitchMode": "pitch",
+        "pitch": "6",
+        "multiplier": "1.118",
+        "eave": "80",
+        "rake": "60",
+        "ridgeHip": "40",
+        "bundlesPerSquare": "3",
+        "waste": "10",
+        "product": "gaf",
+        "starterCoverage": "120.33",
+        "ridgeCoverage": "25",
+        "underlaymentCoverage": "937.5",
+        "nailsPerSquare": "256"
+      },
+      "ok": true,
+      "results": {
+        "fieldBundles": 45,
+        "fieldBundlesBeforeWaste": 41,
+        "roofArea": 1341.6,
+        "multiplier": 1.118,
+        "squares": 13.42,
+        "squaresWithWaste": 14.76,
+        "starterLength": 140,
+        "starterBundles": 2,
+        "ridgeCapBundles": 2,
+        "underlaymentRolls": 2,
+        "nails": 3779
+      },
+      "chart": [
+        {
+          "label": "No waste",
+          "value": 41
+        },
+        {
+          "label": "With waste",
+          "value": 45
+        },
+        {
+          "label": "Starter",
+          "value": 2
+        },
+        {
+          "label": "Ridge cap",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "id": "pitchMode=pitch",
+      "raw": {
+        "length": "40",
+        "width": "30",
+        "pitchMode": "pitch",
+        "pitch": "6",
+        "multiplier": "1.118",
+        "eave": "80",
+        "rake": "60",
+        "ridgeHip": "40",
+        "bundlesPerSquare": "3",
+        "waste": "10",
+        "product": "gaf",
+        "starterCoverage": "120.33",
+        "ridgeCoverage": "25",
+        "underlaymentCoverage": "937.5",
+        "nailsPerSquare": "256"
+      },
+      "ok": true,
+      "results": {
+        "fieldBundles": 45,
+        "fieldBundlesBeforeWaste": 41,
+        "roofArea": 1341.6,
+        "multiplier": 1.118,
+        "squares": 13.42,
+        "squaresWithWaste": 14.76,
+        "starterLength": 140,
+        "starterBundles": 2,
+        "ridgeCapBundles": 2,
+        "underlaymentRolls": 2,
+        "nails": 3779
+      },
+      "chart": [
+        {
+          "label": "No waste",
+          "value": 41
+        },
+        {
+          "label": "With waste",
+          "value": 45
+        },
+        {
+          "label": "Starter",
+          "value": 2
+        },
+        {
+          "label": "Ridge cap",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "id": "pitchMode=multiplier",
+      "raw": {
+        "length": "40",
+        "width": "30",
+        "pitchMode": "multiplier",
+        "pitch": "6",
+        "multiplier": "1.118",
+        "eave": "80",
+        "rake": "60",
+        "ridgeHip": "40",
+        "bundlesPerSquare": "3",
+        "waste": "10",
+        "product": "gaf",
+        "starterCoverage": "120.33",
+        "ridgeCoverage": "25",
+        "underlaymentCoverage": "937.5",
+        "nailsPerSquare": "256"
+      },
+      "ok": true,
+      "results": {
+        "fieldBundles": 45,
+        "fieldBundlesBeforeWaste": 41,
+        "roofArea": 1341.6,
+        "multiplier": 1.118,
+        "squares": 13.42,
+        "squaresWithWaste": 14.76,
+        "starterLength": 140,
+        "starterBundles": 2,
+        "ridgeCapBundles": 2,
+        "underlaymentRolls": 2,
+        "nails": 3778
+      },
+      "chart": [
+        {
+          "label": "No waste",
+          "value": 41
+        },
+        {
+          "label": "With waste",
+          "value": 45
+        },
+        {
+          "label": "Starter",
+          "value": 2
+        },
+        {
+          "label": "Ridge cap",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "id": "product=gaf",
+      "raw": {
+        "length": "40",
+        "width": "30",
+        "pitchMode": "pitch",
+        "pitch": "6",
+        "multiplier": "1.118",
+        "eave": "80",
+        "rake": "60",
+        "ridgeHip": "40",
+        "bundlesPerSquare": "3",
+        "waste": "10",
+        "product": "gaf",
+        "starterCoverage": "120.33",
+        "ridgeCoverage": "25",
+        "underlaymentCoverage": "937.5",
+        "nailsPerSquare": "256"
+      },
+      "ok": true,
+      "results": {
+        "fieldBundles": 45,
+        "fieldBundlesBeforeWaste": 41,
+        "roofArea": 1341.6,
+        "multiplier": 1.118,
+        "squares": 13.42,
+        "squaresWithWaste": 14.76,
+        "starterLength": 140,
+        "starterBundles": 2,
+        "ridgeCapBundles": 2,
+        "underlaymentRolls": 2,
+        "nails": 3779
+      },
+      "chart": [
+        {
+          "label": "No waste",
+          "value": 41
+        },
+        {
+          "label": "With waste",
+          "value": 45
+        },
+        {
+          "label": "Starter",
+          "value": 2
+        },
+        {
+          "label": "Ridge cap",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "id": "product=oc",
+      "raw": {
+        "length": "40",
+        "width": "30",
+        "pitchMode": "pitch",
+        "pitch": "6",
+        "multiplier": "1.118",
+        "eave": "80",
+        "rake": "60",
+        "ridgeHip": "40",
+        "bundlesPerSquare": "3",
+        "waste": "10",
+        "product": "oc",
+        "starterCoverage": "120.33",
+        "ridgeCoverage": "25",
+        "underlaymentCoverage": "937.5",
+        "nailsPerSquare": "256"
+      },
+      "ok": true,
+      "results": {
+        "fieldBundles": 45,
+        "fieldBundlesBeforeWaste": 41,
+        "roofArea": 1341.6,
+        "multiplier": 1.118,
+        "squares": 13.42,
+        "squaresWithWaste": 14.76,
+        "starterLength": 140,
+        "starterBundles": 2,
+        "ridgeCapBundles": 2,
+        "underlaymentRolls": 2,
+        "nails": 3779
+      },
+      "chart": [
+        {
+          "label": "No waste",
+          "value": 41
+        },
+        {
+          "label": "With waste",
+          "value": 45
+        },
+        {
+          "label": "Starter",
+          "value": 2
+        },
+        {
+          "label": "Ridge cap",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "id": "product=custom",
+      "raw": {
+        "length": "40",
+        "width": "30",
+        "pitchMode": "pitch",
+        "pitch": "6",
+        "multiplier": "1.118",
+        "eave": "80",
+        "rake": "60",
+        "ridgeHip": "40",
+        "bundlesPerSquare": "3",
+        "waste": "10",
+        "product": "custom",
+        "starterCoverage": "120.33",
+        "ridgeCoverage": "25",
+        "underlaymentCoverage": "937.5",
+        "nailsPerSquare": "256"
+      },
+      "ok": true,
+      "results": {
+        "fieldBundles": 45,
+        "fieldBundlesBeforeWaste": 41,
+        "roofArea": 1341.6,
+        "multiplier": 1.118,
+        "squares": 13.42,
+        "squaresWithWaste": 14.76,
+        "starterLength": 140,
+        "starterBundles": 2,
+        "ridgeCapBundles": 2,
+        "underlaymentRolls": 2,
+        "nails": 3779
+      },
+      "chart": [
+        {
+          "label": "No waste",
+          "value": 41
+        },
+        {
+          "label": "With waste",
+          "value": 45
+        },
+        {
+          "label": "Starter",
+          "value": 2
+        },
+        {
+          "label": "Ridge cap",
+          "value": 2
+        }
+      ]
+    }
+  ]
+}

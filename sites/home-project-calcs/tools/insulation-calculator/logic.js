@@ -85,20 +85,26 @@ function blownPurchase(area, row, wastePercent) {
 }
 
 export function calculate(raw) {
-  const checked = validateAll(raw ?? {}, RULES);
+  // Batt fields only count for batts. The shared frame hides them (showIf in
+  // meta.json) and leaves them out of raw when Blown is picked, so they are
+  // validated only for batts. Results are unchanged for every valid input.
+  const isBatts = raw?.product === 'batts';
+  const rules = { ...RULES };
+  if (!isBatts) delete rules.battCoverage;
+  const checked = validateAll(raw ?? {}, rules);
   const errors = checked.ok ? {} : { ...checked.errors };
 
   if (!ZONES.has(raw?.climateZone)) errors.climateZone = 'Choose a US climate zone.';
   if (!EXISTING.has(raw?.existing)) errors.existing = 'Choose the existing insulation.';
   if (!PRODUCTS.has(raw?.product)) errors.product = 'Choose blown fiberglass or batts.';
-  if (!BATT_VALUES.has(raw?.battR)) errors.battR = 'Choose a batt R-value.';
+  if (isBatts && !BATT_VALUES.has(raw?.battR)) errors.battR = 'Choose a batt R-value.';
 
   if (Object.keys(errors).length) return { ok: false, errors };
 
   const { area, targetR, extraWaste, battCoverage } = checked.values;
   const energyStarR = ENERGY_STAR_ATTIC[raw.climateZone][raw.existing];
   const goalR = targetR === undefined ? energyStarR : targetR;
-  const battThicknessIn = BATT_THICKNESS[raw.battR];
+  const battThicknessIn = isBatts ? BATT_THICKNESS[raw.battR] : null;
 
   let packages;
   let beforeRounding;
@@ -125,10 +131,12 @@ export function calculate(raw) {
 
   const rShortfall = round(Math.max(0, goalR - installedR), 1);
 
-  const chart = ATTICAT_ROWS.filter((row) => CHART_R.includes(row.r)).map((row) => ({
-    label: `R${row.r}`,
-    value: blownPurchase(area, row, extraWaste).packages,
-  }));
+  // Highlight: the chart point for the blown row this result buys (if charted).
+  const chart = ATTICAT_ROWS.filter((row) => CHART_R.includes(row.r)).map((row) => {
+    const point = { label: `R${row.r}`, value: blownPurchase(area, row, extraWaste).packages };
+    if (chartR === row.r) Object.assign(point, { highlight: true, highlightLabel: 'Your level' });
+    return point;
+  });
 
   return {
     ok: true,
