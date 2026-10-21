@@ -42,7 +42,7 @@ describe('known answers', () => {
       { label: 'R30', value: 15 },
       { label: 'R38', value: 19 },
       { label: 'R49', value: 25 },
-      { label: 'R60', value: 32 },
+      { label: 'R60', value: 32, highlight: true, highlightLabel: 'Your level' },
     ]);
   });
 
@@ -184,14 +184,14 @@ describe('edge cases', () => {
     expect(calculate(base({ area: '0' })).errors).toHaveProperty('area');
     expect(calculate(base({ area: '-5' })).errors).toHaveProperty('area');
     expect(calculate(base({ extraWaste: '-1' })).errors).toHaveProperty('extraWaste');
-    expect(calculate(base({ battCoverage: '0' })).errors).toHaveProperty('battCoverage');
-    expect(calculate(base({ battCoverage: '-10' })).errors).toHaveProperty('battCoverage');
+    expect(calculate(base({ product: 'batts', battCoverage: '0' })).errors).toHaveProperty('battCoverage');
+    expect(calculate(base({ product: 'batts', battCoverage: '-10' })).errors).toHaveProperty('battCoverage');
   });
 
   it('rejects very large area and coverage', () => {
     expect(calculate(base({ area: '1e7' })).errors).toHaveProperty('area');
     expect(calculate(base({ area: '5001' })).errors).toHaveProperty('area');
-    expect(calculate(base({ battCoverage: '401' })).errors).toHaveProperty('battCoverage');
+    expect(calculate(base({ product: 'batts', battCoverage: '401' })).errors).toHaveProperty('battCoverage');
     expect(calculate(base({ targetR: '61' })).errors).toHaveProperty('targetR');
   });
 
@@ -200,7 +200,7 @@ describe('edge cases', () => {
     expect(calculate(base({ area: 'ten' })).errors).toHaveProperty('area');
     expect(calculate(base({ extraWaste: '' })).errors).toHaveProperty('extraWaste');
     expect(calculate(base({ extraWaste: 'none' })).errors).toHaveProperty('extraWaste');
-    expect(calculate(base({ battCoverage: 'sixty four' })).errors).toHaveProperty('battCoverage');
+    expect(calculate(base({ product: 'batts', battCoverage: 'sixty four' })).errors).toHaveProperty('battCoverage');
     expect(calculate(base({ targetR: 'R-49' })).errors).toHaveProperty('targetR');
     expect(calculate({}).ok).toBe(false);
   });
@@ -230,8 +230,8 @@ describe('edge cases', () => {
   it('accepts coverage boundaries 10 and 400 and rejects just outside', () => {
     expect(calculate(base({ product: 'batts', battCoverage: '10' })).results.packages).toBe(100);
     expect(calculate(base({ product: 'batts', battCoverage: '400' })).results.packages).toBe(3);
-    expect(calculate(base({ battCoverage: '9.9' })).errors).toHaveProperty('battCoverage');
-    expect(calculate(base({ battCoverage: '400.1' })).errors).toHaveProperty('battCoverage');
+    expect(calculate(base({ product: 'batts', battCoverage: '9.9' })).errors).toHaveProperty('battCoverage');
+    expect(calculate(base({ product: 'batts', battCoverage: '400.1' })).errors).toHaveProperty('battCoverage');
   });
 
   it('rejects unknown select values', () => {
@@ -239,7 +239,7 @@ describe('edge cases', () => {
     expect(calculate(base({ climateZone: '' })).errors).toHaveProperty('climateZone');
     expect(calculate(base({ existing: '4 inches' })).errors).toHaveProperty('existing');
     expect(calculate(base({ product: 'cellulose' })).errors).toHaveProperty('product');
-    expect(calculate(base({ battR: '49' })).errors).toHaveProperty('battR');
+    expect(calculate(base({ product: 'batts', battR: '49' })).errors).toHaveProperty('battR');
   });
 
   it('reports every invalid field at once', () => {
@@ -252,15 +252,32 @@ describe('edge cases', () => {
       battCoverage: '',
       extraWaste: '',
     })).errors;
+    // Batt fields are only checked for batts (an unknown product isn't batts).
     expect(Object.keys(errors).sort()).toEqual([
       'area',
-      'battCoverage',
-      'battR',
       'climateZone',
       'existing',
       'extraWaste',
       'product',
     ]);
+    const battErrors = calculate(base({ area: '', product: 'batts', battR: '', battCoverage: '' })).errors;
+    expect(Object.keys(battErrors).sort()).toEqual(['area', 'battCoverage', 'battR']);
+  });
+
+  it('Blown ignores the hidden batt fields: same result with them missing, blank, or invalid', () => {
+    const { battR, battCoverage, ...withoutBatt } = base();
+    const reference = ok(base());
+    expect(ok(withoutBatt)).toEqual(reference);
+    expect(ok(base({ battR: '', battCoverage: '' }))).toEqual(reference);
+    expect(ok(base({ battR: '49', battCoverage: '0' }))).toEqual(reference);
+  });
+
+  it('chart highlights the bought blown row only when it is one of the charted levels', () => {
+    const at = (over) => ok(base(over)).chart.filter((p) => p.highlight).map((p) => p.label);
+    expect(at({})).toEqual(['R60']);
+    expect(at({ targetR: '38' })).toEqual(['R38']);
+    expect(at({ targetR: '44' })).toEqual([]);
+    expect(at({ product: 'batts' })).toEqual([]);
   });
 
   it('rounds a fractional bag up at the area minimum', () => {

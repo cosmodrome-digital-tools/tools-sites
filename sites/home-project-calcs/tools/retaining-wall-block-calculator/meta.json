@@ -88,6 +88,7 @@
     },
     {
       "name": "buriedDepth",
+      "advanced": true,
       "label": "Buried depth",
       "type": "number",
       "unit": "in",
@@ -97,6 +98,7 @@
     },
     {
       "name": "blockDepth",
+      "advanced": true,
       "label": "Block depth",
       "type": "number",
       "unit": "in",
@@ -106,6 +108,7 @@
     },
     {
       "name": "capLength",
+      "advanced": true,
       "label": "Cap length",
       "type": "number",
       "unit": "in",
@@ -115,6 +118,7 @@
     },
     {
       "name": "blockWaste",
+      "advanced": true,
       "label": "Block waste",
       "type": "number",
       "unit": "%",
@@ -124,6 +128,7 @@
     },
     {
       "name": "density",
+      "advanced": true,
       "label": "Pad density",
       "type": "number",
       "unit": "tons/yd³",

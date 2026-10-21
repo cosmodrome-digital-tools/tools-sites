@@ -118,6 +118,7 @@
     },
     {
       "name": "densitySource",
+      "advanced": true,
       "label": "Density source",
       "type": "select",
       "default": "estimate",
@@ -130,6 +131,7 @@
     },
     {
       "name": "waste",
+      "advanced": true,
       "label": "Compaction / waste",
       "type": "number",
       "unit": "%",

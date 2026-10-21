@@ -68,10 +68,10 @@
       "group": "Base depth (ICPI)"
     },
     { "name": "extraBase", "label": "Extra base for poor soil", "unit": "in", "default": "2", "help": "2 to 4 in, the range ICPI gives. Use more for colder or softer ground.", "group": "Base depth (ICPI)" },
-    { "name": "jointWidth", "label": "Joint width", "unit": "in", "default": "0.125", "help": "0 to 0.5 in. ICPI calls for joints of 1/16 to 3/16 in; 0.125 = 1/8 in. Use 0 if your size already includes spacer bars.", "group": "Advanced: joints, sand, density, waste" },
-    { "name": "sandDepth", "label": "Bedding sand depth", "unit": "in", "default": "1", "help": "0.5 to 2 in. ICPI specifies 1 in nominal, screeded and not compacted.", "group": "Advanced: joints, sand, density, waste" },
-    { "name": "density", "label": "Base density", "unit": "tons per cu yd", "default": "1.40", "help": "1.0 to 2.0. Estimate only (not verified): ask your supplier for the weight of their base material and enter it here.", "group": "Advanced: joints, sand, density, waste" },
-    { "name": "waste", "label": "Paver waste", "unit": "%", "default": "5", "help": "0 to 20%. Extra for cuts and breakage. 5% is our starting estimate, not a published figure; patterns with lots of cuts (herringbone, curves) need more.", "group": "Advanced: joints, sand, density, waste" }
+    { "name": "jointWidth",  "advanced": true,"label": "Joint width", "unit": "in", "default": "0.125", "help": "0 to 0.5 in. ICPI calls for joints of 1/16 to 3/16 in; 0.125 = 1/8 in. Use 0 if your size already includes spacer bars.", "group": "Advanced: joints, sand, density, waste" },
+    { "name": "sandDepth",  "advanced": true,"label": "Bedding sand depth", "unit": "in", "default": "1", "help": "0.5 to 2 in. ICPI specifies 1 in nominal, screeded and not compacted.", "group": "Advanced: joints, sand, density, waste" },
+    { "name": "density",  "advanced": true,"label": "Base density", "unit": "tons per cu yd", "default": "1.40", "help": "1.0 to 2.0. Estimate only (not verified): ask your supplier for the weight of their base material and enter it here.", "group": "Advanced: joints, sand, density, waste" },
+    { "name": "waste",  "advanced": true,"label": "Paver waste", "unit": "%", "default": "5", "help": "0 to 20%. Extra for cuts and breakage. 5% is our starting estimate, not a published figure; patterns with lots of cuts (herringbone, curves) need more.", "group": "Advanced: joints, sand, density, waste" }
   ],
   "outputs": [
     { "name": "pavers", "label": "Pavers to buy (with waste)", "unit": "pavers", "decimals": 0, "primary": true },

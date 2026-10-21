@@ -121,6 +121,7 @@
     },
     {
       "name": "doorSize",
+      "advanced": true,
       "label": "Door size",
       "unit": "sq ft each",
       "default": "20",
@@ -129,6 +130,7 @@
     },
     {
       "name": "windowSize",
+      "advanced": true,
       "label": "Window size",
       "unit": "sq ft each",
       "default": "15",
@@ -137,6 +139,7 @@
     },
     {
       "name": "includePrimer",
+      "advanced": true,
       "label": "Include primer",
       "type": "select",
       "default": "no",

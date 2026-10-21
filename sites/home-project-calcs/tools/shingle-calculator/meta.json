@@ -45,6 +45,7 @@
     { "name": "waste", "label": "Waste allowance", "unit": "%", "default": "10", "help": "5 to 25%. 10% suits a simple gable roof. Use 15% or more for hips, valleys, and dormers, which need more cuts.", "group": "Shingles and waste" },
     {
       "name": "product",
+      "advanced": true,
       "label": "Accessory product line",
       "type": "select",
       "default": "gaf",
@@ -56,10 +57,10 @@
       "help": "Loads the coverage values below from the maker's data sheet. Change any value to match the product you buy.",
       "group": "Advanced: accessory coverage"
     },
-    { "name": "starterCoverage", "label": "Starter coverage", "unit": "lin ft/bundle", "default": "120.33", "help": "50 to 200. GAF Pro-Start: about 120.33 lin ft per bundle.", "group": "Advanced: accessory coverage" },
-    { "name": "ridgeCoverage", "label": "Ridge-cap coverage", "unit": "lin ft/bundle", "default": "25", "help": "15 to 45. GAF Seal-A-Ridge: about 25 lin ft per bundle.", "group": "Advanced: accessory coverage" },
-    { "name": "underlaymentCoverage", "label": "Underlayment roll coverage", "unit": "sq ft/roll", "default": "937.5", "help": "200 to 1,000. Net of laps. GAF FeltBuster is 1,000 sq ft before laps (937.5 after 3 in side laps).", "group": "Advanced: accessory coverage" },
-    { "name": "nailsPerSquare", "label": "Nails per square", "unit": "nails", "default": "256", "help": "100 to 400. GAF Timberline HDZ: 256 (4 per shingle). Some codes and high-wind installs need 6 per shingle (384).", "group": "Advanced: accessory coverage" }
+    { "name": "starterCoverage",  "advanced": true,"label": "Starter coverage", "unit": "lin ft/bundle", "default": "120.33", "help": "50 to 200. GAF Pro-Start: about 120.33 lin ft per bundle.", "group": "Advanced: accessory coverage" },
+    { "name": "ridgeCoverage",  "advanced": true,"label": "Ridge-cap coverage", "unit": "lin ft/bundle", "default": "25", "help": "15 to 45. GAF Seal-A-Ridge: about 25 lin ft per bundle.", "group": "Advanced: accessory coverage" },
+    { "name": "underlaymentCoverage",  "advanced": true,"label": "Underlayment roll coverage", "unit": "sq ft/roll", "default": "937.5", "help": "200 to 1,000. Net of laps. GAF FeltBuster is 1,000 sq ft before laps (937.5 after 3 in side laps).", "group": "Advanced: accessory coverage" },
+    { "name": "nailsPerSquare",  "advanced": true,"label": "Nails per square", "unit": "nails", "default": "256", "help": "100 to 400. GAF Timberline HDZ: 256 (4 per shingle). Some codes and high-wind installs need 6 per shingle (384).", "group": "Advanced: accessory coverage" }
   ],
   "outputs": [
     { "name": "fieldBundles", "label": "Field shingle bundles (with waste)", "unit": "bundles", "decimals": 0, "primary": true },

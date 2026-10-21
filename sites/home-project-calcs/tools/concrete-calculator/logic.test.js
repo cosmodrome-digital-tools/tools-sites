@@ -89,6 +89,13 @@ describe('known answers', () => {
   it('chart compares 8/12/16/24 in diameters for a column', () => {
     expect(calculate(COLUMN).chart.map((d) => d.value)).toEqual([2, 5, 8, 17]);
   });
+
+  it('chart highlights the bar for the visitor\'s own thickness or diameter (none if not charted)', () => {
+    const hl = (raw) => calculate(raw).chart.filter((d) => d.highlight).map((d) => d.label);
+    expect(hl(SLAB)).toEqual([`${SLAB.thickness}" · ${calculate(SLAB).results.bags}`]);
+    expect(hl({ ...SLAB, thickness: '7' })).toEqual([]);
+    expect(hl({ ...COLUMN, diameter: '12' })).toHaveLength(1);
+  });
 });
 
 describe('edge cases', () => {
