@@ -28,7 +28,7 @@ A 6/12 roof gives M = √1.25 = 1.118. If you choose multiplier mode, the calcul
 - **Field bundles with waste** = squares with waste × bundles per square, rounded up
 - **Starter bundles** = (eave ft + rake ft) ÷ starter coverage (lin ft per bundle), rounded up
 - **Ridge cap bundles** = ridge + hip ft ÷ ridge cap coverage (lin ft per bundle), rounded up
-- **Drip edge pieces** = drip edge length ÷ 9.83 ft, rounded up. Drip edge length is eave ft + rake ft unless you enter your own; each 10 ft piece covers 9 ft 10 in after the 2 in overlap the IRC requires (R905.2.8.5)
+- **Drip edge pieces** = drip edge length ÷ 9.83 ft, rounded up. Drip edge length is eave ft + rake ft unless you enter your own; each 10 ft piece covers 9 ft 10 in after the 2 in overlap the IRC requires (R905.2.8.5). Each straight edge is best rounded up on its own, since short leftover pieces often can't be reused around corners; the total-length count can come out one or two pieces low on a roof with many short edges.
 - **Underlayment rolls** = roof area × layers ÷ roll coverage (sq ft per roll, net of laps), rounded up. Layers is 2 when the pitch is from 2/12 up to (not including) 4/12, and 1 otherwise.
 - **Nails** = squares with waste × nails per square, rounded up
 
@@ -66,7 +66,7 @@ These are the numbers the calculator shows when you open the page.
 - **Same pitch on every plane.** For roofs with planes at different pitches, run each section separately.
 - **Minimum slope.** Under the 2024 International Residential Code, asphalt shingles are only allowed on slopes of 2/12 (17 percent) or steeper (R905.2.2), and slopes from 2/12 up to 4/12 need two layers of underlayment (Table R905.1.1(2)). The calculator won't accept a pitch below 2/12 (it points you to low-slope options such as roll roofing or a membrane roof instead), and it doubles the underlayment count from 2/12 up to (not including) 4/12. It rounds the pitch to two decimals before choosing, the same way the Roof Pitch Calculator does. Your local code edition and amendments may differ.
 - **Waste** defaults to 10%. IKO, a shingle maker, recommends adding 10 to 15 percent for waste depending on the roof style, so 10% is the low end for a simple gable roof. Raise it to 15% or more for hips, valleys, dormers, and cut-up roofs.
-- **Bundles per square** defaults to 3 and **nails per square** to 256, from GAF's published Timberline HDZ specs. Other shingles differ. Some codes and wind warranties call for 6 nails per shingle (384 per square for HDZ).
+- **Bundles per square** defaults to 3 and **nails per square** to 256, from GAF's published Timberline HDZ specs. Other shingles differ. The IRC requires at least 4 fasteners per strip shingle; GAF's high-wind and some warranty installs use 6 (384 per square for HDZ).
 - **Underlayment coverage** is net of laps. The GAF preset takes FeltBuster's 1,000 sq ft rated roll (which excludes laps) and allows for 3 in side laps on its 48 in width. The Owens Corning preset uses ProArmor's published 929 sq ft with a 3 in overlap. End laps and waste at hips and valleys are not included.
 - **Accessory coverage** comes from the manufacturers' data sheets listed in Sources and can change. Confirm the numbers on the product you buy, follow the manufacturer's installation instructions, and check local code before ordering.
 
@@ -74,7 +74,7 @@ These are the numbers the calculator shows when you open the page.
 
 ### How many bundles of shingles are in a square?
 
-Most architectural shingles, including GAF Timberline HDZ, take 3 bundles per square (100 sq ft). Some heavier or designer shingles take 4 or 5. The count is printed on the bundle wrapper.
+Most 3-tab and architectural shingles, including GAF Timberline HDZ, take 3 bundles per square (100 sq ft). Some heavier designer shingles take 4 or 5. Go by the count printed on your bundle wrapper.
 
 ### How many bundles of shingles do I need?
 

@@ -23,7 +23,13 @@ if (results) {
   shingle.hidden = true;
   shingleLinkEl = document.createElement('a');
   shingle.append(shingleLinkEl);
-  results.querySelector('.calc-results__list')?.after(note, shingle);
+  const jump = document.createElement('p');
+  jump.className = 'roof-table-jump';
+  const jumpLink = document.createElement('a');
+  jumpLink.href = '#pitch-table';
+  jumpLink.textContent = 'See all pitches 1/12–12/12 ↓';
+  jump.append(jumpLink);
+  results.querySelector('.calc-results__list')?.after(note, shingle, jump);
 }
 
 bindCalculator({
