@@ -44,9 +44,16 @@ describe('known answers', () => {
     // Bare-soil chart at 2, 3, and 4 inches: ceil(33.333/2)=17, 25, ceil(66.667/2)=34.
     expect(result.chart).toEqual([
       { label: '2 in', value: 17 },
-      { label: '3 in', value: 25 },
+      { label: '3 in', value: 25, highlight: true, highlightLabel: 'Your depth' },
       { label: '4 in', value: 34 },
     ]);
+  });
+
+  it('chart highlights the visitor depth only on a bare bed at 2, 3 or 4 in', () => {
+    const hl = (over) => run(over).chart.filter((p) => p.highlight).map((p) => p.label);
+    expect(hl({ depth: '2' })).toEqual(['2 in']);
+    expect(hl({ depth: '2.5' })).toEqual([]);
+    expect(hl({ depth: '4', existingDepth: '1' })).toEqual([]);
   });
 
   it('top-up: same bed with 2 in already down needs 1 in more, 16.67 cu ft, 9 bags (hand math)', () => {

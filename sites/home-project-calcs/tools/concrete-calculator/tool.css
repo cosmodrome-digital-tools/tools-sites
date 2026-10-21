@@ -47,12 +47,7 @@
 }
 
 /* Tables in the page copy (bag yields, common slab sizes). */
-/* display:block lets a wide table scroll inside itself on phones instead of
-   widening the whole page. */
 [data-tool="concrete-calculator"] .tool-content table {
-  display: block;
-  max-width: 100%;
-  overflow-x: auto;
   border-collapse: collapse;
   font-variant-numeric: tabular-nums;
 }

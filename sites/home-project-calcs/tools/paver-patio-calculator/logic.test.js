@@ -144,6 +144,11 @@ describe('chart', () => {
     const poor = run({ soil: 'poor', extraBase: '3' }).chart;
     expect(poor.map((c) => c.label)).toEqual(['4" · 2.5 t', '6" · 3.7 t', '7" · 4.4 t', '9" · 5.6 t']);
   });
+  it('highlights the base depth this patio needs', () => {
+    const hl = (over) => run(over).chart.filter((c) => c.highlight).map((c) => c.label);
+    expect(hl()).toEqual(['4" · 2.5 t']);
+    expect(hl({ soil: 'poor', extraBase: '3' })).toEqual(['7" · 4.4 t']);
+  });
 });
 
 describe('edge cases', () => {

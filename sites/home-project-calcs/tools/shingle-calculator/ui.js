@@ -1,11 +1,12 @@
-// ui.js: connects the shared calculator frame to logic.js. UI wiring only:
-// show the pitch field that matches the chosen mode, load accessory coverage
+// ui.js: connects the shared calculator frame to logic.js. UI wiring only
+// (the pitch field for the chosen mode shows through "showIf" in meta.json):
+// load accessory coverage
 // presets into the editable fields, render the grouped shopping list, prefill
 // the pitch handed over by the Roof Pitch Calculator (?pitch=6), and add a
 // "Don't know your pitch?" link under the pitch field.
 import { bindCalculator } from '@tools/calculator-core/bind.js';
 import { formatNumber } from '@tools/calculator-core';
-import { calculate, PITCH_FIELDS, pitchFromQuery, PRODUCTS, shoppingList } from './logic.js';
+import { calculate, pitchFromQuery, PRODUCTS, shoppingList } from './logic.js';
 
 const root = document.querySelector('[data-tool="shingle-calculator"]');
 const form = root?.querySelector('form[data-calc-form]');
@@ -16,14 +17,6 @@ if (form) {
   const field = (name) => form.querySelector(`[data-field="${name}"]`);
   const mode = form.elements.namedItem('pitchMode');
   const product = form.elements.namedItem('product');
-
-  const syncMode = () => {
-    const shown = PITCH_FIELDS[mode?.value] ?? PITCH_FIELDS.pitch;
-    for (const name of Object.values(PITCH_FIELDS).flat()) {
-      const el = field(name);
-      if (el) el.hidden = !shown.includes(name);
-    }
-  };
 
   const loadPreset = () => {
     const preset = PRODUCTS[product?.value];
@@ -61,9 +54,7 @@ if (form) {
     (pitchField.querySelector('.calc-help') ?? pitchField.querySelector('input'))?.after(tip);
   }
 
-  mode?.addEventListener('change', syncMode);
   product?.addEventListener('change', loadPreset);
-  syncMode();
 }
 
 let list;
