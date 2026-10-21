@@ -113,6 +113,7 @@
     },
     {
       "name": "coverage",
+      "showIf": { "field": "product", "equals": "custom" },
       "label": "Coverage rate",
       "unit": "sq ft/gal",
       "default": "350",

@@ -14,7 +14,7 @@
   "registerRow": "Keyword Register: shingle calculator (Volume 1, Competition ease 4, Ad value 4, Fit 5, Priority 16)",
   "category": "Roofing",
   "intro": "Enter your roof's footprint, pitch, and edge lengths to get roof squares, field shingle bundles before and after waste, and a shopping list of starter strip, ridge cap, underlayment, and nails. Accessory coverage loads from GAF or Owens Corning data sheets, or you can type your own.",
-  "lastUpdated": "2026-10-07",
+  "lastUpdated": "2026-10-21",
   "layout": "stepper",
   "chartStyle": "bar",
   "chartTitle": "Bundles to buy, by type",
@@ -36,8 +36,8 @@
       "help": "Use the multiplier if you already have one, for example from the Roof Pitch Calculator.",
       "group": "Roof pitch"
     },
-    { "name": "pitch", "label": "Roof pitch", "unit": "x/12", "default": "6", "help": "2 to 24. A 6/12 roof rises 6 in for every 12 in across. The 2024 IRC allows asphalt shingles only at 2/12 or steeper.", "group": "Roof pitch" },
-    { "name": "multiplier", "label": "Pitch multiplier", "unit": "x", "default": "1.118", "help": "1.014 to 2.5. Roof area divided by footprint area, e.g. 1.118 for a 6/12 roof.", "group": "Roof pitch" },
+    { "name": "pitch", "showIf": { "field": "pitchMode", "equals": "pitch" }, "label": "Roof pitch", "unit": "x/12", "default": "6", "help": "2 to 24. A 6/12 roof rises 6 in for every 12 in across. The 2024 IRC allows asphalt shingles only at 2/12 or steeper.", "group": "Roof pitch" },
+    { "name": "multiplier", "showIf": { "field": "pitchMode", "equals": "multiplier" }, "label": "Pitch multiplier", "unit": "x", "default": "1.118", "help": "1.014 to 2.5. Roof area divided by footprint area, e.g. 1.118 for a 6/12 roof.", "group": "Roof pitch" },
     { "name": "eave", "label": "Eave length", "unit": "ft", "default": "80", "help": "0 to 500 ft. Total of the bottom (gutter) edges. Starter strip runs here.", "group": "Roof edges" },
     { "name": "rake", "label": "Rake length", "unit": "ft", "default": "60", "help": "0 to 500 ft. Total of the sloped gable edges. Enter 0 if you won't use starter on the rakes.", "group": "Roof edges" },
     { "name": "ridgeHip", "label": "Ridge + hip length", "unit": "ft", "default": "40", "help": "0 to 500 ft. All ridges plus all hips. These get ridge cap shingles.", "group": "Roof edges" },
@@ -57,10 +57,11 @@
       "help": "Loads the coverage values below from the maker's data sheet. Change any value to match the product you buy.",
       "group": "Advanced: accessory coverage"
     },
-    { "name": "starterCoverage",  "advanced": true,"label": "Starter coverage", "unit": "lin ft/bundle", "default": "120.33", "help": "50 to 200. GAF Pro-Start: about 120.33 lin ft per bundle.", "group": "Advanced: accessory coverage" },
-    { "name": "ridgeCoverage",  "advanced": true,"label": "Ridge-cap coverage", "unit": "lin ft/bundle", "default": "25", "help": "15 to 45. GAF Seal-A-Ridge: about 25 lin ft per bundle.", "group": "Advanced: accessory coverage" },
-    { "name": "underlaymentCoverage",  "advanced": true,"label": "Underlayment roll coverage", "unit": "sq ft/roll", "default": "937.5", "help": "200 to 1,000. Net of laps. GAF FeltBuster is 1,000 sq ft before laps (937.5 after 3 in side laps).", "group": "Advanced: accessory coverage" },
-    { "name": "nailsPerSquare",  "advanced": true,"label": "Nails per square", "unit": "nails", "default": "256", "help": "100 to 400. GAF Timberline HDZ: 256 (4 per shingle). Some codes and high-wind installs need 6 per shingle (384).", "group": "Advanced: accessory coverage" }
+    { "name": "starterCoverage", "advanced": true, "label": "Starter coverage", "unit": "lin ft/bundle", "default": "120.33", "help": "50 to 200. GAF Pro-Start: about 120.33 lin ft per bundle.", "group": "Advanced: accessory coverage" },
+    { "name": "ridgeCoverage", "advanced": true, "label": "Ridge-cap coverage", "unit": "lin ft/bundle", "default": "25", "help": "15 to 45. GAF Seal-A-Ridge: about 25 lin ft per bundle.", "group": "Advanced: accessory coverage" },
+    { "name": "underlaymentCoverage", "advanced": true, "label": "Underlayment roll coverage", "unit": "sq ft/roll", "default": "937.5", "help": "200 to 1,000. Net of laps. GAF FeltBuster is 1,000 sq ft before laps (937.5 after 3 in side laps).", "group": "Advanced: accessory coverage" },
+    { "name": "nailsPerSquare", "advanced": true, "label": "Nails per square", "unit": "nails", "default": "256", "help": "100 to 400. GAF Timberline HDZ: 256 (4 per shingle). The IRC minimum is 4 per strip shingle; follow the maker's instructions, which call for 6 per shingle (384) in some high-wind installs.", "group": "Advanced: accessory coverage" },
+    { "name": "dripEdge", "advanced": true, "label": "Drip edge length (optional)", "unit": "lin ft", "default": "", "placeholder": "Blank uses eave + rake", "help": "0 to 1,000 ft. Leave blank to use eave + rake, the edges the 2024 IRC requires drip edge on. Enter your own length if your rake entry is 0 (no starter on the rakes) but drip edge still runs up them.", "group": "Advanced: drip edge" }
   ],
   "outputs": [
     { "name": "fieldBundles", "label": "Field shingle bundles (with waste)", "unit": "bundles", "decimals": 0, "primary": true },
@@ -73,6 +74,8 @@
     { "name": "starterBundles", "label": "Starter strip", "unit": "bundles", "decimals": 0 },
     { "name": "ridgeCapBundles", "label": "Hip and ridge cap", "unit": "bundles", "decimals": 0 },
     { "name": "underlaymentRolls", "label": "Underlayment", "unit": "rolls", "decimals": 0 },
+    { "name": "dripEdgePieces", "label": "Drip edge (10 ft pieces)", "unit": "pieces", "decimals": 0 },
+    { "name": "dripEdgeLength", "label": "Drip edge run", "unit": "lin ft", "decimals": 1 },
     { "name": "nails", "label": "Roofing nails (field shingles)", "unit": "nails", "decimals": 0 }
   ],
   "sources": [

@@ -90,6 +90,46 @@ calculate({ length: '10', width: '12', waste: '10' })
 fieldset (a numbered step in the `stepper` layout). Input `type` is `number`
 (default) or `select`.
 
+#### Optional input settings (shared frame, Oct 21, 2026)
+
+**`"advanced": true`** puts the input inside one collapsible **Advanced
+settings** section (a native `<details>`) after the main groups. It's closed by
+default, works without JavaScript, and opens by itself when one of its fields
+has a non-default value or an error. Use it for secondary inputs: waste %,
+coverage or density overrides, product presets, fastener counts. Inputs keep
+their `group`; inside the section an `"Advanced: ..."` prefix is dropped from
+the group label. Optional top-level `"advancedLabel"` renames the section.
+Don't put an input most visitors must change in Advanced.
+
+**`"showIf"`** shows the input only when another input matches, e.g.
+
+```json
+{ "name": "battR", "showIf": { "field": "product", "equals": "batts" }, ... }
+{ "name": "diameter", "showIf": { "field": "shape", "in": ["circle", "ring"] }, ... }
+{ "name": "x", "showIf": [{ "field": "a", "equals": "1" }, { "field": "b", "notEquals": "0" }], ... }
+```
+
+`equals`, `notEquals`, `in`, or an array (all must match). A hidden input is
+hidden from screen readers too, and is **left out of the values passed to
+`calculate()`**, so `logic.js` must validate and use only the fields for the
+chosen mode/shape/product (a hidden field arrives as `undefined`). The typed
+value comes back when the field is shown again. A group whose fields are all
+hidden hides too. Without JavaScript every field shows, so `logic.js` must also
+ignore fields that don't apply. Never hide or show fields from `ui.js`; use
+`showIf`.
+
+**Chart highlight.** In `calculate()`'s `chart` array, mark the row that
+matches the visitor's own input or result with `highlight: true` and an optional
+short `highlightLabel` (default "Yours"), e.g.
+`{ label: '6 in', value: 34, highlight: true, highlightLabel: 'Your depth' }`.
+The frame outlines it in `--tool-ink`, adds the text label, and names it in the
+chart's accessible title (never color alone). Highlight at most one row, and
+only when the chart has a real "yours" point (a comparison across sizes or
+options, not a breakdown of one result).
+
+**Tables in `page.md`** scroll inside themselves on phones automatically; don't
+add `display: block` / `overflow-x` table rules in `tool.css`.
+
 ## 3. Naming rules
 
 - Tool slug = folder name = URL: kebab-case, lowercase letters, numbers, single

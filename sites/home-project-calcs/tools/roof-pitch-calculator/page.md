@@ -46,7 +46,7 @@ A 5/12 pitch falls in the 4/12-or-steeper band, so the standard underlayment rul
 - **Angle** is what an angle finder or phone app reads, and what some product sheets list.
 - **Percent slope** is the same thing as rise over run times 100. The IRC writes 2/12 as "17-percent slope" and 4/12 as "33-percent slope".
 - **Area multiplier** turns flat footprint area into real roof surface. Use it for shingles, underlayment, and roof sheathing. To count bundles, use the link under the results: it opens the [Shingle Calculator](/shingle-calculator/) with your pitch already filled in. For a roof whose planes all share one pitch (a simple gable or a hip roof), footprint × multiplier gives the full sloped area.
-- **Roof area** is before waste. Add waste for cuts, starter, ridge, and valleys when you order shingles, and round up to whole bundles.
+- **Roof area** is before waste. Add waste for cuts at hips, valleys, and edges when you order shingles (10 to 15 percent is typical), and round up to whole bundles. Starter strip and ridge cap are separate products counted by length, which the [Shingle Calculator](/shingle-calculator/) handles.
 - **Rafter length per foot of run** helps you rough out a rafter: multiply it by the run in feet (half the building width for a simple gable) for the length in inches along the slope, then add overhang.
 
 ## Assumptions and limits
@@ -75,7 +75,7 @@ Measure the rise over a known level run, then pitch = 12 × rise ÷ run. With a 
 
 ### How do I calculate roof pitch with a speed square?
 
-Hold the speed square's pivot point against the underside of a rafter, then rotate the square until its long edge is plumb (check it with a small level). Read the number where the rafter edge crosses the square's scale. If you read the degree scale, enter it under "Angle in degrees"; if you read the "common" rise scale, enter it under "Rise over a 12 in run". Markings differ by brand, so follow the guide that came with your square.
+Set the speed square's pivot point against the underside of a rafter, then swing the square until its long edge is plumb, checked with a small level. Read the number where the rafter edge crosses the square's scale. If you read the degree scale, enter it under "Angle in degrees"; if you read the "common" rise scale, enter it under "Rise over a 12 in run". Markings differ by brand, so follow the guide that came with your square.
 
 ### How do I calculate roof pitch from the ground?
 
@@ -87,9 +87,9 @@ It's a table of the area multiplier for each pitch, so you can turn footprint ar
 
 ### Can I use asphalt shingles on a low-slope roof?
 
-Under the 2024 IRC, asphalt shingles need a slope of at least 2/12. From 2/12 up to 4/12 they need two layers of underlayment. Below 2/12 you need a different roof covering. Check your local code and the shingle maker's instructions.
+Not below 2/12. The 2024 IRC allows asphalt shingles only at 2/12 or steeper, and slopes from 2/12 up to 4/12 need double underlayment. The [Shingle Calculator](/shingle-calculator/) covers the details.
 
-## Roof pitch reference chart: 1/12 to 12/12
+<h2 id="pitch-table">Roof pitch reference chart: 1/12 to 12/12</h2>
 
 Each row is one common pitch with its angle, percent slope, and area multiplier, calculated with the same formulas as the tool. The line chart in the results shows the angle column.
 

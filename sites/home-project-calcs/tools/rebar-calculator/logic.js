@@ -123,9 +123,11 @@ export function calculate(raw = {}) {
       chairs,
       unitWeight,
     },
-    chart: CHART_SPACINGS.map((spacing) => ({
-      label: `${spacing} in`,
-      value: grid({ ...v, spacing }).sticksToBuy,
-    })),
+    // Highlight the bar for the visitor's own spacing (when it's one of the charted ones).
+    chart: CHART_SPACINGS.map((spacing) => {
+      const point = { label: `${spacing} in`, value: grid({ ...v, spacing }).sticksToBuy };
+      if (spacing === v.spacing) Object.assign(point, { highlight: true, highlightLabel: 'Your spacing' });
+      return point;
+    }),
   };
 }
