@@ -66,9 +66,39 @@
 .calc-updated { font-size: 0.9rem; color: var(--site-muted-ink); margin: 0.75rem 0 0; }
 
 .tool-content { margin-top: 1.5rem; }
+/* Wide page-copy tables scroll inside themselves on phones instead of making
+   the whole page scroll sideways (found on deck at 390 px; several tools had
+   patched this in their own tool.css). */
+.tool-content table { display: block; max-width: 100%; overflow-x: auto; }
 .calc-sources ol { padding-left: 1.25rem; }
 .calc-sources__date { color: var(--site-muted-ink); font-size: 0.9rem; }
 .tool-related ul { padding-left: 1.25rem; }
+
+/* Advanced section: native <details>, closed by default, works without JS. */
+.calc-advanced {
+  margin: 0 0 0.75rem; border: 1px solid var(--tool-border); border-radius: calc(var(--tool-radius) / 2);
+  background: color-mix(in srgb, var(--tool-surface) 60%, #fff);
+}
+.calc-advanced > summary {
+  cursor: pointer; padding: 0.6rem 0.75rem; font-weight: 700; list-style-position: inside;
+  border-radius: calc(var(--tool-radius) / 2);
+}
+.calc-advanced > summary:focus-visible { outline: 3px solid var(--tool-ink); outline-offset: 2px; }
+.calc-advanced[open] > summary { border-bottom: 1px solid var(--tool-border); }
+.calc-advanced__hint { font-weight: 400; color: var(--site-muted-ink); }
+.calc-advanced__body { padding: 0.75rem 0.75rem 0; }
+.calc-advanced__group { margin: 0 0 0.75rem; }
+.calc-advanced__legend { margin: 0 0 0.25rem; font-weight: 700; }
+.calc-sr-only {
+  position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+.calc-field[hidden], .tool-form fieldset[hidden], .calc-advanced__group[hidden] { display: none; }
+
+/* Charts never cause sideways scroll: the SVG scales to its box. */
+.calc-chart { min-width: 0; }
+.calc-chart svg { display: block; width: 100%; max-width: 100%; height: auto; }
+.tool-frame > * { min-width: 0; }
 
 /* Layout: split (inputs | results side by side on wider screens) */
 @media (min-width: 48rem) {

@@ -12,6 +12,13 @@ const tools = defineCollection({
   loader: glob({ base: './tools', pattern: toolPattern('page.md'), generateId: byFolder }),
 });
 
+const scalar = z.union([z.string(), z.number()]);
+const showIfCond = z.union([
+  z.object({ field: z.string(), equals: scalar }),
+  z.object({ field: z.string(), notEquals: scalar }),
+  z.object({ field: z.string(), in: z.array(scalar).min(1) }),
+]);
+
 const input = z.looseObject({
   name: z.string().regex(/^[a-zA-Z][a-zA-Z0-9]*$/),
   label: z.string(),
@@ -20,6 +27,8 @@ const input = z.looseObject({
   default: z.union([z.string(), z.number()]).optional(),
   help: z.string().optional(),
   group: z.string().optional(),
+  advanced: z.boolean().optional(),          // true = inside the collapsible "Advanced settings" section
+  showIf: z.union([showIfCond, z.array(showIfCond).min(1)]).optional(), // show only when another input matches
   options: z.array(z.object({ value: z.union([z.string(), z.number()]), label: z.string() })).optional(),
 });
 
@@ -46,6 +55,7 @@ const toolMeta = defineCollection({
     chartStyle: z.enum(['bar', 'line', 'donut', 'none']).default('none'),
     inputs: z.array(input).min(1),
     outputs: z.array(output).min(1),
+    advancedLabel: z.string().optional(),  // summary text for the Advanced section (default "Advanced settings")
     relatedTools: z.array(z.string()).default([]),
   }),
 });

@@ -34,13 +34,31 @@ const breadcrumbs = [
 const appLd = webApplication({ name: meta.title, description: meta.metaDescription, url: canonicalUrl(`/${toolSlug}/`, base) });
 
 // Group inputs into fieldsets by their optional "group" name (keeps order).
-const groups = [];
-for (const input of meta.inputs ?? []) {
-  const name = input.group ?? 'Inputs';
-  let g = groups.find((x) => x.name === name);
-  if (!g) groups.push((g = { name, inputs: [] }));
-  g.inputs.push(input);
-}
+// Inputs marked "advanced": true go into one collapsible <details> section
+// after the main groups (closed by default; bind.js opens it when an advanced
+// field has a non-default value or an error). Tools with no advanced inputs
+// render exactly as before.
+const groupInputs = (inputs) => {
+  const out = [];
+  for (const input of inputs) {
+    const name = input.group ?? 'Inputs';
+    let g = out.find((x) => x.name === name);
+    if (!g) out.push((g = { name, inputs: [] }));
+    g.inputs.push(input);
+  }
+  return out;
+};
+const allInputs = meta.inputs ?? [];
+const groups = groupInputs(allInputs.filter((i) => !i.advanced));
+// Advanced groups use role="group" divs (not fieldsets) so tools' fieldset
+// styles and stepper numbering apply only to the main steps.
+// Inside the Advanced section a group's "Advanced:" prefix is dropped from its
+// legend; a group named just "Advanced" keeps a screen-reader-only legend.
+const advancedGroups = groupInputs(allInputs.filter((i) => i.advanced)).map((g) => {
+  const short = g.name.replace(/^advanced\s*:?\s*/i, '').trim();
+  return { ...g, legend: short || 'Advanced settings', srOnly: !short };
+});
+const advancedLabel = meta.advancedLabel ?? 'Advanced settings';
 ---
 <BaseLayout site={site} title={title} description={meta.metaDescription} breadcrumbs={breadcrumbs} jsonLd={[appLd]}>
   <article class="tool-page" data-tool={toolSlug} data-layout={layout} data-chart-style={chartStyle}>
@@ -61,6 +79,19 @@ for (const input of meta.inputs ?? []) {
             {g.inputs.map((input) => <Field input={input} />)}
           </fieldset>
         ))}
+        {advancedGroups.length > 0 && (
+          <details class="calc-advanced" data-calc-advanced>
+            <summary>{advancedLabel}<span class="calc-advanced__hint"> (optional)</span></summary>
+            <div class="calc-advanced__body">
+              {advancedGroups.map((g, i) => (
+                <div class="calc-advanced__group" role="group" aria-labelledby={`adv-group-${i}`}>
+                  <p id={`adv-group-${i}`} class:list={['calc-advanced__legend', { 'calc-sr-only': g.srOnly }]}>{g.legend}</p>
+                  {g.inputs.map((input) => <Field input={input} />)}
+                </div>
+              ))}
+            </div>
+          </details>
+        )}
         <button class="tool-submit" type="submit">Calculate</button>
       </form>
       <Results outputs={meta.outputs ?? []} chartStyle={chartStyle} chartTitle={meta.chartTitle ?? `${meta.title} chart`} />

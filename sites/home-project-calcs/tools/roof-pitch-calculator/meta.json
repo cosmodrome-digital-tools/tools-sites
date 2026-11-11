@@ -69,6 +69,7 @@
     },
     {
       "name": "footprint",
+      "advanced": true,
       "label": "Roof footprint area (optional)",
       "unit": "sq ft",
       "default": "0",

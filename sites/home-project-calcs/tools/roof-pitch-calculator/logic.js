@@ -111,6 +111,15 @@ export function calculate(raw = {}) {
     slopeNote: SLOPE_NOTES[band],
     // Not a form output: ui.js points the "Estimate shingles" link here (null below 2/12).
     shingleHref: shingleLink(pitch),
-    chart: referenceTable().map((r) => ({ label: String(r.pitch), value: r.angle })),
+    // Highlight the reference pitch closest to the visitor's (1/12 to 12/12 only).
+    chart: referenceTable().map((r) => {
+      const point = { label: String(r.pitch), value: r.angle };
+      const nearest = Math.round(pitch);
+      if (r.pitch === nearest && pitch >= 0.5 && pitch < 12.5) {
+        point.highlight = true;
+        point.highlightLabel = Math.abs(pitch - nearest) < 0.005 ? 'Your pitch' : 'Closest to yours';
+      }
+      return point;
+    }),
   };
 }

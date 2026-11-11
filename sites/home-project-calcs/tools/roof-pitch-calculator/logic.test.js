@@ -81,7 +81,16 @@ describe('reference table and chart', () => {
     expect(chart).toHaveLength(12);
     expect(chart[0]).toEqual({ label: '1', value: 4.76 });
     expect(chart[11]).toEqual({ label: '12', value: 45 });
-    expect(calculate({ mode: 'pitch', pitchX: '0' }).chart).toEqual(chart);
+    const plain = (c) => c.map(({ label, value }) => ({ label, value }));
+    expect(plain(calculate({ mode: 'pitch', pitchX: '0' }).chart)).toEqual(plain(chart));
+  });
+
+  it('chart highlights the reference pitch nearest the visitor, labeled in text', () => {
+    const hl = (raw) => calculate(raw).chart.filter((p) => p.highlight);
+    expect(hl(rr(6, 12))).toEqual([{ label: '6', value: 26.57, highlight: true, highlightLabel: 'Your pitch' }]);
+    expect(hl({ mode: 'pitch', pitchX: '7.4' }).map((p) => [p.label, p.highlightLabel])).toEqual([['7', 'Closest to yours']]);
+    expect(hl({ mode: 'pitch', pitchX: '0' })).toEqual([]);
+    expect(hl({ mode: 'pitch', pitchX: '20' })).toEqual([]);
   });
 });
 

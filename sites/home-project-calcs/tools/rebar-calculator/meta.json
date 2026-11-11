@@ -40,11 +40,11 @@
       "group": "Bar size and spacing"
     },
     { "name": "spacing", "label": "Spacing, each direction", "unit": "in o.c.", "default": "18", "help": "6 to 36 in, center to center. Must match your plan or local requirements. 18 in is only a starting point, not a code approval.", "group": "Bar size and spacing" },
-    { "name": "cover", "label": "Edge cover", "unit": "in", "default": "3", "help": "1 to 6 in. Gap between the bar ends and the edge of the form, on every side. 3 in is our assumption, not a verified code value.", "group": "Advanced: sticks and laps" },
-    { "name": "stickLength", "label": "Stick length", "unit": "ft", "default": "20", "help": "10 to 40 ft. The length your store sells. 20 ft is common but check; many stores also stock 10 ft sticks.", "group": "Advanced: sticks and laps" },
-    { "name": "lap", "label": "Lap length", "unit": "in", "default": "20", "help": "0 to 60 in. How far two bars overlap where a run needs more than one stick. 20 in is about 40 bar diameters for #4, a common rule of thumb we haven't verified against ACI 318. Use your plan's number.", "group": "Advanced: sticks and laps" },
-    { "name": "chairSpacing", "label": "Chair spacing", "unit": "in", "default": "48", "help": "12 to 72 in, each direction. Rough estimate only; follow the chair maker's guidance.", "group": "Advanced: chairs and waste" },
-    { "name": "waste", "label": "Waste allowance", "unit": "%", "default": "5", "help": "0 to 20%. Extra sticks for bad cuts and bent bars. 5% is our starting estimate, not a published figure.", "group": "Advanced: chairs and waste" }
+    { "name": "cover",  "advanced": true,"label": "Edge cover", "unit": "in", "default": "3", "help": "1 to 6 in. Gap between the bar ends and the edge of the form, on every side. 3 in is our assumption, not a verified code value.", "group": "Advanced: sticks and laps" },
+    { "name": "stickLength",  "advanced": true,"label": "Stick length", "unit": "ft", "default": "20", "help": "10 to 40 ft. The length your store sells. 20 ft is common but check; many stores also stock 10 ft sticks.", "group": "Advanced: sticks and laps" },
+    { "name": "lap",  "advanced": true,"label": "Lap length", "unit": "in", "default": "20", "help": "0 to 60 in. How far two bars overlap where a run needs more than one stick. 20 in is about 40 bar diameters for #4, a common rule of thumb we haven't verified against ACI 318. Use your plan's number.", "group": "Advanced: sticks and laps" },
+    { "name": "chairSpacing",  "advanced": true,"label": "Chair spacing", "unit": "in", "default": "48", "help": "12 to 72 in, each direction. Rough estimate only; follow the chair maker's guidance.", "group": "Advanced: chairs and waste" },
+    { "name": "waste",  "advanced": true,"label": "Waste allowance", "unit": "%", "default": "5", "help": "0 to 20%. Extra sticks for bad cuts and bent bars. 5% is our starting estimate, not a published figure.", "group": "Advanced: chairs and waste" }
   ],
   "outputs": [
     { "name": "sticksToBuy", "label": "Sticks to buy (incl. waste)", "unit": "sticks", "decimals": 0, "primary": true },

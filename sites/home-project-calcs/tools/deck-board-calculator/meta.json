@@ -142,6 +142,7 @@
     },
     {
       "name": "screwsPer",
+      "advanced": true,
       "label": "Screws per board per joist",
       "type": "number",
       "unit": "screws",
@@ -151,6 +152,7 @@
     },
     {
       "name": "waste",
+      "advanced": true,
       "label": "Waste",
       "type": "number",
       "unit": "%",

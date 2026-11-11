@@ -55,9 +55,10 @@
       "help": "Yields come from each product's data sheet (see Sources).",
       "group": "Post concrete"
     },
-    { "name": "gateWidth", "label": "Gate width (each)", "unit": "ft", "default": "4", "help": "2 to 12 ft. Gate openings are taken out of the fence length before pickets and rails are counted.", "group": "Advanced: gates, rails, frost, waste" },
+    { "name": "gateWidth",  "advanced": true,"label": "Gate width (each)", "unit": "ft", "default": "4", "help": "2 to 12 ft. Gate openings are taken out of the fence length before pickets and rails are counted.", "group": "Advanced: gates, rails, frost, waste" },
     {
       "name": "railsPerSection",
+      "advanced": true,
       "label": "Rails per section",
       "type": "select",
       "default": "3",
@@ -68,9 +69,9 @@
       "help": "Horizontal rails between each pair of posts.",
       "group": "Advanced: gates, rails, frost, waste"
     },
-    { "name": "frostDepth", "label": "Frost depth", "unit": "in", "default": "0", "help": "0 to 72 in. Ask your local building department. If it is deeper than 1/3 of the post, the post is buried to this depth instead.", "group": "Advanced: gates, rails, frost, waste" },
-    { "name": "soilCap", "label": "Soil cap over the concrete", "unit": "in", "default": "4", "help": "0 to 6 in. Quikrete's directions stop the concrete 3 to 4 in below ground and fill the top of the hole with soil or sod. Must be less than the post's depth in the ground.", "group": "Advanced: gates, rails, frost, waste" },
-    { "name": "picketWaste", "label": "Picket waste", "unit": "%", "default": "5", "help": "0 to 15%. Extra pickets for splits, bad boards, and cuts. 5% is our starting estimate, not a manufacturer figure.", "group": "Advanced: gates, rails, frost, waste" }
+    { "name": "frostDepth",  "advanced": true,"label": "Frost depth", "unit": "in", "default": "0", "help": "0 to 72 in. Ask your local building department. If it is deeper than 1/3 of the post, the post is buried to this depth instead.", "group": "Advanced: gates, rails, frost, waste" },
+    { "name": "soilCap",  "advanced": true,"label": "Soil cap over the concrete", "unit": "in", "default": "4", "help": "0 to 6 in. Quikrete's directions stop the concrete 3 to 4 in below ground and fill the top of the hole with soil or sod. Must be less than the post's depth in the ground.", "group": "Advanced: gates, rails, frost, waste" },
+    { "name": "picketWaste",  "advanced": true,"label": "Picket waste", "unit": "%", "default": "5", "help": "0 to 15%. Extra pickets for splits, bad boards, and cuts. 5% is our starting estimate, not a manufacturer figure.", "group": "Advanced: gates, rails, frost, waste" }
   ],
   "outputs": [
     { "name": "posts", "label": "Posts", "unit": "posts", "decimals": 0, "primary": true },

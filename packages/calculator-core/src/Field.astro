@@ -8,8 +8,12 @@ const id = `in-${input.name}`;
 const helpId = input.help ? `${id}-help` : undefined;
 const errId = `${id}-err`;
 const describedBy = [helpId, errId].filter(Boolean).join(' ');
+// data-default lets bind.js open the Advanced section when a value differs from
+// the default; data-show-if carries the optional "showIf" condition to bind.js.
+const dataDefault = input.default !== undefined ? String(input.default) : '';
+const showIf = input.showIf ? JSON.stringify(input.showIf) : undefined;
 ---
-<div class="calc-field" data-field={input.name}>
+<div class="calc-field" data-field={input.name} data-default={dataDefault} data-show-if={showIf}>
   <label for={id}>{input.label}{input.unit && <span class="calc-unit"> ({input.unit})</span>}</label>
   {input.type === 'select' ? (
     <select id={id} name={input.name} aria-describedby={describedBy}>
