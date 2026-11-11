@@ -1,5 +1,6 @@
 ---
 /** Results area. Values are filled in by bind.js; outputs come from meta.json "outputs". */
+import { RESULTS_NOTICE as notice } from './notices.js';
 const { outputs = [], chartStyle = 'none', chartTitle = 'Chart' } = Astro.props;
 ---
 <section class="calc-results" data-calc-results data-state="empty" aria-live="polite" aria-label="Results">
@@ -15,4 +16,5 @@ const { outputs = [], chartStyle = 'none', chartTitle = 'Chart' } = Astro.props;
   <p class="calc-results__invalid">Fix the highlighted fields to see results.</p>
   {chartStyle !== 'none' && <div class="calc-chart" data-calc-chart data-title={chartTitle}></div>}
   <noscript><p>This calculator needs JavaScript turned on to show results.</p></noscript>
+  <p class="calc-results__notice" data-results-notice>{notice.text} {notice.linkLead} <a href={notice.href}>{notice.linkText}</a>.</p>
 </section>
