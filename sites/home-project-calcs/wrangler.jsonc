@@ -13,7 +13,8 @@
   // "routes": [
   //   { "pattern": "<domain>", "custom_domain": true }
   // ],
-  "workers_dev": false,
+  // workers.dev is the noindex preview until a custom domain is attached.
+  "workers_dev": true,
   "preview_urls": true,
   "previews": {}
 }

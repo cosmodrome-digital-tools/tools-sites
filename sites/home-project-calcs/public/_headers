@@ -1,0 +1,7 @@
+# Keep the workers.dev preview off search engines.
+# Narrow or remove these rules when a custom domain is attached and the site is ready to be indexed.
+https://tools-home-project-calcs.cosmodromedigital.workers.dev/*
+  X-Robots-Tag: noindex, nofollow
+
+https://:preview-tools-home-project-calcs.cosmodromedigital.workers.dev/*
+  X-Robots-Tag: noindex, nofollow
