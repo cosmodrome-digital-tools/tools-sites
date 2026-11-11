@@ -1,0 +1,34 @@
+---
+/**
+ * Category icons for the homepage: simple 24x24 line drawings made for this
+ * site (no icon package, no icon font). Decorative: the category name is
+ * always written next to them.
+ */
+const { name, size = 28 } = Astro.props;
+const ICONS = {
+  // bag of mix + slab
+  concrete: '<path d="M5 9.5 7 4h6l2 5.5"/><rect x="4.5" y="9.5" width="11" height="8" rx="1.5"/><path d="M8 13.5h4"/><path d="M15.5 17.5 20 15v-4l-4.5 2"/>',
+  // deck boards with stairs
+  deck: '<path d="M3 9h18M3 12.5h18M3 16h12"/><path d="M15 16v4h3v-2h3"/><path d="M5 16v4M10 16v3"/>',
+  // pickets
+  fence: '<path d="M5 20V7l1.5-2L8 7v13M11 20V7l1.5-2L14 7v13M17 20V7l1.5-2L20 7v13"/><path d="M3 10h18M3 16h18"/>',
+  // road with center dashes
+  driveway: '<path d="M8 3 4 21M16 3l4 18"/><path d="M12 4v2.5M12 10v3M12 17v3"/>',
+  // pavers grid
+  patio: '<rect x="3.5" y="3.5" width="17" height="17" rx="1.5"/><path d="M3.5 9.5h17M3.5 15.5h17M9 3.5v6M15 9.5v6M9 15.5v5"/>',
+  // brick wall
+  wall: '<rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 9.7h18M3 14.3h18M9 5v4.7M15 5v4.7M6 9.7v4.6M12 9.7v4.6M18 9.7v4.6M9 14.3V19M15 14.3V19"/>',
+  // sprout over soil
+  garden: '<path d="M3 19.5h18"/><path d="M12 19.5v-8"/><path d="M12 13c0-3.5-2.5-5.5-6-5.5 0 3.5 2.5 5.5 6 5.5Z"/><path d="M12 11.5c0-3 2-5 5.5-5 0 3-2 5-5.5 5Z"/>',
+  // roof with pitch triangle
+  roof: '<path d="M2.5 13 12 5l9.5 8"/><path d="M5 11v8h14v-8"/><path d="M14.5 16.5h3v-2.5" stroke-dasharray="1.6 1.4"/>',
+  // house wall with lap siding
+  siding: '<path d="M4 10 12 4l8 6v10H4Z"/><path d="M4 13h16M4 16h16M4 19h16M7.5 10h9"/>',
+  // attic with insulation wave
+  insulation: '<path d="M2.5 12 12 4.5l9.5 7.5"/><path d="M4.5 19.5h15"/><path d="M5 17c1.2-1.6 2.3-1.6 3.5 0s2.3 1.6 3.5 0 2.3-1.6 3.5 0 2.3 1.6 3.5 0"/>',
+  // paint roller
+  interiors: '<rect x="4" y="3.5" width="13" height="5" rx="1.2"/><path d="M17 6h2.5v4.5H11v3"/><rect x="9.5" y="13.5" width="3" height="7" rx="1"/>',
+};
+const body = ICONS[name] ?? ICONS.concrete;
+---
+<svg class="cat-icon" viewBox="0 0 24 24" width={size} height={size} aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" set:html={body} />

@@ -129,5 +129,14 @@ export function calculate(raw = {}) {
       edgeRestraint: edge === undefined ? NaN : round(edge, 1),
     },
     chart,
+    chartXLabel: 'Compacted base depth (in) · tons',
+    // Plan of the paved area with the layers under it (labels only).
+    diagram: (() => {
+      const depthNote = `Pavers on ${v.sandDepth} in sand over ${depth} in compacted base`;
+      if (shape === 'rectangle') return { type: 'plan', name: 'Patio plan', length: v.length, width: v.width, unit: 'ft', pattern: 'pavers', depthNote };
+      if (shape === 'circle') return { type: 'plan', name: 'Round patio', shape: 'circle', diameter: v.diameter, unit: 'ft', pattern: 'pavers', depthNote };
+      const side = Math.sqrt(area);
+      return { type: 'plan', name: 'Patio area', length: side, width: side, lengthLabel: `${round(area, 0)} sq ft`, widthLabel: 'area', unit: 'ft', pattern: 'pavers', depthNote };
+    })(),
   };
 }

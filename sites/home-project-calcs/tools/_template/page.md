@@ -1,20 +1,20 @@
 <!--
-page.md: the page copy below the calculator. Plain Markdown, H2 sections in
-this order. Write everything for THIS tool only (never copy from another tool).
-Use US units. Do NOT add an H1 (it comes from meta.json "title"/"h1"), and do
-NOT add a Sources section or "last updated" line (both are rendered from
-meta.json). Replace every TODO.
+page.md: the page copy below the calculator. The shared frame turns every H2
+into a collapsible section (native <details>, closed by default; "How to use"
+stays open when it has 5 steps or fewer) and each FAQ "###" question into its
+own collapsible item plus FAQPage schema. Nothing is removed from the HTML, but
+keep it tight: the calculator, results card, and diagram already explain a lot.
+Write everything for THIS tool only. US units. No H1, no Sources section, no
+"last updated" line (all come from meta.json). Replace every TODO.
 -->
 
 ## What it calculates and who it's for
 
-TODO What the calculator estimates, in which US units, and who would use it.
+TODO Two or three sentences: what it estimates, in which US units, and who uses it. Don't repeat the intro.
 
 ## How to use
 
-TODO Numbered steps matching the inputs on the form.
-
-1. TODO
+1. TODO One short step per input group (aim for 5 or fewer).
 2. TODO
 
 ## The formula
@@ -23,15 +23,15 @@ TODO The formula, with every variable explained (name, unit, where the number co
 
 ## Worked example
 
-TODO A real example, step by step, with the numbers recalculated by hand.
+TODO A real example, step by step, recalculated by hand. It must also be a test case in logic.test.js.
 
 ## How to read your results
 
-TODO What each result means and how to turn it into a shopping list (round up to whole bags, etc.).
+TODO What the headline number and each group in the results card mean, and how to round up when buying.
 
 ## Assumptions and limits
 
-TODO What the calculator assumes and what it doesn't cover. Remind readers to confirm quantities with their supplier and follow product instructions and local codes.
+TODO What it assumes and doesn't cover. Remind readers to confirm with their supplier and follow product instructions and local codes.
 
 ## FAQ
 
@@ -39,6 +39,6 @@ TODO What the calculator assumes and what it doesn't cover. Remind readers to co
 
 TODO A short, direct answer.
 
-## TODO Unique addition (e.g. "Real-world tip" or "Bag size comparison")
+## TODO Unique addition (e.g. "Common room sizes" table or "Real-world tip")
 
-TODO The one thing this page offers that others don't.
+TODO The one thing this page offers that others don't. Sourced tables go here.

@@ -1,6 +1,7 @@
 {
   "title": "Roof Pitch Calculator",
   "benefit": "Pitch to Degrees",
+  "cardBlurb": "Pitch, degrees, slope, and area multiplier",
   "seoTitle": "Roof Pitch Calculator - Pitch to Degrees",
   "metaDescription": "Turn a rise and run, an angle, or rise per 12 inches into roof pitch (x/12), degrees, percent slope, and the area multiplier, with a 2024 IRC shingle check.",
   "primaryKeyword": "roof pitch calculator",
@@ -13,14 +14,20 @@
   "intent": "Convert a measured rise and run (or an angle) into roof pitch (x/12), degrees, percent slope, and the area multiplier.",
   "registerRow": "Keyword register (estimates): roof pitch calculator, volume 2, competition ease 4, ad value 3, fit 5, priority 24. Trends ratio vs concrete calculator = 0.035.",
   "category": "Roofing",
-  "intro": "Enter a rise and run, an angle, or the rise over a 12 inch run. You get the pitch as x/12, the angle in degrees, the percent slope, and the multiplier that turns a flat footprint into true roof area. Measure from the attic or a gable end, not from the roof.",
+  "intro": "Enter a rise and run, an angle, or the rise per 12 in of run to get the pitch, angle, percent slope, and roof-area multiplier. Measure from the attic or a gable end, not on the roof.",
   "lastUpdated": "2026-10-07",
   "layout": "split",
   "chartStyle": "line",
   "chartTitle": "Roof angle in degrees at each pitch, 1/12 to 12/12",
+  "chartUnit": "degrees",
+  "chartXLabel": "Pitch (inches of rise per 12 in of run)",
   "heroAlt": "",
   "uniqueAddition": "An always-visible pitch reference table from 1/12 to 12/12 (degrees, percent slope, area multiplier) plus a line chart of angle by pitch, and a low-slope check against 2024 IRC R905.2.2 and Table R905.1.1(2) shown under the results.",
-  "relatedTools": ["shingle-calculator", "deck-board-calculator"],
+  "relatedTools": [
+    "shingle-calculator",
+    "attic-ventilation-calculator",
+    "stair-stringer-calculator"
+  ],
   "inputs": [
     {
       "name": "mode",
@@ -28,16 +35,28 @@
       "type": "select",
       "default": "riseRun",
       "options": [
-        { "value": "riseRun", "label": "Rise and run (measured)" },
-        { "value": "angle", "label": "Angle in degrees" },
-        { "value": "pitch", "label": "Rise over a 12 in run (x/12)" }
+        {
+          "value": "riseRun",
+          "label": "Rise and run (measured)"
+        },
+        {
+          "value": "angle",
+          "label": "Angle in degrees"
+        },
+        {
+          "value": "pitch",
+          "label": "Rise over a 12 in run (x/12)"
+        }
       ],
       "help": "Pick the measurement you have. Only the matching fields are shown.",
       "group": "Roof slope"
     },
     {
       "name": "rise",
-      "showIf": { "field": "mode", "equals": "riseRun" },
+      "showIf": {
+        "field": "mode",
+        "equals": "riseRun"
+      },
       "label": "Rise",
       "unit": "in",
       "default": "6",
@@ -46,7 +65,10 @@
     },
     {
       "name": "run",
-      "showIf": { "field": "mode", "equals": "riseRun" },
+      "showIf": {
+        "field": "mode",
+        "equals": "riseRun"
+      },
       "label": "Run",
       "unit": "in",
       "default": "12",
@@ -55,7 +77,10 @@
     },
     {
       "name": "angle",
-      "showIf": { "field": "mode", "equals": "angle" },
+      "showIf": {
+        "field": "mode",
+        "equals": "angle"
+      },
       "label": "Angle",
       "unit": "degrees",
       "default": "26.57",
@@ -64,7 +89,10 @@
     },
     {
       "name": "pitchX",
-      "showIf": { "field": "mode", "equals": "pitch" },
+      "showIf": {
+        "field": "mode",
+        "equals": "pitch"
+      },
       "label": "Rise per 12 in of run",
       "unit": "in (x/12)",
       "default": "6",
@@ -82,12 +110,48 @@
     }
   ],
   "outputs": [
-    { "name": "pitch", "label": "Roof pitch", "unit": "/ 12", "decimals": 2, "primary": true },
-    { "name": "angle", "label": "Angle", "unit": "degrees", "decimals": 2 },
-    { "name": "percent", "label": "Slope", "unit": "%", "decimals": 1 },
-    { "name": "multiplier", "label": "Area multiplier", "unit": "x footprint", "decimals": 3 },
-    { "name": "rafterPerFoot", "label": "Rafter length per foot of run", "unit": "in", "decimals": 2 },
-    { "name": "roofArea", "label": "Roof area (sloped)", "unit": "sq ft", "decimals": 1 }
+    {
+      "name": "pitch",
+      "label": "Roof pitch",
+      "unit": "/ 12",
+      "decimals": 2,
+      "primary": true
+    },
+    {
+      "name": "angle",
+      "label": "Angle",
+      "unit": "degrees",
+      "decimals": 2,
+      "group": "Slope"
+    },
+    {
+      "name": "percent",
+      "label": "Slope",
+      "unit": "%",
+      "decimals": 1,
+      "group": "Slope"
+    },
+    {
+      "name": "multiplier",
+      "label": "Area multiplier",
+      "unit": "x footprint",
+      "decimals": 3,
+      "group": "Roof area"
+    },
+    {
+      "name": "rafterPerFoot",
+      "label": "Rafter length per foot of run",
+      "unit": "in",
+      "decimals": 2,
+      "group": "Roof area"
+    },
+    {
+      "name": "roofArea",
+      "label": "Roof area (sloped)",
+      "unit": "sq ft",
+      "decimals": 1,
+      "group": "Roof area"
+    }
   ],
   "sources": [
     {

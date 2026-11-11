@@ -1,0 +1,196 @@
+{
+  "title": "Brick Calculator",
+  "benefit": "Bricks and Mortar for a Wall",
+  "cardBlurb": "Bricks and mortar for a garden wall or veneer",
+  "seoTitle": "Brick Calculator - Bricks and Mortar",
+  "metaDescription": "Estimate modular bricks and cubic feet of mortar for a garden wall or brick veneer in feet, using Brick Industry Association figures and waste allowances.",
+  "primaryKeyword": "brick calculator",
+  "secondaryKeywords": [
+    "how many bricks do i need",
+    "bricks per square foot",
+    "how much mortar per 1000 bricks",
+    "brick wall calculator"
+  ],
+  "intent": "Estimate bricks and mortar for a brick veneer or garden wall.",
+  "registerRow": "Not on the Oct 2026 Keyword Register: category-fill addition (Garden Walls) chosen by the redesign brief; clay or concrete brick and mortar, distinct from segmental retaining wall block.",
+  "category": "Garden Walls",
+  "intro": "Enter a wall's length and height to get modular bricks and mortar to buy, using the Brick Industry Association's estimating figures and waste allowances.",
+  "lastUpdated": "2026-11-11",
+  "layout": "split",
+  "chartStyle": "bar",
+  "chartTitle": "Bricks in the wall vs waste allowance",
+  "chartUnit": "bricks",
+  "chartXLabel": "Bricks to buy",
+  "diagramCaption": "Wall elevation in running bond with the brick module. It redraws as you type.",
+  "heroAlt": "",
+  "uniqueAddition": "Brick and mortar together for a wall or veneer from BIA Technical Note 10 figures (6.75 modular bricks per sq ft, 8.1 cu ft of mortar per 1,000 bricks, 5% brick and 15 to 25% mortar waste), with a one- or two-wythe option, clearly separate from the retaining-wall block tool.",
+  "relatedTools": [
+    "retaining-wall-block-calculator",
+    "concrete-calculator",
+    "paver-patio-calculator"
+  ],
+  "inputs": [
+    {
+      "name": "length",
+      "label": "Wall length",
+      "unit": "ft",
+      "default": "20",
+      "help": "1 to 500 ft.",
+      "group": "Wall"
+    },
+    {
+      "name": "height",
+      "label": "Wall height",
+      "unit": "ft",
+      "default": "4",
+      "help": "Height of brick, 0.5 to 40 ft.",
+      "group": "Wall"
+    },
+    {
+      "name": "openings",
+      "label": "Openings",
+      "unit": "sq ft",
+      "default": "0",
+      "help": "Windows, doors, or gaps the brick skips.",
+      "group": "Wall"
+    },
+    {
+      "name": "wythes",
+      "label": "Thickness",
+      "type": "select",
+      "default": "1",
+      "options": [
+        {
+          "value": "1",
+          "label": "One wythe (veneer or single wall)"
+        },
+        {
+          "value": "2",
+          "label": "Two wythes (double wall)"
+        }
+      ],
+      "help": "A wythe is one brick-thick layer.",
+      "group": "Wall"
+    },
+    {
+      "name": "brickType",
+      "label": "Brick size",
+      "type": "select",
+      "default": "modular",
+      "options": [
+        {
+          "value": "modular",
+          "label": "Modular, 3/8 in joints (BIA)"
+        },
+        {
+          "value": "custom",
+          "label": "Other size: enter your own figures"
+        }
+      ],
+      "help": "Modular brick is 7 5/8 × 2 1/4 × 3 5/8 in, laid with 3/8 in joints.",
+      "group": "Brick"
+    },
+    {
+      "name": "bricksPerSqFt",
+      "showIf": {
+        "field": "brickType",
+        "equals": "custom"
+      },
+      "label": "Bricks per sq ft of wall",
+      "unit": "bricks",
+      "default": "6.75",
+      "help": "From your brick maker or BIA Technical Note 10, 1 to 20.",
+      "group": "Brick"
+    },
+    {
+      "name": "mortarPer1000",
+      "showIf": {
+        "field": "brickType",
+        "equals": "custom"
+      },
+      "label": "Mortar per 1,000 bricks",
+      "unit": "cu ft",
+      "default": "8.1",
+      "help": "From BIA Technical Note 10 for your brick and joint size, 1 to 40.",
+      "group": "Brick"
+    },
+    {
+      "name": "brickWaste",
+      "advanced": true,
+      "label": "Brick waste",
+      "unit": "%",
+      "default": "5",
+      "help": "0 to 25%. BIA says to add at least 5% for breakage and waste.",
+      "group": "Advanced: waste"
+    },
+    {
+      "name": "mortarWaste",
+      "advanced": true,
+      "label": "Mortar waste",
+      "unit": "%",
+      "default": "20",
+      "help": "0 to 50%. BIA says to add 15 to 25% to net mortar; 20% is the middle of that range.",
+      "group": "Advanced: waste"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "bricks",
+      "label": "Bricks to buy",
+      "unit": "bricks",
+      "decimals": 0,
+      "primary": true
+    },
+    {
+      "name": "mortarCuFt",
+      "label": "Mortar with waste",
+      "unit": "cu ft",
+      "decimals": 2,
+      "group": "Mortar",
+      "unitGroup": "mortar"
+    },
+    {
+      "name": "mortarCuYd",
+      "label": "Mortar with waste",
+      "unit": "cu yd",
+      "decimals": 3,
+      "group": "Mortar",
+      "unitGroup": "mortar"
+    },
+    {
+      "name": "mortarNet",
+      "label": "Mortar before waste",
+      "unit": "cu ft",
+      "decimals": 2,
+      "group": "Mortar"
+    },
+    {
+      "name": "wallArea",
+      "label": "Wall face to brick",
+      "unit": "sq ft",
+      "decimals": 1,
+      "group": "Wall"
+    },
+    {
+      "name": "bricksNet",
+      "label": "Bricks before waste",
+      "unit": "bricks",
+      "decimals": 1,
+      "group": "Wall"
+    },
+    {
+      "name": "perSqFt",
+      "label": "Bricks per sq ft used",
+      "unit": "per sq ft",
+      "decimals": 2,
+      "group": "Wall"
+    }
+  ],
+  "sources": [
+    {
+      "title": "Technical Notes on Brick Construction 10, Dimensioning and Estimating Brick Masonry (Brick Industry Association, February 2009): Table 4, modular brick with 3/8 in joints, 6.75 per sq ft and 8.1 cu ft mortar per 1,000 brick; waste allowances",
+      "url": "https://39589251.fs1.hubspotusercontent-na1.net/hubfs/39589251/Education/BIA%20Tech%20Notes%2010-dimensioning-and-estimating-brick-masonry.pdf",
+      "accessed": "2026-11-11"
+    }
+  ]
+}

@@ -1,0 +1,191 @@
+{
+  "title": "Asphalt Calculator",
+  "benefit": "Tons of Hot Mix for a Driveway",
+  "cardBlurb": "Tons and cubic yards of hot-mix asphalt",
+  "seoTitle": "Asphalt Calculator - Tons for a Driveway",
+  "metaDescription": "Convert a driveway or path size and compacted thickness into tons and cubic yards of hot-mix asphalt, using the 110 lb per sq yd per inch rate state DOTs use.",
+  "primaryKeyword": "asphalt calculator",
+  "secondaryKeywords": [
+    "asphalt tonnage calculator",
+    "how many tons of asphalt do i need",
+    "asphalt driveway calculator",
+    "tons of asphalt per square yard"
+  ],
+  "intent": "Convert a driveway or path area and compacted thickness into tons and cubic yards of hot-mix asphalt.",
+  "registerRow": "Not on the Oct 2026 Keyword Register: category-fill addition (Driveways and Paths) chosen by the redesign brief; hot-mix asphalt tons, not crushed stone (Gravel).",
+  "category": "Driveways and Paths",
+  "intro": "Enter a driveway or path size and the compacted thickness to get tons of hot-mix asphalt to order, using the 110 lb per square yard per inch rate in state DOT specifications.",
+  "lastUpdated": "2026-11-11",
+  "layout": "split",
+  "chartStyle": "bar",
+  "chartTitle": "Tons for this area at 1 to 4 in compacted thickness (with your allowance)",
+  "chartUnit": "tons",
+  "chartXLabel": "Compacted thickness",
+  "diagramCaption": "Driveway with its compacted thickness (and layers). It redraws as you type.",
+  "heroAlt": "",
+  "uniqueAddition": "Tonnage from the spread rate state DOTs write into their hot-mix specifications (110 lb per sq yd per inch, TxDOT, VDOT, INDOT), editable for your plant's mix, with optional base and surface layers and a table of common driveway sizes at 2 and 3 in.",
+  "relatedTools": [
+    "gravel-calculator",
+    "concrete-calculator",
+    "paver-patio-calculator"
+  ],
+  "inputs": [
+    {
+      "name": "length",
+      "label": "Length",
+      "unit": "ft",
+      "default": "40",
+      "help": "1 to 2,000 ft.",
+      "group": "Driveway or path"
+    },
+    {
+      "name": "width",
+      "label": "Width",
+      "unit": "ft",
+      "default": "12",
+      "help": "1 to 500 ft.",
+      "group": "Driveway or path"
+    },
+    {
+      "name": "layers",
+      "label": "Layers",
+      "type": "select",
+      "default": "one",
+      "options": [
+        {
+          "value": "one",
+          "label": "One layer"
+        },
+        {
+          "value": "two",
+          "label": "Base layer plus surface layer"
+        }
+      ],
+      "group": "Thickness"
+    },
+    {
+      "name": "thickness",
+      "label": "Compacted thickness",
+      "unit": "in",
+      "default": "3",
+      "help": "After rolling, 0.5 to 12 in. With two layers, this is the base layer.",
+      "group": "Thickness"
+    },
+    {
+      "name": "surfaceThickness",
+      "showIf": {
+        "field": "layers",
+        "equals": "two"
+      },
+      "label": "Surface layer thickness",
+      "unit": "in",
+      "default": "1.5",
+      "help": "Compacted, 0.5 to 6 in.",
+      "group": "Thickness"
+    },
+    {
+      "name": "rate",
+      "advanced": true,
+      "label": "Spread rate",
+      "unit": "lb/sq yd/in",
+      "default": "110",
+      "help": "90 to 130. 110 is the planning rate in TxDOT and VDOT specifications (about 146.7 lb per cu ft). Use your plant's figure if it gives one.",
+      "group": "Advanced: mix weight and allowance"
+    },
+    {
+      "name": "waste",
+      "advanced": true,
+      "label": "Extra allowance",
+      "unit": "%",
+      "default": "5",
+      "help": "0 to 20%. Extra for uneven base and edges. 5% is our estimate, not a published figure.",
+      "group": "Advanced: mix weight and allowance"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "tonsToOrder",
+      "label": "Tons to order",
+      "unit": "tons",
+      "decimals": 1,
+      "primary": true
+    },
+    {
+      "name": "tons",
+      "label": "Calculated tons",
+      "unit": "tons",
+      "decimals": 2,
+      "group": "Amount"
+    },
+    {
+      "name": "cubicYards",
+      "label": "Compacted volume",
+      "unit": "cu yd",
+      "decimals": 2,
+      "group": "Amount",
+      "unitGroup": "volume"
+    },
+    {
+      "name": "cubicFeet",
+      "label": "Compacted volume",
+      "unit": "cu ft",
+      "decimals": 1,
+      "group": "Amount",
+      "unitGroup": "volume"
+    },
+    {
+      "name": "baseTons",
+      "label": "Base layer",
+      "unit": "tons",
+      "decimals": 2,
+      "group": "Layers"
+    },
+    {
+      "name": "surfaceTons",
+      "label": "Surface layer",
+      "unit": "tons",
+      "decimals": 2,
+      "group": "Layers"
+    },
+    {
+      "name": "area",
+      "label": "Paved area",
+      "unit": "sq ft",
+      "decimals": 1,
+      "group": "Area",
+      "unitGroup": "area"
+    },
+    {
+      "name": "sqYd",
+      "label": "Paved area",
+      "unit": "sq yd",
+      "decimals": 2,
+      "group": "Area",
+      "unitGroup": "area"
+    },
+    {
+      "name": "densityLbCuFt",
+      "label": "Density from the spread rate",
+      "unit": "lb/cu ft",
+      "decimals": 1,
+      "group": "Area"
+    }
+  ],
+  "sources": [
+    {
+      "title": "Item 341, Dense-Graded Hot-Mix Asphalt, 2014 Standard Specifications (Texas Department of Transportation): thickness based on 110 lb per sq yd for each inch of pavement",
+      "url": "https://ftp.txdot.gov/pub/txdot-info/cmd/cserve/specs/2014/standard/s341.pdf",
+      "accessed": "2026-11-11"
+    },
+    {
+      "title": "Instructional and Informational Memorandum IIM-LD-158 (Virginia Department of Transportation, Location and Design Division): application rate based on 110 lb per sq yd per inch of thickness",
+      "url": "https://www.vdot.virginia.gov/media/vdotvirginiagov/doing-business/technical-guidance-and-support/technical-guidance-documents/location-and-design/migrated/iim/IIM158_acc03222023_PM.pdf",
+      "accessed": "2026-11-11"
+    },
+    {
+      "title": "Hot Mix Asphalt Paving, 2025 (Indiana Department of Transportation): 110 lb per sq yd is about 1 in of compacted depth; some aggregates weigh more or less",
+      "url": "https://www.in.gov/indot/files/2025-Hot-Mix-Asphalt-Paving.pdf",
+      "accessed": "2026-11-11"
+    }
+  ]
+}

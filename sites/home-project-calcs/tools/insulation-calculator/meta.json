@@ -1,6 +1,7 @@
 {
   "title": "Insulation Calculator",
   "benefit": "Attic R-Value",
+  "cardBlurb": "Attic R-value by zone, then bags or batts",
   "seoTitle": "Insulation Calculator - Attic R-Value",
   "metaDescription": "Find the ENERGY STAR attic R-value for your US climate zone and estimate AttiCat blown bags or EcoTouch batt packages, plus the thickness to install.",
   "primaryKeyword": "insulation calculator",
@@ -13,16 +14,20 @@
   "intent": "Find the recommended attic R-value for a US climate zone and estimate the batts or blown-in bags needed to reach it.",
   "registerRow": "Keyword Register (estimates): insulation calculator - volume 3, competition ease 2, ad value 4, fit 4, priority 24",
   "category": "Insulation and Energy",
-  "intro": "Find the R-value ENERGY STAR recommends adding to your attic for your US climate zone, then estimate Owens Corning AttiCat blown-in bags or EcoTouch batt packages for that attic floor. Blown results include the data sheet's minimum thickness.",
+  "intro": "Find the attic R-value ENERGY STAR recommends for your climate zone, then estimate Owens Corning AttiCat bags or EcoTouch batt packages to reach it.",
   "lastUpdated": "2026-10-07",
-  "layout": "stacked",
+  "layout": "split",
   "chartStyle": "line",
   "chartTitle": "AttiCat bags to buy at each chart R-value",
+  "chartUnit": "bags",
+  "chartXLabel": "AttiCat R-value",
   "heroAlt": "Cross-section of an attic: roof rafters, floor joists, and a layer of insulation above the joists with a depth mark.",
   "uniqueAddition": "An on-page ENERGY STAR attic R-value table for every climate-zone group, paired with the AttiCat bag line for this attic at R-30, R-38, R-49, and R-60. Blown results name the AttiCat data-sheet row used and its minimum thickness so the depth can be checked in the attic.",
   "relatedTools": [
-    "shingle-calculator",
-    "roof-pitch-calculator"
+    "attic-ventilation-calculator",
+    "roof-pitch-calculator",
+    "drywall-calculator",
+    "shingle-calculator"
   ],
   "inputs": [
     {
@@ -105,7 +110,10 @@
     },
     {
       "name": "battR",
-      "showIf": { "field": "product", "equals": "batts" },
+      "showIf": {
+        "field": "product",
+        "equals": "batts"
+      },
       "label": "Batt R-value",
       "type": "select",
       "default": "38",
@@ -132,7 +140,10 @@
     },
     {
       "name": "battCoverage",
-      "showIf": { "field": "product", "equals": "batts" },
+      "showIf": {
+        "field": "product",
+        "equals": "batts"
+      },
       "label": "Batt package coverage",
       "unit": "sq ft",
       "default": "64",
@@ -170,36 +181,42 @@
     {
       "name": "packages",
       "label": "Bags or batt packages",
-      "decimals": 0
+      "decimals": 0,
+      "primary": true
     },
     {
       "name": "rShortfall",
       "label": "R-value short of your goal",
       "unit": "R",
-      "decimals": 1
+      "decimals": 1,
+      "group": "Check"
     },
     {
       "name": "blownThickness",
       "label": "Blown minimum thickness",
       "unit": "in",
-      "decimals": 2
+      "decimals": 2,
+      "group": "Depth"
     },
     {
       "name": "battThickness",
       "label": "Batt thickness",
       "unit": "in",
-      "decimals": 2
+      "decimals": 2,
+      "group": "Depth"
     },
     {
       "name": "chartR",
       "label": "AttiCat row used",
       "unit": "R",
-      "decimals": 0
+      "decimals": 0,
+      "group": "Check"
     },
     {
       "name": "beforeRounding",
       "label": "Amount before rounding up",
-      "decimals": 2
+      "decimals": 2,
+      "group": "Check"
     }
   ],
   "sources": [

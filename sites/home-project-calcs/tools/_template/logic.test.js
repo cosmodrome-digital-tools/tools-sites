@@ -15,13 +15,19 @@ const ok = (raw) => {
 
 describe('known answers', () => {
   it('10 ft x 12 ft, 0% waste = 120 sq ft (hand math: 10 x 12)', () => {
-    expect(ok({ length: '10', width: '12', waste: '0' })).toEqual({ area: 120, total: 120 });
+    expect(ok({ length: '10', width: '12', waste: '0' })).toEqual({ area: 120, areaSqYd: 13.33, total: 120 });
   });
   it('10 ft x 12 ft, 10% waste = 132 sq ft (hand math: 120 x 1.10)', () => {
     expect(ok({ length: '10', width: '12', waste: '10' }).total).toBe(132);
   });
   it('12.5 ft x 8 ft, 5% waste = 105 sq ft (hand math: 100 x 1.05)', () => {
-    expect(ok({ length: '12.5', width: '8', waste: '5' })).toEqual({ area: 100, total: 105 });
+    expect(ok({ length: '12.5', width: '8', waste: '5' })).toEqual({ area: 100, areaSqYd: 11.11, total: 105 });
+  });
+});
+
+describe('labeled diagram', () => {
+  it('returns a plan diagram with the entered sizes', () => {
+    expect(calculate({ length: '10', width: '12', waste: '0' }).diagram).toMatchObject({ type: 'plan', length: 10, width: 12, unit: 'ft' });
   });
 });
 

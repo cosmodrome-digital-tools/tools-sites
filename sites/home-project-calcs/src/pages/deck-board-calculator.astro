@@ -7,6 +7,7 @@ import { getCollection, getEntry, render } from 'astro:content';
 import site from '../site.config.mjs';
 import '../styles/site.css';
 import '../../tools/deck-board-calculator/tool.css';
+import { calculate } from '../../tools/deck-board-calculator/logic.js';
 
 const slug = 'deck-board-calculator';
 const page = await getEntry('tools', slug);
@@ -22,9 +23,9 @@ const allMeta = await getCollection('toolMeta');
 const related = (meta.data.relatedTools ?? [])
   .map((s) => allMeta.find((t) => t.id === s))
   .filter(Boolean)
-  .map((t) => ({ slug: t.id, title: t.data.title }));
+  .map((t) => ({ slug: t.id, title: t.data.title, blurb: t.data.cardBlurb ?? t.data.benefit }));
 ---
-<ToolPage site={site} meta={meta.data} toolSlug={slug} hero={hero} related={related}>
+<ToolPage site={site} meta={meta.data} toolSlug={slug} hero={hero} related={related} calculate={calculate}>
   <Content />
 </ToolPage>
 

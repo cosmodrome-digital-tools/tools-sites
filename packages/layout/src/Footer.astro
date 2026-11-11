@@ -1,4 +1,5 @@
 ---
+import Logo from './Logo.astro';
 const { siteName } = Astro.props;
 const year = new Date().getFullYear();
 const links = [
@@ -11,6 +12,7 @@ const links = [
 ---
 <footer class="site-footer">
   <div class="site-footer__inner">
+    <p class="site-footer__brand"><Logo />{siteName}</p>
     <nav aria-label="Site and legal">
       <ul class="site-footer__links">
         {links.map((l) => <li><a href={l.href}>{l.label}</a></li>)}

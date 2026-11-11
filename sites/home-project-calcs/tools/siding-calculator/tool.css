@@ -1,0 +1,20 @@
+/* tool.css: Siding Calculator look. Painted-clapboard navy accent, pale sky surface.
+   Contrast (WCAG AA): accent-ink #ffffff on accent #1e3a5f = 11.5:1;
+   ink #0f172a on surface #f2f6fa = 16.4:1; chart colors on white = 11.5:1, 5.0:1, 4.8:1, 5.5:1 (all over 3:1).
+   System fonts only. */
+[data-tool="siding-calculator"] {
+  --tool-accent: #1e3a5f;
+  --tool-accent-ink: #ffffff;
+  --tool-surface: #f2f6fa;
+  --tool-ink: #0f172a;
+  --tool-border: #c6d3e1;
+  --tool-radius: 8px;
+  --chart-palette-1: #1e3a5f;
+  --chart-palette-2: #b45309;
+  --chart-palette-3: #64748b;
+  --chart-palette-4: #0f766e;
+}
+
+[data-tool="siding-calculator"] .tool-form legend {
+  color: var(--tool-accent);
+}

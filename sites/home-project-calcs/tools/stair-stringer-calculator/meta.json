@@ -1,0 +1,83 @@
+{
+  "title": "Stair Stringer Calculator",
+  "benefit": "Risers, Treads, and Length",
+  "cardBlurb": "Risers, treads, stringer length, and an IRC check",
+  "seoTitle": "Stair Stringer Calculator - Rise and Run",
+  "metaDescription": "Find the number of steps, exact riser height, total run, stringer length, and angle for a total rise in inches, checked against 2021 and 2024 IRC stair limits.",
+  "primaryKeyword": "stair stringer calculator",
+  "secondaryKeywords": [
+    "stair rise and run calculator",
+    "stair rise and run code",
+    "how to calculate stair stringer length",
+    "stair stringer calculator with landing"
+  ],
+  "intent": "Find the number of steps, exact riser and tread sizes, stringer length, and angle for a given total rise, and check them against IRC limits.",
+  "registerRow": "Keyword Register: stair stringer calculator (Volume 1, Competition ease 4, Ad value 2, Fit 4, Priority 8); launch order 6",
+  "category": "Decks",
+  "intro": "Enter the total rise from finished surface to finished surface to get the number of risers, the exact riser height, the stringer length, and a check against the IRC's riser, tread, and 3/8 in limits.",
+  "lastUpdated": "2026-11-11",
+  "layout": "split",
+  "chartStyle": "none",
+  "diagramCaption": "Stringer profile of your stair (longest flight). It redraws as you type.",
+  "heroAlt": "",
+  "uniqueAddition": "Code check against both the 2021 IRC (R311.7.5.1, R311.7.5.2) and 2024 IRC (R318.7.5.1, R318.7.5.2) section numbers, with a local-amendment override for the maximum riser and a 3/8 in uniformity check on the 1/16 in layout, plus a stringer length table for 2 to 12 risers.",
+  "relatedTools": ["deck-board-calculator", "concrete-calculator", "roof-pitch-calculator"],
+  "inputs": [
+    { "name": "totalRise", "label": "Total rise", "unit": "in", "default": "60", "help": "Finished surface at the bottom to finished surface at the top (deck boards or floor), 6 to 200 in.", "group": "Your stair" },
+    { "name": "tread", "label": "Tread depth (run per step)", "unit": "in", "default": "10", "help": "Horizontal run of each step, nosing to nosing, 8 to 14 in. The IRC minimum is 10 in.", "group": "Your stair" },
+    { "name": "maxRiser", "label": "Maximum riser height", "unit": "in", "default": "7.75", "help": "The IRC maximum is 7 3/4 in. Change it only if your local code amends it (some allow 8 1/4 in).", "group": "Your stair" },
+    {
+      "name": "landing",
+      "advanced": true,
+      "label": "Landing partway up",
+      "type": "select",
+      "default": "no",
+      "options": [
+        { "value": "no", "label": "No: one straight flight" },
+        { "value": "yes", "label": "Yes: split into two flights" }
+      ],
+      "help": "Splits the risers as evenly as possible between two flights. The landing replaces one tread.",
+      "group": "Advanced: landing and nosing"
+    },
+    { "name": "nosing", "advanced": true, "label": "Nosing", "unit": "in", "default": "1", "help": "How far each tread board overhangs the riser below, 0 to 1.5 in. It sets the tread board depth, not the run.", "group": "Advanced: landing and nosing" }
+  ],
+  "outputs": [
+    { "name": "risers", "label": "Risers (steps up)", "unit": "risers", "decimals": 0, "primary": true },
+    { "name": "riserHeight", "label": "Riser height", "unit": "in", "decimals": 4, "format": "fraction", "primary": true },
+    { "name": "treads", "label": "Treads", "unit": "treads", "decimals": 0, "primary": true },
+    { "name": "stringerLength", "label": "Stringer length", "unit": "in", "decimals": 2, "format": "fraction", "primary": true },
+    { "name": "totalRun", "label": "Total run", "unit": "in", "decimals": 2, "format": "fraction", "group": "Layout" },
+    { "name": "treadDepth", "label": "Run per step", "unit": "in", "decimals": 3, "format": "fraction", "group": "Layout" },
+    { "name": "treadBoard", "label": "Tread board depth with nosing", "unit": "in", "decimals": 3, "format": "fraction", "group": "Layout" },
+    { "name": "angle", "label": "Stair angle", "unit": "degrees", "decimals": 1, "group": "Layout" },
+    { "name": "boardLength", "label": "Shortest even-length stringer board", "unit": "ft", "decimals": 0, "group": "Layout" },
+    { "name": "flightOneRisers", "label": "Lower flight", "unit": "risers", "decimals": 0, "group": "Landing" },
+    { "name": "flightTwoRisers", "label": "Upper flight", "unit": "risers", "decimals": 0, "group": "Landing" },
+    { "name": "riserCheck", "label": "Riser 7 3/4 in or less (2021 R311.7.5.1 / 2024 R318.7.5.1)", "decimals": 0, "format": "yesno", "group": "IRC check" },
+    { "name": "treadCheck", "label": "Tread 10 in or more (2021 R311.7.5.2 / 2024 R318.7.5.2)", "decimals": 0, "format": "yesno", "group": "IRC check" },
+    { "name": "uniformityCheck", "label": "Risers within 3/8 in when marked to 1/16 in", "decimals": 0, "format": "yesno", "group": "IRC check" },
+    { "name": "layoutError", "label": "Rounding left over after marking", "unit": "in", "decimals": 3, "group": "IRC check" }
+  ],
+  "sources": [
+    {
+      "title": "2021 International Residential Code Visual Interpretation (Stairway Manufacturers' Association, hosted by Viewrail): R311.7.5.1 risers 7 3/4 in maximum, R311.7.5.2 treads 10 in minimum, 3/8 in variation",
+      "url": "https://www.viewrail.com/wp-content/uploads/2025/04/2021-International-Residential-Code-Visual-Interpretation.pdf",
+      "accessed": "2026-10-06"
+    },
+    {
+      "title": "R318.7.5.1 Risers, 2024 IRC (Stairway Manufacturers' Association blog)",
+      "url": "https://stairways.org/blog/r318-7-5-1-risers-2024/",
+      "accessed": "2026-10-06"
+    },
+    {
+      "title": "R318.7.5.2 Treads, 2024 IRC (Stairway Manufacturers' Association blog)",
+      "url": "https://stairways.org/blog/r318-7-5-2-treads-2024/",
+      "accessed": "2026-10-06"
+    },
+    {
+      "title": "2024 International Residential Code, Chapter 3 Building Planning: Section R318.7.5 Stair treads and risers (International Code Council)",
+      "url": "https://codes.iccsafe.org/content/IRC2024P2/chapter-3-building-planning",
+      "accessed": "2026-11-11"
+    }
+  ]
+}

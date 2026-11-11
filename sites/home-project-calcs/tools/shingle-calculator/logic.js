@@ -159,6 +159,17 @@ export function calculate(raw) {
       { label: 'Ridge cap', value: ridgeCapBundles },
     ],
     slopeNote,
+    // Roof footprint plan with the pitch and sloped area called out (labels only).
+    diagram: {
+      type: 'plan',
+      name: 'Roof footprint',
+      length: v.length,
+      width: v.width,
+      unit: 'ft',
+      pattern: 'shingles',
+      depthNote: `${round(pitch, 2)}/12 pitch × ${round(multiplier, 3)} = ${round(roofArea, 0).toLocaleString('en-US')} sq ft of roof`,
+      caption: `${round(squares, 2)} squares before waste`,
+    },
   };
 }
 

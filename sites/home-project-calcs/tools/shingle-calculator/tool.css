@@ -48,26 +48,6 @@
   background: #b45309;
 }
 
-/* Primary result: charcoal panel with an amber drip-edge underline. */
-[data-tool="shingle-calculator"] .calc-result--primary {
-  background: var(--tool-accent);
-  color: var(--tool-accent-ink);
-  padding: 0.65rem 0.8rem;
-  border-radius: var(--tool-radius);
-  border-bottom: 4px solid #b45309;
-  align-items: center;
-}
-[data-tool="shingle-calculator"] .calc-result--primary dd,
-[data-tool="shingle-calculator"] .calc-result--primary .calc-unit {
-  color: var(--tool-accent-ink);
-}
-[data-tool="shingle-calculator"] .calc-result--primary dd {
-  font-size: 1.8rem;
-}
-[data-tool="shingle-calculator"] .calc-results dd {
-  font-variant-numeric: tabular-nums;
-}
-
 /* Grouped shopping list (rendered by ui.js under the results). */
 [data-tool="shingle-calculator"] .shingle-list {
   margin-top: 1rem;
@@ -136,5 +116,16 @@
 }
 [data-tool="shingle-calculator"] .tool-content thead th {
   background: var(--tool-accent);
+  color: var(--tool-accent-ink);
+}
+
+/* Headline result as a solid panel in the tool's accent (accent-ink on accent passes AA, see top). */
+[data-tool="shingle-calculator"] .calc-primary {
+  background: var(--tool-accent);
+  border-left-color: var(--tool-ink);
+}
+[data-tool="shingle-calculator"] .calc-primary__label,
+[data-tool="shingle-calculator"] .calc-primary__value,
+[data-tool="shingle-calculator"] .calc-primary__unit {
   color: var(--tool-accent-ink);
 }

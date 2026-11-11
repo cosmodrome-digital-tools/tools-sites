@@ -162,5 +162,16 @@ export function calculate(raw = {}) {
       primerBuy,
     },
     chart: chartFromBuys(mixGallons(mix), ceilingBuy, primerBuy),
+    // Room box with the wall and ceiling areas called out (labels only).
+    diagram: {
+      type: 'room',
+      length,
+      width,
+      height,
+      unit: 'ft',
+      ceiling: ceiling === 'yes',
+      wallLabel: `Walls ${round(wallArea, 0).toLocaleString('en-US')} sq ft`,
+      ceilingLabel: `Ceiling ${round(ceilingArea, 0).toLocaleString('en-US')} sq ft`,
+    },
   };
 }

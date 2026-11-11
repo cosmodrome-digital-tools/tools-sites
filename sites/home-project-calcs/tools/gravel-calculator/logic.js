@@ -109,5 +109,17 @@ export function calculate(raw) {
     ].filter((row) => row.value > 0);
   }
 
-  return { ok: true, results, chart };
+  // Labeled drawing (not used in any number above).
+  const layers = layered ? [{ label: 'Surface', depth: surfaceDepth }, { label: 'Base', depth }] : null;
+  let diagram;
+  if (shapeName === 'rectangle') {
+    diagram = { type: 'box', name: 'Gravel area', length, width, depth: depth + (layered ? surfaceDepth : 0), unit: 'ft', depthUnit: 'in', layers, pattern: 'hatch' };
+  } else if (shapeName === 'circle') {
+    diagram = { type: 'plan', name: 'Round gravel area', shape: 'circle', diameter: width, unit: 'ft', pattern: 'hatch', depthNote: layered ? `${depth} in base + ${surfaceDepth} in surface` : `${depth} in deep` };
+  } else {
+    const side = Math.sqrt(areaSqFt);
+    diagram = { type: 'box', name: 'Gravel area', length: side, width: side, lengthLabel: `${round(areaSqFt, 0)} sq ft`, widthLabel: 'area entered', depth: depth + (layered ? surfaceDepth : 0), unit: 'ft', depthUnit: 'in', layers, pattern: 'hatch' };
+  }
+
+  return { ok: true, results, chart, diagram };
 }

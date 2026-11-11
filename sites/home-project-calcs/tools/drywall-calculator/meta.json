@@ -1,0 +1,112 @@
+{
+  "title": "Drywall Calculator",
+  "benefit": "Sheets, Mud, Tape, and Screws",
+  "cardBlurb": "Sheets, mud, tape, and screws for walls and ceiling",
+  "seoTitle": "Drywall Calculator - Sheets, Mud, Screws",
+  "metaDescription": "Estimate 4x8, 4x10, or 4x12 drywall sheets, joint compound, tape, and screws for a room's walls and ceiling, with screws based on IRC fastener spacing.",
+  "primaryKeyword": "drywall calculator",
+  "secondaryKeywords": [
+    "drywall calculator walls and ceiling",
+    "how many sheets of drywall do i need",
+    "how much drywall mud per sheet",
+    "how many drywall screws per 4x8 sheet",
+    "how much drywall tape per sheet"
+  ],
+  "intent": "Estimate drywall sheets, joint compound, tape, and screws for a room's walls and ceiling.",
+  "registerRow": "Keyword Register: drywall calculator (Volume 2, Competition ease 2, Ad value 3, Fit 5, Priority 12); launch order 14",
+  "category": "Interiors",
+  "intro": "Enter a room's size to get drywall sheets for the walls and ceiling, plus joint compound, tape, and screws. Screw counts follow the IRC fastener spacing for your framing.",
+  "lastUpdated": "2026-11-11",
+  "layout": "split",
+  "chartStyle": "bar",
+  "chartTitle": "Sheets to buy, walls vs ceiling",
+  "chartUnit": "sheets",
+  "chartXLabel": "Surface",
+  "diagramCaption": "Room with the wall and ceiling board areas. It redraws as you type.",
+  "heroAlt": "",
+  "uniqueAddition": "Screw count derived from the IRC gypsum fastener spacing by surface (walls vs ceiling) and framing spacing, shown per sheet, instead of a flat screws-per-sheet number; plus a table for common room sizes.",
+  "relatedTools": ["paint-calculator", "insulation-calculator", "flooring-calculator"],
+  "inputs": [
+    { "name": "length", "label": "Room length", "unit": "ft", "default": "12", "help": "2 to 100 ft.", "group": "Room" },
+    { "name": "width", "label": "Room width", "unit": "ft", "default": "12", "help": "2 to 100 ft.", "group": "Room" },
+    { "name": "height", "label": "Wall height", "unit": "ft", "default": "8", "help": "Floor to ceiling, 4 to 20 ft.", "group": "Room" },
+    {
+      "name": "includeCeiling",
+      "label": "Ceiling",
+      "type": "select",
+      "default": "yes",
+      "options": [
+        { "value": "yes", "label": "Include the ceiling" },
+        { "value": "no", "label": "Walls only" }
+      ],
+      "group": "Room"
+    },
+    { "name": "openings", "label": "Doors and windows", "unit": "sq ft", "default": "30", "help": "Total area left open, 0 to 2,000 sq ft. A standard door is about 20 sq ft.", "group": "Room" },
+    {
+      "name": "sheetSize",
+      "label": "Sheet size",
+      "unit": "ft",
+      "type": "select",
+      "default": "4x8",
+      "options": [
+        { "value": "4x8", "label": "4 × 8 ft (32 sq ft)" },
+        { "value": "4x10", "label": "4 × 10 ft (40 sq ft)" },
+        { "value": "4x12", "label": "4 × 12 ft (48 sq ft)" }
+      ],
+      "group": "Board and framing"
+    },
+    {
+      "name": "framing",
+      "label": "Framing spacing",
+      "unit": "in o.c.",
+      "type": "select",
+      "default": "16",
+      "options": [
+        { "value": "16", "label": "16 in on center" },
+        { "value": "24", "label": "24 in on center" }
+      ],
+      "help": "Sets how far apart the screws go (see the IRC check below the results).",
+      "group": "Board and framing"
+    },
+    { "name": "waste", "advanced": true, "label": "Waste allowance", "unit": "%", "default": "10", "help": "0 to 30%. Extra for cut-offs and breakage. 10% is our estimate; we found no manufacturer figure.", "group": "Advanced: waste" }
+  ],
+  "outputs": [
+    { "name": "sheets", "label": "Sheets to buy", "unit": "sheets", "decimals": 0, "primary": true },
+    { "name": "compound", "label": "Joint compound", "unit": "gal", "decimals": 0, "primary": true },
+    { "name": "tape", "label": "Paper joint tape", "unit": "ft", "decimals": 0, "primary": true },
+    { "name": "screws", "label": "Drywall screws", "unit": "screws", "decimals": 0, "primary": true },
+    { "name": "wallArea", "label": "Wall board area", "unit": "sq ft", "decimals": 1, "group": "Walls" },
+    { "name": "wallSheets", "label": "Wall sheets", "unit": "sheets", "decimals": 0, "group": "Walls" },
+    { "name": "wallScrews", "label": "Wall screws", "unit": "screws", "decimals": 0, "group": "Walls" },
+    { "name": "ceilingArea", "label": "Ceiling board area", "unit": "sq ft", "decimals": 1, "group": "Ceiling" },
+    { "name": "ceilingSheets", "label": "Ceiling sheets", "unit": "sheets", "decimals": 0, "group": "Ceiling" },
+    { "name": "ceilingScrews", "label": "Ceiling screws", "unit": "screws", "decimals": 0, "group": "Ceiling" },
+    { "name": "wallSpacing", "label": "Wall screw spacing (IRC max)", "unit": "in", "decimals": 0, "group": "How screws are counted" },
+    { "name": "wallPerSheet", "label": "Screws per wall sheet", "unit": "screws", "decimals": 0, "group": "How screws are counted" },
+    { "name": "ceilingSpacing", "label": "Ceiling screw spacing (IRC max)", "unit": "in", "decimals": 0, "group": "How screws are counted" },
+    { "name": "ceilingPerSheet", "label": "Screws per ceiling sheet", "unit": "screws", "decimals": 0, "group": "How screws are counted" },
+    { "name": "boardArea", "label": "Board area for mud and tape", "unit": "sq ft", "decimals": 1, "group": "How screws are counted" }
+  ],
+  "sources": [
+    {
+      "title": "SHEETROCK Brand All Purpose Joint Compound, Ready-Mixed, submittal sheet J1969 (USG): approximate coverage per 1,000 sq ft of board",
+      "url": "https://www.usg.com/content/dam/USG_Marketing_Communications/united_states/product_promotional_materials/finished_assets/sheetrock-all-purpose-joint-compound-submittal-J1969.pdf",
+      "accessed": "2026-10-06"
+    },
+    {
+      "title": "Joint Tapes, Industrial Construction data sheet MH1178 (USG): SHEETROCK Brand Joint Tape approximate coverage 370 ft per 1,000 sq ft of gypsum panels",
+      "url": "https://www.usg.com/content/dam/USG_Marketing_Communications/united_states/product_promotional_materials/finished_assets/joint-tapes-industrial-construction-data-MH1178.pdf",
+      "accessed": "2026-11-11"
+    },
+    {
+      "title": "2021 International Residential Code, R702.3.5 Application and Table R702.3.5, Minimum thickness and application of gypsum board (International Code Council)",
+      "url": "https://codes.iccsafe.org/s/IRC2021P2/part-iii-building-planning-and-construction/IRC2021P2-Pt03-Ch07-SecR702.3.5",
+      "accessed": "2026-11-11"
+    },
+    {
+      "title": "2024 International Residential Code, Chapter 7 Wall Covering (GSA Residential Code 2024, adopts the IRC 2024), UpCodes: gypsum board fastener spacing for walls and ceilings",
+      "url": "https://up.codes/viewer/general-services-administration/irc-2024/chapter/7/wall-covering",
+      "accessed": "2026-10-06"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+/* tool.css: Asphalt Calculator look. Blacktop charcoal accent with a road-stripe amber chart, cool grey surface.
+   Contrast (WCAG AA): accent-ink #ffffff on accent #27272a = 14.9:1;
+   ink #09090b on surface #f2f2f3 = 17.8:1; chart colors on white = 14.9:1, 4.9:1, 7.7:1, 6.5:1 (all over 3:1).
+   System fonts only. */
+[data-tool="asphalt-calculator"] {
+  --tool-accent: #27272a;
+  --tool-accent-ink: #ffffff;
+  --tool-surface: #f2f2f3;
+  --tool-ink: #09090b;
+  --tool-border: #cfcfd4;
+  --tool-radius: 6px;
+  --chart-palette-1: #27272a;
+  --chart-palette-2: #a16207;
+  --chart-palette-3: #52525b;
+  --chart-palette-4: #1d5fa8;
+}
+
+[data-tool="asphalt-calculator"] .tool-form legend {
+  color: var(--tool-accent);
+}
+
+/* Headline tons on blacktop with a dashed amber center stripe. */
+[data-tool="asphalt-calculator"] .calc-primary {
+  background: var(--tool-accent);
+  border-left: 0;
+  border-bottom: 4px dashed #facc15;
+}
+[data-tool="asphalt-calculator"] .calc-primary__label,
+[data-tool="asphalt-calculator"] .calc-primary__value,
+[data-tool="asphalt-calculator"] .calc-primary__unit {
+  color: var(--tool-accent-ink);
+}

@@ -1,0 +1,20 @@
+/* tool.css: Attic Ventilation Calculator look. Airflow blue accent, cool attic surface.
+   Contrast (WCAG AA): accent-ink #ffffff on accent #1f5f8b = 6.8:1;
+   ink #0f172a on surface #f0f5f9 = 16.3:1; chart colors on white = 6.8:1, 5.0:1, 4.8:1, 5.1:1 (all over 3:1).
+   System fonts only. */
+[data-tool="attic-ventilation-calculator"] {
+  --tool-accent: #1f5f8b;
+  --tool-accent-ink: #ffffff;
+  --tool-surface: #f0f5f9;
+  --tool-ink: #0f172a;
+  --tool-border: #c3d4e2;
+  --tool-radius: 10px;
+  --chart-palette-1: #1f5f8b;
+  --chart-palette-2: #b45309;
+  --chart-palette-3: #64748b;
+  --chart-palette-4: #2f7d32;
+}
+
+[data-tool="attic-ventilation-calculator"] .tool-form legend {
+  color: var(--tool-accent);
+}

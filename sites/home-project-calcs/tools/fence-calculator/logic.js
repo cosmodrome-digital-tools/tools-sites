@@ -156,6 +156,8 @@ export function calculate(raw = {}) {
       postAboveGround: round(v.postLength - buryIn / 12, 2),
       minPostLength: round(minPostLength, 2),
     },
+    // Elevation of the fence line: posts, sections, height (labels only).
+    diagram: { type: 'fence', length: v.fenceLength, height: v.fenceHeight, posts, spacing: round(fencedRun / sections, 2), gates: v.gates, unit: 'ft' },
     // Donut legend labels carry the cu ft value (the chart title names the unit).
     chart: [
       { label: `Concrete ${round(hole.concrete, 2).toFixed(2)}`, value: round(hole.concrete, 3) },

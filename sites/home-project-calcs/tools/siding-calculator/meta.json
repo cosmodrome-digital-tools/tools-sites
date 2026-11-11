@@ -1,0 +1,224 @@
+{
+  "title": "Siding Calculator",
+  "benefit": "Squares for House Walls",
+  "cardBlurb": "Squares and cartons of siding for house walls",
+  "seoTitle": "Siding Calculator - Squares and Cartons",
+  "metaDescription": "Estimate squares (100 sq ft) of vinyl or fiber-cement siding for house walls and gable ends in feet, with the Vinyl Siding Institute's 10% waste allowance.",
+  "primaryKeyword": "siding calculator",
+  "secondaryKeywords": [
+    "vinyl siding calculator",
+    "how many squares of siding do i need",
+    "siding square footage calculator",
+    "how to measure a house for siding"
+  ],
+  "intent": "Estimate squares or cartons of vinyl or fiber-cement siding for house walls, including gable ends, openings, and waste.",
+  "registerRow": "Not on the Oct 2026 Keyword Register: category-fill addition (Siding and Exterior) chosen by the redesign brief; no overlap with Shingle (roof) or Paint (coating).",
+  "category": "Siding and Exterior",
+  "intro": "Enter your house's length, width, wall height, and gable ends (or a wall area) to get squares of siding to order, with the Vinyl Siding Institute's 10% waste allowance.",
+  "lastUpdated": "2026-11-11",
+  "layout": "split",
+  "chartStyle": "bar",
+  "chartTitle": "Where the siding area comes from (sq ft)",
+  "chartUnit": "sq ft",
+  "chartXLabel": "Part of the estimate",
+  "diagramCaption": "Gable-end elevation with the wall height and gable height. It redraws as you type.",
+  "heroAlt": "",
+  "uniqueAddition": "Gable-end triangles added to the four walls with the Vinyl Siding Institute's own estimating method (squares of 100 sq ft plus 10% waste, openings not deducted by default), and a table of squares for common house sizes.",
+  "relatedTools": [
+    "paint-calculator",
+    "shingle-calculator",
+    "insulation-calculator"
+  ],
+  "inputs": [
+    {
+      "name": "mode",
+      "label": "How will you measure?",
+      "type": "select",
+      "default": "house",
+      "options": [
+        {
+          "value": "house",
+          "label": "House length, width, and height"
+        },
+        {
+          "value": "area",
+          "label": "I know the wall area"
+        }
+      ],
+      "group": "Your walls"
+    },
+    {
+      "name": "houseLength",
+      "showIf": {
+        "field": "mode",
+        "equals": "house"
+      },
+      "label": "House length",
+      "unit": "ft",
+      "default": "40",
+      "help": "Long side, 4 to 300 ft.",
+      "group": "Your walls"
+    },
+    {
+      "name": "houseWidth",
+      "showIf": {
+        "field": "mode",
+        "equals": "house"
+      },
+      "label": "House width",
+      "unit": "ft",
+      "default": "30",
+      "help": "Short side (the gable end), 4 to 200 ft.",
+      "group": "Your walls"
+    },
+    {
+      "name": "wallHeight",
+      "showIf": {
+        "field": "mode",
+        "equals": "house"
+      },
+      "label": "Wall height",
+      "unit": "ft",
+      "default": "9",
+      "help": "Foundation to the eaves, 4 to 40 ft.",
+      "group": "Your walls"
+    },
+    {
+      "name": "gables",
+      "showIf": {
+        "field": "mode",
+        "equals": "house"
+      },
+      "label": "Gable ends to side",
+      "unit": "count",
+      "default": "2",
+      "help": "Whole number, 0 to 4. A simple gable roof has 2; a hip roof has 0.",
+      "group": "Your walls"
+    },
+    {
+      "name": "gableRise",
+      "showIf": [
+        {
+          "field": "mode",
+          "equals": "house"
+        },
+        {
+          "field": "gables",
+          "notEquals": "0"
+        }
+      ],
+      "label": "Gable height",
+      "unit": "ft",
+      "default": "7.5",
+      "help": "Eaves line to the peak, 0.5 to 40 ft. A 6/12 roof on a 30 ft wide house is 7.5 ft.",
+      "group": "Your walls"
+    },
+    {
+      "name": "wallArea",
+      "showIf": {
+        "field": "mode",
+        "equals": "area"
+      },
+      "label": "Wall area to side",
+      "unit": "sq ft",
+      "default": "1500",
+      "help": "10 to 50,000 sq ft, gables included.",
+      "group": "Your walls"
+    },
+    {
+      "name": "openings",
+      "label": "Doors and windows to deduct",
+      "unit": "sq ft",
+      "default": "0",
+      "help": "0 to skip. The VSI method doesn't deduct openings; it lets them cover waste. Deduct only large openings like garage doors.",
+      "group": "Openings and cartons"
+    },
+    {
+      "name": "cartonCoverage",
+      "label": "Coverage per carton (optional)",
+      "unit": "sq ft",
+      "default": "",
+      "help": "From the carton label, often listed in squares (2 squares = 200 sq ft). Leave blank to skip cartons.",
+      "group": "Openings and cartons"
+    },
+    {
+      "name": "waste",
+      "advanced": true,
+      "label": "Waste allowance",
+      "unit": "%",
+      "default": "10",
+      "help": "0 to 30%. The Vinyl Siding Institute says to add 10% to all material estimates. Raise it for many corners or dormers.",
+      "group": "Advanced: waste"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "squares",
+      "label": "Squares to order",
+      "unit": "squares",
+      "decimals": 0,
+      "primary": true
+    },
+    {
+      "name": "cartons",
+      "label": "Cartons",
+      "unit": "cartons",
+      "decimals": 0,
+      "primary": true
+    },
+    {
+      "name": "wallsArea",
+      "label": "Walls",
+      "unit": "sq ft",
+      "decimals": 1,
+      "group": "Area"
+    },
+    {
+      "name": "gableArea",
+      "label": "Gable ends",
+      "unit": "sq ft",
+      "decimals": 1,
+      "group": "Area"
+    },
+    {
+      "name": "openings",
+      "label": "Openings deducted",
+      "unit": "sq ft",
+      "decimals": 1,
+      "group": "Area"
+    },
+    {
+      "name": "netArea",
+      "label": "Area to side",
+      "unit": "sq ft",
+      "decimals": 1,
+      "group": "Area"
+    },
+    {
+      "name": "areaWithWaste",
+      "label": "Area with waste",
+      "unit": "sq ft",
+      "decimals": 1,
+      "group": "Order"
+    },
+    {
+      "name": "exactSquares",
+      "label": "Squares before rounding up",
+      "unit": "squares",
+      "decimals": 2,
+      "group": "Order"
+    }
+  ],
+  "sources": [
+    {
+      "title": "Vinyl Siding Installation Manual, Estimating Required Materials (Vinyl Siding Institute, 2022 edition, hosted by the Polymeric Exteriors Coalition): squares of 100 sq ft, gable area, add 10% for waste",
+      "url": "https://polymericexteriors.org/wp-content/uploads/2022/10/2022-Vinyl-Siding-Installation-Manual-ENGLISH_100322_LR.pdf",
+      "accessed": "2026-11-11"
+    },
+    {
+      "title": "Vinyl Siding Installation Manual, updated December 2007 (Vinyl Siding Institute): same estimating method and 10% waste factor",
+      "url": "https://consensus.fsu.edu/FBC/soffit/VSI_2007Manual.pdf",
+      "accessed": "2026-11-11"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+/* tool.css: Flooring Calculator look. Oak-plank amber accent, light maple surface.
+   Contrast (WCAG AA): accent-ink #ffffff on accent #8a4b08 = 6.8:1;
+   ink #1c1917 on surface #faf5ec = 16.1:1; chart colors on white = 6.8:1, 7.6:1, 5.5:1, 5.0:1 (all over 3:1).
+   System fonts only. */
+[data-tool="flooring-calculator"] {
+  --tool-accent: #8a4b08;
+  --tool-accent-ink: #ffffff;
+  --tool-surface: #faf5ec;
+  --tool-ink: #1c1917;
+  --tool-border: #e0cfb4;
+  --tool-radius: 8px;
+  --chart-palette-1: #8a4b08;
+  --chart-palette-2: #57534e;
+  --chart-palette-3: #0f766e;
+  --chart-palette-4: #b45309;
+}
+
+[data-tool="flooring-calculator"] .tool-form legend {
+  color: var(--tool-accent);
+}
+
+/* Feet and inches sit side by side, even on phones. */
+[data-tool="flooring-calculator"] .tool-form fieldset:not(:first-of-type):not(:last-of-type) .tool-form__fields {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}

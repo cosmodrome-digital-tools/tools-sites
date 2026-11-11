@@ -7,6 +7,7 @@
 import { readFileSync, readdirSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { onlyVisible, visibleFields } from '@tools/calculator-core/visibility.js';
+import { renderDiagram } from '@tools/calculator-core/diagram.js';
 
 // Intended additions since the fixture was taken (refinement PR 2): shingle's
 // optional drip edge input and its two new outputs. Everything else must match.
@@ -16,12 +17,15 @@ const without = (obj, keys = []) => Object.fromEntries(Object.entries(obj ?? {})
 
 const BEFORE = JSON.parse(readFileSync(new URL('./__fixtures__/defaults-before-frame.json', import.meta.url), 'utf8'));
 const toolsDir = new URL('../tools/', import.meta.url);
-const tools = readdirSync(toolsDir).filter((d) => !d.startsWith('_')).sort();
+const allTools = readdirSync(toolsDir).filter((d) => !d.startsWith('_')).sort();
+// The fixture covers the 12 tools that existed before the shared-frame work.
+// Tools added later (the Oct/Nov 2026 redesign's eight) have their own known-answer tests.
+const tools = Object.keys(BEFORE).sort();
 
 describe('shared frame upgrade keeps every result identical', () => {
-  it('covers all 12 tools', () => {
-    expect(Object.keys(BEFORE).sort()).toEqual(tools);
+  it('covers the 12 original tools, all still present', () => {
     expect(tools).toHaveLength(12);
+    for (const t of tools) expect(allTools).toContain(t);
   });
 
   for (const tool of tools) {
@@ -40,6 +44,25 @@ describe('shared frame upgrade keeps every result identical', () => {
           expect((out.chart ?? []).map(({ label, value }) => ({ label, value })), c.id).toEqual(c.chart);
         }
       }
+    });
+  }
+});
+
+// Redesign contract (Nov 2026): every tool's calculate() at its meta.json
+// defaults returns a labeled diagram the shared renderer can draw, so every
+// tool page ships a drawing in its HTML.
+describe('every tool returns a labeled diagram at its defaults', () => {
+  for (const tool of allTools) {
+    it(`${tool}: diagram renders as an accessible SVG`, async () => {
+      const meta = JSON.parse(readFileSync(new URL(`${tool}/meta.json`, toolsDir), 'utf8'));
+      const { calculate } = await import(`../tools/${tool}/logic.js`);
+      const raw = Object.fromEntries(meta.inputs.map((i) => [i.name, i.default === undefined ? '' : String(i.default)]));
+      const out = calculate(onlyVisible(raw, visibleFields(meta.inputs, raw)));
+      expect(out.ok, JSON.stringify(out.errors)).toBe(true);
+      const svg = renderDiagram(out.diagram, { title: meta.title });
+      expect(svg.startsWith('<svg')).toBe(true);
+      expect(svg).toMatch(/role="img" aria-label="[^"]{20,}"/);
+      expect(svg).not.toContain('NaN');
     });
   }
 });

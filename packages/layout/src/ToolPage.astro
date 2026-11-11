@@ -2,16 +2,20 @@
 /**
  * The shared calculator frame every tool page uses. Tools never edit this file.
  * A tool customizes its look only through its own tool.css (theme tokens scoped
- * to [data-tool="<tool-slug>"]), meta.json "layout" and "chartStyle", and an
- * optional hero image in its assets/ folder.
+ * to [data-tool="<tool-slug>"]), meta.json "layout", "chartStyle" and output
+ * settings, the `diagram` its calculate() returns, and an optional hero image.
  *
  * Props:
- *  site:     site config
- *  meta:     the tool's validated meta.json data
- *  toolSlug: folder name, e.g. "concrete-slab"
- *  hero:     optional imported image (ImageMetadata)
- *  related:  [{ slug, title }] for the related-tools list
- * Default slot: the rendered page.md content.
+ *  site:      site config
+ *  meta:      the tool's validated meta.json data
+ *  toolSlug:  folder name, e.g. "concrete-slab"
+ *  hero:      optional imported image (ImageMetadata)
+ *  related:   [{ slug, title, blurb? }] for the related-tools cards
+ *  calculate: optional, the tool's calculate(); run once at build time with the
+ *             meta.json defaults so the labeled diagram is in the HTML (no-JS)
+ * Default slot: the rendered page.md content. It is split on its H2s into
+ * native <details> sections (see @tools/calculator-core/sections.js); nothing
+ * is removed from the HTML.
  */
 import BaseLayout from './BaseLayout.astro';
 import './styles/tool-frame.css';
@@ -19,11 +23,14 @@ import Field from '@tools/calculator-core/Field.astro';
 import Results from '@tools/calculator-core/Results.astro';
 import LastUpdated from '@tools/calculator-core/LastUpdated.astro';
 import Sources from '@tools/calculator-core/Sources.astro';
+import { accordionize } from '@tools/calculator-core/sections.js';
+import { renderDiagram } from '@tools/calculator-core/diagram.js';
+import { onlyVisible, visibleFields } from '@tools/calculator-core/visibility.js';
 import AdSlot from '@tools/ad-slot/AdSlot.astro';
-import { toolTitle, webApplication, canonicalUrl } from '@tools/seo';
+import { toolTitle, webApplication, canonicalUrl, faqPage } from '@tools/seo';
 
-const { site, meta, toolSlug, hero, related = [] } = Astro.props;
-const layout = meta.layout ?? 'stacked';
+const { site, meta, toolSlug, hero, related = [], calculate } = Astro.props;
+const layout = meta.layout ?? 'split';
 const chartStyle = meta.chartStyle ?? 'none';
 const title = toolTitle(meta.title, meta.benefit, site.name, meta.seoTitle); // seoTitle only changes <title>/og:title, not the H1
 const base = Astro.site ?? new URL(site.siteUrl);
@@ -32,12 +39,32 @@ const breadcrumbs = [
   { name: meta.title, href: `/${toolSlug}/` },
 ];
 const appLd = webApplication({ name: meta.title, description: meta.metaDescription, url: canonicalUrl(`/${toolSlug}/`, base) });
+const categorySlug = `cat-${String(meta.category).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')}`;
+
+// page.md -> accordion sections (+ FAQ questions for FAQPage JSON-LD).
+const contentHtml = Astro.slots.has('default') ? await Astro.slots.render('default') : '';
+const { html: guideHtml, faqs } = accordionize(contentHtml);
+const jsonLd = [appLd, faqs.length ? faqPage(faqs) : null].filter(Boolean);
+
+// Build-time run at the meta.json defaults: the diagram for those sizes ships
+// in the HTML so the drawing isn't blank without JavaScript.
+const allInputs = meta.inputs ?? [];
+let diagramSvg = '';
+if (typeof calculate === 'function') {
+  const raw = Object.fromEntries(allInputs.map((i) => [i.name, i.default === undefined ? '' : String(i.default)]));
+  try {
+    const out = calculate(onlyVisible(raw, visibleFields(allInputs, raw)));
+    if (out?.ok && out.diagram) diagramSvg = renderDiagram(out.diagram, { title: meta.title, id: 'dg' });
+  } catch {
+    diagramSvg = '';
+  }
+}
+const diagramCaption = meta.diagramCaption ?? 'Labeled drawing of your inputs. It redraws as you type.';
 
 // Group inputs into fieldsets by their optional "group" name (keeps order).
 // Inputs marked "advanced": true go into one collapsible <details> section
 // after the main groups (closed by default; bind.js opens it when an advanced
-// field has a non-default value or an error). Tools with no advanced inputs
-// render exactly as before.
+// field has a non-default value or an error).
 const groupInputs = (inputs) => {
   const out = [];
   for (const input of inputs) {
@@ -48,23 +75,18 @@ const groupInputs = (inputs) => {
   }
   return out;
 };
-const allInputs = meta.inputs ?? [];
 const groups = groupInputs(allInputs.filter((i) => !i.advanced));
-// Advanced groups use role="group" divs (not fieldsets) so tools' fieldset
-// styles and stepper numbering apply only to the main steps.
-// Inside the Advanced section a group's "Advanced:" prefix is dropped from its
-// legend; a group named just "Advanced" keeps a screen-reader-only legend.
 const advancedGroups = groupInputs(allInputs.filter((i) => i.advanced)).map((g) => {
   const short = g.name.replace(/^advanced\s*:?\s*/i, '').trim();
   return { ...g, legend: short || 'Advanced settings', srOnly: !short };
 });
 const advancedLabel = meta.advancedLabel ?? 'Advanced settings';
 ---
-<BaseLayout site={site} title={title} description={meta.metaDescription} breadcrumbs={breadcrumbs} jsonLd={[appLd]}>
+<BaseLayout site={site} title={title} description={meta.metaDescription} breadcrumbs={breadcrumbs} jsonLd={jsonLd}>
   <article class="tool-page" data-tool={toolSlug} data-layout={layout} data-chart-style={chartStyle}>
     <header class="tool-hero">
-      <div>
-        <p class="tool-category">{meta.category}</p>
+      <div class="tool-hero__text">
+        <p class="tool-category"><a href={`/#${categorySlug}`}>{meta.category}</a></p>
         <h1>{meta.h1 ?? meta.title}</h1>
         {meta.intro && <p class="tool-intro">{meta.intro}</p>}
       </div>
@@ -72,11 +94,13 @@ const advancedLabel = meta.advancedLabel ?? 'Advanced settings';
     </header>
 
     <div class="tool-frame">
-      <form class="tool-form" data-calc-form novalidate>
+      <form class="tool-form" data-calc-form novalidate aria-label={`${meta.title} inputs`}>
         {groups.map((g) => (
           <fieldset>
             <legend>{g.name}</legend>
-            {g.inputs.map((input) => <Field input={input} />)}
+            <div class="tool-form__fields">
+              {g.inputs.map((input) => <Field input={input} />)}
+            </div>
           </fieldset>
         ))}
         {advancedGroups.length > 0 && (
@@ -86,33 +110,56 @@ const advancedLabel = meta.advancedLabel ?? 'Advanced settings';
               {advancedGroups.map((g, i) => (
                 <div class="calc-advanced__group" role="group" aria-labelledby={`adv-group-${i}`}>
                   <p id={`adv-group-${i}`} class:list={['calc-advanced__legend', { 'calc-sr-only': g.srOnly }]}>{g.legend}</p>
-                  {g.inputs.map((input) => <Field input={input} />)}
+                  <div class="tool-form__fields">
+                    {g.inputs.map((input) => <Field input={input} />)}
+                  </div>
                 </div>
               ))}
             </div>
           </details>
         )}
-        <button class="tool-submit" type="submit">Calculate</button>
+        <div class="tool-form__actions">
+          <button class="tool-submit" type="submit">Calculate</button>
+          <button class="tool-reset" type="reset">Reset to defaults</button>
+        </div>
       </form>
-      <Results outputs={meta.outputs ?? []} chartStyle={chartStyle} chartTitle={meta.chartTitle ?? `${meta.title} chart`} />
+      <div class="tool-output">
+        <Results
+          outputs={meta.outputs ?? []}
+          chartStyle={chartStyle}
+          chartTitle={meta.chartTitle ?? `${meta.title} chart`}
+          chartUnit={meta.chartUnit ?? ''}
+          chartXLabel={meta.chartXLabel ?? ''}
+          diagramSvg={diagramSvg}
+          diagramCaption={diagramCaption}
+        />
+      </div>
     </div>
-    <LastUpdated date={meta.lastUpdated} />
+    <LastUpdated date={meta.lastUpdated} author={site.author?.name} />
 
     <AdSlot position="below-tool" ads={site.ads} />
 
-    <div class="tool-content prose">
-      <slot />
-    </div>
-
-    <div class="prose">
+    <section class="tool-guide" aria-label="How this calculator works">
+      <p class="tool-guide__eyebrow">How it works, sources, and FAQ</p>
+      <div class="tool-content prose" set:html={guideHtml} />
       <Sources sources={meta.sources} />
-      {related.length > 0 && (
-        <nav class="tool-related" aria-labelledby="related-heading">
-          <h2 id="related-heading">Related calculators</h2>
-          <ul>{related.map((r) => <li><a href={`/${r.slug}/`}>{r.title}</a></li>)}</ul>
-        </nav>
-      )}
-    </div>
+    </section>
+
+    {related.length > 0 && (
+      <nav class="tool-related" aria-labelledby="related-heading">
+        <h2 id="related-heading">Related calculators</h2>
+        <ul class="tool-related__list">
+          {related.map((r) => (
+            <li>
+              <a class="tool-related__card" href={`/${r.slug}/`}>
+                <span class="tool-related__name">{r.title}</span>
+                {r.blurb && <span class="tool-related__blurb">{r.blurb}</span>}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    )}
 
     <AdSlot position="end-of-content" ads={site.ads} />
   </article>

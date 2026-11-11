@@ -10,6 +10,13 @@ Every calculator runs entirely in your browser. The sites have no accounts, no f
 |---|---|---|
 | Home & Yard Calcs | `sites/home-project-calcs/` | Not launched yet |
 
+Home & Yard Calcs has 20 materials calculators in 11 categories. The homepage is a hub
+with a search box, quick-pick chips, popular tools, and a category grid of compact
+tool cards (the grid works without JavaScript). Every tool page uses one shared frame:
+inputs beside a results card (headline number, grouped breakdown, unit toggle, copy,
+share, and print), a labeled SVG diagram of what you entered, a labeled chart, and the
+page copy in collapsible sections. See [docs/BUILDING-TOOLS.md](docs/BUILDING-TOOLS.md).
+
 ## Repository layout
 
 ```

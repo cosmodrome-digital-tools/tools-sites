@@ -26,6 +26,16 @@ const EXPECTED = {
   'fence-calculator': 'Fence Calculator - Posts, Pickets, Bags | Home & Yard Calcs',
   'deck-board-calculator': 'Deck Board Calculator with Spacing | Home & Yard Calcs',
   'paint-calculator': 'Paint Calculator - Gallons for Walls | Home & Yard Calcs',
+  // Redesign additions (Nov 2026). Group A from the Oct 2026 register/briefs;
+  // Group B are category-fill tools not on the register.
+  'stair-stringer-calculator': 'Stair Stringer Calculator - Rise and Run | Home & Yard Calcs',
+  'drywall-calculator': 'Drywall Calculator - Sheets, Mud, Screws | Home & Yard Calcs',
+  'flooring-calculator': 'Flooring Calculator - Boxes for Any Room | Home & Yard Calcs',
+  'siding-calculator': 'Siding Calculator - Squares and Cartons | Home & Yard Calcs',
+  'sod-calculator': 'Sod Calculator - Rolls and Pallets | Home & Yard Calcs',
+  'brick-calculator': 'Brick Calculator - Bricks and Mortar | Home & Yard Calcs',
+  'asphalt-calculator': 'Asphalt Calculator - Tons for a Driveway | Home & Yard Calcs',
+  'attic-ventilation-calculator': 'Attic Ventilation Calculator - Vent Area | Home & Yard Calcs',
 };
 
 const toolSlugs = readdirSync(toolsDir, { withFileTypes: true })

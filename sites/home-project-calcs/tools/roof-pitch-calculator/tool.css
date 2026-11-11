@@ -35,32 +35,6 @@
   border-top: 2px solid var(--tool-border);
 }
 
-[data-tool="roof-pitch-calculator"] .calc-results__title {
-  font-family: var(--tool-font-display);
-  color: var(--tool-accent);
-}
-
-/* Main result sits under a small gable, like a roof over the number. */
-[data-tool="roof-pitch-calculator"] .calc-result--primary {
-  position: relative;
-  margin-top: 0.9rem;
-  padding: 0.5rem 0.7rem;
-  background: var(--tool-surface);
-  border: 2px solid var(--tool-accent);
-  border-radius: 0 0 var(--tool-radius) var(--tool-radius);
-}
-
-[data-tool="roof-pitch-calculator"] .calc-result--primary::before {
-  content: "";
-  position: absolute;
-  left: -2px;
-  right: -2px;
-  bottom: 100%;
-  height: 0.8rem;
-  background: var(--tool-accent);
-  clip-path: polygon(0 100%, 50% 0, 100% 100%);
-}
-
 [data-tool="roof-pitch-calculator"] .roof-slope-note {
   margin: 0.75rem 0 0;
   padding: 0.5rem 0.7rem;
@@ -109,4 +83,23 @@
 [data-tool="roof-pitch-calculator"] .roof-table-jump {
   margin: 0.25rem 0 0;
   font-size: 0.9375rem;
+}
+
+/* Headline pitch sits under a small gable, like a roof over the number. */
+[data-tool="roof-pitch-calculator"] .calc-primary {
+  border-left: 0;
+  border-top: 5px solid var(--tool-accent);
+  border-radius: 0 0 var(--tool-radius) var(--tool-radius);
+  position: relative;
+  margin-top: 0.9rem;
+}
+[data-tool="roof-pitch-calculator"] .calc-primary::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -18px;
+  height: 14px;
+  background: var(--tool-accent);
+  clip-path: polygon(0 100%, 50% 0, 100% 100%);
 }

@@ -1,0 +1,10 @@
+---
+/** Site mark: a house outline over a measuring tape (inline SVG, currentColor). */
+const { class: cls = '' } = Astro.props;
+---
+<svg class={cls} viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+  <rect x="1" y="1" width="30" height="30" rx="8" fill="currentColor" />
+  <path d="M8 15.5 16 8.5l8 7" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M10.5 14v6.5h11V14" fill="none" stroke="#fff" stroke-width="2.4" stroke-linejoin="round" />
+  <path d="M6.5 24.5h19M9 24.5v-2M12.5 24.5v-1.4M16 24.5v-2M19.5 24.5v-1.4M23 24.5v-2" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" />
+</svg>

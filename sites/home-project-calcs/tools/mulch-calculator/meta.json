@@ -1,6 +1,7 @@
 {
   "title": "Mulch Calculator",
   "benefit": "Bags and Cubic Yards",
+  "cardBlurb": "Bags and cubic yards for beds and tree rings",
   "seoTitle": "Mulch Calculator - Cubic Yards and Bags",
   "metaDescription": "Estimate cubic yards and bags of mulch for a bed, a circle, or a tree ring. Top-up mode subtracts the depth you already have and keeps mulch off the trunk.",
   "primaryKeyword": "mulch calculator",
@@ -13,18 +14,21 @@
   ],
   "intent": "Estimate cubic yards or bags of mulch to cover beds at the right depth.",
   "registerRow": "Keyword register (estimates): mulch calculator — volume 3, competition ease 3, ad value 2, fit 5, priority 18",
-  "category": "Garden beds",
-  "intro": "Estimate cubic yards and bags of mulch for a rectangular bed, a circle, or a tree ring. For a top-up, enter the depth that is already in the bed.",
+  "category": "Garden Beds and Lawn",
+  "intro": "Estimate bags and cubic yards of mulch for a rectangular bed, a circle, or a tree ring. For a top-up, enter the depth already in the bed.",
   "lastUpdated": "2026-10-06",
   "layout": "stepper",
   "chartStyle": "line",
   "chartTitle": "Bags for this area at 2, 3, and 4 inches",
+  "chartUnit": "bags",
+  "chartXLabel": "Mulch depth on a bare bed",
   "heroAlt": "Overhead view of a tree ring: brown mulch around a trunk, with a bare gap between the mulch and the bark.",
   "uniqueAddition": "Top-up mode subtracts mulch already in the bed, a tree ring removes a trunk-clearance circle, and a table lists bags for 100, 200, and 300 sq ft at 2, 3, and 4 inches. The line chart repeats those three depths for the area you entered.",
   "relatedTools": [
+    "sod-calculator",
     "gravel-calculator",
-    "paver-patio-calculator",
-    "retaining-wall-block-calculator"
+    "retaining-wall-block-calculator",
+    "paver-patio-calculator"
   ],
   "inputs": [
     {
@@ -35,10 +39,22 @@
       "group": "Bed",
       "help": "Rectangle uses length and width. Circle uses Length / diameter as the diameter. Tree ring uses Outer diameter and the trunk clearance in Advanced. Enter sq ft uses Area. Boxes the shape does not use stay on the form and are skipped.",
       "options": [
-        { "value": "rectangle", "label": "Rectangle" },
-        { "value": "circle", "label": "Circle" },
-        { "value": "treeRing", "label": "Tree ring" },
-        { "value": "sqft", "label": "Enter sq ft" }
+        {
+          "value": "rectangle",
+          "label": "Rectangle"
+        },
+        {
+          "value": "circle",
+          "label": "Circle"
+        },
+        {
+          "value": "treeRing",
+          "label": "Tree ring"
+        },
+        {
+          "value": "sqft",
+          "label": "Enter sq ft"
+        }
       ]
     },
     {
@@ -116,13 +132,55 @@
     }
   ],
   "outputs": [
-    { "name": "bags", "label": "Bags to buy", "unit": "bags", "decimals": 0, "primary": true },
-    { "name": "cubicYards", "label": "Cubic yards", "unit": "cu yd", "decimals": 2, "primary": true },
-    { "name": "cubicFeet", "label": "Cubic feet", "unit": "cu ft", "decimals": 2 },
-    { "name": "bagsPerYard", "label": "Bags in one yard", "unit": "bags", "decimals": 2 },
-    { "name": "areaSqFt", "label": "Mulched area", "unit": "sq ft", "decimals": 1 },
-    { "name": "netDepth", "label": "Depth to add", "unit": "in", "decimals": 2 },
-    { "name": "openSqFt", "label": "Left clear at trunk", "unit": "sq ft", "decimals": 1 }
+    {
+      "name": "bags",
+      "label": "Bags to buy",
+      "unit": "bags",
+      "decimals": 0,
+      "primary": true
+    },
+    {
+      "name": "cubicYards",
+      "label": "Cubic yards",
+      "unit": "cu yd",
+      "decimals": 2,
+      "primary": true
+    },
+    {
+      "name": "cubicFeet",
+      "label": "Cubic feet",
+      "unit": "cu ft",
+      "decimals": 2,
+      "group": "Volume"
+    },
+    {
+      "name": "bagsPerYard",
+      "label": "Bags in one yard",
+      "unit": "bags",
+      "decimals": 2,
+      "group": "Volume"
+    },
+    {
+      "name": "areaSqFt",
+      "label": "Mulched area",
+      "unit": "sq ft",
+      "decimals": 1,
+      "group": "Bed"
+    },
+    {
+      "name": "netDepth",
+      "label": "Depth to add",
+      "unit": "in",
+      "decimals": 2,
+      "group": "Bed"
+    },
+    {
+      "name": "openSqFt",
+      "label": "Left clear at trunk",
+      "unit": "sq ft",
+      "decimals": 1,
+      "group": "Bed"
+    }
   ],
   "sources": [
     {

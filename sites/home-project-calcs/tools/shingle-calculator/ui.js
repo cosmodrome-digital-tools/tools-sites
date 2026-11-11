@@ -1,12 +1,11 @@
 // ui.js: connects the shared calculator frame to logic.js. UI wiring only
 // (the pitch field for the chosen mode shows through "showIf" in meta.json):
 // load accessory coverage
-// presets into the editable fields, render the grouped shopping list, prefill
+// presets into the editable fields, prefill
 // the pitch handed over by the Roof Pitch Calculator (?pitch=6), and add a
 // "Don't know your pitch?" link under the pitch field.
 import { bindCalculator } from '@tools/calculator-core/bind.js';
-import { formatNumber } from '@tools/calculator-core';
-import { calculate, pitchFromQuery, PRODUCTS, shoppingList } from './logic.js';
+import { calculate, pitchFromQuery, PRODUCTS } from './logic.js';
 
 const root = document.querySelector('[data-tool="shingle-calculator"]');
 const form = root?.querySelector('form[data-calc-form]');
@@ -57,41 +56,21 @@ if (form) {
   product?.addEventListener('change', loadPreset);
 }
 
-let list;
+// The shared results card groups the shopping list (field shingles,
+// accessories, fasteners) from meta.json "group"; ui.js only adds the
+// low-slope underlayment note under it.
 let note;
 if (results) {
   note = document.createElement('p');
   note.className = 'shingle-note';
   note.setAttribute('aria-live', 'polite');
-  list = document.createElement('div');
-  list.className = 'shingle-list';
-  results.querySelector('.calc-results__list')?.after(list, note);
+  results.querySelector('.calc-results__list')?.after(note);
 }
-
-const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
-
-const renderList = (out) => {
-  if (!list) return;
-  if (!out?.ok) {
-    list.innerHTML = '';
-    return;
-  }
-  const groups = shoppingList(out.results)
-    .map(
-      (g) =>
-        `<div class="shingle-list__group"><h4>${esc(g.group)}</h4><ul>${g.items
-          .map((i) => `<li><span>${esc(i.label)}</span><strong>${formatNumber(i.qty, { decimals: 0 })} ${esc(i.unit)}</strong></li>`)
-          .join('')}</ul></div>`,
-    )
-    .join('');
-  list.innerHTML = `<h3 class="shingle-list__title">Shopping list</h3>${groups}`;
-};
 
 bindCalculator({
   root,
   calculate: (raw) => {
     const out = calculate(raw);
-    renderList(out);
     if (note) note.textContent = out?.ok ? out.slopeNote : '';
     return out;
   },

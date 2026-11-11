@@ -1,6 +1,7 @@
 {
   "title": "Deck Board Calculator",
   "benefit": "Boards, Joists, Screws",
+  "cardBlurb": "Boards, joists, and screws with a spacing check",
   "seoTitle": "Deck Board Calculator with Spacing",
   "metaDescription": "Estimate deck boards, joists, and face screws for a rectangular deck in feet and inches, and check spacing against 2021 IRC Table R507.7 or the 2026 Trex chart.",
   "primaryKeyword": "deck board calculator",
@@ -13,17 +14,19 @@
   "intent": "Estimate deck boards, joists, and fasteners for a rectangular deck, given board size, gap, and joist spacing.",
   "registerRow": "Keyword register (estimates): deck board calculator — volume 1, competition ease 4, ad value 3, fit 5, priority 12. Trends ratio vs concrete calculator = 0.008.",
   "category": "Decks",
-  "intro": "Estimate deck boards, joists, and face screws for a rectangular deck. A spacing line compares your joist spacing with 2021 IRC Table R507.7 for wood, or with the 2026 Trex span chart for composite.",
+  "intro": "Estimate deck boards, joists, and face screws for a rectangular deck, with a joist-spacing check against the 2021 IRC (wood) or Trex's span chart (composite).",
   "lastUpdated": "2026-10-07",
   "layout": "split",
   "chartStyle": "donut",
   "chartTitle": "Boards for the layout, plus extra boards",
+  "chartUnit": "boards",
+  "chartXLabel": "Boards to buy",
   "heroAlt": "Plan view of a rectangular deck: parallel boards with gaps between them, crossing four joist lines.",
   "uniqueAddition": "A joist-spacing check against 2021 IRC Table R507.7 for wood, including single span, multiple span, and 45 degree layouts, and against the 2026 Trex span chart for composite, including the 4 inch reduction at 45 degrees and the three-joist rule. A separate table lists boards for four common deck sizes.",
   "relatedTools": [
     "stair-stringer-calculator",
-    "fence-calculator",
-    "concrete-calculator"
+    "concrete-calculator",
+    "fence-calculator"
   ],
   "inputs": [
     {
@@ -52,9 +55,18 @@
       "group": "Boards",
       "help": "Composite uses the 2026 Trex span chart. 5/4 wood uses the 1-1/4 inch wood row of 2021 IRC Table R507.7. 2x wood uses the 2 inch wood row. Those names are the nominal sizes in the table. A 5/4 board is often about 1 inch thick, and a 2x board is 1.5 inches thick.",
       "options": [
-        { "value": "composite", "label": "Composite (Trex-style)" },
-        { "value": "fiveQuarter", "label": "5/4 wood (1-1/4 in nominal)" },
-        { "value": "twoBy", "label": "2x wood (2 in nominal)" }
+        {
+          "value": "composite",
+          "label": "Composite (Trex-style)"
+        },
+        {
+          "value": "fiveQuarter",
+          "label": "5/4 wood (1-1/4 in nominal)"
+        },
+        {
+          "value": "twoBy",
+          "label": "2x wood (2 in nominal)"
+        }
       ]
     },
     {
@@ -75,9 +87,18 @@
       "group": "Boards",
       "help": "Stock length you will buy. A stick can cover more than one row when the board run is short enough. A longer run is spliced, and the count tries to reuse an offcut when it is long enough.",
       "options": [
-        { "value": "12", "label": "12 ft" },
-        { "value": "16", "label": "16 ft" },
-        { "value": "20", "label": "20 ft" }
+        {
+          "value": "12",
+          "label": "12 ft"
+        },
+        {
+          "value": "16",
+          "label": "16 ft"
+        },
+        {
+          "value": "20",
+          "label": "20 ft"
+        }
       ]
     },
     {
@@ -97,8 +118,14 @@
       "group": "Boards",
       "help": "Perpendicular boards cross the joists at a right angle. Diagonal boards run at 45 degrees, the maximum angle in 2021 IRC Table R507.7 footnote a. Diagonal changes the board count and the spacing limit.",
       "options": [
-        { "value": "perpendicular", "label": "Perpendicular to joists" },
-        { "value": "diagonal", "label": "Diagonal (45 degrees)" }
+        {
+          "value": "perpendicular",
+          "label": "Perpendicular to joists"
+        },
+        {
+          "value": "diagonal",
+          "label": "Diagonal (45 degrees)"
+        }
       ]
     },
     {
@@ -110,9 +137,18 @@
       "group": "Joists",
       "help": "Center-to-center distance between joists. The spacing check compares this number with the limit for the material and layout you picked.",
       "options": [
-        { "value": "12", "label": "12 in o.c." },
-        { "value": "16", "label": "16 in o.c." },
-        { "value": "24", "label": "24 in o.c." }
+        {
+          "value": "12",
+          "label": "12 in o.c."
+        },
+        {
+          "value": "16",
+          "label": "16 in o.c."
+        },
+        {
+          "value": "24",
+          "label": "24 in o.c."
+        }
       ]
     },
     {
@@ -124,8 +160,14 @@
       "group": "Joists",
       "help": "Used only for composite. 16 in is the 2026 chart span for the common 1x6 boards at 100 psf, and the guide also recommends 16 in for a stiffer surface. 24 in is only for the chart rows that list 24 in. At 45 degrees the guide allows 4 in less than this span. Wood ignores this box.",
       "options": [
-        { "value": "16", "label": "16 in chart span" },
-        { "value": "24", "label": "24 in chart span" }
+        {
+          "value": "16",
+          "label": "16 in chart span"
+        },
+        {
+          "value": "24",
+          "label": "24 in chart span"
+        }
       ]
     },
     {
@@ -136,8 +178,14 @@
       "group": "Joists",
       "help": "2021 IRC Table R507.7 footnote c: a board on two joists is a single span, and a board on three or more joists is a multiple span. Trex says composite must span at least three joists. A deck in this size range has at least three joists, so leave this on multiple span unless each board sits on only two joists.",
       "options": [
-        { "value": "multiple", "label": "Multiple span (3 or more joists)" },
-        { "value": "single", "label": "Single span (2 joists)" }
+        {
+          "value": "multiple",
+          "label": "Multiple span (3 or more joists)"
+        },
+        {
+          "value": "single",
+          "label": "Single span (2 joists)"
+        }
       ]
     },
     {
@@ -162,17 +210,83 @@
     }
   ],
   "outputs": [
-    { "name": "boardsToBuy", "label": "Boards to buy", "unit": "boards", "decimals": 0, "primary": true },
-    { "name": "joists", "label": "Joists", "unit": "joists", "decimals": 0, "primary": true },
-    { "name": "screws", "label": "Face screws", "unit": "screws", "decimals": 0, "primary": true },
-    { "name": "spacingWarning", "label": "Spacing warning (1 = yes)", "decimals": 0, "primary": true },
-    { "name": "boardRows", "label": "Board rows", "unit": "rows", "decimals": 0 },
-    { "name": "linearFeet", "label": "Decking to buy", "unit": "ft", "decimals": 0 },
-    { "name": "spacingLimit", "label": "Spacing limit", "unit": "in", "decimals": 0 },
-    { "name": "inchesOver", "label": "Inches over the limit", "unit": "in", "decimals": 0 },
-    { "name": "threeJoistShort", "label": "Under 3 joists (1 = yes)", "decimals": 0 },
-    { "name": "gapShort", "label": "Side gap under 3/16 in (1 = yes)", "decimals": 0 },
-    { "name": "screwsPerSqFt", "label": "Face screws per sq ft", "unit": "per sq ft", "decimals": 2 }
+    {
+      "name": "boardsToBuy",
+      "label": "Boards to buy",
+      "unit": "boards",
+      "decimals": 0,
+      "primary": true
+    },
+    {
+      "name": "joists",
+      "label": "Joists",
+      "unit": "joists",
+      "decimals": 0,
+      "primary": true
+    },
+    {
+      "name": "screws",
+      "label": "Face screws",
+      "unit": "screws",
+      "decimals": 0,
+      "primary": true
+    },
+    {
+      "name": "spacingWarning",
+      "label": "Spacing warning",
+      "decimals": 0,
+      "primary": true,
+      "format": "yesno"
+    },
+    {
+      "name": "boardRows",
+      "label": "Board rows",
+      "unit": "rows",
+      "decimals": 0,
+      "group": "Layout"
+    },
+    {
+      "name": "linearFeet",
+      "label": "Decking to buy",
+      "unit": "ft",
+      "decimals": 0,
+      "group": "Layout"
+    },
+    {
+      "name": "spacingLimit",
+      "label": "Spacing limit",
+      "unit": "in",
+      "decimals": 0,
+      "group": "Spacing check"
+    },
+    {
+      "name": "inchesOver",
+      "label": "Inches over the limit",
+      "unit": "in",
+      "decimals": 0,
+      "group": "Spacing check"
+    },
+    {
+      "name": "threeJoistShort",
+      "label": "Under 3 joists per board",
+      "decimals": 0,
+      "group": "Spacing check",
+      "format": "yesno"
+    },
+    {
+      "name": "gapShort",
+      "label": "Side gap under 3/16 in",
+      "decimals": 0,
+      "group": "Spacing check",
+      "format": "yesno"
+    },
+    {
+      "name": "screwsPerSqFt",
+      "label": "Face screws per sq ft",
+      "unit": "per sq ft",
+      "decimals": 2,
+      "group": "Layout"
+    }
   ],
   "sources": [
     {

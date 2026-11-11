@@ -198,5 +198,18 @@ export function calculate(raw) {
       screwsPerSqFt: round(screws / area, 2),
     },
     chart,
+    // Plan view: boards along the deck length (or at 45 degrees), joists dashed.
+    diagram: {
+      type: 'plan',
+      name: 'Deck plan',
+      length,
+      width,
+      unit: 'ft',
+      pattern: diagonal ? 'hatch' : 'boards-h',
+      joists: spacingIn,
+      boardsRun: 'length',
+      arrow: diagonal ? 'Boards at 45°' : 'Boards run this way →',
+      caption: `Joists (dashed) at ${round(spacingIn, 2)} in o.c.`,
+    },
   };
 }
