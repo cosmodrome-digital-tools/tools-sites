@@ -35,26 +35,6 @@
   color: var(--tool-accent);
 }
 
-/* Primary result: rust bar with a slate underline, like a tagged bundle. */
-[data-tool="rebar-calculator"] .calc-result--primary {
-  background: var(--tool-accent);
-  color: var(--tool-accent-ink);
-  padding: 0.6rem 0.75rem;
-  border-radius: var(--tool-radius);
-  border-bottom: 4px solid #334155;
-  align-items: center;
-}
-[data-tool="rebar-calculator"] .calc-result--primary dd,
-[data-tool="rebar-calculator"] .calc-result--primary .calc-unit {
-  color: var(--tool-accent-ink);
-}
-[data-tool="rebar-calculator"] .calc-result--primary dd {
-  font-size: 1.75rem;
-}
-[data-tool="rebar-calculator"] .calc-results dd {
-  font-variant-numeric: tabular-nums;
-}
-
 /* Bar-size table in the page copy (the shared frame makes it scroll on phones). */
 [data-tool="rebar-calculator"] .tool-content table {
   border-collapse: collapse;
@@ -68,5 +48,16 @@
 }
 [data-tool="rebar-calculator"] .tool-content thead th {
   background: var(--tool-accent);
+  color: var(--tool-accent-ink);
+}
+
+/* Headline result as a solid panel in the tool's accent (accent-ink on accent passes AA, see top). */
+[data-tool="rebar-calculator"] .calc-primary {
+  background: var(--tool-accent);
+  border-left-color: var(--tool-ink);
+}
+[data-tool="rebar-calculator"] .calc-primary__label,
+[data-tool="rebar-calculator"] .calc-primary__value,
+[data-tool="rebar-calculator"] .calc-primary__unit {
   color: var(--tool-accent-ink);
 }

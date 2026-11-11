@@ -146,5 +146,16 @@ export function calculate(raw) {
     if (own) Object.assign(own, { highlight: true, highlightLabel: 'Your depth' });
   }
 
-  return { ok: true, results, chart };
+  // Labeled drawing (not used in any number above).
+  const depthNote = existing > 0 ? `${depth} in finished depth, ${round(netDepth, 2)} in to add` : `${depth} in deep`;
+  let diagram;
+  if (shapeName === 'rectangle') diagram = { type: 'plan', name: 'Mulch bed', length, width, unit: 'ft', pattern: 'hatch', depthNote };
+  else if (shapeName === 'circle') diagram = { type: 'plan', name: 'Round mulch bed', shape: 'circle', diameter: length, unit: 'ft', pattern: 'hatch', depthNote };
+  else if (shapeName === 'treeRing') diagram = { type: 'plan', name: 'Tree ring', shape: 'ring', diameter: outerDiameter, innerDiameter: clearance * 2, innerLabel: `${round(clearance * 12, 0)} in clear`, unit: 'ft', pattern: 'hatch', depthNote };
+  else {
+    const side = Math.sqrt(areaSqFt);
+    diagram = { type: 'plan', name: 'Mulch area', length: side, width: side, lengthLabel: `${round(areaSqFt, 0)} sq ft`, widthLabel: 'area', unit: 'ft', pattern: 'hatch', depthNote };
+  }
+
+  return { ok: true, results, chart, diagram };
 }

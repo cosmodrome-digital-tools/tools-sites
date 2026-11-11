@@ -111,6 +111,13 @@ export function calculate(raw = {}) {
     slopeNote: SLOPE_NOTES[band],
     // Not a form output: ui.js points the "Estimate shingles" link here (null below 2/12).
     shingleHref: shingleLink(pitch),
+    // Labeled rise / run / rafter triangle for the visitor's slope (drawn per 12 in
+    // of run unless a measured rise and run were entered).
+    diagram: (() => {
+      const run = mode === 'riseRun' ? v.run : 12;
+      const rise = mode === 'riseRun' ? v.rise : pitch;
+      return { type: 'triangle', rise: round(rise, 2), run, slope: round(Math.hypot(rise, run), 2), unit: 'in', angle: round(f.angle, 1), pitch: round(pitch, 2), slopeName: 'Rafter', riseName: 'Rise', runName: 'Run' };
+    })(),
     // Highlight the reference pitch closest to the visitor's (1/12 to 12/12 only).
     chart: referenceTable().map((r) => {
       const point = { label: String(r.pitch), value: r.angle };

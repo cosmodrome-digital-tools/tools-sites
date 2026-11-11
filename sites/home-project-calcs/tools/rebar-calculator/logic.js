@@ -123,6 +123,17 @@ export function calculate(raw = {}) {
       chairs,
       unitWeight,
     },
+    // Plan of the slab with the bar grid at the chosen spacing (labels only).
+    diagram: {
+      type: 'plan',
+      name: 'Rebar grid',
+      length: v.length,
+      width: v.width,
+      unit: 'ft',
+      gridSpacing: v.spacing,
+      gridLabel: `#${barSize} at ${v.spacing} in o.c.`,
+      depthNote: `${g.barsAlongLength} bars lengthwise × ${g.barsAlongWidth} widthwise, ${v.cover} in edge cover`,
+    },
     // Highlight the bar for the visitor's own spacing (when it's one of the charted ones).
     chart: CHART_SPACINGS.map((spacing) => {
       const point = { label: `${spacing} in`, value: grid({ ...v, spacing }).sticksToBuy };

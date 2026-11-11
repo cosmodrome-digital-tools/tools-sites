@@ -1,6 +1,7 @@
 {
   "title": "Paint Calculator",
   "benefit": "Gallons for Walls",
+  "cardBlurb": "Gallons, buckets, and quarts for a room",
   "seoTitle": "Paint Calculator - Gallons for Walls",
   "metaDescription": "Estimate interior wall and ceiling paint in gallons from room size, doors, windows, and coats, then split the wall paint into 5-gallon, gallon, and quart cans.",
   "primaryKeyword": "paint calculator",
@@ -13,15 +14,20 @@
   ],
   "intent": "Estimate gallons of paint for a room's walls and ceiling, given dimensions, openings, coats, and the product's coverage rate.",
   "registerRow": "Keyword Register (estimates): paint calculator — volume 4, competition ease 2, ad value 3, fit 5, priority 24",
-  "category": "Painting and Interiors",
-  "intro": "Estimate how many gallons of interior paint a room needs, with the walls and the ceiling as separate buys, then turn the wall paint into 5-gallon buckets, gallon cans, and quarts. Coverage starts at 350 square feet per gallon from the Sherwin-Williams SuperPaint data sheet.",
+  "category": "Interiors",
+  "intro": "Estimate gallons of interior paint for a room, with walls and ceiling as separate buys, split into 5-gallon buckets, gallons, and quarts.",
   "lastUpdated": "2026-10-07",
-  "layout": "stacked",
+  "layout": "split",
   "chartStyle": "donut",
   "chartTitle": "Paint to buy, by product (gal)",
+  "chartUnit": "gal",
   "heroAlt": "",
   "uniqueAddition": "A SuperPaint coverage selector (350 or 400 sq ft per gallon from the cited data sheet, or a custom rate) plus a shopping list that keeps wall paint, ceiling paint, and primer separate. Wall paint is split into 5-gallon buckets, 1-gallon cans, and quarts (rounded up to the next quart; three leftover quarts become one more gallon). The donut shows the gallons to buy of each product. page.md adds a wall-and-ceiling shopping table for six common room sizes at 2 coats and 350 sq ft per gallon.",
-  "relatedTools": [],
+  "relatedTools": [
+    "drywall-calculator",
+    "flooring-calculator",
+    "insulation-calculator"
+  ],
   "inputs": [
     {
       "name": "length",
@@ -113,7 +119,10 @@
     },
     {
       "name": "coverage",
-      "showIf": { "field": "product", "equals": "custom" },
+      "showIf": {
+        "field": "product",
+        "equals": "custom"
+      },
       "label": "Coverage rate",
       "unit": "sq ft/gal",
       "default": "350",
@@ -170,49 +179,57 @@
       "name": "gallonsPerCoat",
       "label": "Wall paint per coat",
       "unit": "gal",
-      "decimals": 2
+      "decimals": 2,
+      "group": "Wall paint to buy"
     },
     {
       "name": "fiveGallon",
       "label": "Wall 5-gal buckets",
       "unit": "count",
-      "decimals": 0
+      "decimals": 0,
+      "group": "Wall paint to buy"
     },
     {
       "name": "oneGallon",
       "label": "Wall 1-gal cans",
       "unit": "count",
-      "decimals": 0
+      "decimals": 0,
+      "group": "Wall paint to buy"
     },
     {
       "name": "quarts",
       "label": "Wall quarts",
       "unit": "count",
-      "decimals": 0
+      "decimals": 0,
+      "group": "Wall paint to buy"
     },
     {
       "name": "wallArea",
       "label": "Paintable walls",
       "unit": "sq ft",
-      "decimals": 1
+      "decimals": 1,
+      "group": "Areas"
     },
     {
       "name": "ceilingArea",
       "label": "Ceiling area",
       "unit": "sq ft",
-      "decimals": 1
+      "decimals": 1,
+      "group": "Areas"
     },
     {
       "name": "ceilingBuy",
       "label": "Ceiling paint to buy",
       "unit": "gal",
-      "decimals": 2
+      "decimals": 2,
+      "group": "Ceiling and primer"
     },
     {
       "name": "primerBuy",
       "label": "Primer to buy",
       "unit": "gal",
-      "decimals": 2
+      "decimals": 2,
+      "group": "Ceiling and primer"
     }
   ],
   "sources": [

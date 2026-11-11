@@ -24,14 +24,3 @@
   padding-top: 0.75rem;
   border-top: 1px dashed var(--tool-border);
 }
-
-[data-tool="mulch-calculator"] .calc-results__title {
-  color: var(--tool-accent);
-}
-
-[data-tool="mulch-calculator"] .calc-result--primary {
-  background: #fbf6ec;
-  border: 1px solid var(--tool-border);
-  border-left: 4px solid var(--tool-accent);
-  padding: 0.45rem 0.6rem;
-}

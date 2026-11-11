@@ -113,5 +113,11 @@ export function calculate(raw = {}) {
       bagsPerCubicYard: round(CU_FT_PER_CU_YD / bagYield, 1),
     },
     chart,
+    chartXLabel: shape === 'slab' ? 'Slab thickness (in)' : 'Column diameter (in)',
+    // Labeled drawing of the pour (not used in any number above).
+    diagram:
+      shape === 'slab'
+        ? { type: 'box', name: 'Slab or footing', length: v.length, width: v.width, depth: v.thickness, unit: 'ft', depthUnit: 'in', caption: v.quantity > 1 ? `× ${v.quantity} identical pours` : undefined }
+        : { type: 'cylinder', name: 'Round column', diameter: v.diameter, height: v.height, unit: 'in', count: v.quantity },
   };
 }

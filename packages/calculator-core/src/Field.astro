@@ -2,6 +2,8 @@
 /**
  * One labeled input with unit, help text, and a live validation message.
  * Props come straight from an entry in the tool's meta.json "inputs" array.
+ * The unit is part of the label (read by screen readers) and is also shown as
+ * a suffix inside number boxes so it stays visible while typing.
  */
 const { input } = Astro.props;
 const id = `in-${input.name}`;
@@ -12,26 +14,31 @@ const describedBy = [helpId, errId].filter(Boolean).join(' ');
 // the default; data-show-if carries the optional "showIf" condition to bind.js.
 const dataDefault = input.default !== undefined ? String(input.default) : '';
 const showIf = input.showIf ? JSON.stringify(input.showIf) : undefined;
+const isSelect = input.type === 'select';
+const suffix = !isSelect && input.unit && input.unit.length <= 14 ? input.unit : '';
 ---
-<div class="calc-field" data-field={input.name} data-default={dataDefault} data-show-if={showIf}>
-  <label for={id}>{input.label}{input.unit && <span class="calc-unit"> ({input.unit})</span>}</label>
-  {input.type === 'select' ? (
+<div class:list={['calc-field', { 'calc-field--select': isSelect }]} data-field={input.name} data-default={dataDefault} data-show-if={showIf}>
+  <label for={id}>{input.label}{input.unit && <span class:list={['calc-unit', { 'calc-sr-only': suffix }]}> ({input.unit})</span>}</label>
+  {isSelect ? (
     <select id={id} name={input.name} aria-describedby={describedBy}>
       {input.options.map((o) => (
         <option value={String(o.value)} selected={String(o.value) === String(input.default)}>{o.label}</option>
       ))}
     </select>
   ) : (
-    <input
-      id={id}
-      name={input.name}
-      type="text"
-      inputmode="decimal"
-      autocomplete="off"
-      value={input.default !== undefined ? String(input.default) : ''}
-      placeholder={input.placeholder}
-      aria-describedby={describedBy}
-    />
+    <div class:list={['calc-input', { 'calc-input--suffix': suffix }]} style={suffix ? `--suffix-ch:${suffix.length}` : undefined}>
+      <input
+        id={id}
+        name={input.name}
+        type="text"
+        inputmode="decimal"
+        autocomplete="off"
+        value={input.default !== undefined ? String(input.default) : ''}
+        placeholder={input.placeholder}
+        aria-describedby={describedBy}
+      />
+      {suffix && <span class="calc-input__unit" aria-hidden="true">{suffix}</span>}
+    </div>
   )}
   {input.help && <p id={helpId} class="calc-help">{input.help}</p>}
   <p id={errId} class="calc-error" data-error aria-live="polite"></p>

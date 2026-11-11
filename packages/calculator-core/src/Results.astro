@@ -1,20 +1,127 @@
 ---
-/** Results area. Values are filled in by bind.js; outputs come from meta.json "outputs". */
+/**
+ * Results card. Values are filled in by bind.js; outputs come from meta.json "outputs".
+ *
+ * Layout (all driven by meta.json, no per-tool markup):
+ *  - the first output with "primary": true is the large headline number;
+ *  - further "primary" outputs become key-figure tiles under it;
+ *  - every other output is a row in a grouped breakdown ("group": "Buy",
+ *    "Volume", ... in the order they first appear; default "Details");
+ *  - outputs that share a "unitGroup" are ONE row showing the same quantity
+ *    in several US units (e.g. cu yd and cu ft); a unit toggle switches which
+ *    one shows (without JavaScript both show);
+ *  - "format": "yesno" shows 1/0 flags as Yes/No, "fraction" shows inches to
+ *    the nearest 1/16 in (7 1/2).
+ * Copy / Share / Print buttons and the estimates notice sit at the bottom.
+ */
 import { RESULTS_NOTICE as notice } from './notices.js';
-const { outputs = [], chartStyle = 'none', chartTitle = 'Chart' } = Astro.props;
+const { outputs = [], chartStyle = 'none', chartTitle = 'Chart', chartUnit = '', chartXLabel = '', diagramSvg = '', diagramCaption = '' } = Astro.props;
+
+const primaries = outputs.filter((o) => o.primary);
+const head = primaries[0] ?? outputs[0];
+const keys = primaries.slice(1);
+
+// Rows: outputs that share a unitGroup collapse into one row.
+const rows = [];
+for (const o of outputs) {
+  if (o === head || keys.includes(o)) continue;
+  if (o.unitGroup) {
+    const existing = rows.find((r) => r.unitGroup === o.unitGroup);
+    if (existing) {
+      existing.members.push(o);
+      continue;
+    }
+  }
+  rows.push({ unitGroup: o.unitGroup, label: o.unitGroupLabel ?? o.label, group: o.group ?? 'Details', members: [o] });
+}
+const groups = [];
+for (const r of rows) {
+  let g = groups.find((x) => x.name === r.group);
+  if (!g) groups.push((g = { name: r.group, rows: [] }));
+  g.rows.push(r);
+}
+// Unit toggle: offered when at least one row shows a quantity in 2+ units.
+// Option i shows the i-th unit of every multi-unit row.
+const multi = rows.filter((r) => r.members.length > 1);
+const toggleCount = multi.length ? Math.max(...multi.map((r) => r.members.length)) : 0;
+const toggleLabels = Array.from({ length: toggleCount }, (_, i) =>
+  [...new Set(multi.map((r) => r.members[i]?.unit).filter(Boolean))].join(' · '),
+);
+const val = (o) => ({ 'data-output': o.name, 'data-decimals': o.decimals ?? 2, 'data-format': o.format });
 ---
-<section class="calc-results" data-calc-results data-state="empty" aria-live="polite" aria-label="Results">
-  <h2 class="calc-results__title">Your results</h2>
-  <dl class="calc-results__list">
-    {outputs.map((o) => (
-      <div class:list={['calc-result', { 'calc-result--primary': o.primary }]}>
-        <dt>{o.label}</dt>
-        <dd><span data-output={o.name} data-decimals={o.decimals ?? 2}>–</span>{o.unit && <span class="calc-unit"> {o.unit}</span>}</dd>
+<section class="calc-results" data-calc-results data-state="empty" data-unit="0" aria-labelledby="results-heading" id="results">
+  <div class="calc-results__head">
+    <h2 class="calc-results__title" id="results-heading">Your results</h2>
+    {toggleCount > 1 && (
+      <div class="calc-units" role="group" aria-label="Show amounts in" data-unit-toggle hidden>
+        {toggleLabels.map((label, i) => (
+          <button type="button" class="calc-units__btn" data-unit-index={i} aria-pressed={i === 0 ? 'true' : 'false'}>{label}</button>
+        ))}
+      </div>
+    )}
+  </div>
+
+  {head && (
+    <div class="calc-primary" aria-live="polite" aria-atomic="true">
+      <p class="calc-primary__label">{head.label}</p>
+      <p class="calc-primary__value"><span {...val(head)}>–</span>{head.unit && <span class="calc-primary__unit"> {head.unit}</span>}</p>
+    </div>
+  )}
+
+  {keys.length > 0 && (
+    <dl class="calc-keys">
+      {keys.map((o) => (
+        <div class="calc-key" data-row>
+          <dt>{o.label}</dt>
+          <dd><span {...val(o)}>–</span>{o.unit && <span class="calc-unit"> {o.unit}</span>}</dd>
+        </div>
+      ))}
+    </dl>
+  )}
+
+  <p class="calc-results__invalid" role="status"><span aria-hidden="true">!</span> Check the highlighted fields to see your results.</p>
+
+  <div class="calc-results__list calc-breakdown">
+    {groups.map((g) => (
+      <div class="calc-breakdown__group">
+        <h3 class="calc-breakdown__title">{g.name}</h3>
+        <dl>
+          {g.rows.map((r) => (
+            <div class:list={['calc-result', { 'calc-result--multi': r.members.length > 1 }]} data-row>
+              <dt>{r.label}</dt>
+              <dd>
+                {r.members.map((o, i) => (
+                  <span class="calc-result__unitval" data-unit-index={r.members.length > 1 ? i : undefined}><span {...val(o)}>–</span>{o.unit && <span class="calc-unit"> {o.unit}</span>}</span>
+                ))}
+              </dd>
+            </div>
+          ))}
+        </dl>
       </div>
     ))}
-  </dl>
-  <p class="calc-results__invalid">Fix the highlighted fields to see results.</p>
-  {chartStyle !== 'none' && <div class="calc-chart" data-calc-chart data-title={chartTitle}></div>}
-  <noscript><p>This calculator needs JavaScript turned on to show results.</p></noscript>
+  </div>
+
+  <noscript><p class="calc-results__noscript">Results appear here as you type. This calculator needs JavaScript turned on to show them; the formula and worked example below show the same math.</p></noscript>
+
+  <div class="calc-actions" data-calc-actions hidden>
+    <button type="button" class="calc-action" data-action="copy"><svg viewBox="0 0 20 20" aria-hidden="true" width="16" height="16"><rect x="6.5" y="6.5" width="10" height="11" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M4 13.5V4.5A1.5 1.5 0 0 1 5.5 3h7" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>Copy</button>
+    <button type="button" class="calc-action" data-action="share"><svg viewBox="0 0 20 20" aria-hidden="true" width="16" height="16"><circle cx="5" cy="10" r="2.2" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="15" cy="4.5" r="2.2" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="15" cy="15.5" r="2.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M7 9l6-3.4M7 11l6 3.4" stroke="currentColor" stroke-width="1.6"/></svg>Share</button>
+    <button type="button" class="calc-action" data-action="print"><svg viewBox="0 0 20 20" aria-hidden="true" width="16" height="16"><path d="M5.5 7V3h9v4M5.5 14H3.5V8.5a1.5 1.5 0 0 1 1.5-1.5h10a1.5 1.5 0 0 1 1.5 1.5V14h-2" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="5.5" y="11.5" width="9" height="5.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>Print</button>
+  </div>
+  <p class="calc-actions__status" data-calc-status role="status" aria-live="polite"></p>
+
   <p class="calc-results__notice" data-results-notice>{notice.text} {notice.linkLead} <a href={notice.href}>{notice.linkText}</a>.</p>
 </section>
+
+{diagramSvg && (
+  <figure class="calc-figure calc-diagram">
+    <div class="calc-diagram__svg" data-calc-diagram set:html={diagramSvg} />
+    {diagramCaption && <figcaption>{diagramCaption}</figcaption>}
+  </figure>
+)}
+{chartStyle !== 'none' && (
+  <figure class="calc-figure calc-chart-figure">
+    <figcaption>{chartTitle}</figcaption>
+    <div class="calc-chart" data-calc-chart data-title={chartTitle} data-unit={chartUnit} data-x-label={chartXLabel}></div>
+  </figure>
+)}

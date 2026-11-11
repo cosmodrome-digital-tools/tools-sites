@@ -26,18 +26,6 @@
   border-top: 1px dashed var(--tool-border);
 }
 
-[data-tool="retaining-wall-block-calculator"] .calc-results__title {
-  font-family: var(--tool-font-display);
-  color: var(--tool-accent);
-}
-
-[data-tool="retaining-wall-block-calculator"] .calc-result--primary {
-  background: #fff7f2;
-  border: 1px solid var(--tool-border);
-  border-left: 4px solid var(--tool-accent);
-  padding: 0.45rem 0.6rem;
-}
-
 [data-tool="retaining-wall-block-calculator"] .tool-hero__img {
   background: #efe4d4;
   border-radius: 8px;

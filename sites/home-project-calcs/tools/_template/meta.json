@@ -1,23 +1,40 @@
 {
   "title": "TODO Example Area Calculator",
   "benefit": "TODO Square Feet With Waste Included",
+  "cardBlurb": "TODO 5-12 word benefit shown on homepage cards",
   "metaDescription": "TODO 140-160 characters: what it calculates, in US units, plus one differentiator.",
   "primaryKeyword": "TODO primary keyword",
-  "secondaryKeywords": ["TODO secondary keyword"],
+  "secondaryKeywords": [
+    "TODO secondary keyword"
+  ],
   "intent": "TODO search intent, e.g. estimate how much material to buy",
   "registerRow": "TODO keyword/intent register row reference",
   "category": "TODO Category Name",
-  "intro": "TODO One or two plain sentences under the H1 saying what this calculator does.",
+  "intro": "TODO One or two short sentences under the H1. Details go in page.md, not here.",
   "lastUpdated": "2026-10-06",
-  "layout": "stacked",
+  "layout": "split",
   "chartStyle": "bar",
   "chartTitle": "Area with and without waste (sq ft)",
+  "chartUnit": "sq ft",
+  "chartXLabel": "TODO category-axis label",
   "heroAlt": "",
   "uniqueAddition": "TODO which unique addition this page has (chart, comparison table, scenario toggle, printable summary, or real-world tip)",
   "relatedTools": [],
   "inputs": [
-    { "name": "length", "label": "Length", "unit": "ft", "default": "10", "group": "Area size" },
-    { "name": "width", "label": "Width", "unit": "ft", "default": "12", "group": "Area size" },
+    {
+      "name": "length",
+      "label": "Length",
+      "unit": "ft",
+      "default": "10",
+      "group": "Area size"
+    },
+    {
+      "name": "width",
+      "label": "Width",
+      "unit": "ft",
+      "default": "12",
+      "group": "Area size"
+    },
     {
       "name": "waste",
       "advanced": true,
@@ -26,20 +43,58 @@
       "type": "select",
       "default": "10",
       "options": [
-        { "value": "0", "label": "0% (no waste)" },
-        { "value": "5", "label": "5%" },
-        { "value": "10", "label": "10% (typical)" },
-        { "value": "15", "label": "15%" }
+        {
+          "value": "0",
+          "label": "0% (no waste)"
+        },
+        {
+          "value": "5",
+          "label": "5%"
+        },
+        {
+          "value": "10",
+          "label": "10% (typical)"
+        },
+        {
+          "value": "15",
+          "label": "15%"
+        }
       ],
       "help": "Extra material for cuts, breakage, and mistakes.",
       "group": "Allowance"
     }
   ],
   "outputs": [
-    { "name": "total", "label": "Total with waste", "unit": "sq ft", "decimals": 1, "primary": true },
-    { "name": "area", "label": "Area", "unit": "sq ft", "decimals": 1 }
+    {
+      "name": "total",
+      "label": "Total with waste",
+      "unit": "sq ft",
+      "decimals": 1,
+      "primary": true
+    },
+    {
+      "name": "area",
+      "label": "Area",
+      "unit": "sq ft",
+      "decimals": 1,
+      "group": "Area",
+      "unitGroup": "area"
+    },
+    {
+      "name": "areaSqYd",
+      "label": "Area",
+      "unit": "sq yd",
+      "decimals": 2,
+      "group": "Area",
+      "unitGroup": "area"
+    }
   ],
   "sources": [
-    { "title": "TODO Source title (publisher)", "url": "https://example.com/TODO", "accessed": "2026-10-06" }
-  ]
+    {
+      "title": "TODO Source title (publisher)",
+      "url": "https://example.com/TODO",
+      "accessed": "2026-10-06"
+    }
+  ],
+  "diagramCaption": "Labeled plan of your area. It redraws as you type."
 }

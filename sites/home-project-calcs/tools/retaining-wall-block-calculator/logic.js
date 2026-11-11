@@ -121,5 +121,19 @@ export function calculate(raw) {
       { label: 'Blocks', value: blocksToBuy },
       { label: 'Caps', value: capsToBuy },
     ],
+    // Elevation (straight wall) or plan (fire-pit circle), labels only.
+    diagram: circle
+      ? { type: 'plan', name: 'Fire-pit ring', shape: 'circle', diameter: length, diameterLabel: `${length} ft inside`, unit: 'ft', pattern: 'block', depthNote: `${courses} courses, ${round(builtExposed, 1)} in above grade` }
+      : {
+          type: 'wall',
+          name: 'Retaining wall',
+          length,
+          height: stackHeight / INCHES_PER_FOOT,
+          heightLabel: `${round(stackHeight, 1)} in stack`,
+          unit: 'ft',
+          pattern: 'block',
+          moduleLabel: `${courses} courses × ${blocksPerCourse} blocks (${faceLength} × ${faceHeight} in face)`,
+          caption: `${round(buried, 1)} in buried, ${round(builtExposed, 1)} in exposed`,
+        },
   };
 }

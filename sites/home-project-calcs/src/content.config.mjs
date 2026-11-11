@@ -37,7 +37,11 @@ const output = z.looseObject({
   label: z.string(),
   unit: z.string().optional(),
   decimals: z.number().int().min(0).max(6).default(2),
-  primary: z.boolean().optional(),
+  primary: z.boolean().optional(),          // first primary = headline number; more primaries = key-figure tiles
+  group: z.string().optional(),             // results breakdown section, e.g. "Buy", "Volume" (default "Details")
+  unitGroup: z.string().optional(),         // outputs sharing a unitGroup are one row in two US units + a unit toggle
+  unitGroupLabel: z.string().optional(),    // row label for a unitGroup (default: first member's label)
+  format: z.enum(['number', 'yesno', 'fraction']).optional(), // yesno: 1/0 flag as Yes/No; fraction: inches to 1/16
 });
 
 const toolMeta = defineCollection({
@@ -51,8 +55,12 @@ const toolMeta = defineCollection({
     category: z.string(),
     lastUpdated: z.coerce.date(),
     sources: z.array(z.object({ title: z.string(), url: z.url(), accessed: z.coerce.date() })).min(1),
-    layout: z.enum(['stacked', 'split', 'stepper']).default('stacked'),
+    cardBlurb: z.string().max(80).optional(), // 5-12 word benefit for homepage and related-tool cards
+    layout: z.enum(['stacked', 'split', 'stepper']).default('split'),
     chartStyle: z.enum(['bar', 'line', 'donut', 'none']).default('none'),
+    chartUnit: z.string().optional(),        // value-axis unit, e.g. "bags"
+    chartXLabel: z.string().optional(),      // category-axis label, e.g. "Slab thickness"
+    diagramCaption: z.string().optional(),   // caption under the labeled diagram
     inputs: z.array(input).min(1),
     outputs: z.array(output).min(1),
     advancedLabel: z.string().optional(),  // summary text for the Advanced section (default "Advanced settings")

@@ -150,5 +150,14 @@ export function calculate(raw) {
       rShortfall,
     },
     chart,
+    // Attic section with the insulation depth called out (labels only).
+    diagram: {
+      type: 'attic',
+      pitch: 6,
+      insulationDepth: blownThickness ?? battThickness ?? 0,
+      insulationLabel: `R-${installedR} · ${blownThickness ?? battThickness} in`,
+      spanLabel: `Attic floor ${round(area, 0).toLocaleString('en-US')} sq ft`,
+      caption: `${raw.product === 'blown' ? `Blown to at least ${blownThickness} in` : `${battThickness} in batts`} · goal R-${goalR} · ${packages} ${raw.product === 'blown' ? 'bags' : 'packages'}`,
+    },
   };
 }

@@ -1,15 +1,21 @@
 ---
-/** Sources block: every source is linked and dated (accessed date). */
+/**
+ * Sources block: every source is linked and dated (accessed date). Rendered as
+ * a closed <details> section like the page copy above it; the list stays in the
+ * HTML either way.
+ */
 const { sources = [] } = Astro.props;
 const fmt = (d) => (d instanceof Date ? d : new Date(d)).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC' });
 ---
 {sources.length > 0 && (
-  <section class="calc-sources" aria-labelledby="sources-heading">
-    <h2 id="sources-heading">Sources</h2>
-    <ol>
-      {sources.map((s) => (
-        <li><a href={s.url} rel="noopener">{s.title}</a> <span class="calc-sources__date">(accessed {fmt(s.accessed)})</span></li>
-      ))}
-    </ol>
-  </section>
+  <details class="tool-section tool-section--sources calc-sources" data-section="sources" id="sources">
+    <summary><h2 id="sources-heading">Sources</h2><span class="tool-section__hint">{sources.length} dated {sources.length === 1 ? 'source' : 'sources'}</span></summary>
+    <div class="tool-section__body">
+      <ol>
+        {sources.map((s) => (
+          <li><a href={s.url} rel="noopener">{s.title}</a> <span class="calc-sources__date">(accessed {fmt(s.accessed)})</span></li>
+        ))}
+      </ol>
+    </div>
+  </details>
 )}

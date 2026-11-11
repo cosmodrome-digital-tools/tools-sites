@@ -40,3 +40,25 @@ export function formatNumber(value, { decimals = 2, minDecimals = 0 } = {}) {
     minimumFractionDigits: Math.min(minDecimals, decimals),
   }).format(value);
 }
+
+/**
+ * Inches as a tape-measure reading to the nearest 1/16 in, e.g. 7.4375 -> "7 7/16".
+ * Whole numbers stay plain ("8"); fractions are reduced ("7 1/2").
+ */
+export function formatFraction(value, { denominator = 16 } = {}) {
+  if (!Number.isFinite(value)) return '';
+  const sign = value < 0 ? '-' : '';
+  let whole = Math.floor(Math.abs(value));
+  let num = Math.round((Math.abs(value) - whole) * denominator);
+  let den = denominator;
+  if (num === den) {
+    whole += 1;
+    num = 0;
+  }
+  while (num && num % 2 === 0 && den % 2 === 0) {
+    num /= 2;
+    den /= 2;
+  }
+  if (!num) return `${sign}${formatNumber(whole, { decimals: 0 })}`;
+  return `${sign}${whole ? `${formatNumber(whole, { decimals: 0 })} ` : ''}${num}/${den}`;
+}

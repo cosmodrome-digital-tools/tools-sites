@@ -36,15 +36,3 @@
   border-radius: 12px;
   background: #f7fbfe;
 }
-
-[data-tool="deck-board-calculator"] .calc-results__title {
-  font-family: var(--tool-font-display);
-  color: var(--tool-accent);
-}
-
-[data-tool="deck-board-calculator"] .calc-result--primary {
-  background: #f7fbfe;
-  border: 1px solid var(--tool-border);
-  border-radius: 12px;
-  padding: 0.45rem 0.7rem;
-}

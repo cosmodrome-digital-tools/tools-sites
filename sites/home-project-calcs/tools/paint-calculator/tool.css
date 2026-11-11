@@ -36,24 +36,6 @@
   background: #fff7f9;
 }
 
-[data-tool="paint-calculator"] .calc-results__title {
-  font-family: var(--tool-font-display);
-  color: #9f1239;
-}
-
-[data-tool="paint-calculator"] .calc-result--primary {
-  background: #fff1f2;
-  border-bottom: 0;
-  border-left: 6px solid var(--tool-accent);
-  border-radius: 0 12px 12px 0;
-  padding: 0.55rem 0.75rem;
-}
-
-[data-tool="paint-calculator"] .calc-result--primary dd {
-  color: #9f1239;
-  font-size: 1.8rem;
-}
-
 [data-tool="paint-calculator"] .tool-content table {
   border-collapse: collapse;
   font-variant-numeric: tabular-nums;

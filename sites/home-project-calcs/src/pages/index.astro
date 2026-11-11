@@ -1,24 +1,87 @@
 ---
 import { getCollection } from 'astro:content';
 import SiteLayout from '../layouts/SiteLayout.astro';
+import CategoryIcon from '../components/CategoryIcon.astro';
 import site from '../site.config.mjs';
+import { CATEGORIES, POPULAR, QUICK_PICKS, categorySlug } from '../categories.mjs';
 
 const tools = (await getCollection('toolMeta')).sort((a, b) => a.data.title.localeCompare(b.data.title));
-const byCategory = new Map();
-for (const t of tools) {
-  const list = byCategory.get(t.data.category) ?? [];
-  list.push(t);
-  byCategory.set(t.data.category, list);
-}
-const slugify = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+const card = (t) => ({
+  slug: t.id,
+  title: t.data.title,
+  blurb: t.data.cardBlurb ?? t.data.benefit,
+  category: t.data.category,
+  icon: CATEGORIES.find((c) => c.name === t.data.category)?.icon ?? 'concrete',
+  search: [t.data.title, t.data.category, t.data.cardBlurb, t.data.benefit, t.data.primaryKeyword, ...(t.data.secondaryKeywords ?? [])]
+    .filter(Boolean)
+    .join(' ')
+    .toLowerCase(),
+});
+// Categories in the order set in categories.mjs; any category a tool uses that
+// isn't listed there still shows (at the end) so no tool can drop off the hub.
+const known = CATEGORIES.map((c) => c.name);
+const extra = [...new Set(tools.map((t) => t.data.category))].filter((c) => !known.includes(c)).map((name) => ({ name, icon: 'concrete', blurb: '' }));
+const groups = [...CATEGORIES, ...extra]
+  .map((c) => ({ ...c, id: categorySlug(c.name), tools: tools.filter((t) => t.data.category === c.name).map(card) }))
+  .filter((g) => g.tools.length);
+const popular = POPULAR.map((s) => tools.find((t) => t.id === s)).filter(Boolean).map(card);
+const chips = QUICK_PICKS.map((p) => ({ ...p, href: `#${categorySlug(p.categories[0])}` })).filter((p) => groups.some((g) => p.categories.includes(g.name)));
+const trust = [
+  'Free to use',
+  'US feet, inches, yards, and bag sizes',
+  'Formula and waste shown',
+  'Dated sources on every tool',
+  'Runs in your browser: nothing you type is sent anywhere',
+];
 ---
 <SiteLayout title={site.homeTitle ?? `${site.name} - ${site.tagline}`} description={site.description}>
-  <h1>{site.name}</h1>
-  <p class="hub-intro">
-    Free calculators for planning US home projects. Each one estimates materials in feet, inches,
-    cubic yards, and standard bag sizes, and shows its formula, waste allowance, and sources so you
-    can check the math.
-  </p>
+  <section class="hub-hero" aria-labelledby="hub-title">
+    <div class="hub-hero__text">
+      <p class="hub-eyebrow">{site.name}</p>
+      <h1 id="hub-title">Materials calculators for US home and yard projects</h1>
+      <p class="hub-lede">Estimate bags, boards, gallons, and tons in US units, with the formula, waste allowance, and dated sources shown.</p>
+
+      {tools.length > 0 && (
+        <div class="hub-find">
+          <form class="hub-search" role="search" data-hub-search action="#all-calculators">
+            <label for="hub-q" class="hub-sr-only">Find a calculator</label>
+            <svg class="hub-search__icon" viewBox="0 0 24 24" aria-hidden="true" width="20" height="20"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="m15.5 15.5 5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <input id="hub-q" type="search" name="q" autocomplete="off" placeholder={`Search ${tools.length} calculators: concrete, fence, paint…`} aria-controls="all-calculators" />
+          </form>
+          <ul class="hub-chips" aria-label="Quick picks">
+            {chips.map((c) => (
+              <li><a class="hub-chip" href={c.href} data-chip={c.categories.join('|')}>{c.label}</a></li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
+    <svg class="hub-hero__art" viewBox="0 0 320 220" aria-hidden="true" focusable="false">
+      <g fill="none" stroke-linejoin="round">
+        <path d="M40 150 200 150 270 100 110 100Z" class="hub-art__top" />
+        <path d="M40 150v26h160v-26M200 176l70-50v-26" class="hub-art__side" />
+        <path d="M40 150v26h160v-26Z" class="hub-art__front" />
+        <path d="M40 198h160M40 192v12M200 192v12" class="hub-art__dim" />
+        <path d="M282 100v26M276 100h12M276 126h12" class="hub-art__dim" />
+        <path d="M212 158l70-50" class="hub-art__dim" />
+        <path d="M70 140 150 108M100 150 180 118M130 150 210 118" class="hub-art__grid" />
+      </g>
+      <text x="120" y="216" class="hub-art__label">10 ft</text>
+      <text x="296" y="118" class="hub-art__label">4 in</text>
+      <text x="262" y="146" class="hub-art__label" text-anchor="start" style="text-anchor:start">10 ft</text>
+      <g class="hub-art__chip">
+        <rect x="150" y="18" width="150" height="54" rx="10" />
+        <text x="164" y="40" class="hub-art__chip-label">Bags to buy</text>
+        <text x="164" y="63" class="hub-art__chip-value">59 × 80 lb</text>
+      </g>
+    </svg>
+  </section>
+
+  <ul class="hub-trust" aria-label="How these calculators work">
+    {trust.map((t) => (
+      <li><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m3 8.5 3.2 3L13 4.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>{t}</li>
+    ))}
+  </ul>
 
   {tools.length === 0 ? (
     <div class="hub-empty">
@@ -26,15 +89,117 @@ const slugify = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-
       <p>The first calculators are being built and checked now. Please check back soon.</p>
     </div>
   ) : (
-    [...byCategory.entries()].map(([category, list]) => (
-      <section class="hub-category" id={slugify(category)}>
-        <h2>{category}</h2>
-        <ul class="hub-list">
-          {list.map((t) => (
-            <li><a href={`/${t.id}/`}><strong>{t.data.title}</strong>{t.data.metaDescription}</a></li>
+    <>
+      {popular.length > 0 && (
+        <section class="hub-popular" aria-labelledby="popular-heading" data-hub-popular>
+          <h2 id="popular-heading" class="hub-h2">Popular calculators</h2>
+          <ul class="hub-cards">
+            {popular.map((t) => (
+              <li>
+                <a class="hub-card" href={`/${t.slug}/`}>
+                  <span class="hub-card__icon"><CategoryIcon name={t.icon} size={24} /></span>
+                  <span class="hub-card__title">{t.title}</span>
+                  <span class="hub-card__blurb">{t.blurb}</span>
+                  <span class="hub-card__cat">{t.category}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      <section class="hub-directory" id="all-calculators" aria-labelledby="all-heading">
+        <div class="hub-directory__head">
+          <h2 id="all-heading" class="hub-h2">All {tools.length} calculators by category</h2>
+          <p class="hub-count" data-hub-count role="status" aria-live="polite"></p>
+        </div>
+        <div class="hub-groups">
+          {groups.map((g) => (
+            <section class="hub-group" id={g.id} data-category={g.name} aria-labelledby={`${g.id}-h`}>
+              <div class="hub-group__head">
+                <span class="hub-group__icon"><CategoryIcon name={g.icon} /></span>
+                <div>
+                  <h3 id={`${g.id}-h`} class="hub-group__name">{g.name}</h3>
+                  <p class="hub-group__meta">{g.tools.length} {g.tools.length === 1 ? 'calculator' : 'calculators'}{g.blurb && <> · {g.blurb}</>}</p>
+                </div>
+              </div>
+              <ul class="hub-tools">
+                {g.tools.map((t) => (
+                  <li data-search={t.search}>
+                    <a class="hub-tool" href={`/${t.slug}/`}>
+                      <span class="hub-tool__title">{t.title}</span>
+                      <span class="hub-tool__blurb">{t.blurb}</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </section>
           ))}
-        </ul>
+        </div>
+        <p class="hub-nomatch" data-hub-empty hidden>No calculator matches that search. Try a material (concrete, gravel, paint) or a project (deck, fence, roof).</p>
       </section>
-    ))
+    </>
   )}
 </SiteLayout>
+
+<noscript><style>.hub-search { display: none; }</style></noscript>
+
+<script>
+  // Homepage filter: narrows the category directory by text and quick-pick
+  // chips. Without JavaScript the search box is hidden (see <noscript>) and
+  // the chips are plain links to each category.
+  const input = document.querySelector<HTMLInputElement>('#hub-q');
+  const form = document.querySelector<HTMLFormElement>('[data-hub-search]');
+  const chips = [...document.querySelectorAll<HTMLAnchorElement>('[data-chip]')];
+  const groups = [...document.querySelectorAll<HTMLElement>('.hub-group')];
+  const popular = document.querySelector<HTMLElement>('[data-hub-popular]');
+  const count = document.querySelector<HTMLElement>('[data-hub-count]');
+  const empty = document.querySelector<HTMLElement>('[data-hub-empty]');
+  const total = document.querySelectorAll('.hub-tools li').length;
+  let active: string[] | null = null;
+
+  const apply = () => {
+    const words = (input?.value ?? '').toLowerCase().split(/\s+/).filter(Boolean);
+    const filtering = words.length > 0 || active !== null;
+    let shown = 0;
+    for (const g of groups) {
+      const inCat = !active || active.includes(g.dataset.category ?? '');
+      let visible = 0;
+      for (const li of g.querySelectorAll<HTMLElement>('li[data-search]')) {
+        const hit = inCat && words.every((w) => (li.dataset.search ?? '').includes(w));
+        li.hidden = !hit;
+        if (hit) visible++;
+      }
+      g.hidden = visible === 0;
+      shown += visible;
+    }
+    if (popular) popular.hidden = filtering;
+    if (count) count.textContent = filtering ? `Showing ${shown} of ${total}` : '';
+    if (empty) empty.hidden = shown > 0;
+  };
+
+  input?.addEventListener('input', apply);
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    document.querySelector<HTMLAnchorElement>('.hub-group:not([hidden]) .hub-tool')?.focus();
+  });
+  for (const chip of chips) {
+    chip.setAttribute('role', 'button');
+    chip.setAttribute('aria-pressed', 'false');
+    chip.addEventListener('click', (e) => {
+      e.preventDefault();
+      const on = chip.getAttribute('aria-pressed') !== 'true';
+      for (const c of chips) c.setAttribute('aria-pressed', 'false');
+      chip.setAttribute('aria-pressed', on ? 'true' : 'false');
+      active = on ? (chip.dataset.chip ?? '').split('|') : null;
+      apply();
+      if (on) document.getElementById('all-calculators')?.scrollIntoView({ block: 'start' });
+    });
+    chip.addEventListener('keydown', (e) => {
+      if (e.key === ' ') {
+        e.preventDefault();
+        chip.click();
+      }
+    });
+  }
+</script>
