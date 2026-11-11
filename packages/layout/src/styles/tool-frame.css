@@ -63,6 +63,12 @@
 .calc-results[data-state='invalid'] .calc-results__invalid { display: block; }
 .calc-results[data-state='invalid'] .calc-results__list { opacity: 0.4; }
 .calc-chart { margin-top: 1rem; color: var(--tool-ink); }
+/* Shared estimates notice under every tool's results (subtle, still AA). */
+.calc-results__notice {
+  margin: 1rem 0 0; padding-top: 0.6rem; border-top: 1px solid var(--tool-border);
+  font-size: 0.85rem; line-height: 1.45; color: var(--site-muted-ink);
+}
+.calc-results__notice a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
 .calc-updated { font-size: 0.9rem; color: var(--site-muted-ink); margin: 0.75rem 0 0; }
 
 .tool-content { margin-top: 1.5rem; }

@@ -32,6 +32,7 @@ const breadcrumbs = [
       <section class="author-card" aria-labelledby="author-heading">
         <h2 id="author-heading">About the author: {site.author.name}</h2>
         <p>{site.author.bio}</p>
+        {site.author.penNameNote && <p>{site.author.penNameNote}</p>}
       </section>
     )}
 
