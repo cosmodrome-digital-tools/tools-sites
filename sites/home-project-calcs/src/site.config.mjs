@@ -12,7 +12,7 @@ export default {
   slug: 'home-project-calcs',
   tagline: 'Free materials calculators for US home projects',
   description:
-    'Free calculators that estimate materials for common US home projects in feet, inches, cubic yards, and standard bag sizes, with the formula, waste allowance, and sources shown.',
+    'Free calculators that estimate materials for US home projects in feet, inches, cubic yards, and bag sizes, with the formula, waste allowance, and sources shown.',
   domain,
   siteUrl: `https://${domain}`,
   // Business inbox (Gmail). No domain mailbox or Email Routing is configured.
