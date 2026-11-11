@@ -6,15 +6,15 @@ draft: false
 
 **Effective Date:** October 21, 2026
 
-**Last Updated:** October 21, 2026
+**Last Updated:** November 10, 2026
 
 ## ARTICLE 1. INTRODUCTION AND IDENTITY OF THE OPERATOR
 
-**1.1 Operator.** The website known as Home & Yard Calcs and located at todo-domain.example, together with all of its pages, calculators, tools, and content (collectively, the "Site"), is owned and operated by Home & Yard Calcs (the "Operator," "we," "us," or "our").
+**1.1 Operator.** The website known as Home & Yard Calcs and located at homeandyardcalcs.com, together with all of its pages, calculators, tools, and content (collectively, the "Site"), is owned and operated by Home & Yard Calcs (the "Operator," "we," "us," or "our").
 
 **1.2 Purpose.** This Privacy Policy (this "Policy") describes the types of information that may be collected from or about you ("you" or "your") when you access or use the Site, how such information is used and disclosed, and the choices and rights available to you with respect to such information.
 
-**1.3 Contact.** Questions, comments, or requests concerning this Policy or our privacy practices may be directed to the Operator by electronic mail at contact@todo-domain.example.
+**1.3 Contact.** Questions, comments, or requests concerning this Policy or our privacy practices may be directed to the Operator by electronic mail at cosmodromedigital@gmail.com.
 
 ## ARTICLE 2. SCOPE
 
@@ -38,17 +38,17 @@ draft: false
 
 **4.2 Cookies, Web Beacons, and Similar Technologies.** The Site itself does not set first-party cookies and does not use browser local storage, session storage, or IndexedDB. Once advertising and consent management are enabled on the Site as described in Articles 6 and 7, third parties acting on the Site, including Google and other advertising vendors, may use cookies, web beacons (also known as pixel tags), local storage, device identifiers, and similar technologies (collectively, "Cookies and Similar Technologies"). Such technologies may be used to store your consent choices, serve and measure advertisements, limit how often you see an advertisement, and detect fraud and invalid traffic.
 
-**4.3 Analytics.** The Site uses, or may use, Cloudflare Web Analytics, which, when enabled, provides us with aggregated information about Site traffic and performance (such as page views, referring sources, and page-load times). Cloudflare Web Analytics is designed to operate without placing cookies on your browser and without using local storage, and it does not track individual visitors across websites.
+**4.3 Analytics.** The Site uses Cloudflare Web Analytics, a service of Cloudflare, Inc., which provides aggregated information about Site traffic and performance (such as page views, referring sources, and page-load times). Cloudflare enables this on the Site's own domain (not on preview or workers.dev URLs). It is designed to operate without placing cookies on your browser and without using local storage, and it does not track individual visitors across websites. It may load a small JavaScript beacon from static.cloudflareinsights.com. The Operator does not use analytics data to identify you or for advertising, and the Site does not use any other analytics service.
 
 **4.4 Security Technologies.** Cloudflare may set strictly necessary cookies on your browser, for example to distinguish human visitors from automated traffic and to protect the Site against attacks. Any such cookies are used solely for security purposes, do not track you across websites, and are not used for advertising.
 
 ## ARTICLE 5. INFORMATION YOU PROVIDE VOLUNTARILY
 
-**5.1 Electronic Mail.** The Site does not offer a contact form. If you contact us by electronic mail at contact@todo-domain.example, we will receive your email address, your name (if provided), the contents of your message, and any other information you choose to include. We use such information solely to read, respond to, and keep a record of your inquiry (including any reported error in a Tool), and to address any legal or security matter it raises.
+**5.1 Electronic Mail.** The Site does not offer a contact form. If you contact us by electronic mail at cosmodromedigital@gmail.com, we will receive your email address, your name (if provided), the contents of your message, and any other information you choose to include. We use such information solely to read, respond to, and keep a record of your inquiry (including any reported error in a Tool), and to address any legal or security matter it raises.
 
 **5.2 No Sensitive Information.** Please do not send us sensitive personal information (such as financial account numbers, government identification numbers, or health information) by electronic mail.
 
-**5.3 Email Delivery and Storage.** Electronic mail sent to contact@todo-domain.example is received by Cloudflare, Inc. through its Cloudflare Email Routing service, which processes each message in transit solely for the purpose of forwarding it to a mailbox hosted by Google LLC (Gmail). Google stores such messages on the Operator's behalf, and they are retained as described in Article 14. Cloudflare and Google process such messages in accordance with their respective privacy policies, available at [https://www.cloudflare.com/privacypolicy/](https://www.cloudflare.com/privacypolicy/) and [https://policies.google.com/privacy](https://policies.google.com/privacy).
+**5.3 Email Delivery and Storage.** Electronic mail sent to cosmodromedigital@gmail.com is received and stored by Google LLC (Gmail) on the Operator's behalf, and is retained as described in Article 14. Google processes such messages in accordance with its privacy policy, available at [https://policies.google.com/privacy](https://policies.google.com/privacy).
 
 ## ARTICLE 6. ADVERTISING
 
@@ -86,7 +86,7 @@ draft: false
 
 **8.3 Your Rights.** Subject to the conditions and exceptions set out in applicable law, you have the right to: (a) request access to the personal data we hold about you; (b) request rectification of inaccurate personal data; (c) request erasure of your personal data; (d) request restriction of processing; (e) object to processing based on legitimate interests; (f) request data portability; (g) withdraw your consent at any time, without affecting the lawfulness of processing based on consent before its withdrawal; and (h) lodge a complaint with a data protection supervisory authority in the country where you live or work or where an alleged infringement occurred.
 
-**8.4 Exercising Your Rights.** To exercise any of these rights, please contact us at contact@todo-domain.example. Because the Site does not maintain user accounts and the Operator generally does not hold information that identifies you by name, we may be unable to locate personal data relating to you, and we may request information reasonably necessary to verify your request. For personal data held by Google or other advertising vendors, you may also contact those parties directly.
+**8.4 Exercising Your Rights.** To exercise any of these rights, please contact us at cosmodromedigital@gmail.com. Because the Site does not maintain user accounts and the Operator generally does not hold information that identifies you by name, we may be unable to locate personal data relating to you, and we may request information reasonably necessary to verify your request. For personal data held by Google or other advertising vendors, you may also contact those parties directly.
 
 ## ARTICLE 9. ADDITIONAL INFORMATION FOR U.S. STATE RESIDENTS
 
@@ -98,7 +98,7 @@ draft: false
 
 **9.4 Your Rights.** To the extent applicable law grants you such rights, you may have the right to: (a) know and access the categories and specific pieces of personal information we have collected about you, the sources from which it was collected, the purposes for which it was used, and the categories of third parties to which it was disclosed; (b) request deletion of your personal information; (c) request correction of inaccurate personal information; (d) opt out of the sale of your personal information, the sharing of your personal information for cross-context behavioral advertising, and the processing of your personal information for targeted advertising; and (e) appeal our decision regarding a request.
 
-**9.5 How to Exercise Your Rights.** To opt out of sale, sharing, or targeted advertising, use the US state regulations opt-out message or the "Do not sell or share my personal information" link presented on the Site when advertising is enabled. To submit any other request, or to appeal a decision, contact us at contact@todo-domain.example with the subject line "Privacy Request" and the state in which you reside. We may need to verify your request before fulfilling it and, because the Site does not maintain user accounts, may be unable to associate certain information with you. You may designate an authorized agent to submit a request on your behalf, subject to verification as permitted by applicable law.
+**9.5 How to Exercise Your Rights.** To opt out of sale, sharing, or targeted advertising, use the US state regulations opt-out message or the "Do not sell or share my personal information" link presented on the Site when advertising is enabled. To submit any other request, or to appeal a decision, contact us at cosmodromedigital@gmail.com with the subject line "Privacy Request" and the state in which you reside. We may need to verify your request before fulfilling it and, because the Site does not maintain user accounts, may be unable to associate certain information with you. You may designate an authorized agent to submit a request on your behalf, subject to verification as permitted by applicable law.
 
 **9.6 Non-Discrimination.** We will not discriminate against you for exercising any of your privacy rights. The Site and its Tools are offered free of charge and will remain available to you on the same terms regardless of whether you exercise such rights.
 
@@ -108,11 +108,11 @@ draft: false
 
 (a) **Hosting, Content Delivery, and Security:** Cloudflare, Inc. (Cloudflare Workers static assets and content delivery network);
 
-(b) **Analytics:** Cloudflare Web Analytics (Cloudflare, Inc.), when enabled;
+(b) **Analytics:** Cloudflare Web Analytics (Cloudflare, Inc.), which is enabled;
 
 (c) **Advertising and Consent Management:** Google AdSense and Google Privacy & messaging (Google LLC), and other participating advertising vendors identified in the CMP, when advertising is enabled; and
 
-(d) **Email:** Cloudflare, Inc. (Cloudflare Email Routing), which receives electronic mail sent to contact@todo-domain.example and forwards it in transit, and Google LLC (Gmail), which hosts the mailbox in which such mail is stored, as further described in Section 5.3.
+(d) **Email:** Google LLC (Gmail), which receives and stores electronic mail sent to cosmodromedigital@gmail.com, as further described in Section 5.3.
 
 **10.2 Other Disclosures.** We may disclose information (a) if required to do so by law or in response to a valid subpoena, court order, or other legal process; (b) when we believe in good faith that disclosure is necessary to protect the rights, property, or safety of the Operator, the Site, its users, or others, or to investigate fraud or security issues; and (c) to a successor in connection with a transfer of the Site or of the business that operates it, whether by sale, merger, contribution to a newly formed entity, or otherwise, in which case the successor will be bound by this Policy with respect to the information transferred.
 
@@ -122,7 +122,7 @@ Some web browsers transmit "Do Not Track" signals. Because there is no uniform i
 
 ## ARTICLE 12. CHILDREN'S PRIVACY
 
-The Site is a general-audience website and is not directed to children under the age of thirteen (13). The Operator does not knowingly collect personal information from children under the age of thirteen (13) in violation of the Children's Online Privacy Protection Act ("COPPA") or other applicable law. If you are a parent or guardian and believe that your child has provided personal information to us, please contact us at contact@todo-domain.example, and we will take steps to delete such information.
+The Site is a general-audience website and is not directed to children under the age of thirteen (13). The Operator does not knowingly collect personal information from children under the age of thirteen (13) in violation of the Children's Online Privacy Protection Act ("COPPA") or other applicable law. If you are a parent or guardian and believe that your child has provided personal information to us, please contact us at cosmodromedigital@gmail.com, and we will take steps to delete such information.
 
 ## ARTICLE 13. DATA PROCESSING IN THE UNITED STATES
 
@@ -146,7 +146,7 @@ The Operator may amend this Policy from time to time. When we do, we will post t
 
 ## ARTICLE 18. CONTACT US
 
-If you have any questions about this Policy or wish to exercise any of your rights, please contact the Operator by electronic mail at contact@todo-domain.example.
+If you have any questions about this Policy or wish to exercise any of your rights, please contact the Operator by electronic mail at cosmodromedigital@gmail.com.
 
 **Effective Date:** October 21, 2026
 

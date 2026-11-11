@@ -49,7 +49,8 @@ for (const site of sites) {
   else {
     if (!wr.includes(`"name": "tools-${site}"`)) fail(`${site}: wrangler.jsonc name must be "tools-${site}"`);
     if (!/"preview_urls":\s*true/.test(wr)) fail(`${site}: wrangler.jsonc must set "preview_urls": true`);
-    if (/^\s*"main"\s*:/m.test(wr)) fail(`${site}: wrangler.jsonc must not set "main" (assets-only Worker)`);
+    // A thin Worker is allowed for hostname redirects (www → apex). Pages stay prebuilt assets.
+    if (/^\s*"main"\s*:/m.test(wr) && !/"run_worker_first":\s*true/.test(wr)) fail(`${site}: wrangler.jsonc "main" requires assets.run_worker_first so pages stay prebuilt assets`);
   }
 
   // Required source files
