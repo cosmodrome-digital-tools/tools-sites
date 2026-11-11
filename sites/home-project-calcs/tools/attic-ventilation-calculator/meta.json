@@ -1,100 +1,229 @@
 {
-  "title": "TODO Example Area Calculator",
-  "benefit": "TODO Square Feet With Waste Included",
-  "cardBlurb": "TODO 5-12 word benefit shown on homepage cards",
-  "metaDescription": "TODO 140-160 characters: what it calculates, in US units, plus one differentiator.",
-  "primaryKeyword": "TODO primary keyword",
+  "title": "Attic Ventilation Calculator",
+  "benefit": "Net Free Area and Vent Count",
+  "cardBlurb": "Net free area and soffit and ridge vents",
+  "seoTitle": "Attic Ventilation Calculator - Vent Area",
+  "metaDescription": "Find the attic net free ventilating area the 2021 IRC requires (1/150, or 1/300 under its exception) and how many feet of soffit and ridge vent meet it.",
+  "primaryKeyword": "attic ventilation calculator",
   "secondaryKeywords": [
-    "TODO secondary keyword"
+    "attic ventilation calculator net free area",
+    "how much attic ventilation do i need",
+    "1/300 rule attic ventilation",
+    "how much ridge vent do i need",
+    "soffit vent calculator"
   ],
-  "intent": "TODO search intent, e.g. estimate how much material to buy",
-  "registerRow": "TODO keyword/intent register row reference",
-  "category": "TODO Category Name",
-  "intro": "TODO One or two short sentences under the H1. Details go in page.md, not here.",
-  "lastUpdated": "2026-10-06",
+  "intent": "Find the attic net free ventilating area required by code and estimate how many soffit and ridge (or other) vents meet it.",
+  "registerRow": "Not on the Oct 2026 Keyword Register: category-fill addition (Insulation and Energy) chosen by the redesign brief; vent area and vent counts, not R-value or insulation bags.",
+  "category": "Insulation and Energy",
+  "intro": "Enter your attic floor area to get the net free ventilating area the 2021 IRC requires, split between soffit intake and ridge exhaust, and how much vent meets it.",
+  "lastUpdated": "2026-11-11",
   "layout": "split",
   "chartStyle": "bar",
-  "chartTitle": "Area with and without waste (sq ft)",
-  "chartUnit": "sq ft",
-  "chartXLabel": "TODO category-axis label",
+  "chartTitle": "Required net free area: intake vs exhaust (sq in)",
+  "chartUnit": "sq in",
+  "chartXLabel": "Vent location",
+  "diagramCaption": "Attic cross-section: air in at the soffits, out at the ridge. It redraws as you type.",
   "heroAlt": "",
-  "uniqueAddition": "TODO which unique addition this page has (chart, comparison table, scenario toggle, printable summary, or real-world tip)",
-  "relatedTools": [],
+  "uniqueAddition": "The 2021 IRC R806.2 ratio with the 1/300 exception's 40 to 50% upper-vent condition checked, a local-ratio override, and vent counts from the NFA printed on your own products (defaults cited to Air Vent's continuous soffit and ShingleVent II ridge vent), plus a table for common attic sizes.",
+  "relatedTools": [
+    "insulation-calculator",
+    "roof-pitch-calculator",
+    "shingle-calculator"
+  ],
   "inputs": [
     {
-      "name": "length",
-      "label": "Length",
-      "unit": "ft",
-      "default": "10",
-      "group": "Area size"
+      "name": "atticArea",
+      "label": "Attic floor area",
+      "unit": "sq ft",
+      "default": "1200",
+      "help": "Area of the vented attic space (usually the ceiling below it), 50 to 20,000 sq ft.",
+      "group": "Attic"
     },
     {
-      "name": "width",
-      "label": "Width",
-      "unit": "ft",
-      "default": "12",
-      "group": "Area size"
-    },
-    {
-      "name": "waste",
-      "advanced": true,
-      "label": "Waste allowance",
-      "unit": "%",
+      "name": "rule",
+      "label": "Ventilation ratio",
       "type": "select",
-      "default": "10",
+      "default": "150",
       "options": [
         {
-          "value": "0",
-          "label": "0% (no waste)"
+          "value": "150",
+          "label": "1/150 (2021 IRC R806.2)"
         },
         {
-          "value": "5",
-          "label": "5%"
+          "value": "300",
+          "label": "1/300 (only when the exception's conditions are met)"
         },
         {
-          "value": "10",
-          "label": "10% (typical)"
-        },
-        {
-          "value": "15",
-          "label": "15%"
+          "value": "custom",
+          "label": "Other ratio (local code)"
         }
       ],
-      "help": "Extra material for cuts, breakage, and mistakes.",
-      "group": "Allowance"
+      "help": "1/300 is allowed only when its conditions are met; see the FAQ.",
+      "group": "Attic"
+    },
+    {
+      "name": "customRatio",
+      "showIf": {
+        "field": "rule",
+        "equals": "custom"
+      },
+      "label": "1 sq ft of vent per",
+      "unit": "sq ft",
+      "default": "150",
+      "help": "Your local ratio, 50 to 600.",
+      "group": "Attic"
+    },
+    {
+      "name": "exhaustShare",
+      "label": "Share from exhaust (upper) vents",
+      "unit": "%",
+      "default": "50",
+      "help": "0 to 100%. The 1/300 exception requires 40 to 50%. 50% is an even split between intake and exhaust.",
+      "group": "Attic"
+    },
+    {
+      "name": "intakeKind",
+      "label": "Intake vents",
+      "type": "select",
+      "default": "continuous",
+      "options": [
+        {
+          "value": "continuous",
+          "label": "Continuous soffit vent (NFA per ft)"
+        },
+        {
+          "value": "each",
+          "label": "Individual soffit vents (NFA per vent)"
+        }
+      ],
+      "group": "Vents"
+    },
+    {
+      "name": "intakeNfa",
+      "label": "Intake vent NFA",
+      "unit": "sq in",
+      "default": "9",
+      "help": "From the product label: per linear foot for continuous vent, per vent for individual vents. Air Vent lists 9 sq in per ft for its continuous soffit vent.",
+      "group": "Vents"
+    },
+    {
+      "name": "exhaustKind",
+      "label": "Exhaust vents",
+      "type": "select",
+      "default": "ridge",
+      "options": [
+        {
+          "value": "ridge",
+          "label": "Ridge vent (NFA per ft)"
+        },
+        {
+          "value": "each",
+          "label": "Individual roof vents (NFA per vent)"
+        }
+      ],
+      "group": "Vents"
+    },
+    {
+      "name": "exhaustNfa",
+      "label": "Exhaust vent NFA",
+      "unit": "sq in",
+      "default": "18",
+      "help": "From the product label: per linear foot for ridge vent, per vent for box vents. Air Vent lists 18 sq in per ft for ShingleVent II.",
+      "group": "Vents"
     }
   ],
   "outputs": [
     {
-      "name": "total",
-      "label": "Total with waste",
-      "unit": "sq ft",
+      "name": "requiredSqIn",
+      "label": "Net free area required",
+      "unit": "sq in",
       "decimals": 1,
       "primary": true
     },
     {
-      "name": "area",
-      "label": "Area",
-      "unit": "sq ft",
-      "decimals": 1,
-      "group": "Area",
-      "unitGroup": "area"
+      "name": "intakeFt",
+      "label": "Soffit vent",
+      "unit": "ft",
+      "decimals": 0,
+      "primary": true
     },
     {
-      "name": "areaSqYd",
-      "label": "Area",
-      "unit": "sq yd",
+      "name": "intakeVents",
+      "label": "Soffit vents",
+      "unit": "vents",
+      "decimals": 0,
+      "primary": true
+    },
+    {
+      "name": "exhaustFt",
+      "label": "Ridge vent",
+      "unit": "ft",
+      "decimals": 0,
+      "primary": true
+    },
+    {
+      "name": "exhaustVents",
+      "label": "Roof vents",
+      "unit": "vents",
+      "decimals": 0,
+      "primary": true
+    },
+    {
+      "name": "requiredSqFt",
+      "label": "Net free area required",
+      "unit": "sq ft",
       "decimals": 2,
-      "group": "Area",
-      "unitGroup": "area"
+      "group": "Required area"
+    },
+    {
+      "name": "ratio",
+      "label": "Ratio used (1 per)",
+      "unit": "sq ft",
+      "decimals": 1,
+      "group": "Required area"
+    },
+    {
+      "name": "intakeSqIn",
+      "label": "Intake (soffit) area",
+      "unit": "sq in",
+      "decimals": 1,
+      "group": "Split"
+    },
+    {
+      "name": "exhaustSqIn",
+      "label": "Exhaust (upper) area",
+      "unit": "sq in",
+      "decimals": 1,
+      "group": "Split"
+    },
+    {
+      "name": "providedSqIn",
+      "label": "Area your vents provide",
+      "unit": "sq in",
+      "decimals": 1,
+      "group": "Split"
     }
   ],
   "sources": [
     {
-      "title": "TODO Source title (publisher)",
-      "url": "https://example.com/TODO",
-      "accessed": "2026-10-06"
+      "title": "R806.2 Minimum Vent Area, 2021 International Residential Code (UpCodes): 1/150 of the vented space; 1/300 when the exception's conditions are met, including 40 to 50 percent from upper ventilators",
+      "url": "https://up.codes/s/minimum-vent-area",
+      "accessed": "2026-11-11"
+    },
+    {
+      "title": "Calculating Attic Passive Ventilation (Building America Solution Center, Pacific Northwest National Laboratory, U.S. Department of Energy)",
+      "url": "https://basc.pnnl.gov/information/calculating-attic-passive-ventilation",
+      "accessed": "2026-11-11"
+    },
+    {
+      "title": "ShingleVent II ridge vent product sheet (Air Vent): 18 sq in of net free area per linear foot",
+      "url": "https://pdf.lowes.com/productdocuments/02819b27-0dec-4089-aa7b-8782262b4743/48329704.pdf",
+      "accessed": "2026-11-11"
+    },
+    {
+      "title": "Air Vent Continuous Aluminum Soffit and Under Eave Vent product listing (Do it Best): 9 sq in of net free area per linear foot",
+      "url": "https://www.doitbest.com/product/120247/air-vent-mill-continuous-aluminum-soffit-and-under-eave-vent-retrofit-120247/",
+      "accessed": "2026-11-11"
     }
-  ],
-  "diagramCaption": "Labeled plan of your area. It redraws as you type."
+  ]
 }

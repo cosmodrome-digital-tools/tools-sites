@@ -1,54 +1,77 @@
-// logic.test.js: Vitest tests for logic.js.
-// Required: at least 3 known-answer cases (each with its reference noted: a
-// trusted calculator or hand math) PLUS edge cases: zero, negative, very
-// large, empty, non-numeric, and the boundary values of every input.
+// logic.test.js: Vitest tests for logic.js (Sod Calculator).
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import * as logic from './logic.js';
 
 const { calculate } = logic;
-const ok = (raw) => {
-  const r = calculate(raw);
-  expect(r.ok).toBe(true);
+const base = { areaCount: '1', area1Length: '30', area1Width: '20', subtract: '0', rollCoverage: '10', palletCoverage: '450', waste: '5' };
+const run = (over = {}) => calculate({ ...base, ...over });
+const ok = (over) => {
+  const r = run(over);
+  expect(r.ok, JSON.stringify(r.errors)).toBe(true);
   return r.results;
 };
 
 describe('known answers', () => {
-  it('10 ft x 12 ft, 0% waste = 120 sq ft (hand math: 10 x 12)', () => {
-    expect(ok({ length: '10', width: '12', waste: '0' })).toEqual({ area: 120, areaSqYd: 13.33, total: 120 });
+  // page.md worked example. Hand math: 30 x 20 = 600; x 1.05 = 630; / 10 = 63 rolls; / 450 = 1.4 -> 2 pallets.
+  it('30 x 20 ft lawn = 63 rolls, 2 pallets (page.md worked example)', () => {
+    expect(ok()).toEqual({ rolls: 63, pallets: 2, lawnArea: 600, lawnSqYd: 66.67, orderArea: 630, orderSqYd: 70, exactPallets: 1.4, subtract: 0, area1: 600, area2: null, area3: null });
   });
-  it('10 ft x 12 ft, 10% waste = 132 sq ft (hand math: 120 x 1.10)', () => {
-    expect(ok({ length: '10', width: '12', waste: '10' }).total).toBe(132);
+  // Hand math: 600 + 40 x 25 = 1600 - 120 = 1480; x 1.05 = 1554; / 10 = 155.4 -> 156; / 450 = 3.45 -> 4.
+  it('two areas minus 120 sq ft of beds = 156 rolls, 4 pallets (hand math)', () => {
+    expect(ok({ areaCount: '2', area2Length: '40', area2Width: '25', subtract: '120' })).toMatchObject({ lawnArea: 1480, orderArea: 1554, rolls: 156, pallets: 4, area2: 1000 });
   });
-  it('12.5 ft x 8 ft, 5% waste = 105 sq ft (hand math: 100 x 1.05)', () => {
-    expect(ok({ length: '12.5', width: '8', waste: '5' })).toEqual({ area: 100, areaSqYd: 11.11, total: 105 });
+  // Hand math (MSU example): 1000 sq ft x 1.05 = 1050; / 500 = 2.1 -> 3 pallets; 0% extra = 1000 / 500 = 2 pallets exactly.
+  it('1,000 sq ft with 500 sq ft pallets = 3 pallets; with 0% extra exactly 2 (hand math)', () => {
+    expect(ok({ area1Length: '40', area1Width: '25', palletCoverage: '500' }).pallets).toBe(3);
+    expect(ok({ area1Length: '40', area1Width: '25', palletCoverage: '500', waste: '0' }).pallets).toBe(2);
   });
-});
-
-describe('labeled diagram', () => {
-  it('returns a plan diagram with the entered sizes', () => {
-    expect(calculate({ length: '10', width: '12', waste: '0' }).diagram).toMatchObject({ type: 'plan', length: 10, width: 12, unit: 'ft' });
+  it('page.md lawn-size table matches calculate()', () => {
+    const md = readFileSync(new URL('./page.md', import.meta.url), 'utf8');
+    for (const [l, w] of [[20, 10], [20, 20], [40, 25], [50, 30], [50, 40], [100, 50]]) {
+      const r = ok({ area1Length: String(l), area1Width: String(w) });
+      const r5 = ok({ area1Length: String(l), area1Width: String(w), palletCoverage: '500' });
+      const row = md.split('\n').find((x) => x.startsWith(`| ${l} × ${w} |`));
+      const cells = row.split('|').map((c) => c.trim()).filter(Boolean).slice(1).map(Number);
+      expect(cells).toEqual([r.lawnArea, r.orderArea, r.rolls, r.pallets, r5.pallets]);
+    }
+  });
+  it('returns a plan diagram with one area per rectangle', () => {
+    const d = run({ areaCount: '3', area2Length: '10', area2Width: '10', area3Length: '5', area3Width: '8' }).diagram;
+    expect(d).toMatchObject({ type: 'plan', pattern: 'turf' });
+    expect(d.areas.map((a) => a.length)).toEqual([30, 10, 5]);
   });
 });
 
 describe('edge cases', () => {
-  it('rejects zero and negative sizes', () => {
-    expect(calculate({ length: '0', width: '12', waste: '0' }).errors).toHaveProperty('length');
-    expect(calculate({ length: '10', width: '-1', waste: '0' }).errors).toHaveProperty('width');
-  });
-  it('rejects very large sizes', () => {
-    expect(calculate({ length: '1e7', width: '12', waste: '0' }).errors).toHaveProperty('length');
-  });
-  it('rejects empty and non-numeric input', () => {
-    expect(calculate({ length: '', width: '12', waste: '0' }).errors).toHaveProperty('length');
-    expect(calculate({ length: 'ten', width: '12', waste: '0' }).errors).toHaveProperty('length');
+  it('rejects zero, negative, empty, and non-numeric on the right field', () => {
+    expect(run({ area1Length: '0' }).errors).toHaveProperty('area1Length');
+    expect(run({ area1Width: '-1' }).errors).toHaveProperty('area1Width');
+    expect(run({ rollCoverage: '' }).errors).toHaveProperty('rollCoverage');
+    expect(run({ palletCoverage: 'big' }).errors).toHaveProperty('palletCoverage');
     expect(calculate({}).ok).toBe(false);
   });
-  it('accepts waste boundaries 0 and 50, rejects 50.1 and -1', () => {
-    expect(calculate({ length: '1', width: '1', waste: '50' }).ok).toBe(true);
-    expect(calculate({ length: '1', width: '1', waste: '0' }).ok).toBe(true);
-    expect(calculate({ length: '1', width: '1', waste: '50.1' }).ok).toBe(false);
-    expect(calculate({ length: '1', width: '1', waste: '-1' }).ok).toBe(false);
+  it('beds and paths must leave some lawn', () => {
+    expect(run({ subtract: '600' }).errors).toHaveProperty('subtract');
+    expect(run({ subtract: '599' }).ok).toBe(true);
+  });
+  it('bounds: lengths 1 to 1,000, roll 1 to 100, pallet 50 to 2,000, extra 0 to 25', () => {
+    expect(run({ area1Length: '1' }).ok).toBe(true);
+    expect(run({ area1Length: '1000.1' }).errors).toHaveProperty('area1Length');
+    expect(run({ rollCoverage: '100' }).ok).toBe(true);
+    expect(run({ rollCoverage: '0.9' }).errors).toHaveProperty('rollCoverage');
+    expect(run({ palletCoverage: '49' }).errors).toHaveProperty('palletCoverage');
+    expect(run({ palletCoverage: '2000' }).ok).toBe(true);
+    expect(run({ waste: '25' }).ok).toBe(true);
+    expect(run({ waste: '25.1' }).errors).toHaveProperty('waste');
+  });
+  it('very large: three 1,000 x 1,000 ft areas', () => {
+    const big = { areaCount: '3', area1Length: '1000', area1Width: '1000', area2Length: '1000', area2Width: '1000', area3Length: '1000', area3Width: '1000', waste: '0' };
+    expect(ok(big).rolls).toBe(300000);
+  });
+  it('areas hidden by the count are ignored; bad counts rejected', () => {
+    expect(ok({ area2Length: 'x' }).area2).toBe(null);
+    expect(run({ areaCount: '4' }).errors).toHaveProperty('areaCount');
   });
 });
 

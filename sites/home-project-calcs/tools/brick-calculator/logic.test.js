@@ -1,54 +1,74 @@
-// logic.test.js: Vitest tests for logic.js.
-// Required: at least 3 known-answer cases (each with its reference noted: a
-// trusted calculator or hand math) PLUS edge cases: zero, negative, very
-// large, empty, non-numeric, and the boundary values of every input.
+// logic.test.js: Vitest tests for logic.js (Brick Calculator).
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import * as logic from './logic.js';
 
 const { calculate } = logic;
-const ok = (raw) => {
-  const r = calculate(raw);
-  expect(r.ok).toBe(true);
+const base = { length: '20', height: '4', openings: '0', wythes: '1', brickType: 'modular', brickWaste: '5', mortarWaste: '20' };
+const run = (over = {}) => calculate({ ...base, ...over });
+const ok = (over) => {
+  const r = run(over);
+  expect(r.ok, JSON.stringify(r.errors)).toBe(true);
   return r.results;
 };
 
 describe('known answers', () => {
-  it('10 ft x 12 ft, 0% waste = 120 sq ft (hand math: 10 x 12)', () => {
-    expect(ok({ length: '10', width: '12', waste: '0' })).toEqual({ area: 120, areaSqYd: 13.33, total: 120 });
+  // page.md worked example. Hand math (BIA TN 10): 80 x 6.75 = 540; x 1.05 = 567; 540 / 1000 x 8.1 = 4.374; x 1.2 = 5.2488.
+  it('20 x 4 ft wall, modular, one wythe = 567 bricks, 5.25 cu ft mortar (page.md worked example)', () => {
+    expect(ok()).toEqual({ bricks: 567, mortarCuFt: 5.25, mortarCuYd: 0.194, wallArea: 80, bricksNet: 540, mortarNet: 4.37, perSqFt: 6.75 });
   });
-  it('10 ft x 12 ft, 10% waste = 132 sq ft (hand math: 120 x 1.10)', () => {
-    expect(ok({ length: '10', width: '12', waste: '10' }).total).toBe(132);
+  // Hand math: (10 x 8 - 20) = 60 x 6.75 x 2 = 810; x 1.05 = 850.5 -> 851; mortar 810 / 1000 x 8.1 = 6.561 x 1.2 = 7.87.
+  it('two wythes, 10 x 8 ft with 20 sq ft of openings = 851 bricks, 7.87 cu ft mortar (hand math)', () => {
+    expect(ok({ length: '10', height: '8', openings: '20', wythes: '2' })).toMatchObject({ wallArea: 60, bricksNet: 810, bricks: 851, mortarCuFt: 7.87 });
   });
-  it('12.5 ft x 8 ft, 5% waste = 105 sq ft (hand math: 100 x 1.05)', () => {
-    expect(ok({ length: '12.5', width: '8', waste: '5' })).toEqual({ area: 100, areaSqYd: 11.11, total: 105 });
+  // Hand math: custom 4.5 per sq ft, 6.0 cu ft per 1000; 100 sq ft -> 450; 0% waste -> 450 bricks, 2.7 cu ft.
+  it('custom figures 4.5 per sq ft and 6.0 cu ft per 1,000 with no waste = 450 bricks, 2.7 cu ft (hand math)', () => {
+    expect(ok({ length: '25', height: '4', brickType: 'custom', bricksPerSqFt: '4.5', mortarPer1000: '6', brickWaste: '0', mortarWaste: '0' })).toMatchObject({ bricks: 450, mortarCuFt: 2.7, perSqFt: 4.5 });
   });
-});
-
-describe('labeled diagram', () => {
-  it('returns a plan diagram with the entered sizes', () => {
-    expect(calculate({ length: '10', width: '12', waste: '0' }).diagram).toMatchObject({ type: 'plan', length: 10, width: 12, unit: 'ft' });
+  it('page.md wall-size table matches calculate()', () => {
+    const md = readFileSync(new URL('./page.md', import.meta.url), 'utf8');
+    for (const [l, h] of [[10, 3], [20, 4], [30, 6], [40, 8]]) {
+      const r = ok({ length: String(l), height: String(h) });
+      const row = md.split('\n').find((x) => x.startsWith(`| ${l} × ${h} |`));
+      const cells = row.split('|').map((c) => c.trim()).filter(Boolean).slice(1).map(Number);
+      expect(cells).toEqual([r.wallArea, r.bricksNet, r.bricks, r.mortarCuFt]);
+    }
+  });
+  it('custom fields are ignored for modular brick (hidden by the frame)', () => {
+    expect(ok({ bricksPerSqFt: 'x' }).perSqFt).toBe(6.75);
+  });
+  it('returns a brick wall diagram', () => {
+    expect(run().diagram).toMatchObject({ type: 'wall', length: 20, height: 4, pattern: 'brick' });
   });
 });
 
 describe('edge cases', () => {
-  it('rejects zero and negative sizes', () => {
-    expect(calculate({ length: '0', width: '12', waste: '0' }).errors).toHaveProperty('length');
-    expect(calculate({ length: '10', width: '-1', waste: '0' }).errors).toHaveProperty('width');
-  });
-  it('rejects very large sizes', () => {
-    expect(calculate({ length: '1e7', width: '12', waste: '0' }).errors).toHaveProperty('length');
-  });
-  it('rejects empty and non-numeric input', () => {
-    expect(calculate({ length: '', width: '12', waste: '0' }).errors).toHaveProperty('length');
-    expect(calculate({ length: 'ten', width: '12', waste: '0' }).errors).toHaveProperty('length');
+  it('rejects zero, negative, empty, and non-numeric on the right field', () => {
+    expect(run({ length: '0' }).errors).toHaveProperty('length');
+    expect(run({ height: '-1' }).errors).toHaveProperty('height');
+    expect(run({ openings: '' }).errors).toHaveProperty('openings');
+    expect(run({ brickType: 'custom', bricksPerSqFt: 'lots', mortarPer1000: '8' }).errors).toHaveProperty('bricksPerSqFt');
     expect(calculate({}).ok).toBe(false);
   });
-  it('accepts waste boundaries 0 and 50, rejects 50.1 and -1', () => {
-    expect(calculate({ length: '1', width: '1', waste: '50' }).ok).toBe(true);
-    expect(calculate({ length: '1', width: '1', waste: '0' }).ok).toBe(true);
-    expect(calculate({ length: '1', width: '1', waste: '50.1' }).ok).toBe(false);
-    expect(calculate({ length: '1', width: '1', waste: '-1' }).ok).toBe(false);
+  it('openings must be smaller than the wall', () => {
+    expect(run({ openings: '80' }).errors).toHaveProperty('openings');
+    expect(run({ openings: '79.9' }).ok).toBe(true);
+  });
+  it('bounds: length 1 to 500, height 0.5 to 40, brick waste 0 to 25, mortar waste 0 to 50', () => {
+    expect(run({ length: '1' }).ok).toBe(true);
+    expect(run({ length: '500.1' }).errors).toHaveProperty('length');
+    expect(run({ height: '0.5' }).ok).toBe(true);
+    expect(run({ height: '0.4' }).errors).toHaveProperty('height');
+    expect(run({ brickWaste: '25' }).ok).toBe(true);
+    expect(run({ brickWaste: '25.1' }).errors).toHaveProperty('brickWaste');
+    expect(run({ mortarWaste: '50.1' }).errors).toHaveProperty('mortarWaste');
+  });
+  it('very large wall stays finite', () => {
+    expect(ok({ length: '500', height: '40', wythes: '2', brickWaste: '0' }).bricks).toBe(270000);
+  });
+  it('rejects unknown wythes and brick types', () => {
+    expect(run({ wythes: '3' }).errors).toHaveProperty('wythes');
+    expect(run({ brickType: 'roman' }).errors).toHaveProperty('brickType');
   });
 });
 

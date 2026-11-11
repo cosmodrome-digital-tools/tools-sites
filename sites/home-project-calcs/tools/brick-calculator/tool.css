@@ -1,18 +1,31 @@
-/* tool.css: this tool's look. Everything MUST stay inside the selector below.
-   Allowed: the theme tokens and small layout touches inside the tool frame.
-   Not allowed: ad slots (.ad-slot, [data-ad-slot]), consent, the site header
-   or footer, body/html, or anything outside [data-tool="brick-calculator"].
-   Keep text and accent colors at WCAG AA contrast (4.5:1 for normal text). */
+/* tool.css: Brick Calculator look. Fired-clay red accent, mortar-grey surface, tight corners.
+   Contrast (WCAG AA): accent-ink #ffffff on accent #9b2c1d = 7.6:1;
+   ink #1f1714 on surface #f6f3f1 = 16.0:1; chart colors on white = 7.6:1, 7.6:1, 5.0:1, 5.5:1 (all over 3:1).
+   System fonts only. */
 [data-tool="brick-calculator"] {
-  /* --tool-accent: #1d5fa8;         buttons, frame top border, step badges */
-  /* --tool-accent-ink: #ffffff;     text on the accent color */
-  /* --tool-surface: #f3f7fb;        calculator frame background */
-  /* --tool-ink: #1f2328;            text inside the frame */
-  /* --tool-border: #cfd8e3; */
-  /* --tool-radius: 12px; */
-  /* --tool-font-display: Georgia, 'Times New Roman', serif;   system fonts only */
-  /* --chart-palette-1: #1d5fa8; */
-  /* --chart-palette-2: #b8530a; */
-  /* --chart-palette-3: #2f7d32; */
-  /* --chart-palette-4: #6b4fa0; */
+  --tool-accent: #9b2c1d;
+  --tool-accent-ink: #ffffff;
+  --tool-surface: #f6f3f1;
+  --tool-ink: #1f1714;
+  --tool-border: #dccfca;
+  --tool-radius: 3px;
+  --chart-palette-1: #9b2c1d;
+  --chart-palette-2: #57534e;
+  --chart-palette-3: #b45309;
+  --chart-palette-4: #0f766e;
+}
+
+[data-tool="brick-calculator"] .tool-form legend {
+  color: var(--tool-accent);
+}
+
+/* Headline result on a brick-red panel, like a stamped brick face. */
+[data-tool="brick-calculator"] .calc-primary {
+  background: var(--tool-accent);
+  border-left-color: var(--tool-ink);
+}
+[data-tool="brick-calculator"] .calc-primary__label,
+[data-tool="brick-calculator"] .calc-primary__value,
+[data-tool="brick-calculator"] .calc-primary__unit {
+  color: var(--tool-accent-ink);
 }

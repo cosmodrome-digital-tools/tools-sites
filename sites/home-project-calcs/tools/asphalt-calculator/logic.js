@@ -1,45 +1,76 @@
 // logic.js: PURE calculation code only. No DOM, no fetch, no window/document.
-// Input: the raw values typed or selected in the form (strings), keyed by the
-//        input "name" from meta.json.
-// Output: { ok: true, results: { <outputName>: number }, chart?: [{ label, value }] }
-//      or { ok: false, errors: { <inputName>: 'Plain-English message' } }
-// Optional extras on success: chartUnit / chartXLabel (axis labels that depend
-// on the inputs) and `diagram`, a labeled drawing spec rendered by the shared
-// frame (types: box, cylinder, plan, triangle, stairs, fence, wall, room, attic;
-// see docs/BUILDING-TOOLS.md). Diagram fields are labels only, never math.
-//
-// TEMPLATE EXAMPLE: area of a rectangle in square feet, plus a waste allowance.
-// Replace everything below with your tool's real calculation.
-import { round, sqFtToSqYd, validateAll, withWaste } from '@tools/calculator-core';
+// Asphalt: hot-mix asphalt for a driveway or path, in tons and cubic yards,
+// from area and compacted thickness. Tons use a spread rate in pounds per
+// square yard per inch of compacted thickness; 110 lb is the planning rate
+// state DOT specifications use (TxDOT, VDOT, INDOT), about 146.7 lb per cu ft.
+// The rate is editable because each mix weighs a little differently.
+import { ceilTo, cuFtToCuYd, round, sqFtToSqYd, validateNumber } from '@tools/calculator-core';
 
-export const TEMPLATE_EXAMPLE = true; // DELETE this line when you write the real calculation.
+export const DEFAULT_RATE = 110; // lb per sq yd per inch
+export const LB_PER_TON = 2000;
 
-export const RULES = {
-  length: { label: 'Length', positive: true, max: 10000 },
-  width: { label: 'Width', positive: true, max: 10000 },
-  waste: { label: 'Waste allowance', min: 0, max: 50 },
+const read = (raw, name, label, min, max, errors) => {
+  const r = validateNumber(raw[name], { label, min, max });
+  if (r.ok) return r.value;
+  errors[name] = r.message;
+  return undefined;
 };
 
-export function calculate(raw) {
-  const checked = validateAll(raw, RULES);
-  if (!checked.ok) return checked;
+/** Tons to order: rounded up to the next half ton. */
+export const orderTons = (tons) => ceilTo(tons, 0.5);
 
-  const { length, width, waste } = checked.values;
-  const area = length * width;               // square feet
-  const total = withWaste(area, waste);      // square feet including waste
+export function calculate(raw = {}) {
+  const errors = {};
+  const layers = String(raw.layers ?? 'one');
+  if (!['one', 'two'].includes(layers)) errors.layers = 'Choose one or two layers.';
+  const length = read(raw, 'length', 'Length', 1, 2000, errors);
+  const width = read(raw, 'width', 'Width', 1, 500, errors);
+  const thickness = read(raw, 'thickness', layers === 'two' ? 'Base layer thickness' : 'Thickness', 0.5, 12, errors);
+  const surface = layers === 'two' ? read(raw, 'surfaceThickness', 'Surface layer thickness', 0.5, 6, errors) : 0;
+  const rate = read(raw, 'rate', 'Spread rate', 90, 130, errors);
+  const waste = read(raw, 'waste', 'Extra allowance', 0, 20, errors);
+  if (Object.keys(errors).length) return { ok: false, errors };
+
+  const area = length * width;
+  const sqYd = sqFtToSqYd(area);
+  const factor = 1 + waste / 100;
+  const tonsFor = (inches) => (sqYd * inches * rate * factor) / LB_PER_TON;
+  const baseTons = tonsFor(thickness);
+  const surfaceTons = tonsFor(surface);
+  const tons = baseTons + surfaceTons;
+  const totalIn = thickness + surface;
+  const cuFt = area * (totalIn / 12) * factor;
 
   return {
     ok: true,
     results: {
-      area: round(area, 2),
-      areaSqYd: round(sqFtToSqYd(area), 2),
-      total: round(total, 2),
+      tonsToOrder: orderTons(tons),
+      tons: round(tons, 2),
+      cubicYards: round(cuFtToCuYd(cuFt), 2),
+      cubicFeet: round(cuFt, 1),
+      area: round(area, 1),
+      sqYd: round(sqYd, 2),
+      baseTons: layers === 'two' ? round(baseTons, 2) : null,
+      surfaceTons: layers === 'two' ? round(surfaceTons, 2) : null,
+      densityLbCuFt: round((rate * 12) / 9, 1),
     },
-    chart: [
-      { label: 'Area', value: round(area, 2) },
-      { label: 'With waste', value: round(total, 2) },
-    ],
-    // Labeled plan view of what the visitor entered (labels only, never math).
-    diagram: { type: 'plan', name: 'Area', length, width, unit: 'ft' },
+    chart: [1, 2, 3, 4].map((inches) => {
+      const point = { label: `${inches} in`, value: round(tonsFor(inches), 2) };
+      if (layers === 'one' && inches === thickness) Object.assign(point, { highlight: true, highlightLabel: 'Yours' });
+      return point;
+    }),
+    // Plan with the compacted thickness section (labels only).
+    diagram: {
+      type: 'box',
+      name: 'Asphalt area',
+      length,
+      width,
+      depth: totalIn,
+      unit: 'ft',
+      depthUnit: 'in',
+      pattern: 'hatch',
+      layers: layers === 'two' ? [{ label: 'Surface', depth: surface }, { label: 'Base', depth: thickness }] : null,
+      caption: `${round(totalIn, 2)} in compacted`,
+    },
   };
 }

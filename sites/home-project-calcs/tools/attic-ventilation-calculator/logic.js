@@ -1,45 +1,75 @@
 // logic.js: PURE calculation code only. No DOM, no fetch, no window/document.
-// Input: the raw values typed or selected in the form (strings), keyed by the
-//        input "name" from meta.json.
-// Output: { ok: true, results: { <outputName>: number }, chart?: [{ label, value }] }
-//      or { ok: false, errors: { <inputName>: 'Plain-English message' } }
-// Optional extras on success: chartUnit / chartXLabel (axis labels that depend
-// on the inputs) and `diagram`, a labeled drawing spec rendered by the shared
-// frame (types: box, cylinder, plan, triangle, stairs, fence, wall, room, attic;
-// see docs/BUILDING-TOOLS.md). Diagram fields are labels only, never math.
-//
-// TEMPLATE EXAMPLE: area of a rectangle in square feet, plus a waste allowance.
-// Replace everything below with your tool's real calculation.
-import { round, sqFtToSqYd, validateAll, withWaste } from '@tools/calculator-core';
+// Attic ventilation: required net free ventilating area (NFA) from the 2021
+// IRC R806.2 ratio (1/150 of the vented space, or 1/300 when the exception's
+// conditions are met), split between intake (soffit/eave) and exhaust (ridge
+// or other upper vents), then the length of continuous vent or the number of
+// individual vents for the NFA printed on your product.
+import { ceilTo, round, validateNumber } from '@tools/calculator-core';
 
-export const TEMPLATE_EXAMPLE = true; // DELETE this line when you write the real calculation.
+export const SQ_IN_PER_SQ_FT = 144;
+// R806.2 exception: 40 to 50 percent of the required area from upper vents.
+export const UPPER_MIN = 40;
+export const UPPER_MAX = 50;
 
-export const RULES = {
-  length: { label: 'Length', positive: true, max: 10000 },
-  width: { label: 'Width', positive: true, max: 10000 },
-  waste: { label: 'Waste allowance', min: 0, max: 50 },
+const read = (raw, name, label, min, max, errors) => {
+  const r = validateNumber(raw[name], { label, min, max });
+  if (r.ok) return r.value;
+  errors[name] = r.message;
+  return undefined;
 };
 
-export function calculate(raw) {
-  const checked = validateAll(raw, RULES);
-  if (!checked.ok) return checked;
+export function calculate(raw = {}) {
+  const errors = {};
+  const rule = String(raw.rule ?? '150');
+  if (!['150', '300', 'custom'].includes(rule)) errors.rule = 'Choose a ventilation ratio.';
+  const intakeKind = String(raw.intakeKind ?? 'continuous');
+  const exhaustKind = String(raw.exhaustKind ?? 'ridge');
+  if (!['continuous', 'each'].includes(intakeKind)) errors.intakeKind = 'Choose continuous soffit vent or individual vents.';
+  if (!['ridge', 'each'].includes(exhaustKind)) errors.exhaustKind = 'Choose ridge vent or individual vents.';
+  const area = read(raw, 'atticArea', 'Attic floor area', 50, 20000, errors);
+  const ratio = rule === 'custom' ? read(raw, 'customRatio', 'Ratio', 50, 600, errors) : Number(rule);
+  const share = read(raw, 'exhaustShare', 'Exhaust share', 0, 100, errors);
+  const intakeNfa = read(raw, 'intakeNfa', 'Intake vent NFA', 1, 500, errors);
+  const exhaustNfa = read(raw, 'exhaustNfa', 'Exhaust vent NFA', 1, 500, errors);
+  if (rule === '300' && share !== undefined && (share < UPPER_MIN || share > UPPER_MAX)) {
+    errors.exhaustShare = `The 1/300 exception needs ${UPPER_MIN} to ${UPPER_MAX}% of the area in upper (exhaust) vents. Change the share or use 1/150.`;
+  }
+  if (Object.keys(errors).length) return { ok: false, errors };
 
-  const { length, width, waste } = checked.values;
-  const area = length * width;               // square feet
-  const total = withWaste(area, waste);      // square feet including waste
+  const requiredSqFt = area / ratio;
+  const required = requiredSqFt * SQ_IN_PER_SQ_FT;
+  const exhaust = required * (share / 100);
+  const intake = required - exhaust;
+  const intakeCount = ceilTo(intake / intakeNfa, 1);
+  const exhaustCount = ceilTo(exhaust / exhaustNfa, 1);
+  const unitIn = intakeKind === 'continuous' ? 'ft' : 'vents';
+  const unitEx = exhaustKind === 'ridge' ? 'ft' : 'vents';
 
   return {
     ok: true,
     results: {
-      area: round(area, 2),
-      areaSqYd: round(sqFtToSqYd(area), 2),
-      total: round(total, 2),
+      requiredSqIn: round(required, 1),
+      requiredSqFt: round(requiredSqFt, 2),
+      intakeFt: intakeKind === 'continuous' ? intakeCount : null,
+      intakeVents: intakeKind === 'each' ? intakeCount : null,
+      exhaustFt: exhaustKind === 'ridge' ? exhaustCount : null,
+      exhaustVents: exhaustKind === 'each' ? exhaustCount : null,
+      intakeSqIn: round(intake, 1),
+      exhaustSqIn: round(exhaust, 1),
+      providedSqIn: round(intakeCount * intakeNfa + exhaustCount * exhaustNfa, 1),
+      ratio,
     },
     chart: [
-      { label: 'Area', value: round(area, 2) },
-      { label: 'With waste', value: round(total, 2) },
+      { label: 'Intake', value: round(intake, 1) },
+      { label: 'Exhaust', value: round(exhaust, 1) },
     ],
-    // Labeled plan view of what the visitor entered (labels only, never math).
-    diagram: { type: 'plan', name: 'Area', length, width, unit: 'ft' },
+    // Attic section with intake and exhaust NFA called out (labels only).
+    diagram: {
+      type: 'attic',
+      pitch: 6,
+      intakeLabel: `Intake ${round(intake, 0).toLocaleString('en-US')} sq in: ${intakeCount} ${unitIn} of soffit vent${intakeKind === 'each' ? 's' : ''}`,
+      exhaustLabel: `Exhaust ${round(exhaust, 0).toLocaleString('en-US')} sq in: ${exhaustCount} ${unitEx}${exhaustKind === 'ridge' ? ' of ridge vent' : ''}`,
+      spanLabel: `Attic floor ${round(area, 0).toLocaleString('en-US')} sq ft ÷ ${round(ratio, 1)}`,
+    },
   };
 }

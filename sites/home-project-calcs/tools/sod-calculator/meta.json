@@ -1,100 +1,263 @@
 {
-  "title": "TODO Example Area Calculator",
-  "benefit": "TODO Square Feet With Waste Included",
-  "cardBlurb": "TODO 5-12 word benefit shown on homepage cards",
-  "metaDescription": "TODO 140-160 characters: what it calculates, in US units, plus one differentiator.",
-  "primaryKeyword": "TODO primary keyword",
+  "title": "Sod Calculator",
+  "benefit": "Rolls and Pallets for Your Lawn",
+  "cardBlurb": "Square feet, rolls, and pallets of sod",
+  "seoTitle": "Sod Calculator - Rolls and Pallets",
+  "metaDescription": "Estimate square feet of lawn and how many sod rolls and pallets to order, with roll and pallet coverage you can match to your supplier and 5% extra for cuts.",
+  "primaryKeyword": "sod calculator",
   "secondaryKeywords": [
-    "TODO secondary keyword"
+    "how much sod do i need",
+    "how many pallets of sod do i need",
+    "sod square feet calculator",
+    "how many square feet in a pallet of sod"
   ],
-  "intent": "TODO search intent, e.g. estimate how much material to buy",
-  "registerRow": "TODO keyword/intent register row reference",
-  "category": "TODO Category Name",
-  "intro": "TODO One or two short sentences under the H1. Details go in page.md, not here.",
-  "lastUpdated": "2026-10-06",
+  "intent": "Estimate square feet of lawn and how many sod rolls or pallets to order.",
+  "registerRow": "Not on the Oct 2026 Keyword Register: category-fill addition (Garden Beds and Lawn) chosen by the redesign brief; lawn coverage, not mulch volume or topsoil.",
+  "category": "Garden Beds and Lawn",
+  "intro": "Enter your lawn as one to three rectangles to get the square feet of sod and how many rolls and pallets to order, using your supplier's roll and pallet sizes.",
+  "lastUpdated": "2026-11-11",
   "layout": "split",
   "chartStyle": "bar",
-  "chartTitle": "Area with and without waste (sq ft)",
+  "chartTitle": "What you order: lawn, extra for cuts, and spare sod on the last pallet (sq ft)",
   "chartUnit": "sq ft",
-  "chartXLabel": "TODO category-axis label",
+  "chartXLabel": "Part of the order",
+  "diagramCaption": "Plan of each lawn area with its dimensions. It redraws as you type.",
   "heroAlt": "",
-  "uniqueAddition": "TODO which unique addition this page has (chart, comparison table, scenario toggle, printable summary, or real-world tip)",
-  "relatedTools": [],
+  "uniqueAddition": "Roll and pallet coverage you can match to your own supplier (extension guides show sizes vary by grower), the spare sod left on the last pallet, and a table of rolls and pallets at 450 and 500 sq ft pallet sizes.",
+  "relatedTools": [
+    "mulch-calculator",
+    "gravel-calculator",
+    "paver-patio-calculator"
+  ],
   "inputs": [
     {
-      "name": "length",
-      "label": "Length",
-      "unit": "ft",
-      "default": "10",
-      "group": "Area size"
+      "name": "areaCount",
+      "label": "Lawn areas",
+      "type": "select",
+      "default": "1",
+      "options": [
+        {
+          "value": "1",
+          "label": "1 rectangle"
+        },
+        {
+          "value": "2",
+          "label": "2 rectangles"
+        },
+        {
+          "value": "3",
+          "label": "3 rectangles"
+        }
+      ],
+      "help": "Split an odd-shaped lawn into rectangles.",
+      "group": "Lawn"
     },
     {
-      "name": "width",
-      "label": "Width",
+      "name": "area1Length",
+      "label": "Area 1 length",
       "unit": "ft",
-      "default": "12",
-      "group": "Area size"
+      "default": "30",
+      "help": "1 to 1,000 ft.",
+      "group": "Lawn"
+    },
+    {
+      "name": "area1Width",
+      "label": "Area 1 width",
+      "unit": "ft",
+      "default": "20",
+      "help": "1 to 1,000 ft.",
+      "group": "Lawn"
+    },
+    {
+      "name": "area2Length",
+      "showIf": {
+        "field": "areaCount",
+        "in": [
+          "2",
+          "3"
+        ]
+      },
+      "label": "Area 2 length",
+      "unit": "ft",
+      "default": "10",
+      "help": "1 to 1,000 ft.",
+      "group": "Lawn"
+    },
+    {
+      "name": "area2Width",
+      "showIf": {
+        "field": "areaCount",
+        "in": [
+          "2",
+          "3"
+        ]
+      },
+      "label": "Area 2 width",
+      "unit": "ft",
+      "default": "10",
+      "help": "1 to 1,000 ft.",
+      "group": "Lawn"
+    },
+    {
+      "name": "area3Length",
+      "showIf": {
+        "field": "areaCount",
+        "in": [
+          "3"
+        ]
+      },
+      "label": "Area 3 length",
+      "unit": "ft",
+      "default": "10",
+      "help": "1 to 1,000 ft.",
+      "group": "Lawn"
+    },
+    {
+      "name": "area3Width",
+      "showIf": {
+        "field": "areaCount",
+        "in": [
+          "3"
+        ]
+      },
+      "label": "Area 3 width",
+      "unit": "ft",
+      "default": "10",
+      "help": "1 to 1,000 ft.",
+      "group": "Lawn"
+    },
+    {
+      "name": "subtract",
+      "label": "Beds, paths, and patios inside",
+      "unit": "sq ft",
+      "default": "0",
+      "help": "Area inside the rectangles that won't get sod.",
+      "group": "Lawn"
+    },
+    {
+      "name": "rollCoverage",
+      "label": "Coverage per roll",
+      "unit": "sq ft",
+      "default": "10",
+      "help": "Ask your supplier. Virginia Tech Extension says a standard roll is about 10 sq ft, but sizes vary.",
+      "group": "Supplier sizes"
+    },
+    {
+      "name": "palletCoverage",
+      "label": "Coverage per pallet",
+      "unit": "sq ft",
+      "default": "450",
+      "help": "Ask your supplier. Extension guides list pallets from about 450 to 700 sq ft depending on the grower.",
+      "group": "Supplier sizes"
     },
     {
       "name": "waste",
       "advanced": true,
-      "label": "Waste allowance",
+      "label": "Extra to order",
       "unit": "%",
-      "type": "select",
-      "default": "10",
-      "options": [
-        {
-          "value": "0",
-          "label": "0% (no waste)"
-        },
-        {
-          "value": "5",
-          "label": "5%"
-        },
-        {
-          "value": "10",
-          "label": "10% (typical)"
-        },
-        {
-          "value": "15",
-          "label": "15%"
-        }
-      ],
-      "help": "Extra material for cuts, breakage, and mistakes.",
-      "group": "Allowance"
+      "default": "5",
+      "help": "0 to 25%. Mississippi State Extension suggests ordering about 5% more than you measure.",
+      "group": "Advanced: extra for cuts"
     }
   ],
   "outputs": [
     {
-      "name": "total",
-      "label": "Total with waste",
-      "unit": "sq ft",
-      "decimals": 1,
+      "name": "rolls",
+      "label": "Rolls to order",
+      "unit": "rolls",
+      "decimals": 0,
       "primary": true
     },
     {
-      "name": "area",
-      "label": "Area",
+      "name": "pallets",
+      "label": "Pallets to order",
+      "unit": "pallets",
+      "decimals": 0,
+      "primary": true
+    },
+    {
+      "name": "lawnArea",
+      "label": "Lawn area",
       "unit": "sq ft",
       "decimals": 1,
       "group": "Area",
-      "unitGroup": "area"
+      "unitGroup": "lawn"
     },
     {
-      "name": "areaSqYd",
-      "label": "Area",
+      "name": "lawnSqYd",
+      "label": "Lawn area",
       "unit": "sq yd",
       "decimals": 2,
       "group": "Area",
-      "unitGroup": "area"
+      "unitGroup": "lawn"
+    },
+    {
+      "name": "orderArea",
+      "label": "Area to order with extra",
+      "unit": "sq ft",
+      "decimals": 1,
+      "group": "Area",
+      "unitGroup": "order"
+    },
+    {
+      "name": "orderSqYd",
+      "label": "Area to order with extra",
+      "unit": "sq yd",
+      "decimals": 2,
+      "group": "Area",
+      "unitGroup": "order"
+    },
+    {
+      "name": "subtract",
+      "label": "Beds and paths left out",
+      "unit": "sq ft",
+      "decimals": 1,
+      "group": "Area"
+    },
+    {
+      "name": "exactPallets",
+      "label": "Pallets before rounding up",
+      "unit": "pallets",
+      "decimals": 2,
+      "group": "Order"
+    },
+    {
+      "name": "area1",
+      "label": "Area 1",
+      "unit": "sq ft",
+      "decimals": 1,
+      "group": "Each area"
+    },
+    {
+      "name": "area2",
+      "label": "Area 2",
+      "unit": "sq ft",
+      "decimals": 1,
+      "group": "Each area"
+    },
+    {
+      "name": "area3",
+      "label": "Area 3",
+      "unit": "sq ft",
+      "decimals": 1,
+      "group": "Each area"
     }
   ],
   "sources": [
     {
-      "title": "TODO Source title (publisher)",
-      "url": "https://example.com/TODO",
-      "accessed": "2026-10-06"
+      "title": "Sod Source Selection, Installation, Maintenance, and Producers in Virginia, publication 418-040 (Virginia Cooperative Extension, Virginia Tech): standard roll about 10 sq ft; pallets about 450 to 700 sq ft depending on the grower",
+      "url": "https://www.pubs.ext.vt.edu/418/418-040/418-040.html",
+      "accessed": "2026-11-11"
+    },
+    {
+      "title": "Sod Installation and Maintenance, publication P2951 (Mississippi State University Extension): pallets typically 450 to 500 sq ft; buy about 5 percent more sod than you think you need",
+      "url": "https://extension.msstate.edu/publications/sod-installation-and-maintenance",
+      "accessed": "2026-11-11"
+    },
+    {
+      "title": "How to Select and Install Sod (Texas A&M AgriLife Extension): measure the area and subtract the house and non-turf landscaping; some waste in installation from odd shapes",
+      "url": "https://mytexas.ag.tamu.edu/publications/how-to-select-and-install-sod/",
+      "accessed": "2026-11-11"
     }
-  ],
-  "diagramCaption": "Labeled plan of your area. It redraws as you type."
+  ]
 }

@@ -1,100 +1,402 @@
 {
-  "title": "TODO Example Area Calculator",
-  "benefit": "TODO Square Feet With Waste Included",
-  "cardBlurb": "TODO 5-12 word benefit shown on homepage cards",
-  "metaDescription": "TODO 140-160 characters: what it calculates, in US units, plus one differentiator.",
-  "primaryKeyword": "TODO primary keyword",
+  "title": "Flooring Calculator",
+  "benefit": "Boxes for One or More Rooms",
+  "cardBlurb": "Boxes for several rooms, with layout waste",
+  "seoTitle": "Flooring Calculator - Boxes for Any Room",
+  "metaDescription": "Estimate boxes of flooring for up to four rooms entered in feet and inches, with 10% or 15% layout waste from Tarkett's install guide and a leftover readout.",
+  "primaryKeyword": "flooring calculator",
   "secondaryKeywords": [
-    "TODO secondary keyword"
+    "flooring calculator square feet",
+    "flooring calculator multiple rooms",
+    "how much extra flooring to buy",
+    "vinyl plank flooring waste factor",
+    "how many boxes of flooring do i need"
   ],
-  "intent": "TODO search intent, e.g. estimate how much material to buy",
-  "registerRow": "TODO keyword/intent register row reference",
-  "category": "TODO Category Name",
-  "intro": "TODO One or two short sentences under the H1. Details go in page.md, not here.",
-  "lastUpdated": "2026-10-06",
+  "intent": "Estimate boxes of flooring, including layout waste, for one or more rooms.",
+  "registerRow": "Keyword Register: flooring calculator (Volume 3, Competition ease 1, Ad value 4, Fit 5, Priority 12); launch order 15",
+  "category": "Interiors",
+  "intro": "Enter each room in feet and inches, pick the layout, and enter the coverage from the box label to get boxes to buy and the square feet left over.",
+  "lastUpdated": "2026-11-11",
   "layout": "split",
   "chartStyle": "bar",
-  "chartTitle": "Area with and without waste (sq ft)",
+  "chartTitle": "Where the flooring you buy goes (sq ft)",
   "chartUnit": "sq ft",
-  "chartXLabel": "TODO category-axis label",
+  "chartXLabel": "Floor, waste allowance, and leftover",
+  "diagramCaption": "Plan of each room with its length and width. It redraws as you type.",
   "heroAlt": "",
-  "uniqueAddition": "TODO which unique addition this page has (chart, comparison table, scenario toggle, printable summary, or real-world tip)",
-  "relatedTools": [],
+  "uniqueAddition": "Multi-room entry in feet and inches with layout waste presets cited to Tarkett's ProGen instructions, a leftover-square-feet readout, and a table answering how much flooring common room sizes need.",
+  "relatedTools": [
+    "paint-calculator",
+    "drywall-calculator"
+  ],
   "inputs": [
     {
-      "name": "length",
-      "label": "Length",
-      "unit": "ft",
-      "default": "10",
-      "group": "Area size"
+      "name": "roomCount",
+      "label": "Number of rooms",
+      "type": "select",
+      "default": "1",
+      "options": [
+        {
+          "value": "1",
+          "label": "1 room"
+        },
+        {
+          "value": "2",
+          "label": "2 rooms"
+        },
+        {
+          "value": "3",
+          "label": "3 rooms"
+        },
+        {
+          "value": "4",
+          "label": "4 rooms"
+        }
+      ],
+      "help": "Each room is a rectangle. Split L-shaped rooms into two.",
+      "group": "Rooms"
     },
     {
-      "name": "width",
+      "name": "room1LengthFt",
+      "label": "Length",
+      "unit": "ft",
+      "default": "12",
+      "help": "Feet, 0 to 100.",
+      "group": "Room 1"
+    },
+    {
+      "name": "room1LengthIn",
+      "label": "plus inches",
+      "unit": "in",
+      "default": "0",
+      "help": "0 to 11.99.",
+      "group": "Room 1"
+    },
+    {
+      "name": "room1WidthFt",
       "label": "Width",
       "unit": "ft",
       "default": "12",
-      "group": "Area size"
+      "help": "Feet, 0 to 100.",
+      "group": "Room 1"
     },
     {
-      "name": "waste",
-      "advanced": true,
-      "label": "Waste allowance",
-      "unit": "%",
-      "type": "select",
+      "name": "room1WidthIn",
+      "label": "plus inches",
+      "unit": "in",
+      "default": "0",
+      "help": "0 to 11.99.",
+      "group": "Room 1"
+    },
+    {
+      "name": "room2LengthFt",
+      "showIf": {
+        "field": "roomCount",
+        "in": [
+          "2",
+          "3",
+          "4"
+        ]
+      },
+      "label": "Length",
+      "unit": "ft",
       "default": "10",
+      "help": "Feet, 0 to 100.",
+      "group": "Room 2"
+    },
+    {
+      "name": "room2LengthIn",
+      "showIf": {
+        "field": "roomCount",
+        "in": [
+          "2",
+          "3",
+          "4"
+        ]
+      },
+      "label": "plus inches",
+      "unit": "in",
+      "default": "0",
+      "help": "0 to 11.99.",
+      "group": "Room 2"
+    },
+    {
+      "name": "room2WidthFt",
+      "showIf": {
+        "field": "roomCount",
+        "in": [
+          "2",
+          "3",
+          "4"
+        ]
+      },
+      "label": "Width",
+      "unit": "ft",
+      "default": "10",
+      "help": "Feet, 0 to 100.",
+      "group": "Room 2"
+    },
+    {
+      "name": "room2WidthIn",
+      "showIf": {
+        "field": "roomCount",
+        "in": [
+          "2",
+          "3",
+          "4"
+        ]
+      },
+      "label": "plus inches",
+      "unit": "in",
+      "default": "0",
+      "help": "0 to 11.99.",
+      "group": "Room 2"
+    },
+    {
+      "name": "room3LengthFt",
+      "showIf": {
+        "field": "roomCount",
+        "in": [
+          "3",
+          "4"
+        ]
+      },
+      "label": "Length",
+      "unit": "ft",
+      "default": "10",
+      "help": "Feet, 0 to 100.",
+      "group": "Room 3"
+    },
+    {
+      "name": "room3LengthIn",
+      "showIf": {
+        "field": "roomCount",
+        "in": [
+          "3",
+          "4"
+        ]
+      },
+      "label": "plus inches",
+      "unit": "in",
+      "default": "0",
+      "help": "0 to 11.99.",
+      "group": "Room 3"
+    },
+    {
+      "name": "room3WidthFt",
+      "showIf": {
+        "field": "roomCount",
+        "in": [
+          "3",
+          "4"
+        ]
+      },
+      "label": "Width",
+      "unit": "ft",
+      "default": "10",
+      "help": "Feet, 0 to 100.",
+      "group": "Room 3"
+    },
+    {
+      "name": "room3WidthIn",
+      "showIf": {
+        "field": "roomCount",
+        "in": [
+          "3",
+          "4"
+        ]
+      },
+      "label": "plus inches",
+      "unit": "in",
+      "default": "0",
+      "help": "0 to 11.99.",
+      "group": "Room 3"
+    },
+    {
+      "name": "room4LengthFt",
+      "showIf": {
+        "field": "roomCount",
+        "in": [
+          "4"
+        ]
+      },
+      "label": "Length",
+      "unit": "ft",
+      "default": "10",
+      "help": "Feet, 0 to 100.",
+      "group": "Room 4"
+    },
+    {
+      "name": "room4LengthIn",
+      "showIf": {
+        "field": "roomCount",
+        "in": [
+          "4"
+        ]
+      },
+      "label": "plus inches",
+      "unit": "in",
+      "default": "0",
+      "help": "0 to 11.99.",
+      "group": "Room 4"
+    },
+    {
+      "name": "room4WidthFt",
+      "showIf": {
+        "field": "roomCount",
+        "in": [
+          "4"
+        ]
+      },
+      "label": "Width",
+      "unit": "ft",
+      "default": "10",
+      "help": "Feet, 0 to 100.",
+      "group": "Room 4"
+    },
+    {
+      "name": "room4WidthIn",
+      "showIf": {
+        "field": "roomCount",
+        "in": [
+          "4"
+        ]
+      },
+      "label": "plus inches",
+      "unit": "in",
+      "default": "0",
+      "help": "0 to 11.99.",
+      "group": "Room 4"
+    },
+    {
+      "name": "layout",
+      "label": "Layout",
+      "type": "select",
+      "default": "straight",
       "options": [
         {
-          "value": "0",
-          "label": "0% (no waste)"
+          "value": "straight",
+          "label": "Straight (10% waste)"
         },
         {
-          "value": "5",
-          "label": "5%"
+          "value": "diagonal",
+          "label": "Diagonal (15% waste)"
         },
         {
-          "value": "10",
-          "label": "10% (typical)"
-        },
-        {
-          "value": "15",
-          "label": "15%"
+          "value": "custom",
+          "label": "Herringbone or other (enter waste)"
         }
       ],
-      "help": "Extra material for cuts, breakage, and mistakes.",
-      "group": "Allowance"
+      "help": "Straight and diagonal use Tarkett's ProGen LVP figures. For anything else, use your installer's or manufacturer's figure.",
+      "group": "Flooring"
+    },
+    {
+      "name": "customWaste",
+      "showIf": {
+        "field": "layout",
+        "equals": "custom"
+      },
+      "label": "Waste allowance",
+      "unit": "%",
+      "default": "10",
+      "help": "0 to 40%. We didn't find a published herringbone figure, so enter the one from your product's instructions or installer.",
+      "group": "Flooring"
+    },
+    {
+      "name": "boxCoverage",
+      "label": "Coverage per box",
+      "unit": "sq ft",
+      "default": "20",
+      "help": "From the box label, 1 to 100 sq ft. Coverage differs by product, so check yours.",
+      "group": "Flooring"
+    },
+    {
+      "name": "extraBoxes",
+      "advanced": true,
+      "label": "Extra boxes for repairs",
+      "unit": "boxes",
+      "default": "0",
+      "help": "Whole number, 0 to 10. Spare boxes from the same lot for future repairs.",
+      "group": "Advanced: spare boxes"
     }
   ],
   "outputs": [
     {
-      "name": "total",
-      "label": "Total with waste",
-      "unit": "sq ft",
-      "decimals": 1,
+      "name": "boxes",
+      "label": "Boxes to buy",
+      "unit": "boxes",
+      "decimals": 0,
       "primary": true
     },
     {
       "name": "area",
-      "label": "Area",
+      "label": "Floor area",
       "unit": "sq ft",
-      "decimals": 1,
-      "group": "Area",
-      "unitGroup": "area"
+      "decimals": 2,
+      "primary": true
     },
     {
-      "name": "areaSqYd",
-      "label": "Area",
-      "unit": "sq yd",
+      "name": "areaWithWaste",
+      "label": "Area with waste",
+      "unit": "sq ft",
       "decimals": 2,
-      "group": "Area",
-      "unitGroup": "area"
+      "group": "Totals"
+    },
+    {
+      "name": "wastePct",
+      "label": "Waste allowance used",
+      "unit": "%",
+      "decimals": 1,
+      "group": "Totals"
+    },
+    {
+      "name": "bought",
+      "label": "Flooring in the boxes",
+      "unit": "sq ft",
+      "decimals": 2,
+      "group": "Totals"
+    },
+    {
+      "name": "leftover",
+      "label": "Left over after waste",
+      "unit": "sq ft",
+      "decimals": 2,
+      "group": "Totals"
+    },
+    {
+      "name": "room1Area",
+      "label": "Room 1",
+      "unit": "sq ft",
+      "decimals": 2,
+      "group": "Rooms"
+    },
+    {
+      "name": "room2Area",
+      "label": "Room 2",
+      "unit": "sq ft",
+      "decimals": 2,
+      "group": "Rooms"
+    },
+    {
+      "name": "room3Area",
+      "label": "Room 3",
+      "unit": "sq ft",
+      "decimals": 2,
+      "group": "Rooms"
+    },
+    {
+      "name": "room4Area",
+      "label": "Room 4",
+      "unit": "sq ft",
+      "decimals": 2,
+      "group": "Rooms"
     }
   ],
   "sources": [
     {
-      "title": "TODO Source title (publisher)",
-      "url": "https://example.com/TODO",
+      "title": "ProGen Installation Instructions (Tarkett): add 10% for straight installations and 15% for diagonal installations",
+      "url": "https://tarketthome.com/TarkettResidential/media/Tarkett-Residential/Product%20Documents/Hard%20Flooring/LVT/ProGen_InstallationInstructions.pdf?ext=.pdf",
       "accessed": "2026-10-06"
     }
-  ],
-  "diagramCaption": "Labeled plan of your area. It redraws as you type."
+  ]
 }

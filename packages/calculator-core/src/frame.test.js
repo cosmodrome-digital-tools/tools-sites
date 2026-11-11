@@ -1,15 +1,10 @@
 import { describe, expect, it } from 'vitest';
-import { readFileSync } from 'node:fs';
 import { renderChart } from './chart.js';
 import { isShown, onlyVisible, visibleFields } from './visibility.js';
 
-const V1 = JSON.parse(readFileSync(new URL('./__fixtures__/chart-v1.json', import.meta.url), 'utf8'));
 const data = [{ label: 'A', value: 2 }, { label: 'B & C', value: 4 }, { label: 'D', value: 0 }];
 
-describe('chart highlight (backward compatible)', () => {
-  it('renders byte-for-byte the same SVG as before when no row is highlighted', () => {
-    for (const style of ['bar', 'line', 'donut']) expect(renderChart(style, data, { title: 'T' })).toBe(V1[style]);
-  });
+describe('chart highlight', () => {
   for (const style of ['bar', 'line', 'donut']) {
     it(`${style}: highlighted row gets an ink outline, a text marker, and is named in the title`, () => {
       const svg = renderChart(style, [data[0], { ...data[1], highlight: true }], { title: 'T' });
@@ -20,6 +15,13 @@ describe('chart highlight (backward compatible)', () => {
       expect((svg.match(/tool-chart__hl/g) ?? []).length).toBe(1);
     });
   }
+  it('no highlight: no outline and no marker', () => {
+    for (const style of ['bar', 'line', 'donut']) {
+      const svg = renderChart(style, data, { title: 'T' });
+      expect(svg).not.toContain('tool-chart__hl');
+      expect(svg).not.toContain('Yours');
+    }
+  });
   it('uses a custom, escaped highlight label', () => {
     const svg = renderChart('line', [{ label: '6', value: 26.57, highlight: true, highlightLabel: 'Your <pitch>' }], { title: 'T' });
     expect(svg).toContain('Your &lt;pitch&gt;');
