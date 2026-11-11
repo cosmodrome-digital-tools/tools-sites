@@ -44,6 +44,7 @@ describe('known answers', () => {
     // field before waste = ceil(13.4164 x 3 = 40.25) = 41; with waste = ceil(44.27) = 45
     // starter = ceil((80 + 60) / 120.33 = 1.16) = 2; ridge cap = ceil(40 / 25 = 1.6) = 2
     // underlayment = ceil(1,341.64 / 937.5 = 1.43) = 2; nails = ceil(14.7580 x 256 = 3,778.06) = 3,779
+    // drip edge = ceil((80 + 60) / (10 - 2/12) = 140 / 9.8333 = 14.24) = 15 pieces
     expect(ok()).toEqual({
       fieldBundles: 45,
       fieldBundlesBeforeWaste: 41,
@@ -56,6 +57,8 @@ describe('known answers', () => {
       ridgeCapBundles: 2,
       underlaymentRolls: 2,
       nails: 3779,
+      dripEdgeLength: 140,
+      dripEdgePieces: 15,
     });
   });
 
@@ -238,8 +241,47 @@ describe('product presets and shopping list', () => {
     const list = shoppingList(ok());
     expect(list.map((g) => g.group)).toEqual(['Field shingles', 'Accessories', 'Fasteners']);
     expect(list[0].items[0].qty).toBe(45);
-    expect(list[1].items.map((i) => i.qty)).toEqual([2, 2, 2]);
+    expect(list[1].items.map((i) => i.qty)).toEqual([2, 2, 2, 15]);
+    expect(list[1].items[3].label).toBe('Drip edge (10 ft pieces)');
     expect(list[2].items[0].qty).toBe(3779);
+  });
+});
+
+describe('drip edge (2024 IRC R905.2.8.5: eaves and rakes, 2 in overlaps, 10 ft pieces)', () => {
+  it('blank length uses eave + rake and rounds pieces up', () => {
+    expect(ok({ eave: '59', rake: '0' }).dripEdgePieces).toBe(6); // 708 in / 118 in = exactly 6 pieces
+    expect(ok({ eave: '60', rake: '0' }).dripEdgePieces).toBe(7); // 60 / 9.8333 = 6.10 -> 7
+    expect(ok({ eave: '60', rake: '0' }).dripEdgeLength).toBe(60);
+    expect(ok({ eave: '9.8', rake: '0' }).dripEdgePieces).toBe(1);
+  });
+  it('a typed length overrides eave + rake (e.g. rake 0 for starter, but drip edge on the gables)', () => {
+    const r = ok({ rake: '0', dripEdge: '140' });
+    expect(r.starterLength).toBe(80);
+    expect(r.dripEdgePieces).toBe(15);
+  });
+  it('zero edges need zero pieces; invalid lengths are rejected', () => {
+    expect(ok({ eave: '0', rake: '0' }).dripEdgePieces).toBe(0);
+    expect(ok({ dripEdge: '0' }).dripEdgePieces).toBe(0);
+    expect(calculate({ ...DEFAULTS, dripEdge: '-1' }).errors).toHaveProperty('dripEdge');
+    expect(calculate({ ...DEFAULTS, dripEdge: '1001' }).errors).toHaveProperty('dripEdge');
+    expect(calculate({ ...DEFAULTS, dripEdge: 'ten' }).errors).toHaveProperty('dripEdge');
+  });
+  it('drip edge does not change any other result', () => {
+    const { dripEdgeLength, dripEdgePieces, ...rest } = ok({ dripEdge: '500' });
+    const { dripEdgeLength: a, dripEdgePieces: b, ...base } = ok();
+    expect(rest).toEqual(base);
+  });
+});
+
+describe('below 2/12 is blocked with a helpful low-slope message', () => {
+  it('names the IRC rule and points to low-slope roofing in both modes', () => {
+    const p = calculate({ ...DEFAULTS, pitch: '1.5' }).errors.pitch;
+    expect(p).toMatch(/2024 IRC R905\.2\.2/);
+    expect(p).toMatch(/low-slope roofing/);
+    expect(p).toMatch(/roll roofing/);
+    const m = calculate({ ...DEFAULTS, pitchMode: 'multiplier', multiplier: '1.01' }).errors.multiplier;
+    expect(m).toMatch(/1\.014/);
+    expect(m).toMatch(/low-slope roofing/);
   });
 });
 

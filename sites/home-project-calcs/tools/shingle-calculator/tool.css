@@ -123,11 +123,8 @@
   color: var(--tool-ink);
 }
 
-/* Coverage table in the page copy; scrolls inside itself on phones. */
+/* Coverage table in the page copy (the shared frame makes it scroll on phones). */
 [data-tool="shingle-calculator"] .tool-content table {
-  display: block;
-  max-width: 100%;
-  overflow-x: auto;
   border-collapse: collapse;
 }
 [data-tool="shingle-calculator"] .tool-content th,

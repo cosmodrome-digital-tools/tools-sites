@@ -20,6 +20,7 @@
     { "name": "width", "label": "Width", "unit": "ft", "default": "12", "group": "Area size" },
     {
       "name": "waste",
+      "advanced": true,
       "label": "Waste allowance",
       "unit": "%",
       "type": "select",

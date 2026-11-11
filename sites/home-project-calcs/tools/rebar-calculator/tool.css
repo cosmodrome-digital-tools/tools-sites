@@ -55,12 +55,8 @@
   font-variant-numeric: tabular-nums;
 }
 
-/* Bar-size table in the page copy. display:block lets it scroll inside itself
-   on phones instead of widening the page. */
+/* Bar-size table in the page copy (the shared frame makes it scroll on phones). */
 [data-tool="rebar-calculator"] .tool-content table {
-  display: block;
-  max-width: 100%;
-  overflow-x: auto;
   border-collapse: collapse;
   font-variant-numeric: tabular-nums;
 }

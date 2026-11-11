@@ -105,3 +105,8 @@
 [data-tool="roof-pitch-calculator"] .roof-shingle-link a::after {
   content: " \2192";
 }
+
+[data-tool="roof-pitch-calculator"] .roof-table-jump {
+  margin: 0.25rem 0 0;
+  font-size: 0.9375rem;
+}

@@ -108,7 +108,10 @@ export function calculate(raw = {}) {
   const depths = [...new Set([4, 6, 4 + extra, 6 + extra])].sort((a, b) => a - b);
   const chart = depths.map((d) => {
     const tons = round(baseTons(area, d, v.density), 1);
-    return { label: `${d}" · ${tons} t`, value: tons };
+    const point = { label: `${d}" · ${tons} t`, value: tons };
+    // Highlight the base depth this patio actually needs.
+    if (d === depth) Object.assign(point, { highlight: true, highlightLabel: 'Your base' });
+    return point;
   });
 
   return {

@@ -8,6 +8,12 @@ import { readFileSync, readdirSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { onlyVisible, visibleFields } from '@tools/calculator-core/visibility.js';
 
+// Intended additions since the fixture was taken (refinement PR 2): shingle's
+// optional drip edge input and its two new outputs. Everything else must match.
+const ADDED_INPUTS = { 'shingle-calculator': ['dripEdge'] };
+const ADDED_RESULTS = { 'shingle-calculator': ['dripEdgeLength', 'dripEdgePieces'] };
+const without = (obj, keys = []) => Object.fromEntries(Object.entries(obj ?? {}).filter(([k]) => !keys.includes(k)));
+
 const BEFORE = JSON.parse(readFileSync(new URL('./__fixtures__/defaults-before-frame.json', import.meta.url), 'utf8'));
 const toolsDir = new URL('../tools/', import.meta.url);
 const tools = readdirSync(toolsDir).filter((d) => !d.startsWith('_')).sort();
@@ -23,14 +29,14 @@ describe('shared frame upgrade keeps every result identical', () => {
       const meta = JSON.parse(readFileSync(new URL(`${tool}/meta.json`, toolsDir), 'utf8'));
       const { calculate } = await import(`../tools/${tool}/logic.js`);
       // meta.json defaults are unchanged.
-      const defaults = Object.fromEntries(meta.inputs.map((i) => [i.name, i.default === undefined ? '' : String(i.default)]));
+      const defaults = Object.fromEntries(meta.inputs.filter((i) => !(ADDED_INPUTS[tool] ?? []).includes(i.name)).map((i) => [i.name, i.default === undefined ? '' : String(i.default)]));
       expect(defaults).toEqual(BEFORE[tool][0].raw);
       for (const c of BEFORE[tool]) {
         const raw = onlyVisible(c.raw, visibleFields(meta.inputs, c.raw));
         const out = calculate(raw);
         expect(out.ok, c.id).toBe(c.ok);
         if (c.ok) {
-          expect(out.results, c.id).toEqual(c.results);
+          expect(without(out.results, ADDED_RESULTS[tool]), c.id).toEqual(c.results);
           expect((out.chart ?? []).map(({ label, value }) => ({ label, value })), c.id).toEqual(c.chart);
         }
       }

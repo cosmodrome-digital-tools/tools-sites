@@ -13,6 +13,18 @@ export const SQ_FT_PER_SQUARE = 100; // one roofing square = 100 sq ft of roof s
 export const MIN_PITCH = 2;
 export const DOUBLE_UNDERLAYMENT_BELOW = 4;
 
+// Drip edge: 2024 IRC R905.2.8.5 requires it at eaves and rakes, with adjacent
+// pieces overlapped at least 2 in. Sold in 10 ft pieces, so each piece covers
+// 10 ft - 2 in = 9 ft 10 in (118 in) of edge. Pieces round up.
+export const DRIP_EDGE_PIECE_FT = 10;
+export const DRIP_EDGE_LAP_IN = 2;
+export const DRIP_EDGE_NET_FT = DRIP_EDGE_PIECE_FT - DRIP_EDGE_LAP_IN / 12;
+
+// Shown when the pitch is under 2/12 (in either pitch mode).
+export const LOW_SLOPE_MESSAGE =
+  'Asphalt shingles need a slope of at least 2/12 (2024 IRC R905.2.2), so this tool stops here. ' +
+  'For a flatter roof, look at low-slope roofing instead: mineral-surfaced roll roofing (1/12 and up) or a membrane such as modified bitumen, EPDM, or TPO (1/4:12 and up). Ask a roofer which fits your roof.';
+
 // Accessory coverage presets, from the manufacturers' data sheets (see meta.json sources).
 // ui.js copies these into the editable coverage fields when the product line changes.
 export const PRODUCTS = {
@@ -44,9 +56,10 @@ export const RULES = {
   ridgeCoverage: { label: 'Ridge-cap coverage', min: 15, max: 45 },
   underlaymentCoverage: { label: 'Underlayment roll coverage', min: 200, max: 1000 },
   nailsPerSquare: { label: 'Nails per square', min: 100, max: 400 },
+  dripEdge: { label: 'Drip edge length', min: 0, max: 1000, required: false },
 };
 
-/** Inputs shown for each pitch mode (ui.js hides the other one). */
+/** Inputs shown for each pitch mode (meta.json showIf hides the other one). */
 export const PITCH_FIELDS = { pitch: ['pitch'], multiplier: ['multiplier'] };
 
 /** Slope multiplier for a pitch of x/12: sqrt(1 + (x/12)^2). */
@@ -89,8 +102,8 @@ export function calculate(raw) {
     if (round(pitchNow, 2) < MIN_PITCH) {
       errors[mode] =
         mode === 'pitch'
-          ? 'Below 2/12: the 2024 IRC (R905.2.2) does not allow asphalt shingles on this slope.'
-          : 'Below 2/12 (a multiplier under about 1.014): the 2024 IRC (R905.2.2) does not allow asphalt shingles on this slope.';
+          ? `That's below 2/12. ${LOW_SLOPE_MESSAGE}`
+          : `A multiplier under about 1.014 is below 2/12. ${LOW_SLOPE_MESSAGE}`;
     }
   }
   if (Object.keys(errors).length) return { ok: false, errors };
@@ -114,6 +127,9 @@ export function calculate(raw) {
   const underlaymentLayers = doubleUnderlayment ? 2 : 1;
   const underlaymentRolls = bundles(roofArea * underlaymentLayers, v.underlaymentCoverage);
   const nails = ceilTo(squaresWithWaste * v.nailsPerSquare);
+  // Blank drip edge length = eave + rake (the edges the IRC requires it on).
+  const dripEdgeLength = v.dripEdge ?? v.eave + v.rake;
+  const dripEdgePieces = dripEdgeLength > 0 ? ceilTo(dripEdgeLength / DRIP_EDGE_NET_FT) : 0;
 
   const slopeNote = doubleUnderlayment
     ? `${round(pitch, 2)}/12 is in the 2/12 up to 4/12 band: the 2024 IRC allows asphalt shingles here only with two layers of underlayment (Table R905.1.1(2)), so the underlayment count covers two layers.`
@@ -133,6 +149,8 @@ export function calculate(raw) {
       ridgeCapBundles,
       underlaymentRolls,
       nails,
+      dripEdgeLength: round(dripEdgeLength, 1),
+      dripEdgePieces,
     },
     chart: [
       { label: 'No waste', value: fieldBundlesBeforeWaste },
@@ -161,6 +179,7 @@ export function shoppingList(results) {
         { label: 'Starter strip', qty: r.starterBundles, unit: 'bundles' },
         { label: 'Hip and ridge cap', qty: r.ridgeCapBundles, unit: 'bundles' },
         { label: 'Underlayment', qty: r.underlaymentRolls, unit: 'rolls' },
+        { label: 'Drip edge (10 ft pieces)', qty: r.dripEdgePieces, unit: 'pieces' },
       ],
     },
     {

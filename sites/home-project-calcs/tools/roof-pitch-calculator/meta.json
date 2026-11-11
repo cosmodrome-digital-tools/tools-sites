@@ -37,6 +37,7 @@
     },
     {
       "name": "rise",
+      "showIf": { "field": "mode", "equals": "riseRun" },
       "label": "Rise",
       "unit": "in",
       "default": "6",
@@ -45,6 +46,7 @@
     },
     {
       "name": "run",
+      "showIf": { "field": "mode", "equals": "riseRun" },
       "label": "Run",
       "unit": "in",
       "default": "12",
@@ -53,6 +55,7 @@
     },
     {
       "name": "angle",
+      "showIf": { "field": "mode", "equals": "angle" },
       "label": "Angle",
       "unit": "degrees",
       "default": "26.57",
@@ -61,6 +64,7 @@
     },
     {
       "name": "pitchX",
+      "showIf": { "field": "mode", "equals": "pitch" },
       "label": "Rise per 12 in of run",
       "unit": "in (x/12)",
       "default": "6",

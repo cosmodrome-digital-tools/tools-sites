@@ -36,11 +36,11 @@
       "help": "For an L-shape, split it into two rectangles and add the results.",
       "group": "Patio size"
     },
-    { "name": "length", "label": "Length", "unit": "ft", "default": "12", "help": "1 to 100 ft. Use decimals for inches (12 ft 6 in = 12.5).", "group": "Patio size" },
-    { "name": "width", "label": "Width", "unit": "ft", "default": "12", "help": "1 to 100 ft.", "group": "Patio size" },
-    { "name": "diameter", "label": "Diameter", "unit": "ft", "default": "10", "help": "1 to 100 ft, measured straight across the circle.", "group": "Patio size" },
-    { "name": "area", "label": "Area", "unit": "sq ft", "default": "", "placeholder": "e.g. 200", "help": "1 to 10,000 sq ft.", "group": "Patio size" },
-    { "name": "perimeter", "label": "Edge length (optional)", "unit": "ft", "default": "", "placeholder": "e.g. 60", "help": "Total length of open edges that need edge restraint. Leave blank to skip.", "group": "Patio size" },
+    { "name": "length", "showIf": { "field": "shape", "equals": "rectangle" }, "label": "Length", "unit": "ft", "default": "12", "help": "1 to 100 ft. Use decimals for inches (12 ft 6 in = 12.5).", "group": "Patio size" },
+    { "name": "width", "showIf": { "field": "shape", "equals": "rectangle" }, "label": "Width", "unit": "ft", "default": "12", "help": "1 to 100 ft.", "group": "Patio size" },
+    { "name": "diameter", "showIf": { "field": "shape", "equals": "circle" }, "label": "Diameter", "unit": "ft", "default": "10", "help": "1 to 100 ft, measured straight across the circle.", "group": "Patio size" },
+    { "name": "area", "showIf": { "field": "shape", "equals": "area" }, "label": "Area", "unit": "sq ft", "default": "", "placeholder": "e.g. 200", "help": "1 to 10,000 sq ft.", "group": "Patio size" },
+    { "name": "perimeter", "showIf": { "field": "shape", "equals": "area" }, "label": "Edge length (optional)", "unit": "ft", "default": "", "placeholder": "e.g. 60", "help": "Total length of open edges that need edge restraint. Leave blank to skip.", "group": "Patio size" },
     { "name": "paverLength", "label": "Paver length", "unit": "in", "default": "8", "help": "4 to 24 in. The face size from the label (a common brick paver is 4 x 8 in).", "group": "Paver size" },
     { "name": "paverWidth", "label": "Paver width", "unit": "in", "default": "4", "help": "2 to 24 in.", "group": "Paver size" },
     {
@@ -67,11 +67,11 @@
       "help": "ICPI calls for a base 2 to 4 in thicker in cold climates or on continually wet or weak soil.",
       "group": "Base depth (ICPI)"
     },
-    { "name": "extraBase", "label": "Extra base for poor soil", "unit": "in", "default": "2", "help": "2 to 4 in, the range ICPI gives. Use more for colder or softer ground.", "group": "Base depth (ICPI)" },
-    { "name": "jointWidth",  "advanced": true,"label": "Joint width", "unit": "in", "default": "0.125", "help": "0 to 0.5 in. ICPI calls for joints of 1/16 to 3/16 in; 0.125 = 1/8 in. Use 0 if your size already includes spacer bars.", "group": "Advanced: joints, sand, density, waste" },
-    { "name": "sandDepth",  "advanced": true,"label": "Bedding sand depth", "unit": "in", "default": "1", "help": "0.5 to 2 in. ICPI specifies 1 in nominal, screeded and not compacted.", "group": "Advanced: joints, sand, density, waste" },
-    { "name": "density",  "advanced": true,"label": "Base density", "unit": "tons per cu yd", "default": "1.40", "help": "1.0 to 2.0. Estimate only (not verified): ask your supplier for the weight of their base material and enter it here.", "group": "Advanced: joints, sand, density, waste" },
-    { "name": "waste",  "advanced": true,"label": "Paver waste", "unit": "%", "default": "5", "help": "0 to 20%. Extra for cuts and breakage. 5% is our starting estimate, not a published figure; patterns with lots of cuts (herringbone, curves) need more.", "group": "Advanced: joints, sand, density, waste" }
+    { "name": "extraBase", "showIf": { "field": "soil", "equals": "poor" }, "label": "Extra base for poor soil", "unit": "in", "default": "2", "help": "2 to 4 in, the range ICPI gives. Use more for colder or softer ground.", "group": "Base depth (ICPI)" },
+    { "name": "jointWidth", "advanced": true, "label": "Joint width", "unit": "in", "default": "0.125", "help": "0 to 0.5 in. ICPI calls for joints of 1/16 to 3/16 in; 0.125 = 1/8 in. Use 0 if your size already includes spacer bars.", "group": "Advanced: joints, sand, density, waste" },
+    { "name": "sandDepth", "advanced": true, "label": "Bedding sand depth", "unit": "in", "default": "1", "help": "0.5 to 2 in. ICPI specifies 1 in nominal, screeded and not compacted.", "group": "Advanced: joints, sand, density, waste" },
+    { "name": "density", "advanced": true, "label": "Base density", "unit": "tons per cu yd", "default": "1.40", "help": "1.0 to 2.0. Estimate only (not verified): ask your supplier for the weight of their base material and enter it here.", "group": "Advanced: joints, sand, density, waste" },
+    { "name": "waste", "advanced": true, "label": "Paver waste", "unit": "%", "default": "5", "help": "0 to 20%. Extra for cuts and breakage. 5% is our starting estimate, not a published figure; patterns with lots of cuts (herringbone, curves) need more.", "group": "Advanced: joints, sand, density, waste" }
   ],
   "outputs": [
     { "name": "pavers", "label": "Pavers to buy (with waste)", "unit": "pavers", "decimals": 0, "primary": true },

@@ -139,6 +139,12 @@ export function calculate(raw) {
     { label: '3 in', value: bareBags(3) },
     { label: '4 in', value: bareBags(4) },
   ];
+  // Highlight the visitor's depth. The chart is for a bare bed, so only when
+  // there's no existing mulch and the depth is one of the charted ones.
+  if (existing === 0) {
+    const own = chart.find((p) => p.label === `${depth} in`);
+    if (own) Object.assign(own, { highlight: true, highlightLabel: 'Your depth' });
+  }
 
   return { ok: true, results, chart };
 }

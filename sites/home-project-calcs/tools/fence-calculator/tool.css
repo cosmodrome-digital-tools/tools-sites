@@ -103,12 +103,8 @@
   height: auto;
 }
 
-/* Tables in the page copy (bags per post, posts by fence length).
-   display:block lets a wide table scroll inside itself on phones. */
+/* Tables in the page copy (bags per post, posts by fence length). */
 [data-tool="fence-calculator"] .tool-content table {
-  display: block;
-  max-width: 100%;
-  overflow-x: auto;
   border-collapse: collapse;
   font-variant-numeric: tabular-nums;
 }

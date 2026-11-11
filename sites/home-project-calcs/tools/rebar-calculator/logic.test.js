@@ -204,6 +204,15 @@ describe('edge cases', () => {
   });
 });
 
+describe('chart highlight', () => {
+  it('highlights the visitor spacing when it is one of the charted spacings', () => {
+    const hl = (over) => calculate({ ...DEFAULTS, ...over }).chart.filter((p) => p.highlight).map((p) => p.label);
+    expect(hl()).toEqual(['18 in']);
+    expect(hl({ spacing: '12' })).toEqual(['12 in']);
+    expect(hl({ spacing: '20' })).toEqual([]);
+  });
+});
+
 // KEEP THIS BLOCK. It is skipped in the _template folder only, and fails in a
 // newly scaffolded tool until the template example and every TODO are replaced.
 const isTemplateFolder = new URL('.', import.meta.url).pathname.endsWith('/_template/');

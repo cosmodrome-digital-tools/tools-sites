@@ -55,9 +55,6 @@
 }
 
 [data-tool="paint-calculator"] .tool-content table {
-  display: block;
-  max-width: 100%;
-  overflow-x: auto;
   border-collapse: collapse;
   font-variant-numeric: tabular-nums;
 }

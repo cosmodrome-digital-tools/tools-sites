@@ -54,12 +54,8 @@
   font-size: 1.75rem;
 }
 
-/* Tables in the page copy (pavers per sq ft, base depth recipe).
-   display:block lets a wide table scroll inside itself on phones. */
+/* Tables in the page copy (pavers per sq ft, base depth recipe). */
 [data-tool="paver-patio-calculator"] .tool-content table {
-  display: block;
-  max-width: 100%;
-  overflow-x: auto;
   border-collapse: collapse;
   font-variant-numeric: tabular-nums;
 }
