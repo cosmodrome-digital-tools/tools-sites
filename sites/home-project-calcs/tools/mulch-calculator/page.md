@@ -148,3 +148,7 @@ The table below is the printed companion to the chart. Every row is bare soil, a
 The 200 sq ft row at 3 inches is the worked example: 1.85 cubic yards and 25 bags. The 100 sq ft row at 2 inches is the same 16.67 cubic feet as the top-up example, so it is also 9 bags.
 
 The live chart redraws the 2, 3, and 4 inch bag counts for whatever area and bag size you enter. A tree ring's chart uses the ring after the trunk gap is removed. A top-up changes Bags to buy and leaves the chart on the bare-soil counts. For either of those, use the form. This table cannot show them.
+
+## Free municipal mulch and yard-waste drop-off
+
+If you would rather pick up municipal mulch than buy bags, or you need a place to take leaves and brush, [Yard Waste Dropoff](https://yardwastedropoff.com/free-mulch/) lists free mulch pickup and yard-waste drop-off sites compiled from official sources.

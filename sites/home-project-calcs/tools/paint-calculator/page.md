@@ -133,3 +133,7 @@ The table uses one set of assumptions so you can compare rooms: 8 ft walls, ceil
 | 16 × 20 | 526 | 3.01 | 3 gallons and 1 quart | 320 | 2 gallons |
 
 A 5-gallon bucket shows up once the wall paint passes 4 gallons and 2 quarts, for example walls of about 790 sq ft or more at 2 coats and 350 sq ft per gallon. The donut on your own result shows the gallons to buy of wall paint, ceiling paint, and primer for the room you typed. A product you do not need is left off the chart.
+
+## Leftover paint drop-off
+
+This calculator estimates how much paint to buy. To drop off leftovers, [HHW Dropoff](https://hhwdropoff.com/paint-disposal/) lists official household hazardous waste programs that accept paint.
