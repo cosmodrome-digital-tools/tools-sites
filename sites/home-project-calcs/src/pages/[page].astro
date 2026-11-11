@@ -3,7 +3,7 @@
 import { getCollection, render } from 'astro:content';
 import { pageTitle } from '@tools/seo';
 import SiteLayout from '../layouts/SiteLayout.astro';
-import site, { isPlaceholderDomain } from '../site.config.mjs';
+import site from '../site.config.mjs';
 
 export async function getStaticPaths() {
   const pages = await getCollection('sitePages');
@@ -40,9 +40,6 @@ const breadcrumbs = [
       <section class="contact-card" aria-labelledby="contact-heading">
         <h2 id="contact-heading">Email</h2>
         <p><a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a></p>
-        {isPlaceholderDomain && (
-          <p class="draft-banner" role="note">PLACEHOLDER address: the site's domain hasn't been chosen yet, so this email doesn't work yet.</p>
-        )}
       </section>
     )}
   </article>

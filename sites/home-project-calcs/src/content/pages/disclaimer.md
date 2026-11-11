@@ -1,7 +1,7 @@
 ---
 title: Disclaimer
 description: Why Home & Yard Calcs results are planning estimates only and not professional advice.
-draft: true
+draft: false
 ---
 
 **Effective Date:** October 21, 2026

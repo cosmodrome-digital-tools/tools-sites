@@ -1,7 +1,7 @@
 ---
 title: Privacy Policy
 description: How Home & Yard Calcs handles information when you use its free calculators.
-draft: true
+draft: false
 ---
 
 **Effective Date:** October 21, 2026

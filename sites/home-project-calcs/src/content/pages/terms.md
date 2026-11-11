@@ -1,7 +1,7 @@
 ---
 title: Terms of Use
 description: The rules that apply when you use the Home & Yard Calcs website and its free calculators.
-draft: true
+draft: false
 ---
 
 **Effective Date:** October 21, 2026
