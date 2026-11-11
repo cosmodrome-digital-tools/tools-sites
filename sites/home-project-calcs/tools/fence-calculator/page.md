@@ -11,7 +11,7 @@ All sizes are in US units: feet for the fence, inches for pickets and holes, cub
 3. **Pickets.** Enter the actual face width of one picket and the gap between pickets. For board-on-board, enter the overlap on each edge as a negative gap.
 4. **Post concrete.** Choose the concrete bag you plan to use.
 5. **Advanced.** Set the gate width, rails per section, your local frost depth (if you know it), the soil cap over the concrete (4 in to start), and the picket waste allowance.
-6. **Read the results.** The four shaded numbers at the top are your shopping list. Below them are the fence layout, the size of each post hole, and the concrete and gravel totals.
+6. **Read the results.** The headline number and the three tiles under it are your shopping list. Below them, grouped, are the fence layout, the size of each post hole, the concrete and gravel totals, and the post length.
 
 Results update as you type. To start over, reload the page.
 

@@ -61,15 +61,14 @@
       "label": "Length",
       "unit": "ft",
       "default": "12",
-      "help": "Feet, 0 to 100.",
+      "help": "Feet plus inches, up to 100 ft.",
       "group": "Room 1"
     },
     {
       "name": "room1LengthIn",
-      "label": "plus inches",
+      "label": "+ inches",
       "unit": "in",
       "default": "0",
-      "help": "0 to 11.99.",
       "group": "Room 1"
     },
     {
@@ -77,15 +76,13 @@
       "label": "Width",
       "unit": "ft",
       "default": "12",
-      "help": "Feet, 0 to 100.",
       "group": "Room 1"
     },
     {
       "name": "room1WidthIn",
-      "label": "plus inches",
+      "label": "+ inches",
       "unit": "in",
       "default": "0",
-      "help": "0 to 11.99.",
       "group": "Room 1"
     },
     {
@@ -101,7 +98,7 @@
       "label": "Length",
       "unit": "ft",
       "default": "10",
-      "help": "Feet, 0 to 100.",
+      "help": "Feet plus inches, up to 100 ft.",
       "group": "Room 2"
     },
     {
@@ -114,10 +111,9 @@
           "4"
         ]
       },
-      "label": "plus inches",
+      "label": "+ inches",
       "unit": "in",
       "default": "0",
-      "help": "0 to 11.99.",
       "group": "Room 2"
     },
     {
@@ -133,7 +129,6 @@
       "label": "Width",
       "unit": "ft",
       "default": "10",
-      "help": "Feet, 0 to 100.",
       "group": "Room 2"
     },
     {
@@ -146,10 +141,9 @@
           "4"
         ]
       },
-      "label": "plus inches",
+      "label": "+ inches",
       "unit": "in",
       "default": "0",
-      "help": "0 to 11.99.",
       "group": "Room 2"
     },
     {
@@ -164,7 +158,7 @@
       "label": "Length",
       "unit": "ft",
       "default": "10",
-      "help": "Feet, 0 to 100.",
+      "help": "Feet plus inches, up to 100 ft.",
       "group": "Room 3"
     },
     {
@@ -176,10 +170,9 @@
           "4"
         ]
       },
-      "label": "plus inches",
+      "label": "+ inches",
       "unit": "in",
       "default": "0",
-      "help": "0 to 11.99.",
       "group": "Room 3"
     },
     {
@@ -194,7 +187,6 @@
       "label": "Width",
       "unit": "ft",
       "default": "10",
-      "help": "Feet, 0 to 100.",
       "group": "Room 3"
     },
     {
@@ -206,10 +198,9 @@
           "4"
         ]
       },
-      "label": "plus inches",
+      "label": "+ inches",
       "unit": "in",
       "default": "0",
-      "help": "0 to 11.99.",
       "group": "Room 3"
     },
     {
@@ -223,7 +214,7 @@
       "label": "Length",
       "unit": "ft",
       "default": "10",
-      "help": "Feet, 0 to 100.",
+      "help": "Feet plus inches, up to 100 ft.",
       "group": "Room 4"
     },
     {
@@ -234,10 +225,9 @@
           "4"
         ]
       },
-      "label": "plus inches",
+      "label": "+ inches",
       "unit": "in",
       "default": "0",
-      "help": "0 to 11.99.",
       "group": "Room 4"
     },
     {
@@ -251,7 +241,6 @@
       "label": "Width",
       "unit": "ft",
       "default": "10",
-      "help": "Feet, 0 to 100.",
       "group": "Room 4"
     },
     {
@@ -262,10 +251,9 @@
           "4"
         ]
       },
-      "label": "plus inches",
+      "label": "+ inches",
       "unit": "in",
       "default": "0",
-      "help": "0 to 11.99.",
       "group": "Room 4"
     },
     {

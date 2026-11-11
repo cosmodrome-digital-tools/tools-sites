@@ -360,7 +360,8 @@
   .calc-advanced { border: 0; }
   .calc-advanced:not([open]) { display: none; }
   .tool-form__fields { grid-template-columns: repeat(3, 1fr); }
-  .calc-field input, .calc-field select { border: 1px solid #999; min-height: 0; padding: 0.15rem 0.4rem; }
+  .calc-field input, .calc-field select { border: 1px solid #999; min-height: 0; padding: 0.15rem 0.4rem; background-image: none; }
+  .calc-diagram figcaption { display: none; }
   .calc-results, .calc-figure { box-shadow: none; break-inside: avoid; margin-top: 0.5rem; }
   .calc-results.has-unit-toggle .calc-result__unitval[data-unit-index] { display: inline; }
   .calc-results.has-unit-toggle .calc-result__unitval + .calc-result__unitval::before { content: ' · '; }

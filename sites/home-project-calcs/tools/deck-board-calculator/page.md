@@ -49,7 +49,7 @@ Waste is applied after that count, then the result rounds up to a whole board.
 
 **Spacing limit.** For composite, the limit is the Trex chart span you picked. At 45 degrees it is that span minus 4 inches. For wood, the limit is the matching cell of 2021 IRC Table R507.7, shown in the joist spacing check below. Inches over the limit are 0 when the spacing you picked is at or under the limit.
 
-`spacing warning = 1` when the spacing is over the limit, or when composite is set to single span. Trex's 2026 guide says the decking must span at least three joists. `Under 3 joists` is 1 only for that composite single-span case.
+`spacing warning = 1` when the spacing is over the limit, or when composite is set to single span. Trex's 2026 guide says the decking must span at least three joists. `Under 3 joists` is 1 (shown as Yes) only for that composite single-span case.
 
 `Side gap under 3/16 in` is 1 when the material is composite and the side gap is under 0.1875 inches. Wood does not use that flag.
 
@@ -72,7 +72,7 @@ Boards to buy, joists, and face screws are already rounded up to whole pieces. D
 
 On an 8 foot board run with 16 foot sticks, one stick covers two rows. The 8 × 10 line in the table below is 22 rows and 13 boards for that reason: 22 / 2 = 11 sticks, and 11 × 1.10 = 12.1, which rounds up to 13.
 
-Spacing warning is 1 when something in the check fails. Read Spacing limit and Inches over the limit together. If the limit is 8 and the smallest spacing on the form is 12, every spacing choice is over that limit. Under 3 joists is a separate composite rule. Side gap under 3/16 in is 1 only for composite entered below Trex's minimum. Face screws per square foot is this deck's screw count divided by its area. It is not a fixed rate from a fastener box.
+Spacing warning says Yes when something in the check fails. Read Spacing limit and Inches over the limit together. If the limit is 8 and the smallest spacing on the form is 12, every spacing choice is over that limit. Under 3 joists is a separate composite rule. Side gap under 3/16 in says Yes only for composite entered below Trex's minimum. Face screws per square foot is this deck's screw count divided by its area. It is not a fixed rate from a fastener box.
 
 Hidden clips are not in the screw count. If you use a hidden fastener, use the clip count in that product's instructions and keep the board and joist counts.
 

@@ -130,6 +130,72 @@ options, not a breakdown of one result).
 **Tables in `page.md`** scroll inside themselves on phones automatically; don't
 add `display: block` / `overflow-x` table rules in `tool.css`.
 
+### Results card, labeled chart, and labeled diagram (shared frame, Nov 2026 redesign)
+
+The Nov 2026 redesign PR changed the shared frame for every tool at once. That
+PR was an explicit, one-time exception to the "never touch `packages/`" rule.
+**Single-tool builders still never edit `packages/` or the site's `src/`:** you
+inherit all of this from `meta.json` and `calculate()`.
+
+**Layout.** `"layout"` defaults to `"split"`: inputs on the left; the results
+card, diagram, and chart on the right from 48rem wide. On phones the results
+follow the inputs, and a small sticky bar shows the headline number while the
+form is on screen. Keep the main form short; put secondary inputs in Advanced.
+
+**Results card** (all from `meta.json` `outputs`):
+
+| Output field | Effect |
+|---|---|
+| `"primary": true` | The **first** primary output is the large headline number. Any further primaries become key-figure tiles under it (3 or fewer reads best). |
+| `"group": "Buy"` | Non-primary outputs are grouped into a receipt-style breakdown, in the order groups first appear (default group "Details"). |
+| `"unitGroup": "volume"` | Outputs sharing a `unitGroup` are **one row** showing the same quantity in two US units (cu yd and cu ft, sq ft and sq yd). The card gets a unit toggle; without JavaScript both show. List the members in the same unit order in every group (larger unit first). Optional `"unitGroupLabel"` names the row. Never add metric. |
+| `"format": "yesno"` | Shows a 1/0 flag as Yes/No (drop "(1 = yes)" from the label). |
+| `"format": "fraction"` | Shows inches to the nearest 1/16 in, e.g. `7 1/2`. |
+| value `null` | A result that doesn't apply (an optional extra left blank) hides its row. |
+
+Copy, Share (Web Share API, or copies a link that prefills the inputs from the
+URL query, e.g. `?length=12&width=10`), Print, the estimates notice, and the
+empty/invalid states are automatic.
+
+**Chart.** Bar and line charts draw axis lines, ticks, gridlines, a value-axis
+unit, a category-axis label, and the value on every bar/point. Set
+`"chartUnit"` (e.g. `"bags"`) and `"chartXLabel"` (e.g. `"Slab thickness (in)"`)
+in `meta.json`; if they depend on the inputs, `calculate()` may return
+`chartUnit` / `chartXLabel` to override them. Donut charts print each value,
+its share, and the total.
+
+**Diagram.** Every tool should return a labeled drawing of what the visitor
+entered: add a `diagram` object to `calculate()`'s success result. It is plain
+data, used only for labels, never for math. The frame renders it at build time
+with the `meta.json` defaults (so it's in the HTML without JavaScript) and
+redraws it on every input, with `role="img"` and an `aria-label` that states
+the dimensions. Optional `"diagramCaption"` in `meta.json` sets the caption.
+
+| `type` | Fields (all optional except the sizes) |
+|---|---|
+| `box` | `length`, `width`, `depth`, `unit` ("ft"), `depthUnit` ("in"), `layers: [{ label, depth }]`, `pattern`, `caption` |
+| `cylinder` | `diameter`, `height`, `unit` ("in"), `count` |
+| `plan` | `length`, `width`, `unit`; or `shape: "circle" \| "ring"` with `diameter` (`innerDiameter` for a ring); or `areas: [{ label, length, width }]` for several rooms; `pattern` (`hatch`, `boards-h`, `boards-v`, `pavers`, `brick`, `block`, `turf`, `shingles`), `gridSpacing` (in), `joists` (in), `arrow`, `depthNote`, `caption` |
+| `triangle` | `rise`, `run`, `slope`, `unit`, `angle`, `pitch` (x/12), `riseName` / `runName` / `slopeName` |
+| `stairs` | `risers`, `riserHeight`, `treadDepth`, `totalRise`, `totalRun`, `stringerLength`, `topLabel` |
+| `fence` | `length`, `height`, `posts`, `spacing`, `gates`, `unit` |
+| `wall` | `length`, `height`, `gableRise`, `unit`, `pattern`, `windows`, `doors`, `moduleLabel`, `caption` |
+| `room` | `length`, `width`, `height`, `unit`, `ceiling` (bool), `wallLabel`, `ceilingLabel` |
+| `attic` | `pitch`, `intakeLabel`, `exhaustLabel`, `insulationDepth`, `insulationLabel`, `spanLabel`, `caption` |
+
+Any dimension label can be replaced with a ready-made string, e.g.
+`lengthLabel: "12 ft 6 in"`. Drawings are schematic: proportions follow the
+inputs within limits so thin or huge values stay readable. Example:
+
+```js
+diagram: { type: 'box', name: 'Slab', length: 10, width: 10, depth: 4, unit: 'ft', depthUnit: 'in' },
+```
+
+**Homepage card.** `"cardBlurb"` is the 5 to 12 word benefit shown on homepage
+and related-tool cards (falls back to `benefit`). `"category"` must match a
+category in `src/categories.mjs` (ask for a new category in `HANDOFF.md`
+instead of inventing one).
+
 ## 3. Naming rules
 
 - Tool slug = folder name = URL: kebab-case, lowercase letters, numbers, single
@@ -196,10 +262,18 @@ Matthew under "Open questions".
 ## 6. Page anatomy (required)
 
 The shared frame renders, in order: breadcrumbs, category, H1, intro, hero, the
-calculator (inputs + results + chart), "Last updated", ad space, **your
-`page.md`**, Sources (from `meta.json`), related tools, ad space. Schema
-(WebApplication + BreadcrumbList), the canonical URL, and the footer legal links
+calculator (inputs beside the results card, diagram, and chart), "Last updated"
+with the byline, ad space, **your `page.md`**, Sources (from `meta.json`),
+related tools, ad space. Schema (WebApplication + BreadcrumbList, plus FAQPage
+built from your FAQ questions), the canonical URL, and the footer legal links
 are automatic.
+
+**Every `page.md` H2 becomes a collapsible section** (native `<details>`,
+closed by default; "How to use" stays open when it has 5 steps or fewer). Each
+`###` FAQ question becomes its own collapsible item. Nothing is removed from the
+HTML, so the copy still counts for search, but keep it tight: the intro is one or
+two sentences, and the calculator, results card, and diagram already explain a lot.
+Use the exact H2 names below so the frame recognizes each section.
 
 **Title pattern** (built automatically from `meta.json`):
 `[Tool name] - [main benefit] | Home & Yard Calcs`
@@ -242,9 +316,10 @@ Every tool shares one frame but shouldn't look stamped out. Vary these, from you
 | Variety | How |
 |---|---|
 | Accent / theme | Override tokens in `tool.css` inside `[data-tool="<tool-slug>"] { ... }`: `--tool-accent`, `--tool-accent-ink` (text on accent), `--tool-surface`, `--tool-ink`, `--tool-border`, `--tool-radius`, `--tool-font-display`, `--chart-palette-1` to `--chart-palette-4` |
-| Layout | `meta.json` `"layout"`: `"stacked"` (default), `"split"` (inputs and results side by side on wide screens), or `"stepper"` (each input group is a numbered step), plus small touches in `tool.css` |
+| Layout | `meta.json` `"layout"`: `"split"` (default: inputs and results side by side on wide screens), `"stepper"` (the same, with each input group as a numbered step), or `"stacked"` (one column), plus small touches in `tool.css` |
 | Illustration | `assets/hero.svg` (or png/jpg/webp/avif), under 100 KB. Decorative = leave `"heroAlt": ""`; meaningful = describe it in `heroAlt` |
 | Chart | `meta.json` `"chartStyle"`: `"bar"`, `"line"`, `"donut"`, or `"none"`, fed by `chart` from `calculate()` and colored by your `--chart-palette-*` |
+| Results headline | You may restyle `.calc-primary` (and its `__label`, `__value`, `__unit`) inside your scope, e.g. a solid accent panel. Keep AA contrast. Diagrams follow `--tool-accent` and `--tool-ink` automatically. |
 
 Rules for `tool.css`:
 - Every selector starts with `[data-tool="<tool-slug>"]`. CI fails anything else.
@@ -263,6 +338,10 @@ In `logic.test.js` (Vitest):
 - Assert both `ok: true` results and `ok: false` errors keyed to the right input.
 - Keep the **scaffold guard** block at the bottom unchanged.
 - The worked example in `page.md` must also be a test case.
+- Test that `calculate()` returns your `diagram` (a shared test also renders every
+  tool's diagram at its defaults and fails on `NaN` or a missing label).
+- If `page.md` has a sourced table, add a test that reads the table and checks
+  each row against `calculate()`.
 
 ## 9. Commands (run from the repo root)
 

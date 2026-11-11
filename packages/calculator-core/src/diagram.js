@@ -281,8 +281,8 @@ TYPES.stairs = (d) => {
   const treads = Math.max(n - 1, 0);
   const totalRun = treads * t || t;
   const totalRise = n * r;
-  const s = Math.min(230 / (totalRun + t), 150 / totalRise);
-  const x0 = 46;
+  const x0 = 104;
+  const s = Math.min((W - x0 - 150) / (totalRun + t), 150 / totalRise);
   const yB = 200;
   let path = `M${f(x0)} ${f(yB)}`;
   let x = x0;
@@ -414,7 +414,7 @@ TYPES.attic = (d) => {
   const span = 250;
   const rise = clamp((span / 2) * (pitch / 12), 30, 110);
   const x0 = (W - span) / 2;
-  const yC = 176;
+  const yC = 160;
   const ridge = [x0 + span / 2, yC - rise];
   const over = 22;
   const drop = (over * rise) / (span / 2);
@@ -434,9 +434,9 @@ TYPES.attic = (d) => {
     b += flow(x0 - 8, 1) + flow(x0 + span + 8, -1);
     b += `<path class="dg-flow" fill="none" d="M${f(ridge[0])} ${f(ridge[1] + 4)} V${f(ridge[1] - 18)}"/>${arrowHead(ridge[0], ridge[1] - 18, 0, -1)}`;
     if (d.exhaustLabel) b += text(ridge[0], 16, d.exhaustLabel, { size: 10.5, weight: 700 });
-    if (d.intakeLabel) b += text(W / 2, yC + 34, d.intakeLabel, { size: 10.5, weight: 700 });
+    if (d.intakeLabel) b += text(W / 2, yC + 28, d.intakeLabel, { size: 10.5, weight: 700 });
   }
-  if (d.spanLabel) b += dim(x0, yC + 44, x0 + span, yC + 44, d.spanLabel, { off: 0, labelPos: 'on' });
+  if (d.spanLabel) b += text(W / 2, yC + 50, d.spanLabel, { size: 10.5, weight: 700 });
   if (d.caption) b += text(W / 2, H - 4, d.caption, { size: 9.5 });
   const aria = `Attic cross-section${d.spanLabel ? `, ${d.spanLabel}` : ''}${d.intakeLabel ? `; ${d.intakeLabel}` : ''}${d.exhaustLabel ? `; ${d.exhaustLabel}` : ''}${fin(d.insulationDepth) ? `; insulation ${d.insulationLabel ?? dimLabel(d.insulationDepth, 'in')}` : ''}`;
   return { body: b, aria };

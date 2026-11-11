@@ -18,3 +18,8 @@
 [data-tool="flooring-calculator"] .tool-form legend {
   color: var(--tool-accent);
 }
+
+/* Feet and inches sit side by side, even on phones. */
+[data-tool="flooring-calculator"] .tool-form fieldset:not(:first-of-type):not(:last-of-type) .tool-form__fields {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
