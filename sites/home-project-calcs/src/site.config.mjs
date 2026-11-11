@@ -2,9 +2,7 @@
 // domain lives: astro.config.mjs, robots.txt, canonical URLs, the sitemap, and
 // the contact email all read it from here.
 
-// TODO(domain): no domain has been picked yet. Replace this placeholder (and
-// add the matching "routes" entry in wrangler.jsonc) when the owner picks one.
-const domain = 'todo-domain.example';
+const domain = 'homeandyardcalcs.com';
 const name = 'Home & Yard Calcs';
 
 export default {
@@ -17,8 +15,8 @@ export default {
     'Free calculators that estimate materials for common US home projects in feet, inches, cubic yards, and standard bag sizes, with the formula, waste allowance, and sources shown.',
   domain,
   siteUrl: `https://${domain}`,
-  // Forwarded by Cloudflare Email Routing to the business inbox once the domain exists.
-  contactEmail: `contact@${domain}`,
+  // Business inbox (Gmail). No domain mailbox or Email Routing is configured.
+  contactEmail: 'cosmodromedigital@gmail.com',
   // Placeholder until the owner provides the real AdSense publisher ID. Public by design, not a secret.
   publisherId: 'pub-XXXXXXXXXXXXXXXX',
   // The ONE switch for AdSense. Off until the publisher ID, consent messages, and ad code PR exist.

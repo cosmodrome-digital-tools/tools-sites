@@ -12,9 +12,9 @@ PLEASE READ THESE TERMS OF USE CAREFULLY. BY ACCESSING OR USING THE SITE, YOU AG
 
 ## ARTICLE 1. DEFINITIONS AND PARTIES
 
-**1.1 Operator.** The website known as Home & Yard Calcs and located at todo-domain.example is owned and operated by Home & Yard Calcs (the "Operator," "we," "us," or "our").
+**1.1 Operator.** The website known as Home & Yard Calcs and located at homeandyardcalcs.com is owned and operated by Home & Yard Calcs (the "Operator," "we," "us," or "our").
 
-**1.2 Definitions.** As used in these Terms of Use: (a) "Site" means the website located at todo-domain.example, including all of its pages, subdomains, calculators, tools, and features; (b) "Tools" means the materials calculators, estimators, span and spacing references, converters, and other interactive utilities made available on the Site; (c) "Content" means all text, data, tables, graphics, images, layouts, explanations, formulas, assumptions, methodologies, and other materials made available on the Site, including the Tools and their output; (d) "Terms" means these Terms of Use, together with all documents incorporated herein by reference; and (e) "you" and "your" mean any person who accesses or uses the Site.
+**1.2 Definitions.** As used in these Terms of Use: (a) "Site" means the website located at homeandyardcalcs.com, including all of its pages, subdomains, calculators, tools, and features; (b) "Tools" means the materials calculators, estimators, span and spacing references, converters, and other interactive utilities made available on the Site; (c) "Content" means all text, data, tables, graphics, images, layouts, explanations, formulas, assumptions, methodologies, and other materials made available on the Site, including the Tools and their output; (d) "Terms" means these Terms of Use, together with all documents incorporated herein by reference; and (e) "you" and "your" mean any person who accesses or uses the Site.
 
 ## ARTICLE 2. ACCEPTANCE OF TERMS
 
@@ -118,7 +118,7 @@ To the fullest extent permitted by applicable law, you agree to defend, indemnif
 
 **16.2 Class Action Waiver.** YOU AND THE OPERATOR AGREE THAT EACH MAY BRING CLAIMS AGAINST THE OTHER ONLY IN AN INDIVIDUAL CAPACITY, AND NOT AS A PLAINTIFF OR CLASS MEMBER IN ANY PURPORTED CLASS, CONSOLIDATED, OR REPRESENTATIVE PROCEEDING. THE ARBITRATOR MAY NOT CONSOLIDATE THE CLAIMS OF MORE THAN ONE PERSON AND MAY AWARD RELIEF ONLY IN FAVOR OF THE INDIVIDUAL PARTY SEEKING RELIEF AND ONLY TO THE EXTENT NECESSARY TO PROVIDE RELIEF WARRANTED BY THAT PARTY'S INDIVIDUAL CLAIM.
 
-**16.3 Opt-Out.** You may opt out of this Article 16 by sending written notice to contact@todo-domain.example within thirty (30) days after you first use the Site, stating your name and your intent to opt out of arbitration. If you opt out, Article 15 shall govern any dispute between you and the Operator.
+**16.3 Opt-Out.** You may opt out of this Article 16 by sending written notice to cosmodromedigital@gmail.com within thirty (30) days after you first use the Site, stating your name and your intent to opt out of arbitration. If you opt out, Article 15 shall govern any dispute between you and the Operator.
 
 **16.4 Severability of This Article.** If the class action waiver in Section 16.2 is found unenforceable, this entire Article 16 shall be null and void, and Article 15 shall apply.
 
@@ -144,7 +144,7 @@ To the fullest extent permitted by applicable law, you agree to defend, indemnif
 
 ## ARTICLE 19. CONTACT
 
-Questions concerning these Terms may be directed to the Operator by electronic mail at contact@todo-domain.example.
+Questions concerning these Terms may be directed to the Operator by electronic mail at cosmodromedigital@gmail.com.
 
 **Effective Date:** October 21, 2026
 

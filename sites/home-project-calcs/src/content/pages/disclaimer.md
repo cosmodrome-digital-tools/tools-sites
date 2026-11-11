@@ -10,7 +10,7 @@ draft: false
 
 ## ARTICLE 1. INTRODUCTION
 
-**1.1 Operator.** The website known as Home & Yard Calcs and located at todo-domain.example (the "Site") is owned and operated by Home & Yard Calcs (the "Operator," "we," "us," or "our").
+**1.1 Operator.** The website known as Home & Yard Calcs and located at homeandyardcalcs.com (the "Site") is owned and operated by Home & Yard Calcs (the "Operator," "we," "us," or "our").
 
 **1.2 Incorporation.** This Disclaimer applies to all calculators, estimators, span and spacing references, converters, and other tools (collectively, "Tools") and to all articles, explanations, tables, data, and other materials (together with the Tools, the "Content") made available on the Site. This Disclaimer is incorporated into and forms part of the Home & Yard Calcs Terms of Use, available at [/terms/](/terms/) (the "Terms"). Capitalized terms used but not defined in this Disclaimer have the meanings given to them in the Terms.
 
@@ -76,7 +76,7 @@ The Site is, or may be, supported by advertising. When advertising is enabled, a
 
 ## ARTICLE 10. USE OF ARTIFICIAL INTELLIGENCE TOOLS
 
-Portions of the Content may be drafted with the assistance of artificial-intelligence tools. All such Content is reviewed by the Operator before publication. The use of such tools does not alter the estimates-only nature of the Tools described in Article 2, and every limitation set forth in this Disclaimer and in the Terms applies in full to such Content. If you believe you have found an error, please notify us at contact@todo-domain.example.
+Portions of the Content may be drafted with the assistance of artificial-intelligence tools. All such Content is reviewed by the Operator before publication. The use of such tools does not alter the estimates-only nature of the Tools described in Article 2, and every limitation set forth in this Disclaimer and in the Terms applies in full to such Content. If you believe you have found an error, please notify us at cosmodromedigital@gmail.com.
 
 ## ARTICLE 11. EXTERNAL LINKS
 
@@ -92,7 +92,7 @@ The Operator may amend this Disclaimer at any time by posting the amended Discla
 
 ## ARTICLE 14. CONTACT
 
-Questions concerning this Disclaimer, or reports of a possible error in any Tool or Content, may be directed to the Operator by electronic mail at contact@todo-domain.example.
+Questions concerning this Disclaimer, or reports of a possible error in any Tool or Content, may be directed to the Operator by electronic mail at cosmodromedigital@gmail.com.
 
 **Effective Date:** October 21, 2026
 
