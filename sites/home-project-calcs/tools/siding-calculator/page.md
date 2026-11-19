@@ -1,11 +1,11 @@
 ## What it calculates and who it's for
 
-This calculator estimates how much vinyl or fiber-cement siding to order for a house: the area of the four walls, plus the triangular gable ends under a gable roof, plus a waste allowance, rounded up to whole squares. Siding is sold by the square (100 sq ft). It's for homeowners pricing out a re-side, or checking a contractor's material count. It covers the siding panels only; roofing and paint have their own calculators.
+This calculator estimates how much vinyl or fiber-cement siding to order for a house: the area of the four walls, plus the triangular gable ends under a gable roof, plus a waste allowance, rounded up to whole squares. Siding is sold by the square (100 sq ft). It's for homeowners pricing out a re-side, or checking a contractor's material count. It covers the siding panels only; for the roof itself, use the [Shingle Calculator](/shingle-calculator/).
 
 ## How to use
 
 1. **Measure the house**: the length, the width, and the wall height from the foundation to the eaves. Or switch to entering a wall area you already have.
-2. **Count the gable ends** you'll side (2 on a simple gable roof, 0 on a hip roof) and enter the gable height from the eaves to the peak.
+2. **Count the gable ends** you'll side (2 on a simple gable roof, 0 on a hip roof) and enter the gable height from the eaves to the peak. If you know the roof pitch instead, gable height (ft) = rise per 12 ÷ 12 × half the house width (ft), so a 6/12 roof on a 30 ft wide house has a 7.5 ft gable. The [Roof Pitch Calculator](/roof-pitch-calculator/) turns an angle or a rise and run into a pitch.
 3. **Deduct openings only if you want to.** The Vinyl Siding Institute's method leaves windows and doors in as part of the waste allowance.
 4. **Enter carton coverage** from the label to get a carton count.
 5. **Read the squares to order.**

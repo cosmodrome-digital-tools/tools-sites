@@ -27,7 +27,8 @@
     "gravel-calculator",
     "retaining-wall-block-calculator",
     "concrete-calculator",
-    "brick-calculator"
+    "brick-calculator",
+    "asphalt-calculator"
   ],
   "inputs": [
     {

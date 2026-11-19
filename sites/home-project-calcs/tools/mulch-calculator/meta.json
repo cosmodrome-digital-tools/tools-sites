@@ -26,9 +26,8 @@
   "uniqueAddition": "Top-up mode subtracts mulch already in the bed, a tree ring removes a trunk-clearance circle, and a table lists bags for 100, 200, and 300 sq ft at 2, 3, and 4 inches. The line chart repeats those three depths for the area you entered.",
   "relatedTools": [
     "sod-calculator",
-    "gravel-calculator",
     "retaining-wall-block-calculator",
-    "paver-patio-calculator"
+    "gravel-calculator"
   ],
   "inputs": [
     {

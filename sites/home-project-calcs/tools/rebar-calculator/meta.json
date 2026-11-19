@@ -26,8 +26,7 @@
   "uniqueAddition": "Lap-aware stick count with a cut list (bars per direction, cut length, sticks per direction, lap splices), purchase weight from CRSI unit weights, a bar-size weight table, and a line chart of sticks needed at 12, 16, 18, 24, and 36 in spacing.",
   "relatedTools": [
     "concrete-calculator",
-    "gravel-calculator",
-    "paver-patio-calculator"
+    "gravel-calculator"
   ],
   "inputs": [
     {

@@ -4,6 +4,10 @@
 import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import { dirname, join, relative } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
+import {
+  anchorHrefs, brokenInternalLinks, duplicates, firstLoadSize, headProblems, isNoindex, jsonLdBlocks, listHtml,
+  metaContent, outboundLinks, resolveInDist, sisterLinkProblems, sitemapLocs, titleOf, urlPathFor,
+} from './dist-lib.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const fails = [];
@@ -16,6 +20,9 @@ const TOOL_FILES = ['logic.js', 'logic.test.js', 'ui.js', 'page.md', 'meta.json'
 // tool.css may not touch these (ads, consent, header, footer, page chrome).
 const FORBIDDEN_CSS = [/\.ad-slot/, /data-ad-slot/, /--ad-slot-height/, /consent/i, /\.site-header/, /\.site-footer/, /(^|[\s,{}])(header|footer|html|body|:root)\b/m];
 const BANNED_TEXT = [/indexing\.googleapis\.com/i, /click (on )?(the |our |these )?ads?\b/i, /support us by clicking/i];
+// Cross-links are allowed only within the calculator/directory network.
+const SISTER_HOSTS = ['yardwastedropoff.com', 'hhwdropoff.com'];
+const BANNED_LINK_HOSTS = /launch-?briefing|build-?atlas/i;
 
 function walk(dir, out = []) {
   if (!existsSync(dir)) return out;
@@ -110,6 +117,78 @@ for (const site of sites) {
   }
   if (existsSync(join(dist, '_template'))) fail(`${site}: _template was built`);
   for (const f of walk(dist).filter((p) => /sitemap-\d+\.xml$/.test(p))) if (/_template/.test(read(f))) fail(`${site}: _template is in the sitemap`);
+
+  // ---- SEO head tags: every built page; unique title + description on indexable pages ----
+  const pages = listHtml(dist).map((f) => ({ file: f, path: urlPathFor(dist, f), html: read(f) }));
+  const indexable = pages.filter((pg) => !isNoindex(pg.html));
+  for (const pg of pages) {
+    for (const prob of headProblems(pg.html, { urlPath: pg.path, siteUrl: cfg.siteUrl, siteName: cfg.name, locale: cfg.locale ?? 'en_US' })) {
+      fail(`${site}${pg.path}: ${prob}`);
+    }
+    const og = metaContent(pg.html, 'og:image');
+    if (og?.startsWith(`${cfg.siteUrl}/`) && !resolveInDist(dist, new URL(og).pathname)) fail(`${site}${pg.path}: og:image ${og} is not in dist/`);
+  }
+  for (const [kind, get] of [['<title>', titleOf], ['meta description', (h) => metaContent(h, 'description')]]) {
+    for (const [value, paths] of Object.entries(duplicates(indexable.map((pg) => [pg.path, get(pg.html)])))) {
+      fail(`${site}: duplicate ${kind} "${value}" on ${paths.join(', ')}`);
+    }
+  }
+  const home = pages.find((pg) => pg.path === '/');
+  if (home && !jsonLdBlocks(home.html).some((b) => b['@type'] === 'WebSite')) fail(`${site}/: home page needs WebSite JSON-LD`);
+  for (const pg of pages.filter((x) => toolSlugs.includes(x.path.slice(1, -1)))) {
+    const types = jsonLdBlocks(pg.html).map((b) => b['@type']);
+    for (const t of ['WebApplication', 'BreadcrumbList']) if (!types.includes(t)) fail(`${site}${pg.path}: missing ${t} JSON-LD`);
+  }
+  // Sitemap covers exactly the indexable pages.
+  const locs = new Set(walk(dist).filter((p) => /sitemap-\d+\.xml$/.test(p)).flatMap((p) => sitemapLocs(read(p))));
+  for (const pg of indexable) if (!locs.has(new URL(pg.path, cfg.siteUrl).href)) fail(`${site}${pg.path}: indexable page missing from the sitemap`);
+  for (const pg of pages.filter((x) => isNoindex(x.html))) if (locs.has(new URL(pg.path, cfg.siteUrl).href)) fail(`${site}${pg.path}: noindex page is in the sitemap`);
+  console.log(`seo:   ${site}: ${pages.length} built pages (${indexable.length} indexable) checked for head tags, unique titles/descriptions, and sitemap coverage (${locs.size} URLs)`);
+
+  // ---- Links: internal hrefs must resolve in dist/; sister-site links listed and shape-checked ----
+  let internalCount = 0;
+  const outbound = new Map();
+  for (const pg of pages) {
+    internalCount += anchorHrefs(pg.html).filter((h) => h && !/^(https?:|mailto:|tel:)/i.test(h)).length;
+    for (const prob of brokenInternalLinks(dist, pg.file, cfg.siteUrl)) fail(`${site}${pg.path}: broken internal link ${prob}`);
+    for (const href of outboundLinks(pg.html, cfg.siteUrl)) {
+      outbound.set(href, [...(outbound.get(href) ?? []), pg.path]);
+      for (const prob of sisterLinkProblems(href, SISTER_HOSTS)) fail(`${site}${pg.path}: sister-site link ${prob}`);
+      if (BANNED_LINK_HOSTS.test(new URL(href).hostname)) fail(`${site}${pg.path}: links a site outside the calculator/directory network (${href})`);
+    }
+  }
+  const sister = [...outbound].filter(([href]) => SISTER_HOSTS.includes(new URL(href).hostname));
+  console.log(`links: ${site}: ${internalCount} internal hrefs checked against dist/; ${outbound.size} distinct outbound URLs, ${sister.length} to sister sites:`);
+  for (const [href, from] of sister.sort()) console.log(`         ${href}  <- ${[...new Set(from)].join(', ')}`);
+  if (process.env.CHECK_LIVE_LINKS === '1') {
+    // Opt-in live check (needs network). Problems only warn.
+    for (const [href] of sister) {
+      try {
+        const res = await fetch(href, { method: 'HEAD', redirect: 'manual', signal: AbortSignal.timeout(10000) });
+        if (res.status !== 200) warn(`${site}: sister-site link ${href} answered ${res.status}`);
+      } catch (e) {
+        warn(`${site}: sister-site link ${href} not reachable (${e.message})`);
+      }
+    }
+  }
+
+  // ---- First-load size budget (HTML + CSS + JS, gzip) ----
+  const budgetPath = join(s, 'size-budget.json');
+  if (existsSync(budgetPath)) {
+    const budget = JSON.parse(read(budgetPath));
+    const rows = [];
+    for (const pg of pages) {
+      const size = firstLoadSize(dist, pg.file);
+      const isTool = toolSlugs.includes(pg.path.slice(1, -1));
+      const max = budget.pages?.[pg.path] ?? (isTool ? budget.newTool : budget.newPage);
+      rows.push(`${pg.path} ${size.gzip}/${max}`);
+      if (size.gzip > max) fail(`${site}${pg.path}: first load is ${size.gzip} B gzip, over the ${max} B budget in size-budget.json`);
+    }
+    console.log(`size:  ${site}: ${pages.length} pages checked against size-budget.json (gzip bytes used/budget)`);
+    if (process.env.CHECK_VERBOSE === '1') for (const r of rows) console.log(`         ${r}`);
+  } else {
+    warn(`${site}: no size-budget.json, first-load size not checked`);
+  }
 }
 
 // Banned code or text anywhere in site and package sources

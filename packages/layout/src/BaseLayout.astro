@@ -10,6 +10,8 @@
  *  breadcrumbs: [{ name, href }] from home; BreadcrumbList JSON-LD is generated from it
  *  jsonLd:      extra JSON-LD objects (e.g. WebApplication)
  *  noindex:     true to add <meta name="robots" content="noindex">
+ *  ogImage:     optional { path, width, height, alt } for this page;
+ *               defaults to site.ogImage (one site-wide share image)
  */
 import './styles/base.css';
 import SeoHead from '@tools/seo/SeoHead.astro';
@@ -20,9 +22,10 @@ import Header from './Header.astro';
 import Footer from './Footer.astro';
 import Breadcrumbs from './Breadcrumbs.astro';
 
-const { site, title, description, breadcrumbs = [], jsonLd = [], noindex = false } = Astro.props;
+const { site, title, description, breadcrumbs = [], jsonLd = [], noindex = false, ogImage = site.ogImage } = Astro.props;
 const base = Astro.site ?? new URL(site.siteUrl);
 const canonical = canonicalUrl(Astro.url.pathname, base);
+const image = ogImage?.path ? { ...ogImage, url: canonicalUrl(ogImage.path, base) } : undefined;
 const crumbLd = breadcrumbs.length > 1
   ? breadcrumbList(breadcrumbs.map((c) => ({ name: c.name, url: canonicalUrl(c.href, base) })))
   : null;
@@ -32,7 +35,7 @@ const crumbLd = breadcrumbs.length > 1
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <SeoHead title={title} description={description} canonical={canonical} noindex={noindex} siteName={site.name} />
+    <SeoHead title={title} description={description} canonical={canonical} noindex={noindex} siteName={site.name} image={image} locale={site.locale ?? 'en_US'} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <JsonLd data={[crumbLd, ...jsonLd]} />
     <ConsentHead ads={site.ads} publisherId={site.publisherId} />

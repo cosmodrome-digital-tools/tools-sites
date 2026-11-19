@@ -1,6 +1,6 @@
 ---
 title: About
-description: What Home & Yard Calcs is, who runs it, and how each calculator is checked before it goes live.
+description: What Home & Yard Calcs is, who runs it, and how each US materials calculator is built and checked, with its formula, waste allowance, and dated sources.
 show: author
 ---
 

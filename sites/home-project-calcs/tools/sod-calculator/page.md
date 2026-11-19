@@ -73,3 +73,7 @@ All rows use 10 sq ft rolls and 5% extra, with pallets at 450 sq ft and at 500 s
 | 50 × 30 | 1500 | 1575 | 158 | 4 | 4 |
 | 50 × 40 | 2000 | 2100 | 210 | 5 | 5 |
 | 100 × 50 | 5000 | 5250 | 525 | 12 | 11 |
+
+## Free compost for soil prep and old-lawn drop-off
+
+This calculator doesn't estimate topsoil or compost. If you plan to work compost into the soil before laying sod, or need a place to take the old lawn and other yard debris, [Yard Waste Dropoff](https://yardwastedropoff.com/free-compost/) lists free municipal compost pickup and yard-waste drop-off sites compiled from official sources. Check each program's accepted materials first, because not every site takes soil or sod.

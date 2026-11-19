@@ -21,7 +21,7 @@
   "diagramCaption": "Stringer profile of your stair (longest flight). It redraws as you type.",
   "heroAlt": "",
   "uniqueAddition": "Code check against both the 2021 IRC (R311.7.5.1, R311.7.5.2) and 2024 IRC (R318.7.5.1, R318.7.5.2) section numbers, with a local-amendment override for the maximum riser and a 3/8 in uniformity check on the 1/16 in layout, plus a stringer length table for 2 to 12 risers.",
-  "relatedTools": ["deck-board-calculator", "concrete-calculator", "roof-pitch-calculator"],
+  "relatedTools": ["deck-board-calculator", "roof-pitch-calculator"],
   "inputs": [
     { "name": "totalRise", "label": "Total rise", "unit": "in", "default": "60", "help": "Finished surface at the bottom to finished surface at the top (deck boards or floor), 6 to 200 in.", "group": "Your stair" },
     { "name": "tread", "label": "Tread depth (run per step)", "unit": "in", "default": "10", "help": "Horizontal run of each step, nosing to nosing, 8 to 14 in. The IRC minimum is 10 in.", "group": "Your stair" },

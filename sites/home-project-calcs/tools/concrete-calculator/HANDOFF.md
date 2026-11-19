@@ -40,7 +40,7 @@ Run from the repo root on Windows, Node 22.14.0:
   3. Results can only show numbers, not tables, so the per-brand "bags per yard for every size" table lives in page.md (static) rather than in the results area.
   4. The chart has no visible caption (`chartTitle` is only an aria-label), so bar labels include the bag count (e.g. `4" · 59`) and page.md explains the chart.
 - **`npm run check` on Windows**: `scripts/checks/run.mjs` line 42 does `await import(cfgPath)` with a plain `C:\...` path, which Node rejects on Windows. `await import(pathToFileURL(cfgPath).href)` fixes it. CI on Linux is unaffected. Not changed (scripts/ is off-limits).
-- **Internal links**: `relatedTools` lists rebar-calculator, fence-calculator, paver-patio-calculator, and gravel-calculator. They appear automatically once those tools exist. The page copy names the Fence Calculator for fence posts but doesn't hyperlink it yet, to avoid a 404. Add the link when that tool ships. The copy says the Fence Calculator "handles post-hole concrete", per the brief's overlap rule.
+- **Internal links** (updated in the Nov 2026 SEO pass): `relatedTools` is rebar, gravel, fence, paver-patio, brick, and asphalt calculators, all live and reciprocal (checked by `src/related.test.js`). The fence-posts bullet in page.md now links the [Fence Calculator](/fence-calculator/), which "handles post-hole concrete", per the brief's overlap rule.
 - **Left off as unverified (per brief section 14)**: bags per pallet and ready-mix truck capacity. The page says these aren't covered.
 - **Thickness minimum**: resolved — raised to 2 in (data-sheet minimum). 1 in is rejected.
 - **People Also Ask**: per the brief, FAQ questions come from the autocomplete list. PAA was not spot-checked in a browser.
