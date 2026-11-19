@@ -1,6 +1,6 @@
 ## What it calculates and who it's for
 
-This calculator converts a driveway, path, or parking pad into tons of hot-mix asphalt, the unit asphalt plants and paving contractors sell by. It's for homeowners checking a paving quote and for small paving jobs. It covers hot-mix asphalt only; for a crushed-stone driveway or the stone base under asphalt, use the Gravel Calculator.
+This calculator converts a driveway, path, or parking pad into tons of hot-mix asphalt, the unit asphalt plants and paving contractors sell by. It's for homeowners checking a paving quote and for small paving jobs. It covers hot-mix asphalt only; for a crushed-stone driveway or the stone base under asphalt, use the [Gravel Calculator](/gravel-calculator/).
 
 ## How to use
 

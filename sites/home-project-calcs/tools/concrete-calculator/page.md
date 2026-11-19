@@ -69,7 +69,7 @@ The calculator assumes:
 What it doesn't cover:
 
 - **Structural design.** It does not tell you how thick a slab must be, whether it needs reinforcement, how deep footings must go for frost, or what your local code requires. Structural slabs and footings need local code review and, where required, an engineer.
-- **Fence posts.** Post holes have a post taking up part of the hole. Use the Fence Calculator for those so the concrete isn't double-counted.
+- **Fence posts.** Post holes have a post taking up part of the hole. Use the [Fence Calculator](/fence-calculator/) for those so the concrete isn't double-counted.
 - **Gravel base, forms, rebar, or prices.** This tool estimates concrete only. It does not price anything.
 - **Ready-mix trucks and pallets.** Truck capacities and bags-per-pallet counts vary and are not covered here. The cubic yards figure is what you'd give a ready-mix supplier.
 

@@ -25,9 +25,8 @@
   "heroAlt": "",
   "uniqueAddition": "Gable-end triangles added to the four walls with the Vinyl Siding Institute's own estimating method (squares of 100 sq ft plus 10% waste, openings not deducted by default), and a table of squares for common house sizes.",
   "relatedTools": [
-    "paint-calculator",
     "shingle-calculator",
-    "insulation-calculator"
+    "roof-pitch-calculator"
   ],
   "inputs": [
     {

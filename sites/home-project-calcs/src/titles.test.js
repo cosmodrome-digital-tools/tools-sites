@@ -75,3 +75,61 @@ describe('page titles', () => {
     for (const slug of toolSlugs) expect(meta(slug).title).not.toContain('|');
   });
 });
+
+// Meta descriptions: one per page, unique, roughly one search-snippet long.
+const pagesDir = join(siteDir, 'src', 'content', 'pages');
+const sitePages = readdirSync(pagesDir).filter((f) => f.endsWith('.md')).map((f) => f.replace(/\.md$/, ''));
+const pageDescription = (page) => readFileSync(join(pagesDir, `${page}.md`), 'utf8').match(/^description:\s*(.+)$/m)[1].trim();
+const descriptions = {
+  '': site.description,
+  ...Object.fromEntries(toolSlugs.map((slug) => [slug, meta(slug).metaDescription])),
+  ...Object.fromEntries(sitePages.map((page) => [page, pageDescription(page)])),
+};
+
+describe('meta descriptions', () => {
+  it('are unique across the home page, every tool, and every site page', () => {
+    const values = Object.values(descriptions);
+    expect(new Set(values).size).toBe(values.length);
+  });
+  for (const slug of ['', ...toolSlugs]) {
+    it(`${slug || 'homepage'}: 120 to 160 characters`, () => {
+      expect(descriptions[slug].length).toBeGreaterThanOrEqual(120);
+      expect(descriptions[slug].length).toBeLessThanOrEqual(160);
+    });
+  }
+  it('site pages have a description of at least 70 characters', () => {
+    for (const page of sitePages) expect(pageDescription(page).length, page).toBeGreaterThanOrEqual(70);
+  });
+});
+
+// Built HTML (after `npm run build`): every indexable page has a unique <title>
+// and description, the site-wide share image, and a Twitter card.
+const builtPages = ['', ...toolSlugs, ...sitePages];
+const built = (slug) => readFileSync(join(distDir, slug, 'index.html'), 'utf8');
+const metaTag = (html, key) => html.match(new RegExp(`<meta (?:name|property)="${key}" content="([^"]*)"`))?.[1];
+
+describe.skipIf(!existsSync(distDir))('built head tags', () => {
+  it('every indexable page has a unique <title> and meta description', () => {
+    const titles = builtPages.map((slug) => built(slug).match(/<title>([^<]*)<\/title>/)[1]);
+    const descs = builtPages.map((slug) => metaTag(built(slug), 'description'));
+    expect(new Set(titles).size).toBe(builtPages.length);
+    expect(new Set(descs).size).toBe(builtPages.length);
+  });
+  it('every page has og:image (absolute, 1200x630), og:locale, and a large-image Twitter card', () => {
+    for (const slug of builtPages) {
+      const html = built(slug);
+      expect(metaTag(html, 'og:image'), slug).toBe(`${site.siteUrl}${site.ogImage.path}`);
+      expect(metaTag(html, 'og:image:width'), slug).toBe('1200');
+      expect(metaTag(html, 'og:image:height'), slug).toBe('630');
+      expect(metaTag(html, 'og:locale'), slug).toBe('en_US');
+      expect(metaTag(html, 'twitter:card'), slug).toBe('summary_large_image');
+      expect(html, slug).not.toContain('noindex');
+    }
+    expect(existsSync(join(distDir, site.ogImage.path))).toBe(true);
+  });
+  it('the home page has WebSite JSON-LD with the site name and URL', () => {
+    const blocks = [...built('').matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map((m) => JSON.parse(m[1]));
+    const ws = blocks.find((b) => b['@type'] === 'WebSite');
+    expect(ws).toMatchObject({ name: site.name, url: `${site.siteUrl}/` });
+  });
+});

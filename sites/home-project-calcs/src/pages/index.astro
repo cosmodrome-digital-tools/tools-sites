@@ -4,19 +4,30 @@ import SiteLayout from '../layouts/SiteLayout.astro';
 import CategoryIcon from '../components/CategoryIcon.astro';
 import site from '../site.config.mjs';
 import { CATEGORIES, POPULAR, QUICK_PICKS, categorySlug } from '../categories.mjs';
+import { canonicalUrl, webSite } from '@tools/seo';
+import '../styles/hub.css';
 
 const tools = (await getCollection('toolMeta')).sort((a, b) => a.data.title.localeCompare(b.data.title));
-const card = (t) => ({
-  slug: t.id,
-  title: t.data.title,
-  blurb: t.data.cardBlurb ?? t.data.benefit,
-  category: t.data.category,
-  icon: CATEGORIES.find((c) => c.name === t.data.category)?.icon ?? 'concrete',
-  search: [t.data.title, t.data.category, t.data.cardBlurb, t.data.benefit, t.data.primaryKeyword, ...(t.data.secondaryKeywords ?? [])]
-    .filter(Boolean)
-    .join(' ')
-    .toLowerCase(),
-});
+// data-search holds only the keyword words that aren't already visible in the
+// card (title, blurb) or its category heading, minus filler words the filter
+// script ignores (STOP, keep in sync below); the script adds the visible text.
+// Same matches, about 1.5 KB less HTML.
+const STOP = new Set(['a', 'an', 'and', 'the', 'of', 'in', 'for', 'to', 'do', 'i', 'how', 'many', 'much', 'what', 'is', 'need']);
+const words = (...parts) => parts.filter(Boolean).join(' ').toLowerCase().split(/\s+/).filter((w) => w && !STOP.has(w));
+const card = (t) => {
+  const blurb = t.data.cardBlurb ?? t.data.benefit;
+  const shown = new Set(words(t.data.title, t.data.category, blurb));
+  return {
+    slug: t.id,
+    title: t.data.title,
+    blurb,
+    category: t.data.category,
+    icon: CATEGORIES.find((c) => c.name === t.data.category)?.icon ?? 'concrete',
+    search: [...new Set(words(t.data.benefit, t.data.primaryKeyword, ...(t.data.secondaryKeywords ?? [])))]
+      .filter((w) => !shown.has(w))
+      .join(' '),
+  };
+};
 // Categories in the order set in categories.mjs; any category a tool uses that
 // isn't listed there still shows (at the end) so no tool can drop off the hub.
 const known = CATEGORIES.map((c) => c.name);
@@ -26,6 +37,10 @@ const groups = [...CATEGORIES, ...extra]
   .filter((g) => g.tools.length);
 const popular = POPULAR.map((s) => tools.find((t) => t.id === s)).filter(Boolean).map(card);
 const chips = QUICK_PICKS.map((p) => ({ ...p, href: `#${categorySlug(p.categories[0])}` })).filter((p) => groups.some((g) => p.categories.includes(g.name)));
+// Home page JSON-LD: the site (WebSite). Tool pages carry their own
+// WebApplication, BreadcrumbList, and FAQPage blocks.
+const base = Astro.site ?? new URL(site.siteUrl);
+const jsonLd = [webSite({ name: site.name, url: canonicalUrl('/', base) })];
 const trust = [
   'Free to use',
   'US feet, inches, yards, and bag sizes',
@@ -34,7 +49,7 @@ const trust = [
   'Runs in your browser: nothing you type is sent anywhere',
 ];
 ---
-<SiteLayout title={site.homeTitle ?? `${site.name} - ${site.tagline}`} description={site.description}>
+<SiteLayout title={site.homeTitle ?? `${site.name} - ${site.tagline}`} description={site.description} jsonLd={jsonLd}>
   <section class="hub-hero" aria-labelledby="hub-title">
     <div class="hub-hero__text">
       <p class="hub-eyebrow">{site.name}</p>
@@ -157,16 +172,30 @@ const trust = [
   const empty = document.querySelector<HTMLElement>('[data-hub-empty]');
   const total = document.querySelectorAll('.hub-tools li').length;
   let active: string[] | null = null;
+  // Filler words dropped from queries (same list as STOP in the frontmatter).
+  const STOP = new Set(['a', 'an', 'and', 'the', 'of', 'in', 'for', 'to', 'do', 'i', 'how', 'many', 'much', 'what', 'is', 'need']);
+  // Search text per tool: its visible card text, its category, and the extra
+  // keywords in data-search. Built once, on first use.
+  const cache = new WeakMap<HTMLElement, string>();
+  const haystack = (g: HTMLElement, li: HTMLElement) => {
+    let t = cache.get(li);
+    if (t === undefined) {
+      t = `${li.dataset.search ?? ''} ${li.textContent ?? ''} ${g.dataset.category ?? ''}`.toLowerCase();
+      cache.set(li, t);
+    }
+    return t;
+  };
 
   const apply = () => {
-    const words = (input?.value ?? '').toLowerCase().split(/\s+/).filter(Boolean);
+    const words = (input?.value ?? '').toLowerCase().split(/\s+/).filter((w) => w && !STOP.has(w));
     const filtering = words.length > 0 || active !== null;
     let shown = 0;
     for (const g of groups) {
       const inCat = !active || active.includes(g.dataset.category ?? '');
       let visible = 0;
       for (const li of g.querySelectorAll<HTMLElement>('li[data-search]')) {
-        const hit = inCat && words.every((w) => (li.dataset.search ?? '').includes(w));
+        const text = haystack(g, li);
+        const hit = inCat && words.every((w) => text.includes(w));
         li.hidden = !hit;
         if (hit) visible++;
       }

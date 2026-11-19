@@ -15,6 +15,16 @@ export default {
     'Free calculators that estimate materials for US home projects in feet, inches, cubic yards, and bag sizes, with the formula, waste allowance, and sources shown.',
   domain,
   siteUrl: `https://${domain}`,
+  locale: 'en_US',
+  // One site-wide share image (public/og-image.png, 1200x630), drawn from the
+  // header mark in packages/layout/src/Logo.astro. Source: src/og/og-image.svg;
+  // re-render with `node scripts/og/render.mjs` (see that file). No third-party artwork.
+  ogImage: {
+    path: '/og-image.png',
+    width: 1200,
+    height: 630,
+    alt: 'Home & Yard Calcs: materials calculators for US home and yard projects',
+  },
   // Business inbox (Gmail). No domain mailbox or Email Routing is configured.
   contactEmail: 'cosmodromedigital@gmail.com',
   // Placeholder until the owner provides the real AdSense publisher ID. Public by design, not a secret.

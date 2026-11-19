@@ -1,6 +1,6 @@
 ---
 title: Contact
-description: How to reach Home & Yard Calcs with questions, corrections, or suggestions.
+description: Email Home & Yard Calcs with a question about a calculator, a correction backed by a source, or an idea for a new home or yard project estimator.
 show: contact
 ---
 

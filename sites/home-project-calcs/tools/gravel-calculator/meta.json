@@ -28,7 +28,8 @@
     "asphalt-calculator",
     "paver-patio-calculator",
     "concrete-calculator",
-    "retaining-wall-block-calculator"
+    "retaining-wall-block-calculator",
+    "mulch-calculator"
   ],
   "inputs": [
     {

@@ -27,10 +27,10 @@
   "relatedTools": [
     "rebar-calculator",
     "gravel-calculator",
-    "paver-patio-calculator",
     "fence-calculator",
+    "paver-patio-calculator",
     "brick-calculator",
-    "stair-stringer-calculator"
+    "asphalt-calculator"
   ],
   "inputs": [
     {

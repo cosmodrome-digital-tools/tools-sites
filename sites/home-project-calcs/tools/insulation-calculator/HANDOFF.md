@@ -6,7 +6,7 @@
 - What it calculates, in one sentence: It looks up the R-value ENERGY STAR recommends adding to the attic for a US climate zone and the existing insulation level, then estimates Owens Corning AttiCat blown-fiberglass bags or EcoTouch batt packages, plus the matching thickness.
 - Layout / chart style / accent chosen: stacked layout, line chart, mustard accent `#a16207` (fiberglass-batt color; kept at intake). Stacked + line is not used by any other tool on main. Category is Insulation and Energy. Cream surface `#fffbeb`, ink `#1c1917`, primary result number `#854d0e`. Contrast: `#a16207` on white is 4.92:1, `#a16207` on `#fffbeb` is 4.75:1, `#854d0e` on white is 6.85:1, `#1c1917` on `#fffbeb` is 16.86:1. All pass WCAG AA for normal text.
 - SEO title override (Content & SEO, set at intake): `Insulation Calculator - Attic R-Value`; `benefit` matched. With the site name appended by the frame, the full title is `Insulation Calculator - Attic R-Value | Home & Yard Calcs` (57 characters). The site name is not hard-coded in the tool copy; it comes from site config.
-- relatedTools (set at intake): `shingle-calculator`, `roof-pitch-calculator`. The generated page drops any related slug whose folder isn't on main, so the Shingle link stays hidden until shingle-calculator merges and then appears on the next build. Drywall is still not built.
+- relatedTools (Nov 2026 SEO pass): `attic-ventilation-calculator`, `drywall-calculator`, both live and reciprocal. Shingle and Roof Pitch were dropped as weak matches for an attic-floor insulation estimate.
 
 ## Sources used
 List every source in meta.json "sources" (title, URL, date accessed) and what each one supports.
@@ -56,7 +56,7 @@ Product, UX, or scope questions for Matthew only, plus anything the shared frame
 - A later width menu could replace the single 64 sq ft box. That box does not change when the batt R-value changes. Is the editable box enough?
 - Resolved at intake: all nine AttiCat rows are used. Minnesota extra bags remain out (Minnesota-only); say if a Minnesota toggle is wanted.
 - Should a later version count extra batt layers, so R-38 packages can be bought more than once toward R-60? This tool buys one layer and shows the R-value still short.
-- Done at intake: shingle-calculator is in relatedTools (hidden until it is on main). Add drywall-calculator when it exists.
+- Done: drywall-calculator is in relatedTools (Nov 2026 SEO pass).
 - When a field is invalid, the shared frame dims the previous numbers and clears the chart. That is frame behavior.
 
 ## Dependency requests
@@ -80,7 +80,7 @@ New npm packages this tool needs, with the reason. Do NOT install them yourself.
 - Title: `seoTitle` "Insulation Calculator - Attic R-Value" (Content & SEO); `benefit` matched. Added `'insulation-calculator': 'Insulation Calculator - Attic R-Value | Home & Yard Calcs'` to EXPECTED in `src/titles.test.js` (one line after gravel).
 - AttiCat rows: all nine rows from the May 2026 sheet (was four). Zone 1 with 3-4 in now uses R-26: 13 bags, 9.5 in (was R-30: 15 bags, 10.75 in). Defaults unchanged (R-60, 32 bags, 20.5 in). Tests added for every sheet row and the in-between snapping.
 - Wording: the ENERGY STAR number is now "R-value to add" (the table's columns are "Add Insulation to Attic"); shortfall label "R-value short of your goal"; settled-thickness note; 2024 IECC note in Assumptions plus NAHB source.
-- relatedTools: `shingle-calculator` (cross-link; hidden until shingle is on main) and `roof-pitch-calculator`.
+- relatedTools: superseded; see the Nov 2026 SEO pass note above.
 - Look: accent `#a16207` kept. Chart palette-2 and the hero's dimension marks changed `#44403c` → `#57534e` so nothing reuses the shingle calculator's charcoal accent.
 - Page regenerated with `npm run new-tool -- --site home-project-calcs --tool insulation-calculator --page-only`. Nothing outside the tool folder came from the zip.
 

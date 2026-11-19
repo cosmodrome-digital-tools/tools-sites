@@ -25,8 +25,7 @@
   "uniqueAddition": "A SuperPaint coverage selector (350 or 400 sq ft per gallon from the cited data sheet, or a custom rate) plus a shopping list that keeps wall paint, ceiling paint, and primer separate. Wall paint is split into 5-gallon buckets, 1-gallon cans, and quarts (rounded up to the next quart; three leftover quarts become one more gallon). The donut shows the gallons to buy of each product. page.md adds a wall-and-ceiling shopping table for six common room sizes at 2 coats and 350 sq ft per gallon.",
   "relatedTools": [
     "drywall-calculator",
-    "flooring-calculator",
-    "insulation-calculator"
+    "flooring-calculator"
   ],
   "inputs": [
     {

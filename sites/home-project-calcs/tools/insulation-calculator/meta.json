@@ -25,9 +25,7 @@
   "uniqueAddition": "An on-page ENERGY STAR attic R-value table for every climate-zone group, paired with the AttiCat bag line for this attic at R-30, R-38, R-49, and R-60. Blown results name the AttiCat data-sheet row used and its minimum thickness so the depth can be checked in the attic.",
   "relatedTools": [
     "attic-ventilation-calculator",
-    "roof-pitch-calculator",
-    "drywall-calculator",
-    "shingle-calculator"
+    "drywall-calculator"
   ],
   "inputs": [
     {

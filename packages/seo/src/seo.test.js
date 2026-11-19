@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { breadcrumbList, canonicalUrl, faqPage, pageTitle, serializeJsonLd, toolTitle, webApplication } from './index.js';
+import { breadcrumbList, canonicalUrl, faqPage, pageTitle, serializeJsonLd, toolTitle, webApplication, webSite } from './index.js';
 
 describe('titles', () => {
   it('follows the tool title pattern', () => {
@@ -44,6 +44,11 @@ describe('JSON-LD', () => {
   });
   it('builds an FAQPage', () => {
     expect(faqPage([{ question: 'Q', answer: 'A' }]).mainEntity[0].acceptedAnswer.text).toBe('A');
+  });
+  it('builds a WebSite with name, url, and language', () => {
+    const d = webSite({ name: 'Home & Yard Calcs', url: 'https://a.example/' });
+    expect(d).toEqual({ '@context': 'https://schema.org', '@type': 'WebSite', name: 'Home & Yard Calcs', url: 'https://a.example/', inLanguage: 'en-US' });
+    expect(webSite({ name: 'N', url: 'https://a.example/', alternateName: 'Alt' }).alternateName).toBe('Alt');
   });
   it('keeps a raw ampersand in JSON-LD (no HTML entity encoding)', () => {
     const out = serializeJsonLd({ name: 'Home & Yard Calcs' });

@@ -134,4 +134,4 @@ The 10 ft by 20 ft row is the one where display rounding and the order line look
 
 ## Yard waste after a landscape project
 
-If a gravel or landscape project left you with brush or yard debris to drop off, or you want free municipal mulch afterward, [Yard Waste Dropoff](https://yardwastedropoff.com/) lists government-sourced drop-off and pickup programs.
+If a gravel or landscape project left you with brush or yard debris to drop off, or you want free municipal mulch afterward, [Yard Waste Dropoff](https://yardwastedropoff.com/yard-waste-drop-off/) lists government-sourced drop-off and pickup programs.

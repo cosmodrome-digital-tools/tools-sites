@@ -26,6 +26,7 @@
   "relatedTools": [
     "shingle-calculator",
     "attic-ventilation-calculator",
+    "siding-calculator",
     "stair-stringer-calculator"
   ],
   "inputs": [

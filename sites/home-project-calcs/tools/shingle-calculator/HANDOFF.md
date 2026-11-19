@@ -72,7 +72,7 @@ Product, UX, and scope questions for Matthew (updated on intake):
 3. **More product presets?** Deferred to a later refinement (Matthew, Oct 21, 2026): CertainTeed and #15/#30 felt underlayment presets.
 4. ~~**Frame limits.**~~ Advanced accordion resolved in PR #23 (outputs still can't be grouped natively). Original: No collapsible "Advanced" accordion (a labeled last step is used instead), and outputs can't be grouped natively (an injected shopping list is used). Both would be shared-frame changes; already logged as pending in the Refinement Playbook.
 5. **FAQ wording.** Worth a spot-check by Content & SEO.
-(Resolved on intake: the Roof Pitch link and pitch handoff are wired, and the Insulation Calculator is in `relatedTools`, hidden until it's on main.)
+(Resolved on intake: the Roof Pitch link and pitch handoff are wired. Nov 2026 SEO pass: `relatedTools` is now roof-pitch, attic-ventilation, and siding calculators.)
 
 ## Web Dev must fix on intake
 - Add the approved title to `sites/home-project-calcs/src/titles.test.js` `EXPECTED`: `'shingle-calculator': 'Shingle Calculator: Bundles and Squares | Home & Yard Calcs'` (59 characters). Content & SEO should approve or replace the `seoTitle`. Until then, `npm test` fails one site test (see above).
@@ -91,7 +91,7 @@ None.
 - **Layout/chart kept:** stepper + bar is used by no other tool (fence and retaining wall are stepper + donut, mulch and rebar stepper + line, concrete and gravel split + bar, paver stacked + bar).
 - **Code edition:** 2021 IRC → 2024 IRC everywhere (logic messages, slope note, help text, page.md, meta.json source), wording matched to the Roof Pitch Calculator; pitch now rounded to 2 decimals before the band checks, like roof pitch.
 - **Sources:** ProEdge source swapped to Owens Corning's own 2019 data sheet (33 ft confirmed); IKO's Blueprint for Roofing added for the 10 to 15 percent waste range; 2024 IRC UpCodes source (R905.2.2, Table R905.1.1(2), R905.2.8.5) replaces the 2021 ICC link.
-- **Cross-links:** `relatedTools` = roof-pitch-calculator, insulation-calculator. The generated page filters `relatedTools` against the tools that exist at build time, so insulation stays hidden until its folder is on main; Workers Builds watches `sites/home-project-calcs/*`, so the insulation merge rebuilds this page and the link appears then. `ui.js` adds "Don't know your pitch? Use the Roof Pitch Calculator." under the pitch field and reads `?pitch=` from the Roof Pitch Calculator's link (see Decisions). How to use in page.md also links the Roof Pitch Calculator (works without JavaScript).
+- **Cross-links:** `relatedTools` = roof-pitch-calculator, attic-ventilation-calculator, siding-calculator (Nov 2026 SEO pass; all live and reciprocal). `ui.js` adds "Don't know your pitch? Use the Roof Pitch Calculator." under the pitch field and reads `?pitch=` from the Roof Pitch Calculator's link (see Decisions). How to use in page.md also links the Roof Pitch Calculator (works without JavaScript).
 - Site name: not hard-coded in the tool folder.
 - Phone width: 390 px in headless Chrome, `scrollWidth` = 390, no element past the right edge; form starts at 516 px. No fix needed.
 - Tests added: `?pitch=` parsing (valid, rounded, ignored, out of range), 2-decimal band rounding (3.999 / 3.99 / 1.996 / 1.994), 2024 IRC wording. This tool: 38 passed.
